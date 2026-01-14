@@ -29,44 +29,45 @@ const WhoWeAreSection = () => {
         return () => clearInterval(scrollInterval);
     }, []);
 
-    const leadershipTeam = [
-        {
-            id: 1,
-            name: "Alex Johnson",
-            role: "CEO & Founder",
-            image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
-            bio: "15+ years in enterprise software development. Passionate about building technology that transforms businesses.",
-            linkedin: "#",
-            twitter: "#"
-        },
-        {
-            id: 2,
-            name: "Sarah Chen",
-            role: "CTO",
-            image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
-            bio: "Former tech lead at Google. Expert in cloud architecture and scalable systems design.",
-            linkedin: "#",
-            twitter: "#"
-        },
-        {
-            id: 3,
-            name: "Marcus Rodriguez",
-            role: "Head of Engineering",
-            image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-            bio: "Led 50+ successful software projects. Specializes in agile methodologies and team leadership.",
-            linkedin: "#",
-            twitter: "#"
-        },
-        {
-            id: 4,
-            name: "Priya Sharma",
-            role: "Design Director",
-            image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
-            bio: "Award-winning designer with expertise in user-centered design and design systems.",
-            linkedin: "#",
-            twitter: "#"
-        },
-    ];
+const leadershipTeam = [
+    {
+        id: 1,
+        name: "Amit Verma",
+        role: "CEO & Founder",
+        image: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=400&h=400&fit=crop&crop=face",
+        bio: "Serial entrepreneur with 15+ years of experience in building scalable digital products and technology-driven businesses.",
+        linkedin: "#",
+        twitter: "#"
+    },
+    {
+        id: 2,
+        name: "Neha Kapoor",
+        role: "Chief Technology Officer",
+        image: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?w=400&h=400&fit=crop&crop=face",
+        bio: "Technology leader specializing in cloud-native architectures, enterprise platforms, and high-performance engineering teams.",
+        linkedin: "#",
+        twitter: "#"
+    },
+    {
+        id: 3,
+        name: "Rohit Malhotra",
+        role: "Head of Engineering",
+        image: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=400&h=400&fit=crop&crop=face",
+        bio: "Expert in scalable system design with a strong focus on agile delivery, code quality, and engineering excellence.",
+        linkedin: "#",
+        twitter: "#"
+    },
+    {
+        id: 4,
+        name: "Ananya Iyer",
+        role: "Design Director",
+        image: "https://images.unsplash.com/photo-1589571894960-20bbe2828d0a?w=400&h=400&fit=crop&crop=face",
+        bio: "User experience strategist with a passion for crafting intuitive interfaces and building strong brand-driven design systems.",
+        linkedin: "#",
+        twitter: "#"
+    },
+];
+
 
     const companyValues = [
         { id: 1, title: "Innovation", description: "Pushing boundaries with cutting-edge technology" },
