@@ -177,30 +177,30 @@ const WhyUsSection = () => {
     ];
 
     const testimonials = [
-        {
-            id: 1,
-            name: "Michael Rodriguez",
-            role: "CTO, TechCorp Global",
-            content: "Athenura transformed our legacy systems into a modern, scalable platform. Their technical expertise and strategic approach delivered results beyond our expectations.",
-            company: "TechCorp Global",
-            image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face"
-        },
-        {
-            id: 2,
-            name: "Sarah Johnson",
-            role: "VP of Technology, Innovate Inc.",
-            content: "Working with Athenura felt like having an in-house expert team. Their problem-solving approach and technical depth made complex challenges seem simple.",
-            company: "Innovate Inc.",
-            image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face"
-        },
-        {
-            id: 3,
-            name: "David Chen",
-            role: "Director of Engineering, ScaleFast",
-            content: "The solutions Athenura delivered not only solved our immediate problems but also positioned us for future growth. Their forward-thinking approach is remarkable.",
-            company: "ScaleFast",
-            image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
-        }
+    {
+        id: 1,
+        name: "Rahul Mehta",
+        role: "CTO, NexaTech Solutions",
+        content: "Athenura helped us modernize our digital infrastructure seamlessly. Their technical clarity and execution speed truly set them apart.",
+        company: "NexaTech Solutions",
+        image: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=150&h=150&fit=crop&crop=face"
+    },
+    {
+        id: 2,
+        name: "Priya Sharma",
+        role: "Head of Technology, BrightMind Systems",
+        content: "The Athenura team understood our vision from day one. Their innovative mindset and problem-solving skills delivered exceptional results.",
+        company: "BrightMind Systems",
+        image: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?w=150&h=150&fit=crop&crop=face"
+    },
+    {
+        id: 3,
+        name: "Amit Verma",
+        role: "Engineering Director, ScaleGrow India",
+        content: "Athenura’s solutions were scalable, future-ready, and perfectly aligned with our business goals. A highly reliable technology partner.",
+        company: "ScaleGrow India",
+        image: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=150&h=150&fit=crop&crop=face"
+    }
     ];
 
     return (

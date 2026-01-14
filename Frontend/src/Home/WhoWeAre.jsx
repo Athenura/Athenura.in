@@ -156,11 +156,11 @@ const WhoWeAreSection = () => {
                             />
                             <div className="p-6">
                                 <div className="flex items-center gap-4 mb-4">
-                                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#65daea] to-[#A7DADC] flex items-center justify-center">
-                                        <img src="/AthenuraCircle.png" alt="Athenura" />
+                                    <div className="w-10 h-10 sm:w-12 sm:h-12  rounded-full bg-gradient-to-r from-[#65daea] to-[#A7DADC] flex items-center justify-center">
+                                        <img src="/AthenuraCircle.png" alt="Athenura" className='rounded-full' />
                                     </div>
                                     <div>
-                                        <h4 className="font-bold text-[#2E2E2E]">Distributed Team</h4>
+                                        <h4 className="font-bold text-[#2E2E2E] text-lg sm:text-2lg">Distributed Team</h4>
                                         <p className="text-sm text-[#2E2E2E]/60">
                                             Talented professionals collaborating across regions
                                         </p>

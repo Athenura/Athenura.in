@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -299,15 +300,12 @@ const Navbar = () => {
             : "bg-white border-b border-gray-100"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-18">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-between h-14">
             {/* Logo - Professional design */}
             <NavLink to="/" className="flex items-center space-x-2.5 group">
               <div>
-                <img src="/Athenura.png" alt="Athenura" className="h-10" />
-                <p className="text-[8px] ml-3 text-[#28A3B9] font-medium tracking-wider uppercase">
-                  Code. Create. Innovate.
-                </p>
+                <img src="/Athenura.png" alt="Athenura" className="h-12" />
               </div>
             </NavLink>
 
@@ -334,9 +332,11 @@ const Navbar = () => {
 
               {/* Professional CTA Button */}
               <div className="ml-3 pl-3 border-l border-gray-200">
+                <Link to="/apply-internship">
                 <button className="px-4 py-2 bg-[#28A3B9] text-white text-sm font-medium rounded-md hover:bg-[#1E90A8] transition-colors">
                   Apply for Internship
                 </button>
+                </Link>
               </div>
             </div>
 

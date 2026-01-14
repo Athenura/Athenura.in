@@ -85,10 +85,6 @@ const ServicesSection = () => {
             <div className="max-w-8xl mx-auto relative">
                 {/* Header */}
                 <div className={`text-center mb-16 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#A7DADC]/20 border border-[#A7DADC]/30 rounded-full mb-6 backdrop-blur-sm">
-                        <div className="w-2 h-2 bg-[#1E7A86] rounded-full animate-pulse"></div>
-                        <span className="text-sm font-medium text-[#1E7A86]">Our Services</span>
-                    </div>
 
                     <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#2E2E2E] mb-4 leading-tight">
                         Digital Solutions That
@@ -274,7 +270,7 @@ const ServicesSection = () => {
                         }`}
                 >
                     <div className="max-w-8xl mx-auto px-4">
-                        <div className="rounded-2xl bg-gradient-to-r from-[#243a65] via-[#1d396d] to-[#33579e] px-6 py-8 sm:px-10 sm:py-10">
+                        <div className="rounded-2xl bg-gradient-to-r from-[#2e5f8a] via-[#399ab7] to-[#2e5f8a] px-6 py-8 sm:px-10 sm:py-10">
                             <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
 
                                 {/* Left: Heading */}

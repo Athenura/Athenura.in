@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './Navbar';
 import HomeMain from './Home/HomeMain';
 import Footer from './Footer';
+import ApplyInternship from './Home/InternShipApply';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Navbar />
       <div className="min-h-screen">
         <Routes>  
+          <Route path="/apply-internship" element={<ApplyInternship />} />
           <Route path="/" element={<HomeMain />} />
           <Route path="/services" element={<HomeMain />} />
 
