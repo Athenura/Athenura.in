@@ -248,7 +248,7 @@ const WhyUsSection = () => {
                                             <span className="text-sm font-medium text-[#139bad]">Key Advantage {index + 1}</span>
                                         </div>
 
-                                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2E2E2E] mb-6">
+                                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1d687e] mb-6">
                                             {benefit.title}
                                         </h2>
 
@@ -277,8 +277,8 @@ const WhyUsSection = () => {
                                                 <div className="absolute inset-16 rounded-full border-4 border-[#A7DADC]/10 animate-ping" style={{ animationDelay: '2s' }}></div>
 
                                                 <div className="absolute inset-0 flex items-center justify-center">
-                                                    <div className="w-40 h-40 rounded-full bg-gradient-to-br from-[#53bee8] to-[#2293bf] shadow-2xl flex items-center justify-center">
-                                                        <div className="text-5xl font-bold bg-gradient-to-r from-[#1E7A86] to-[#A7DADC] bg-clip-text text-transparent">
+                                                    <div className="w-40 h-40 rounded-full shadow-gray-900 shadow-lg flex items-center justify-center">
+                                                        <div className="text-5xl font-bold  bg-clip-text text-transparent">
                                                             <img src="/AthenuraCircle.png" alt="Athenura" />
                                                         </div>
                                                     </div>
