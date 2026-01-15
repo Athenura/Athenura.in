@@ -7,8 +7,9 @@ const Footer = () => {
     const companyLinks = [
         { label: 'About Us', link: '#' },
         { label: 'Our Team', link: '#' },
-        { label: 'Careers', link: '#' },
-        { label: 'Internship Policy', link: '#' }
+        { label: 'Careers', link: '/careers' },
+        { label: 'Internship Policy', link: '/internship-policy' },
+        { label: "FAQs", link: "/faqs"}
     ];
 
     const serviceLinks = [

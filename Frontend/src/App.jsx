@@ -1,24 +1,71 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import HomeMain from './Home/HomeMain';
 import Footer from './Footer';
 import ApplyInternship from './Home/InternShipApply';
+import CareerMain from './Career/CareerMain';
+import Preloader from './Preloader';
+import ContactMain from './Contact/ContactMain';
+import FaqPage from './FAQ';
+import InternshipMain from './Legal/InternshipMain';
+
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" }); 
+  }, [pathname]);
+
+  return null;
+};
 
 function App() {
-  return (
-    <Router>
-        <Navbar />
-      <div className="min-h-screen">
-        <Routes>  
-          <Route path="/apply-internship" element={<ApplyInternship />} />
-          <Route path="/" element={<HomeMain />} />
-          <Route path="/services" element={<HomeMain />} />
+  const [isLoading, setIsLoading] = useState(true);
 
-        </Routes>
-      </div>
-        <Footer />
-    </Router>
+  return (
+    <>
+      {isLoading ? (
+        <Preloader onFinish={() => setIsLoading(false)} />
+      ) : (
+        <Router>
+          {/* Add ScrollToTop here, inside the Router */}
+          <ScrollToTop /> 
+          
+          <div className="animate-fade-in-up"> 
+            <Navbar />
+            <div className="min-h-screen">
+              <Routes>
+                <Route path="/apply-internship" element={<ApplyInternship />} />
+                <Route path="/" element={<HomeMain />} />
+                <Route path="/services" element={<HomeMain />} />
+                <Route path="/careers" element={<CareerMain />} />
+                <Route path="/contact" element={<ContactMain />} />
+                <Route path="/faqs" element={<FaqPage />} />
+                <Route path="/internship-policy" element={<InternshipMain />} />
+              </Routes>
+            </div>
+            <Footer />
+          </div>
+        </Router>
+      )}
+
+      <style jsx global>{`
+        /* Optional: Makes in-page anchor links smooth */
+        html {
+          scroll-behavior: smooth;
+        }
+
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+          animation: fadeInUp 0.8s ease-out forwards;
+        }
+      `}</style>
+    </>
   );
 }
 
