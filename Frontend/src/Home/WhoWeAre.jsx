@@ -183,55 +183,7 @@ const leadershipTeam = [
                 </div>
 
                 {/* Leadership Team */}
-                <div className={`mb-20 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                    <div className="text-center mb-12">
-                        <h3 className="text-3xl sm:text-5xl font-bold text-[#2E2E2E] mb-4">
-                            Meet Our <span className="text-[#1E7A86]">Leadership</span>
-                        </h3>
-                        <p className="text-lg text-[#2E2E2E]/80 max-w-2xl mx-auto">
-                            Guided by experienced leaders who are passionate about technology and innovation
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {leadershipTeam.map((member) => (
-                            <div
-                                key={member.id}
-                                className="group relative bg-white rounded-2xl overflow-hidden shadow-lg border border-[#F3F4F6] hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
-                            >
-                                {/* Hover Effect */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-[#1E7A86]/0 to-[#A7DADC]/0 group-hover:from-[#1E7A86]/5 group-hover:to-[#A7DADC]/5 transition-all duration-500"></div>
-
-                                {/* Image */}
-                                <div className="relative h-64 overflow-hidden">
-                                    <img
-                                        src={member.image}
-                                        alt={member.name}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-
-                                    {/* Social Links */}
-                                    <div className="absolute bottom-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                        <a href={member.linkedin} className="w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-[#1E7A86] hover:text-white transition-colors">
-                                            <span className="text-xs font-bold">in</span>
-                                        </a>
-                                        <a href={member.twitter} className="w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-[#1E7A86] hover:text-white transition-colors">
-                                            <span className="text-xs">𝕏</span>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                {/* Content */}
-                                <div className="p-6">
-                                    <h4 className="font-bold text-xl text-[#2E2E2E] mb-1">{member.name}</h4>
-                                    <p className="text-[#1E7A86] font-medium mb-3">{member.role}</p>
-                                    <p className="text-[#2E2E2E]/70 text-sm">{member.bio}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+               
 
                 {/* Infinite Loop - Tech Stack */}
                 <div className={`mb-10 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
