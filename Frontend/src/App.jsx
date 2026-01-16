@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import HomeMain from './Home/HomeMain';
 import Footer from './Footer';
 import ApplyInternship from './Home/InternShipApply';
+import AdvancedPortfolio from './Portfolio/AdvancedPortfolio';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/apply-internship" element={<ApplyInternship />} />
           <Route path="/" element={<HomeMain />} />
           <Route path="/services" element={<HomeMain />} />
+          <Route path="/portfolio" element={<AdvancedPortfolio />} />
 
         </Routes>
       </div>
