@@ -5,7 +5,7 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     const companyLinks = [
-        { label: 'About Us', link: '#' },
+        { label: 'About Us', link: 'about' },
         { label: 'Our Team', link: '#' },
         { label: 'Careers', link: '/careers' },
         { label: 'Internship Policy', link: '/internship-policy' },
@@ -26,10 +26,10 @@ const Footer = () => {
     ];
 
     const socialLinks = [
-        { icon: <FaLinkedinIn />, link: '#', label: 'LinkedIn' },
-        { icon: <FaInstagram />, link: '#', label: 'Instagram' },
-        { icon: <FaTwitter />, link: '#', label: 'Twitter' },
-        { icon: <FaGithub />, link: '#', label: 'GitHub' }
+        { icon: <FaLinkedinIn />, link: 'https://www.linkedin.com/company/athenura/', label: 'LinkedIn' },
+        { icon: <FaInstagram />, link: 'https://www.instagram.com/athenura.in/', label: 'Instagram' },
+        { icon: <FaTwitter />, link: '', label: 'Twitter' },
+        { icon: <FaGithub />, link: 'https://github.com/Athenura', label: 'GitHub' }
     ];
 
     const contactInfo = [

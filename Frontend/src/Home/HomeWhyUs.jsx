@@ -389,7 +389,7 @@ const WhyUsSection = () => {
                         </div>
 
                         <div className="text-center mb-12 relative z-10">
-                            <h2 className="text-3xl sm:text-4xl font-bold text-[#2E2E2E] mb-4">
+                            <h2 className="text-3xl sm:text-5xl font-bold text-[#2E2E2E] mb-4">
                                 By The <span className="text-[#1E7A86]">Numbers</span>
                             </h2>
                             <p className="text-lg text-[#2E2E2E]/80 max-w-2xl mx-auto">
@@ -423,7 +423,7 @@ const WhyUsSection = () => {
                 {/* Client Testimonials */}
                 <div className={`mb-20 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl sm:text-4xl font-bold text-[#2E2E2E] mb-4">
+                        <h2 className="text-3xl sm:text-5xl font-bold text-[#2E2E2E] mb-4">
                             Client <span className="text-[#1E7A86]">Success Stories</span>
                         </h2>
                         <p className="text-lg text-[#2E2E2E]/80 max-w-2xl mx-auto">
@@ -466,7 +466,7 @@ const WhyUsSection = () => {
                 {/* Our Process */}
                 <div className={`mb-20 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl sm:text-4xl font-bold text-[#2E2E2E] mb-4">
+                        <h2 className="text-3xl sm:text-5xl font-bold text-[#2E2E2E] mb-4">
                             The Athenura <span className="text-[#1E7A86]">Approach</span>
                         </h2>
                         <p className="text-lg text-[#2E2E2E]/80 max-w-2xl mx-auto">

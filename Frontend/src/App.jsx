@@ -9,6 +9,7 @@ import Preloader from './Preloader';
 import ContactMain from './Contact/ContactMain';
 import FaqPage from './FAQ';
 import InternshipMain from './Legal/InternshipMain';
+import ServiceMain from './Service/ServiceMain';
 
 
 const ScrollToTop = () => {
@@ -30,20 +31,33 @@ function App() {
         <Preloader onFinish={() => setIsLoading(false)} />
       ) : (
         <Router>
-          {/* Add ScrollToTop here, inside the Router */}
-          <ScrollToTop /> 
-          
+          <ScrollToTop />    
           <div className="animate-fade-in-up"> 
             <Navbar />
             <div className="min-h-screen">
               <Routes>
+
+                {/* Extarnal Pages */}
                 <Route path="/apply-internship" element={<ApplyInternship />} />
+
+
+
+                {/* Web Pages */}
+
                 <Route path="/" element={<HomeMain />} />
-                <Route path="/services" element={<HomeMain />} />
+                <Route path="/home" element={<HomeMain />} />
                 <Route path="/careers" element={<CareerMain />} />
                 <Route path="/contact" element={<ContactMain />} />
+                <Route path="/services" element={<ServiceMain />} />
+                
                 <Route path="/faqs" element={<FaqPage />} />
+
+                
+                {/* Legal Pages */}
                 <Route path="/internship-policy" element={<InternshipMain />} />
+
+
+                
               </Routes>
             </div>
             <Footer />

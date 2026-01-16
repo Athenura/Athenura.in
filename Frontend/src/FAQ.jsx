@@ -138,12 +138,7 @@ const FaqPage = () => {
             {/* --- HERO SECTION --- */}
             <section className="relative pt-20 md:pt-32 pb-12 md:pb-20 px-4 sm:px-6 lg:px-12">
                 <div className="max-w-6xl mx-auto">
-                    <div className="text-center mb-8 md:mb-12">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full mb-4 md:mb-6 border text-xs md:text-sm" style={{ backgroundColor: theme.white, borderColor: theme.border }}>
-                            <RiLightbulbFlashLine className="w-3 h-3 md:w-4 md:h-4" style={{ color: theme.primary }} />
-                            <span className="font-medium" style={{ color: theme.primary }}>Frequently Asked Questions</span>
-                        </div>
-                        
+                    <div className="text-center mb-8 md:mb-12">                        
                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 tracking-tight leading-tight px-2" style={{ color: theme.textDark }}>
                             Answers to Your
                             <br className="hidden sm:block" />
