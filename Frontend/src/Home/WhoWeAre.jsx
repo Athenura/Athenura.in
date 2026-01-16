@@ -185,7 +185,7 @@ const leadershipTeam = [
                 {/* Leadership Team */}
                 <div className={`mb-20 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                     <div className="text-center mb-12">
-                        <h3 className="text-3xl sm:text-4xl font-bold text-[#2E2E2E] mb-4">
+                        <h3 className="text-3xl sm:text-5xl font-bold text-[#2E2E2E] mb-4">
                             Meet Our <span className="text-[#1E7A86]">Leadership</span>
                         </h3>
                         <p className="text-lg text-[#2E2E2E]/80 max-w-2xl mx-auto">
@@ -236,7 +236,7 @@ const leadershipTeam = [
                 {/* Infinite Loop - Tech Stack */}
                 <div className={`mb-10 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                     <div className="text-center mb-8">
-                        <h3 className="text-3xl sm:text-4xl font-bold text-[#2E2E2E] mb-4">
+                        <h3 className="text-3xl sm:text-5xl font-bold text-[#2E2E2E] mb-4">
                             Our <span className="text-[#1E7A86]">Technology Stack</span>
                         </h3>
                         <p className="text-lg text-[#2E2E2E]/80 max-w-2xl mx-auto">

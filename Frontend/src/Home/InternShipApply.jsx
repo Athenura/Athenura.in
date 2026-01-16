@@ -1,6 +1,6 @@
 const ApplyInternship = () => {
   return (
-    <div className="w-full h-[calc(100vh-56px)]">
+    <div className="w-full h-screen">
       <iframe
         src="https://athenura-internship.vercel.app/apply"
         className="w-full h-full border-0"

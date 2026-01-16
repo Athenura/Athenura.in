@@ -9,7 +9,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isServicesHovered, setIsServicesHovered] = useState(false);
-  
+
   const servicesRef = useRef(null);
   const servicesButtonRef = useRef(null);
 
@@ -28,7 +28,7 @@ const Navbar = () => {
       // Close mobile menu
       const mobileMenu = document.getElementById("mobile-menu");
       const hamburgerBtn = document.getElementById("hamburger-btn");
-      
+
       if (
         isMobileMenuOpen &&
         mobileMenu &&
@@ -53,8 +53,8 @@ const Navbar = () => {
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, [isMobileMenuOpen, isServicesOpen, isServicesHovered]);
 
   // Close services dropdown when clicking on a service
@@ -82,10 +82,6 @@ const Navbar = () => {
     {
       name: "Careers",
       path: "/careers",
-    },
-    {
-      name: "Blog",
-      path: "/blog",
     },
     {
       name: "About Us",
@@ -142,18 +138,17 @@ const Navbar = () => {
       ref={servicesRef}
       onMouseEnter={() => setIsServicesHovered(true)}
       onMouseLeave={() => setIsServicesHovered(false)}
-      className={`absolute left-0 top-full w-[600px] bg-white rounded-lg shadow-2xl border border-gray-200 transition-all duration-300 ${
-        isServicesOpen || isServicesHovered
-          ? "opacity-100 visible translate-y-0"
-          : "opacity-0 invisible -translate-y-2"
-      } z-50 overflow-hidden`}
+      className={`absolute left-0 top-full w-[600px] bg-white rounded-lg shadow-2xl border border-gray-200 transition-all duration-300 ${isServicesOpen || isServicesHovered
+        ? "opacity-100 visible translate-y-0"
+        : "opacity-0 invisible -translate-y-2"
+        } z-50 overflow-hidden`}
     >
       <div className="p-6">
         <div className="mb-6">
           <h3 className="text-xl font-bold text-[#28A3B9] mb-1">Our Services</h3>
           <p className="text-sm text-gray-600">Comprehensive digital solutions for your business</p>
         </div>
-        
+
         <div className="grid grid-cols-2 gap-3">
           {servicesData.map((service, index) => (
             <NavLink
@@ -171,15 +166,16 @@ const Navbar = () => {
             </NavLink>
           ))}
         </div>
-        
+
         <div className="mt-6 pt-5 border-t border-gray-100">
           <NavLink
             to="/services"
-            className="block w-full py-2.5 bg-[#28A3B9] text-white text-sm font-medium rounded-md hover:bg-[#1E90A8] transition-colors text-center"
             onClick={handleServiceClick}
+            className="block w-full py-2.5 bg-[#28A3B9] text-white text-sm font-medium rounded-md hover:bg-[#1E90A8] transition-colors text-center"
           >
             View All Services
           </NavLink>
+
         </div>
       </div>
     </div>
@@ -204,7 +200,7 @@ const Navbar = () => {
             </NavLink>
           </div>
         ))}
-        
+
         <div className="pt-3 mt-3 border-t border-gray-200">
           <NavLink
             to="/services"
@@ -229,10 +225,9 @@ const Navbar = () => {
       <NavLink
         to={to}
         className={({ isActive }) =>
-          `relative px-3 py-2 transition-all duration-300 font-medium ${
-            isActive
-              ? "text-[#28A3B9]"
-              : "text-gray-700 hover:text-[#28A3B9]"
+          `relative px-3 py-2 transition-all duration-300 font-medium ${isActive
+            ? "text-[#28A3B9]"
+            : "text-gray-700 hover:text-[#28A3B9]"
           }`
         }
         onMouseEnter={() => setIsHovered(true)}
@@ -241,10 +236,9 @@ const Navbar = () => {
         <span className="relative z-10">{children}</span>
         {/* Professional underline animation */}
         <div className="absolute bottom-0 left-0 w-full h-px overflow-hidden">
-          <div 
-            className={`h-full bg-[#28A3B9] transition-all duration-300 ${
-              isHovered ? "w-full" : "w-0"
-            }`}
+          <div
+            className={`h-full bg-[#28A3B9] transition-all duration-300 ${isHovered ? "w-full" : "w-0"
+              }`}
           />
         </div>
       </NavLink>
@@ -265,25 +259,22 @@ const Navbar = () => {
           }}
           onMouseLeave={() => setIsHovered(false)}
           onClick={() => setIsServicesOpen(!isServicesOpen)}
-          className={`relative flex items-center px-3 py-2 transition-all duration-300 font-medium ${
-            isServicesOpen || isServicesHovered
-              ? "text-[#28A3B9]"
-              : "text-gray-700 hover:text-[#28A3B9]"
-          }`}
+          className={`relative flex items-center px-3 py-2 transition-all duration-300 font-medium ${isServicesOpen || isServicesHovered
+            ? "text-[#28A3B9]"
+            : "text-gray-700 hover:text-[#28A3B9]"
+            }`}
         >
           Services
           <ChevronDown
-            className={`ml-1 w-3.5 h-3.5 transition-transform ${
-              isServicesOpen || isServicesHovered ? "rotate-180" : ""
-            }`}
+            className={`ml-1 w-3.5 h-3.5 transition-transform ${isServicesOpen || isServicesHovered ? "rotate-180" : ""
+              }`}
           />
         </button>
         {/* Professional underline animation */}
         <div className="absolute bottom-0 left-0 w-full h-px overflow-hidden">
-          <div 
-            className={`h-full bg-[#28A3B9] transition-all duration-300 ${
-              (isHovered || isServicesOpen || isServicesHovered) ? "w-full" : "w-0"
-            }`}
+          <div
+            className={`h-full bg-[#28A3B9] transition-all duration-300 ${(isHovered || isServicesOpen || isServicesHovered) ? "w-full" : "w-0"
+              }`}
           />
         </div>
       </div>
@@ -294,18 +285,17 @@ const Navbar = () => {
     <>
       {/* Professional Navbar */}
       <nav
-        className={`sticky top-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-white shadow-sm border-b border-gray-100"
-            : "bg-white border-b border-gray-100"
-        }`}
+        className={`sticky top-0 z-50 transition-all duration-300 ${scrolled
+          ? "bg-white shadow-sm border-b border-gray-100"
+          : "bg-white border-b border-gray-100"
+          }`}
       >
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between h-14">
             {/* Logo - Professional design */}
             <NavLink to="/" className="flex items-center space-x-2.5 group">
               <div>
-                <img src="/Athenura.png" alt="Athenura" className="h-12" />
+                <img src="/Athenura.png" alt="Athenura" className="h-12 sm:h-15" />
               </div>
             </NavLink>
 
@@ -314,7 +304,7 @@ const Navbar = () => {
               {navigationItems.map((item) => (
                 <div key={item.name} className="relative">
                   {item.hasDropdown ? (
-                    <div 
+                    <div
                       className="relative"
                       onMouseEnter={() => setIsServicesHovered(true)}
                       onMouseLeave={() => setIsServicesHovered(false)}
@@ -333,9 +323,9 @@ const Navbar = () => {
               {/* Professional CTA Button */}
               <div className="ml-3 pl-3 border-l border-gray-200">
                 <Link to="/apply-internship">
-                <button className="px-4 py-2 bg-[#28A3B9] text-white text-sm font-medium rounded-md hover:bg-[#1E90A8] transition-colors">
-                  Apply for Internship
-                </button>
+                  <button className="px-4 py-2 bg-[#28A3B9] text-white text-sm font-medium rounded-md hover:bg-[#1E90A8] transition-colors">
+                    Apply for Internship
+                  </button>
                 </Link>
               </div>
             </div>
@@ -361,25 +351,22 @@ const Navbar = () => {
       {/* Professional Mobile Menu Sidebar */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${
-          isMobileMenuOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${isMobileMenuOpen
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none"
+          }`}
       >
         {/* Overlay */}
         <div
-          className={`absolute inset-0 bg-black transition-opacity duration-300 ${
-            isMobileMenuOpen ? "opacity-30" : "opacity-0"
-          }`}
+          className={`absolute inset-0 bg-black transition-opacity duration-300 ${isMobileMenuOpen ? "opacity-30" : "opacity-0"
+            }`}
           onClick={() => setIsMobileMenuOpen(false)}
         ></div>
 
         {/* Professional Sidebar - Clean design */}
         <div
-          className={`absolute left-0 top-10 h-full w-full max-w-xs bg-white shadow-xl transform transition-transform duration-300 ${
-            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          className={`absolute left-0 top-10 h-full w-full max-w-xs bg-white shadow-xl transform transition-transform duration-300 ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
         >
           <div className="flex mt-5 flex-col h-full">
 
@@ -400,9 +387,8 @@ const Navbar = () => {
                         >
                           <span className="text-sm font-medium">{item.name}</span>
                           <ChevronDown
-                            className={`w-3.5 h-3.5 transition-transform ${
-                              openDropdown === item.name ? "rotate-180" : ""
-                            }`}
+                            className={`w-3.5 h-3.5 transition-transform ${openDropdown === item.name ? "rotate-180" : ""
+                              }`}
                           />
                         </button>
                         {openDropdown === item.name && (
@@ -414,10 +400,9 @@ const Navbar = () => {
                         to={item.path}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={({ isActive }) =>
-                          `block py-3 px-2 text-sm transition-colors border-l-2 ${
-                            isActive
-                              ? "text-[#28A3B9] font-medium border-[#28A3B9] bg-blue-50"
-                              : "text-gray-700 hover:text-[#28A3B9] hover:bg-blue-50 border-transparent"
+                          `block py-3 px-2 text-sm transition-colors border-l-2 ${isActive
+                            ? "text-[#28A3B9] font-medium border-[#28A3B9] bg-blue-50"
+                            : "text-gray-700 hover:text-[#28A3B9] hover:bg-blue-50 border-transparent"
                           }`
                         }
                       >
@@ -432,9 +417,11 @@ const Navbar = () => {
               <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-100">
                 <h3 className="text-sm font-semibold text-gray-900 mb-2">Ready to Transform?</h3>
                 <p className="text-xs text-gray-600 mb-3">Let's build something amazing together</p>
-                <button className="w-full py-2.5 bg-[#28A3B9] text-white text-sm font-medium rounded-md hover:bg-[#1E90A8] transition-colors">
-                  Schedule a Call
-                </button>
+                <a href="">
+                  <button className="w-full py-2.5 bg-[#28A3B9] text-white text-sm font-medium rounded-md hover:bg-[#1E90A8] transition-colors">
+                    Schedule a Call
+                  </button>
+                </a>
               </div>
             </div>
           </div>
