@@ -219,7 +219,7 @@ const AdvancedPortfolio = () => {
       const containerHeight = imgElement.parentElement.clientHeight;
       if (scrollHeight > containerHeight) {
         const scrollDistance = scrollHeight - containerHeight;
-        const duration = scrollDistance / 50;
+        const duration = scrollDistance / 150;
         imgElement.style.transition = `transform ${duration}s linear`;
         imgElement.style.transform = `translateY(-${scrollDistance}px)`;
       }
@@ -374,13 +374,13 @@ const AdvancedPortfolio = () => {
 
       {/* --- IMAGE MODAL --- */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6">
+        <div className="fixed inset-0 z-50 mt-[-2400px] flex items-center justify-center p-4 md:p-6">
           <div
             className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity"
             onClick={() => setSelectedProject(null)}
           ></div>
 
-          <div className="relative w-full max-w-4xl max-h-[85vh] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-scale-in">
+          <div className="relative w-full max-w-3xl max-h-[85vh] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-scale-in">
             <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-white z-10">
               <h3 className="text-xl font-bold text-gray-800">{selectedProject.title}</h3>
               <div className="flex gap-2">

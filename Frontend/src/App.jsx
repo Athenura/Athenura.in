@@ -13,6 +13,10 @@ import ServiceMain from './Service/ServiceMain';
 import PortfolioMain from './Portfolio/PortfolioMain';
 import PrivacyMain from './Privacy/PrivacyMain';
 import TermsMain from './TermsAndConditions/TermsMain';
+import InternshipPageMain from './InternshipPages/InternshipPageMain';
+import LeaveFrom from './InternshipPages/LeaveIframe';
+import VerifyFrom from './InternshipPages/VerifyIframe';
+import FeedbackFrom from './InternshipPages/FeedbackIframe';
 
 
 const ScrollToTop = () => {
@@ -41,6 +45,10 @@ function App() {
               <Routes>
                 {/* Extarnal Pages */}
                 <Route path="/apply-internship" element={<ApplyInternship />} />
+                <Route path="/internship/leave" element={<LeaveFrom />} />
+                <Route path="/internship/performance" element={<VerifyFrom />} />
+                <Route path="/internship/feedback" element={<FeedbackFrom />} />
+
 
                 {/* Web Pages */}
 
@@ -50,7 +58,8 @@ function App() {
                 <Route path="/contact" element={<ContactMain />} />
                 <Route path="/services" element={<ServiceMain />} />
                 <Route path='/portfolio' element={<PortfolioMain />} />
-
+                <Route path='/internship-details' element={<InternshipPageMain />} />
+                
                 <Route path="/faqs" element={<FaqPage />} />
 
 
