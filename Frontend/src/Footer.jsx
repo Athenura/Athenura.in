@@ -21,8 +21,8 @@ const Footer = () => {
     ];
 
     const legalLinks = [
-        { label: 'Privacy Policy', link: '#' },
-        { label: 'Terms of Service', link: '#' },
+        { label: 'Privacy Policy', link: '/privacy-policy' },
+        { label: 'Terms of Service', link: '/Terms-of-service' },
     ];
 
     // Updated socialLinks to use specific colors by default (Text Color)

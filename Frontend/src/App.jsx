@@ -11,6 +11,8 @@ import FaqPage from './FAQ';
 import InternshipMain from './Legal/InternshipMain';
 import ServiceMain from './Service/ServiceMain';
 import PortfolioMain from './Portfolio/PortfolioMain';
+import PrivacyMain from './Privacy/PrivacyMain';
+import TermsMain from './TermsAndConditions/TermsMain';
 
 
 const ScrollToTop = () => {
@@ -54,6 +56,9 @@ function App() {
 
                 {/* Legal Pages */}
                 <Route path="/internship-policy" element={<InternshipMain />} />
+                <Route path="/privacy-policy" element={<PrivacyMain />} />
+                <Route path="/Terms-of-service" element={<TermsMain />} />
+
 
 
 
