@@ -204,7 +204,7 @@ const WhyUsSection = () => {
     ];
 
     return (
-        <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-[#FFFFFF] overflow-hidden">
+        <section className="relative px-4 sm:px-6 lg:px-8 bg-[#FFFFFF] overflow-hidden">
             {/* Background Elements */}
             <div className="absolute inset-0">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-[#A7DADC]/5 rounded-full blur-3xl"></div>
@@ -214,7 +214,7 @@ const WhyUsSection = () => {
 
             <div className="max-w-8xl mx-auto relative">
                 {/* Header */}
-                <div className={`text-center mb-16 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+                <div className={`text-center transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#2E2E2E] mb-6 leading-tight">
                         Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1E7A86] to-[#A7DADC]">Choose Us</span>
                     </h1>

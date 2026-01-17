@@ -285,12 +285,12 @@ const Navbar = () => {
     <>
       {/* Professional Navbar */}
       <nav
-        className={`sticky top-0 z-50 transition-all max-w-8xl duration-300 ${scrolled
+        className={`sticky top-0 z-50 transition-all duration-300 ${scrolled
           ? "bg-white shadow-sm border-b border-gray-100"
           : "bg-white border-b border-gray-100"
           }`}
       >
-        <div className="max-w-8xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between h-14">
             {/* Logo - Professional design */}
             <NavLink to="/" className="flex items-center space-x-2.5 group">
@@ -335,12 +335,12 @@ const Navbar = () => {
               <button
                 id="hamburger-btn"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="w-10 h-10 rounded-md flex items-center justify-center text-gray-700 hover:text-[#28A3B9] transition-colors"
+                className="w-10 h-10 flex items-center justify-center text-gray-700 hover:text-[#28A3B9] transition-colors"
               >
                 {isMobileMenuOpen ? (
-                  <X className="w-4.5 h-4.5" />
+                  <X className="w-5 h-5" />
                 ) : (
-                  <Menu className="w-4.5 h-4.5" />
+                  <Menu className="w-5 h-5" />
                 )}
               </button>
             </div>

@@ -10,14 +10,14 @@ import ContactMain from './Contact/ContactMain';
 import FaqPage from './FAQ';
 import InternshipMain from './Legal/InternshipMain';
 import ServiceMain from './Service/ServiceMain';
-import AdvancePortfolio from "./Portfolio/AdvancedPortfolio"
+import PortfolioMain from './Portfolio/PortfolioMain';
 
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" }); 
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [pathname]);
 
   return null;
@@ -32,16 +32,13 @@ function App() {
         <Preloader onFinish={() => setIsLoading(false)} />
       ) : (
         <Router>
-          <ScrollToTop />    
-          <div className="animate-fade-in-up "> 
+          <ScrollToTop />
             <Navbar />
+          <div className="animate-fade-in-up ">
             <div className="min-h-screen ">
               <Routes>
-
                 {/* Extarnal Pages */}
                 <Route path="/apply-internship" element={<ApplyInternship />} />
-
-
 
                 {/* Web Pages */}
 
@@ -50,20 +47,20 @@ function App() {
                 <Route path="/careers" element={<CareerMain />} />
                 <Route path="/contact" element={<ContactMain />} />
                 <Route path="/services" element={<ServiceMain />} />
-                <Route path='/portfolio' element={<AdvancePortfolio />} />
-                
+                <Route path='/portfolio' element={<PortfolioMain />} />
+
                 <Route path="/faqs" element={<FaqPage />} />
 
-                
+
                 {/* Legal Pages */}
                 <Route path="/internship-policy" element={<InternshipMain />} />
 
 
-                
+
               </Routes>
             </div>
-            <Footer />
           </div>
+          <Footer />
         </Router>
       )}
 
