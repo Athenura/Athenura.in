@@ -19,7 +19,7 @@ const AdvancedPortfolio = () => {
       title: "Lumière Events",
       category: "Web Development",
       image: "/Event2.png",
-      link: "https://sparkle-event-web.lovable.app/",
+      link: "#",
     },
     {
       id: 2,
