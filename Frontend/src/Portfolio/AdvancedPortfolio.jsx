@@ -16,67 +16,48 @@ const AdvancedPortfolio = () => {
   const projects = [
     {
       id: 1,
-      title: "Athenura.in",
+      title: "Lumière Events",
       category: "Web Development",
-      image: "/1.png",
-      link: "#",
+      image: "/Event2.png",
+      link: "https://sparkle-event-web.lovable.app/",
     },
     {
       id: 2,
-      title: "Chhatrakosh ERP",
-      category: "Enterprise Software",
-      image: "/1.png",
+      title: "Radhayam",
+      category: "Custom Software",
+      image: "/Radhyam.png",
       link: "#",
     },
     {
       id: 3,
-      title: "E-Wing AI Automation",
-      category: "AI Automation",
-      image: "/1.png",
+      title: "HealthCare App",
+      category: "Mobile App",
+      image: "/Stich4.png",
       link: "#",
     },
+    
     {
       id: 4,
       title: "Raadhyam Music",
       category: "Creative Platform",
-      image: "/1.png",
+      image: "/Stich2.png",
       link: "#",
     },
     {
       id: 5,
       title: "FinTech Dashboard",
       category: "Web Development",
-      image: "/1.png",
+      image: "/Stich3.png",
       link: "#",
     },
     {
       id: 6,
-      title: "HealthCare App",
-      category: "Mobile App",
-      image: "/1.png",
+      title: "E-Wing AI Automation",
+      category: "AI Automation",
+      image: "/Stich.png",
       link: "#",
     },
-    {
-      id: 7,
-      title: "Real Estate Portal",
-      category: "Web Development",
-      image: "/1.png",
-      link: "#",
-    },
-    {
-      id: 8,
-      title: "Crypto Exchange",
-      category: "Web3",
-      image: "/1.png",
-      link: "#",
-    },
-    {
-      id: 9,
-      title: "Travel Booking",
-      category: "Consumer Tech",
-      image: "/1.png",
-      link: "#",
-    }
+    
   ];
 
   // --- FILTER LOGIC ---
