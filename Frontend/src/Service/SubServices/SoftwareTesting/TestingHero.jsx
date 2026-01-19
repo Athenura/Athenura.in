@@ -113,12 +113,12 @@ const Hero = () => {
 
             {/* Mock Code Lines */}
             <div className="space-y-4 font-mono text-sm">
-              <div className="flex gap-3 items-center text-gray-400">
+              {/* <div className="flex gap-3 items-center text-gray-400">
                 <span>1</span> <span className="text-purple-600">describe</span>('<span className="text-green-600">User Login</span>', () => {'{'}
               </div>
               <div className="flex gap-3 items-center text-gray-400 pl-4">
                 <span>2</span> <span className="text-purple-600">it</span>('<span className="text-green-600">should authenticate valid user</span>', () => {'{'}
-              </div>
+              </div> */}
               
               {/* Success Badge */}
               <motion.div 

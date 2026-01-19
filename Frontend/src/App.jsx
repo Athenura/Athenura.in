@@ -25,6 +25,7 @@ import UIUXMain from './Service/SubServices/UIUX/UIUXMain';
 import MaintainMain from './Service/SubServices/WebMaintanance/MaintainMain';
 import TestingMain from './Service/SubServices/SoftwareTesting/TestingMain';
 import BusMain from './Service/SubServices/Business/BusMain';
+// import NotFound from './ErrorPage/ErrorPage';
 
 
 const ScrollToTop = () => {
@@ -90,6 +91,7 @@ function App() {
                 <Route path="/internship-policy" element={<InternshipMain />} />
                 <Route path="/privacy-policy" element={<PrivacyMain />} />
                 <Route path="/Terms-of-service" element={<TermsMain />} />
+                {/* <Route path="*" element={<NotFound />} /> */}
 
 
 
