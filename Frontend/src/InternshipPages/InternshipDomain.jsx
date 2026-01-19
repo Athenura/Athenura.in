@@ -280,7 +280,7 @@ const InternshipDomains = () => {
 
 
   return (
-    <section className="py-12 md:py-24 px-4 md:px-6 font-sans relative" style={{ backgroundColor: theme.bg }}>
+    <section className="px-4 md:px-6 font-sans relative" style={{ backgroundColor: theme.bg }}>
       
       {/* Custom Scrollbar Styles */}
       <style>{`
@@ -307,14 +307,6 @@ const InternshipDomains = () => {
         
         {/* --- Header --- */}
         <div className="text-center mb-10 md:mb-16">
-          <motion.span 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="inline-block py-1 px-3 rounded-full bg-white border border-gray-200 text-[10px] md:text-xs font-bold tracking-wide mb-3 uppercase shadow-sm"
-            style={{ color: theme.primary }}
-          >
-            Open Positions 2026
-          </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

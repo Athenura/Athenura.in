@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Github, Code2 } from 'lucide-react';
+import {Link} from "react-router-dom"
 
 const HeroSection = () => {
   // Theme Colors
@@ -87,14 +88,16 @@ const HeroSection = () => {
 
           <motion.div variants={itemVariants} className="flex flex-wrap gap-3 lg:gap-4 mb-8 lg:mb-0">
             {/* Primary Button */}
+            <Link to="/services">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-2 px-6 py-3 lg:px-8 lg:py-4 rounded-lg text-white text-sm lg:text-base font-semibold shadow-lg shadow-[#28A3B9]/30 transition-all"
               style={{ background: `linear-gradient(to right, ${theme.secondary}, ${theme.primary})` }}
-            >
-              View Projects <ArrowRight size={18} />
+              >
+              Our Services <ArrowRight size={18} />
             </motion.button>
+              </Link>
             
           </motion.div>
 

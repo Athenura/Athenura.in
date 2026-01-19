@@ -5,7 +5,7 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     const companyLinks = [
-        { label: 'About Us', link: 'about' },
+        { label: 'About Us', link: '/about-us' },
         { label: 'Careers', link: '/careers' },
         { label: 'Internship Program', link: '/internship-details' },
         { label: 'Internship Policy', link: '/internship-policy' },
@@ -13,11 +13,11 @@ const Footer = () => {
     ];
 
     const serviceLinks = [
-        { label: 'Custom Software Development', link: '#' },
-        { label: 'Web Application Development', link: '#' },
-        { label: 'Website Maintenance', link: '#' },
-        { label: 'Software Testing & QA', link: '#' },
-        { label: 'Business Automation Solutions', link: '#' }
+        { label: 'Custom Software Development', link: '/services/custom-software' },
+        { label: 'Web Application Development', link: '/services/web-apps' },
+        { label: 'Website Maintenance', link: '/services/maintenance' },
+        { label: 'Software Testing & QA', link: '/services/testing' },
+        { label: 'Business Automation Solutions', link: '/services/automation' }
     ];
 
     const legalLinks = [

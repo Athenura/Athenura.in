@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {Link} from "react-router-dom"
 
 const ServicesHero = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -207,6 +208,7 @@ const ServicesHero = () => {
 
                     {/* CTA Buttons - Stack on mobile */}
                     <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 mb-8 lg:mb-12">
+                    <Link to ="/portfolio"> 
                         <button
                             className="group relative px-6 lg:px-8 py-3 lg:py-4 rounded-xl font-bold text-white overflow-hidden transition-all duration-300 hover:shadow-2xl"
                             style={{
@@ -225,9 +227,10 @@ const ServicesHero = () => {
                                 <div
                                     className="absolute inset-0 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"
                                     style={{ backgroundColor: theme.primaryDark }}
-                                />
+                                    />
                             )}
                         </button>
+                    </Link>
                     </div>
 
                     {/* Stats - Stack on small mobile, row on larger */}

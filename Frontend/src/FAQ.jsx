@@ -181,9 +181,6 @@ const FaqPage = () => {
                                     </button>
                                 )}
                             </div>
-                            <p className="text-xs sm:text-sm mt-2 md:mt-3 text-center" style={{ color: theme.textGray }}>
-                                {searchTerm ? `Found ${filteredFaqData.reduce((acc, section) => acc + section.questions.length, 0)} results` : 'Type to search across all FAQs'}
-                            </p>
                         </div>
                     </div>
                 </div>

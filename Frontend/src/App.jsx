@@ -17,6 +17,13 @@ import InternshipPageMain from './InternshipPages/InternshipPageMain';
 import LeaveFrom from './InternshipPages/LeaveIframe';
 import VerifyFrom from './InternshipPages/VerifyIframe';
 import FeedbackFrom from './InternshipPages/FeedbackIframe';
+import AboutMain from './AboutUs/AboutMain';
+import CustomMain from './Service/SubServices/CustomSoftware/CustomMain';
+import WebMain from './Service/SubServices/WebDev/WebMain';
+import EnterMain from './Service/SubServices/EnterpriseSoftwares/EnterMain';
+import UIUXMain from './Service/SubServices/UIUX/UIUXMain';
+import MaintainMain from './Service/SubServices/WebMaintanance/MaintainMain';
+import TestingMain from './Service/SubServices/SoftwareTesting/TestingMain';
 
 
 const ScrollToTop = () => {
@@ -56,10 +63,24 @@ function App() {
                 <Route path="/home" element={<HomeMain />} />
                 <Route path="/careers" element={<CareerMain />} />
                 <Route path="/contact" element={<ContactMain />} />
+
+
+
                 <Route path="/services" element={<ServiceMain />} />
+                
+                {/* Sub Service Pages */}
+
+                <Route path='/services/custom-software' element={<CustomMain />} />
+                <Route path='/services/web-apps' element={<WebMain />} />
+                <Route path='/services/enterprise' element={<EnterMain />} />
+                <Route path='/services/ui-ux' element={<UIUXMain />} />
+                <Route path='/services/maintenance' element={<MaintainMain />} />
+                <Route path='/services/testing' element={<TestingMain />} />
+
+
                 <Route path='/portfolio' element={<PortfolioMain />} />
                 <Route path='/internship-details' element={<InternshipPageMain />} />
-                
+                <Route path='/about-us' element={<AboutMain />} />
                 <Route path="/faqs" element={<FaqPage />} />
 
 

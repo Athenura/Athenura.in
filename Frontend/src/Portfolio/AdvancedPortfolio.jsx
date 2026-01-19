@@ -310,14 +310,6 @@ const AdvancedPortfolio = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1E7A86]/70 via-[#1E7A86]/20 to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-center justify-center">
                   <div className="flex gap-4 transform translate-y-10 group-hover:translate-y-0 transition-transform duration-500">
 
-                    {/* Button 1: Open Modal */}
-                    <button
-                      onClick={() => setSelectedProject(project)}
-                      className="p-4 bg-white text-[#1E7A86] rounded-full shadow-xl hover:scale-110 transition-transform"
-                      title="View Full Design"
-                    >
-                      <Eye size={24} />
-                    </button>
 
                     {/* Button 2: External Link */}
                     <a

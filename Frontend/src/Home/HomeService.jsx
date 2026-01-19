@@ -298,7 +298,7 @@ const ServicesSection = () => {
                                     </button>
                                     </Link>
 
-                                    <a href="https://l.instagram.com/?u=https%3A%2F%2Fcalendly.com%2Fofficial-athenura%2F30min%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnDoze3uuliE--HsOCPRJhxYgcI73IoKROa0vob8G1WU1P2YJEi-fEzcEcsCA%26brid%3DoK6O_dZY676W3T881gzh5w&e=AT3Z6OxRBEwuG-sAQ_BWEuC0g9aT7oDxzwZTBlEfYktytQg4-cFUIW1fA8EBrCUh8i6zQAt5LZ3MY4L-xTgDiI9IvhgU1irG-_8yaXb33k_i9BT8s3iXKAzElg" target="_blank">
+                                    <a href="https://calendly.com/official-athenura/30min" target="_blank">
                                     <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/40 text-white font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-white/10">
                                         Book Your FREE Consultation
                                     </button>

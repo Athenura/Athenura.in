@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { NavLink } from "react-router-dom";
-import { ChevronDown, Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+import { ChevronDown, Menu, X, ArrowRight, Sparkles } from "lucide-react";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -25,7 +24,6 @@ const Navbar = () => {
   // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Close mobile menu
       const mobileMenu = document.getElementById("mobile-menu");
       const hamburgerBtn = document.getElementById("hamburger-btn");
 
@@ -40,7 +38,6 @@ const Navbar = () => {
         setOpenDropdown(null);
       }
 
-      // Close services dropdown on desktop when clicking outside
       if (
         (isServicesOpen || isServicesHovered) &&
         servicesRef.current &&
@@ -57,372 +54,262 @@ const Navbar = () => {
     return () => document.removeEventListener("click", handleClickOutside);
   }, [isMobileMenuOpen, isServicesOpen, isServicesHovered]);
 
-  // Close services dropdown when clicking on a service
   const handleServiceClick = () => {
     setIsServicesOpen(false);
     setIsServicesHovered(false);
   };
 
-  // Navigation data
   const navigationItems = [
-    {
-      name: "Home",
-      path: "/",
-    },
-    {
-      name: "Services",
-      path: "/services",
-      hasDropdown: true,
-    },
-
-    {
-      name: "Portfolio",
-      path: "/portfolio",
-    },
-    {
-      name: "Careers",
-      path: "/careers",
-    },
-    {
-      name: "Internship",
-      path: "/internship-details",
-    },
-    {
-      name: "Contact",
-      path: "/contact",
-    },
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services", hasDropdown: true },
+    { name: "Portfolio", path: "/portfolio" },
+    { name: "Careers", path: "/careers" },
+    { name: "Internship", path: "/internship-details" },
+    { name: "Contact", path: "/contact" },
   ];
 
-  // Services data
   const servicesData = [
-    {
-      title: "Custom Software Development",
-      description: "Tailored solutions for your unique business needs",
-      link: "/services/custom-software",
-    },
-    {
-      title: "Web Application Development",
-      description: "Modern, scalable web applications",
-      link: "/services/web-apps",
-    },
-    {
-      title: "Enterprise Software Solutions",
-      description: "Robust systems for large organizations",
-      link: "/services/enterprise",
-    },
-    {
-      title: "UI/UX Design",
-      description: "Intuitive and beautiful user experiences",
-      link: "/services/ui-ux",
-    },
-    {
-      title: "Website Maintenance",
-      description: "Keep your digital presence running smoothly",
-      link: "/services/maintenance",
-    },
-    {
-      title: "Software Testing & QA",
-      description: "Ensure quality and reliability",
-      link: "/services/testing",
-    },
-    {
-      title: "Business Automation Solutions",
-      description: "Streamline your operations",
-      link: "/services/automation",
-    },
+    { title: "Custom Software Development", description: "Tailored solutions for your unique business needs", link: "/services/custom-software" },
+    { title: "Web Application Development", description: "Modern, scalable web applications", link: "/services/web-apps" },
+    { title: "Enterprise Software Solutions", description: "Robust systems for large organizations", link: "/services/enterprise" },
+    { title: "UI/UX Design", description: "Intuitive and beautiful user experiences", link: "/services/ui-ux" },
+    { title: "Website Maintenance", description: "Keep your digital presence running smoothly", link: "/services/maintenance" },
+    { title: "Software Testing & QA", description: "Ensure quality and reliability", link: "/services/testing" },
+    { title: "Business Automation Solutions", description: "Streamline your operations", link: "/services/automation" },
   ];
 
-  // Desktop Services Dropdown Component
+  // Enhanced Desktop Services Dropdown
   const ServicesDropdown = () => (
     <div
       ref={servicesRef}
       onMouseEnter={() => setIsServicesHovered(true)}
       onMouseLeave={() => setIsServicesHovered(false)}
-      className={`absolute left-0 top-full w-[600px] bg-white rounded-lg shadow-2xl border border-gray-200 transition-all duration-300 ${isServicesOpen || isServicesHovered
-        ? "opacity-100 visible translate-y-0"
-        : "opacity-0 invisible -translate-y-2"
-        } z-50 overflow-hidden`}
+      className={`absolute left-1/2 -translate-x-1/2 top-[calc(100%+10px)] w-[680px] bg-white/75 backdrop-blur-md rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 transition-all duration-300 ease-out ${
+        isServicesOpen || isServicesHovered
+          ? "opacity-100 visible translate-y-0"
+          : "opacity-0 invisible -translate-y-4"
+      } z-50 overflow-hidden`}
     >
-      <div className="p-6">
-        <div className="mb-6">
-          <h3 className="text-xl font-bold text-[#28A3B9] mb-1">Our Services</h3>
-          <p className="text-sm text-gray-600">Comprehensive digital solutions for your business</p>
+        {/* Decorative top bar */}
+        <div className="h-1 w-full bg-gradient-to-r from-[#28A3B9] to-[#1E90A8]" />
+        
+      <div className="p-8">
+        <div className="flex justify-between items-end mb-6">
+            <div>
+                <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-[#28A3B9]" />
+                    Our Expertise
+                </h3>
+                <p className="text-sm text-gray-500 mt-1">Explore our comprehensive digital solutions</p>
+            </div>
+            <Link to="/services" onClick={handleServiceClick} className="text-xs font-semibold text-[#28A3B9] hover:text-[#1E90A8] flex items-center gap-1 group">
+                View all services <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+            </Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-4">
           {servicesData.map((service, index) => (
             <NavLink
               key={index}
               to={service.link}
-              className="group p-3 rounded-lg border border-gray-100 hover:border-[#28A3B9] hover:shadow-md transition-all duration-200"
+              className="group p-4 rounded-xl bg-gray-50 hover:bg-blue-50/50 border border-transparent hover:border-[#28A3B9]/20 transition-all duration-200"
               onClick={handleServiceClick}
             >
-              <div>
-                <h4 className="font-medium text-gray-900 group-hover:text-[#28A3B9] mb-1 text-sm">
-                  {service.title}
-                </h4>
-                <p className="text-xs text-gray-500">{service.description}</p>
+              <div className="flex items-start">
+                <div>
+                  <h4 className="font-semibold text-gray-900 group-hover:text-[#28A3B9] text-sm mb-1 transition-colors">
+                    {service.title}
+                  </h4>
+                  <p className="text-xs text-gray-500 leading-relaxed group-hover:text-gray-600">
+                    {service.description}
+                  </p>
+                </div>
               </div>
             </NavLink>
           ))}
-        </div>
-
-        <div className="mt-6 pt-5 border-t border-gray-100">
-          <NavLink
-            to="/services"
-            onClick={handleServiceClick}
-            className="block w-full py-2.5 bg-[#28A3B9] text-white text-sm font-medium rounded-md hover:bg-[#1E90A8] transition-colors text-center"
-          >
-            View All Services
-          </NavLink>
-
         </div>
       </div>
     </div>
   );
 
-  // Mobile Services Dropdown Component - Clean design without boxes
+  // Enhanced Mobile Dropdown
   const MobileServicesDropdown = () => (
-    <div className="mt-1 ml-3 pl-3 border-l border-gray-200">
-      <div className="space-y-1">
+    <div className="overflow-hidden transition-all duration-300 ease-in-out bg-gray-50/50 rounded-lg my-2">
+      <div className="space-y-1 p-2">
         {servicesData.map((service, index) => (
           <div key={index}>
             <NavLink
               to={service.link}
-              className="block py-2 px-1 text-gray-700 hover:text-[#28A3B9] transition-colors"
+              className="block py-3 px-3 rounded-md text-gray-600 hover:text-[#28A3B9] hover:bg-white transition-all"
               onClick={() => {
                 setIsMobileMenuOpen(false);
                 setOpenDropdown(null);
               }}
             >
-              <div className="text-sm font-medium">{service.title}</div>
-              <div className="text-xs text-gray-500 mt-0.5">{service.description}</div>
+              <div className="text-sm font-semibold">{service.title}</div>
+              <div className="text-xs text-gray-400 mt-0.5 font-normal">{service.description}</div>
             </NavLink>
           </div>
         ))}
-
-        <div className="pt-3 mt-3 border-t border-gray-200">
-          <NavLink
-            to="/services"
-            className="block py-2.5 bg-[#28A3B9] text-white text-sm font-medium rounded-md hover:bg-[#1E90A8] transition-colors text-center"
-            onClick={() => {
-              setIsMobileMenuOpen(false);
-              setOpenDropdown(null);
-            }}
-          >
-            View All Services
-          </NavLink>
-        </div>
       </div>
     </div>
   );
 
-  // Professional NavLink Component for desktop
-  const ProfessionalNavLink = ({ to, children }) => {
-    const [isHovered, setIsHovered] = useState(false);
-
-    return (
-      <NavLink
-        to={to}
-        className={({ isActive }) =>
-          `relative px-3 py-2 transition-all duration-300 font-medium ${isActive
-            ? "text-[#28A3B9]"
-            : "text-gray-700 hover:text-[#28A3B9]"
-          }`
-        }
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <span className="relative z-10">{children}</span>
-        {/* Professional underline animation */}
-        <div className="absolute bottom-0 left-0 w-full h-px overflow-hidden">
-          <div
-            className={`h-full bg-[#28A3B9] transition-all duration-300 ${isHovered ? "w-full" : "w-0"
-              }`}
-          />
-        </div>
-      </NavLink>
-    );
-  };
-
-  // Professional Services button
-  const ProfessionalServicesButton = () => {
-    const [isHovered, setIsHovered] = useState(false);
-
-    return (
-      <div className="relative">
-        <button
-          ref={servicesButtonRef}
-          onMouseEnter={() => {
-            setIsHovered(true);
-            setIsServicesHovered(true);
-          }}
-          onMouseLeave={() => setIsHovered(false)}
-          onClick={() => setIsServicesOpen(!isServicesOpen)}
-          className={`relative flex items-center px-3 py-2 transition-all duration-300 font-medium ${isServicesOpen || isServicesHovered
-            ? "text-[#28A3B9]"
-            : "text-gray-700 hover:text-[#28A3B9]"
-            }`}
-        >
-          Services
-          <ChevronDown
-            className={`ml-1 w-3.5 h-3.5 transition-transform ${isServicesOpen || isServicesHovered ? "rotate-180" : ""
-              }`}
-          />
-        </button>
-        {/* Professional underline animation */}
-        <div className="absolute bottom-0 left-0 w-full h-px overflow-hidden">
-          <div
-            className={`h-full bg-[#28A3B9] transition-all duration-300 ${(isHovered || isServicesOpen || isServicesHovered) ? "w-full" : "w-0"
-              }`}
-          />
-        </div>
-      </div>
-    );
-  };
-
   return (
     <>
-      {/* Professional Navbar */}
       <nav
-        className={`sticky top-0 z-50 transition-all duration-300 ${scrolled
-          ? "bg-white shadow-sm border-b border-gray-100"
-          : "bg-white border-b border-gray-100"
-          }`}
+        className={`sticky top-0 z-50 transition-all duration-300 w-full ${
+          scrolled
+            ? "bg-white/90 backdrop-blur-md shadow-lg py-2"
+            : "bg-white border-b border-gray-100 py-4"
+        }`}
       >
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between h-14">
-            {/* Logo - Professional design */}
-            <NavLink to="/" className="flex items-center space-x-2.5 group">
-              <div>
-                <img src="/Athenura.png" alt="Athenura" className="h-12 sm:h-15" />
-              </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-10">
+            
+            {/* Logo */}
+            <NavLink to="/" className="flex-shrink-0 flex items-center gap-2 group relative z-50">
+              <img 
+                src="/Athenura.png" 
+                alt="Athenura" 
+                className={`transition-all duration-300 ${scrolled ? 'h-10' : 'h-12 sm:h-14'}`} 
+              />
             </NavLink>
 
-            {/* Desktop Navigation - Professional spacing */}
-            <div className="hidden lg:flex items-center space-x-0">
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-1">
               {navigationItems.map((item) => (
-                <div key={item.name} className="relative">
+                <div key={item.name} className="relative group px-1">
                   {item.hasDropdown ? (
                     <div
                       className="relative"
                       onMouseEnter={() => setIsServicesHovered(true)}
                       onMouseLeave={() => setIsServicesHovered(false)}
                     >
-                      <ProfessionalServicesButton />
+                      <button
+                        ref={servicesButtonRef}
+                        onClick={() => setIsServicesOpen(!isServicesOpen)}
+                        className={`flex items-center px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${
+                          isServicesOpen || isServicesHovered
+                            ? "text-[#28A3B9] bg-[#28A3B9]/10"
+                            : "text-gray-600 hover:text-[#28A3B9] hover:bg-gray-50"
+                        }`}
+                      >
+                        {item.name}
+                        <ChevronDown
+                          className={`ml-1.5 w-4 h-4 transition-transform duration-300 ${
+                            isServicesOpen || isServicesHovered ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
                       <ServicesDropdown />
                     </div>
                   ) : (
-                    <ProfessionalNavLink to={item.path}>
+                    <NavLink
+                      to={item.path}
+                      className={({ isActive }) =>
+                        `relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${
+                          isActive
+                            ? "text-[#28A3B9] bg-[#28A3B9]/10"
+                            : "text-gray-600 hover:text-[#28A3B9] hover:bg-gray-50"
+                        }`
+                      }
+                    >
                       {item.name}
-                    </ProfessionalNavLink>
+                    </NavLink>
                   )}
                 </div>
               ))}
 
-              {/* Professional CTA Button */}
-              <div className="ml-3 pl-3 border-l border-gray-200">
+              {/* Enhanced CTA Button */}
+              <div className="pl-4 ml-2">
                 <Link to="/apply-internship">
-                  <button className="px-4 py-2 bg-[#28A3B9] text-white text-sm font-medium rounded-md hover:bg-[#1E90A8] transition-colors">
-                    Apply for Internship
+                  <button className="group relative px-6 py-2.5 bg-[#28A3B9] text-white text-sm font-semibold rounded-full overflow-hidden shadow-md shadow-[#28A3B9]/20 hover:shadow-lg hover:shadow-[#28A3B9]/30 hover:-translate-y-0.5 transition-all duration-300">
+                    <span className="relative z-10">Apply for Internship</span>
+                    <div className="absolute inset-0 h-full w-full scale-0 rounded-full transition-all duration-300 group-hover:scale-100 group-hover:bg-white/20" />
                   </button>
                 </Link>
               </div>
             </div>
 
-            {/* Mobile Menu Button - Clean design */}
-            <div className="lg:hidden">
+            {/* Mobile Hamburger */}
+            <div className="lg:hidden flex items-center">
               <button
                 id="hamburger-btn"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="w-10 h-10 flex items-center justify-center text-gray-700 hover:text-[#28A3B9] transition-colors"
+                className="relative z-50 p-2 text-gray-600 hover:text-[#28A3B9] focus:outline-none transition-colors"
               >
-                {isMobileMenuOpen ? (
-                  <X className="w-5 h-5" />
-                ) : (
-                  <Menu className="w-5 h-5" />
-                )}
+                <div className="relative w-6 h-6 flex justify-center items-center">
+                    {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                </div>
               </button>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Professional Mobile Menu Sidebar */}
+      {/* Enhanced Mobile Menu Overlay */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${isMobileMenuOpen
-          ? "opacity-100 pointer-events-auto"
-          : "opacity-0 pointer-events-none"
-          }`}
+        className={`fixed inset-0 z-40 lg:hidden bg-white/95 backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+          isMobileMenuOpen
+            ? "opacity-100 translate-y-0 visible"
+            : "opacity-0 -translate-y-full invisible"
+        }`}
       >
-        {/* Overlay */}
-        <div
-          className={`absolute inset-0 bg-black transition-opacity duration-300 ${isMobileMenuOpen ? "opacity-30" : "opacity-0"
-            }`}
-          onClick={() => setIsMobileMenuOpen(false)}
-        ></div>
-
-        {/* Professional Sidebar - Clean design */}
-        <div
-          className={`absolute left-0 top-10 h-full w-full max-w-xs bg-white shadow-xl transform transition-transform duration-300 ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-            }`}
-        >
-          <div className="flex mt-5 flex-col h-full">
-
-            {/* Sidebar Content - Clean list without boxes */}
-            <div className="flex-1 overflow-y-auto py-4 px-3">
-              <nav className="space-y-0">
-                {navigationItems.map((item) => (
-                  <div key={item.name} className="mb-0.5">
-                    {item.hasDropdown ? (
-                      <div>
-                        <button
-                          onClick={() =>
-                            setOpenDropdown(
-                              openDropdown === item.name ? null : item.name
-                            )
-                          }
-                          className="flex items-center justify-between w-full py-3 px-2 text-left text-gray-700 hover:text-[#28A3B9] transition-colors"
-                        >
-                          <span className="text-sm font-medium">{item.name}</span>
-                          <ChevronDown
-                            className={`w-3.5 h-3.5 transition-transform ${openDropdown === item.name ? "rotate-180" : ""
-                              }`}
-                          />
-                        </button>
-                        {openDropdown === item.name && (
-                          <MobileServicesDropdown />
-                        )}
-                      </div>
-                    ) : (
-                      <NavLink
-                        to={item.path}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className={({ isActive }) =>
-                          `block py-3 px-2 text-sm transition-colors border-l-2 ${isActive
-                            ? "text-[#28A3B9] font-medium border-[#28A3B9] bg-blue-50"
-                            : "text-gray-700 hover:text-[#28A3B9] hover:bg-blue-50 border-transparent"
-                          }`
-                        }
-                      >
-                        {item.name}
-                      </NavLink>
-                    )}
+        <div className="flex flex-col h-full pt-24 px-6 pb-8 overflow-y-auto">
+          <nav className="space-y-2">
+            {navigationItems.map((item, idx) => (
+              <div key={item.name} className="border-b border-gray-100 last:border-0 pb-2">
+                {item.hasDropdown ? (
+                  <div className="overflow-hidden">
+                    <button
+                      onClick={() => setOpenDropdown(openDropdown === item.name ? null : item.name)}
+                      className={`flex items-center justify-between w-full py-4 text-lg font-medium transition-colors ${
+                        openDropdown === item.name ? "text-[#28A3B9]" : "text-gray-800"
+                      }`}
+                    >
+                      {item.name}
+                      <ChevronDown
+                        className={`w-5 h-5 transition-transform duration-300 ${
+                          openDropdown === item.name ? "rotate-180 text-[#28A3B9]" : "text-gray-400"
+                        }`}
+                      />
+                    </button>
+                    <div className={`grid transition-all duration-300 ease-in-out ${
+                        openDropdown === item.name ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                    }`}>
+                        <div className="overflow-hidden">
+                            <MobileServicesDropdown />
+                        </div>
+                    </div>
                   </div>
-                ))}
-              </nav>
-
-              {/* Mobile CTA - Clean */}
-              <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-100">
-                <h3 className="text-sm font-semibold text-gray-900 mb-2">Ready to Transform?</h3>
-                <p className="text-xs text-gray-600 mb-3">Let's build something amazing together</p>
-                <a href="">
-                  <button className="w-full py-2.5 bg-[#28A3B9] text-white text-sm font-medium rounded-md hover:bg-[#1E90A8] transition-colors">
-                    Schedule a Call
-                  </button>
-                </a>
+                ) : (
+                  <NavLink
+                    to={item.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={({ isActive }) =>
+                      `block py-4 text-lg font-medium transition-colors ${
+                        isActive ? "text-[#28A3B9]" : "text-gray-800 hover:text-[#28A3B9]"
+                      }`
+                    }
+                  >
+                    {item.name}
+                  </NavLink>
+                )}
               </div>
+            ))}
+          </nav>
+
+          <div className="mt-auto pt-8">
+            <Link to="/apply-internship" onClick={() => setIsMobileMenuOpen(false)}>
+              <button className="w-full py-4 bg-[#28A3B9] text-white text-lg font-semibold rounded-xl shadow-lg shadow-[#28A3B9]/20 active:scale-[0.98] transition-all">
+                Apply for Internship
+              </button>
+            </Link>
+            
+            <div className="mt-8 text-center text-xs text-gray-400">
+                © {new Date().getFullYear()} Athenura. All rights reserved.
             </div>
           </div>
         </div>
