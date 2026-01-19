@@ -18,7 +18,7 @@ const PolicyHero = () => {
     }, []);
 
     return (
-        <section className="relative w-full min-h-[85vh] flex items-center justify-center overflow-hidden" style={{ backgroundColor: theme.bg }}>
+        <section className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden" style={{ backgroundColor: theme.bg }}>
 
             {/* --- Background Decor --- */}
             <div className="absolute inset-0 w-full h-full pointer-events-none">
@@ -40,11 +40,11 @@ const PolicyHero = () => {
 
                 {/* Headline */}
                 <h1
-                    className={`text-2xl md:text-6xl mt-5 font-extrabold mb-8 tracking-tight leading-tight max-w-4xl transition-all duration-1000 delay-100 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+                    className={`text-5xl md:text-6xl mt-5 font-extrabold mb-8 tracking-tight leading-tight max-w-4xl transition-all duration-1000 delay-100 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
                     style={{ color: theme.textDark }}
                 >
                     ATHENURA <br />
-                    <span className="text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${theme.primary}, #156A7A)` }}>
+                    <span className="text-3xl text-transparent bg-clip-text" style={{ backgroundImage: `linear-gradient(135deg, ${theme.primary}, #156A7A)` }}>
                         Internship Terms & Policies
                     </span>
 

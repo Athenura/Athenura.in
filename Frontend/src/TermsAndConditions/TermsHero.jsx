@@ -19,7 +19,7 @@ const TermsHero = () => {
 
     return (
         <section
-            className="relative w-full min-h-[85vh] flex items-center justify-center overflow-hidden"
+            className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden"
             style={{ backgroundColor: theme.bg }}
         >
             {/* --- Background Decor --- */}
@@ -46,7 +46,7 @@ const TermsHero = () => {
             <div className="container relative z-10 mx-auto px-6 lg:px-12 flex flex-col items-center text-center">
                 {/* Headline */}
                 <h1
-                    className={`text-2xl md:text-6xl mt-5 font-extrabold mb-8 tracking-tight leading-tight max-w-4xl transition-all duration-1000 delay-100 transform ${
+                    className={`text-4xl md:text-6xl mt-5 font-extrabold mb-8 tracking-tight leading-tight max-w-4xl transition-all duration-1000 delay-100 transform ${
                         isVisible
                             ? "translate-y-0 opacity-100"
                             : "translate-y-10 opacity-0"

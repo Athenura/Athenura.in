@@ -180,14 +180,14 @@ const WhyUsSection = () => {
     {
         id: 1,
         name: "Rahul Mehta",
-        role: "CTO, NexaTech Solutions",
+        role: "CTO, Nexus Solutions",
         content: "Athenura helped us modernize our digital infrastructure seamlessly. Their technical clarity and execution speed truly set them apart.",
         company: "NexaTech Solutions",
         image: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=150&h=150&fit=crop&crop=face"
     },
     {
         id: 2,
-        name: "Priya Sharma",
+        name: "Suresh Sharma",
         role: "Head of Technology, BrightMind Systems",
         content: "The Athenura team understood our vision from day one. Their innovative mindset and problem-solving skills delivered exceptional results.",
         company: "BrightMind Systems",

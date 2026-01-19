@@ -99,59 +99,60 @@ const PolicyContent = () => {
 
   return (
     <div className="w-full" style={{ backgroundColor: theme.bg }}>
-      <section className="py-16 px-6 lg:px-12">
+      <section className="py-10 md:py-16 px-4 md:px-6 lg:px-12">
         <div className="max-w-6xl mx-auto">
           
           {/* Header */}
-          <div className="mb-12">
-            <h1 className="text-3xl font-bold mb-2" style={{ color: theme.primary }}>
+          <div className="mb-8 md:mb-12">
+            <h1 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: theme.primary }}>
               Internship Policy Athenura
             </h1>
             <div className="flex justify-between items-center border-b pb-4">
-              <p className="text-sm font-semibold" style={{ color: theme.primary }}>
+              <p className="text-xs md:text-sm font-semibold" style={{ color: theme.primary }}>
                 Last Updated: 20 Jan 2026
               </p>
             </div>
           </div>
 
           {/* Introduction */}
-          <div className="mb-16 p-6 rounded-xl" style={{ backgroundColor: theme.bgAlt }}>
-            <h2 className="text-lg md:text-xl font-semibold mb-4" style={{ color: theme.textDark }}>
+          <div className="mb-10 md:mb-16 p-4 md:p-6 rounded-xl" style={{ backgroundColor: theme.bgAlt }}>
+            <h2 className="text-base md:text-xl font-semibold mb-3" style={{ color: theme.textDark }}>
               Commitment Statement
             </h2>
-            <p className="text-gray-700 leading-relaxed">
+            <p className="text-sm md:text-base text-gray-700 leading-relaxed">
               Athenura is committed to providing structured, ethical, and meaningful internship opportunities that support learning, professional development, and practical exposure. This Internship Policy outlines the terms, conditions, responsibilities, and expectations applicable to all interns associated with Athenura.
             </p>
           </div>
 
           {/* Policy Sections */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             {policySections.map((section) => (
-              <div key={section.id} className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
-                <div className="flex items-start gap-4 mb-4">
-                  {/* Section Number */}
+              <div key={section.id} className="bg-white rounded-xl border border-gray-200 p-4 md:p-6 shadow-sm">
+                <div className="flex flex-col md:flex-row items-start gap-4 mb-0 md:mb-4">
+                  
+                  {/* Section Number Badge */}
                   <div 
-                    className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-lg"
+                    className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 rounded-xl flex items-center justify-center text-white font-bold text-base md:text-lg"
                     style={{ backgroundColor: theme.primary }}
                   >
                     {section.id}
                   </div>
                   
-                  {/* Title and Content */}
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-3" style={{ color: theme.textDark }}>
+                  {/* Title and Content Container */}
+                  <div className="flex-1 w-full">
+                    <h3 className="text-lg md:text-xl font-bold mb-3" style={{ color: theme.textDark }}>
                       {section.id}. {section.title}
                     </h3>
                     
                     {/* For sections with subsections */}
                     {section.subsections ? (
                       <div className="space-y-3">
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                          <p className="text-gray-700 mb-4 font-medium">Interns are expected to:</p>
-                          <ol className="space-y-2 pl-4">
+                        <div className="bg-gray-50 p-4 md:p-5 rounded-lg">
+                          <p className="text-sm md:text-base text-gray-700 mb-4 font-medium">Interns are expected to:</p>
+                          <ol className="space-y-2 pl-0 md:pl-2">
                             {section.subsections.map((subsection, index) => (
-                              <li key={index} className="flex items-start">
-                                <span className="inline-block w-6 h-6 rounded-full bg-teal-100 text-teal-600 text-xs flex items-center justify-center mr-2 mt-0.5 flex-shrink-0">
+                              <li key={index} className="flex items-start text-sm md:text-base">
+                                <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-teal-100 text-teal-600 text-[10px] md:text-xs flex items-center justify-center mr-2 mt-0.5 flex-shrink-0">
                                   {index + 1}
                                 </span>
                                 <span className="text-gray-700">{subsection}</span>
@@ -162,26 +163,25 @@ const PolicyContent = () => {
                       </div>
                     ) : (
                       /* Regular content sections */
-                      <div className="bg-gray-50 p-5 rounded-lg">
-                        <p className="text-gray-700 leading-relaxed">{section.content}</p>
+                      <div className="bg-gray-50 p-4 md:p-5 rounded-lg">
+                        <p className="text-sm md:text-base text-gray-700 leading-relaxed">{section.content}</p>
                       </div>
                     )}
                   </div>
                 </div>
-            
               </div>
             ))}
           </div>
 
           {/* Footer Note */}
-          <div className="mt-16 p-6 rounded-xl border border-gray-200 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full" style={{ backgroundColor: theme.primaryLight }}>
-              <span className="text-lg">📋</span>
-              <span className="font-medium" style={{ color: theme.primary }}>
+          <div className="mt-10 md:mt-16 p-4 md:p-6 rounded-xl border border-gray-200 text-center">
+            <div className="inline-flex items-center gap-2 px-3 md:px-4 py-2 rounded-full max-w-full" style={{ backgroundColor: theme.primaryLight }}>
+              <span className="text-base md:text-lg flex-shrink-0">📋</span>
+              <span className="text-xs md:text-sm font-medium break-words text-left md:text-center" style={{ color: theme.primary }}>
                 This policy is effective immediately and applies to all interns
               </span>
             </div>
-            <p className="mt-4 text-gray-600 text-sm">
+            <p className="mt-4 text-gray-600 text-xs md:text-sm">
               For questions or clarifications regarding this policy, please contact the HR department.
             </p>
           </div>
