@@ -1,14 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const ContactContent = () => {
   const theme = {
     primary: "#1E90A8",
     primaryLight: "#E8F8FA",
+    primaryDark: "#156A7C",
     textDark: "#111827",
     textGray: "#4B5563",
     bg: "#FFFFFF",
     bgAlt: "#F8FBFC",
+  };
+
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: ""
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Feature: Send form data directly via WhatsApp (Send via Number)
+  const handleWhatsAppSubmit = (e) => {
+    e.preventDefault();
+    if(!formData.name || !formData.message) {
+      alert("Please fill in your name and message.");
+      return;
+    }
+
+    // Replace this number with your actual support WhatsApp number
+    const supportNumber = "919835051934"; 
+    
+    const text = `*New Inquiry via Website*%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Email:* ${formData.email}%0A*Message:* ${formData.message}`;
+    
+    window.open(`https://wa.me/${supportNumber}?text=${text}`, '_blank');
   };
 
   const faqs = [
@@ -33,94 +61,165 @@ const ContactContent = () => {
   return (
     <div className="w-full">
 
-      {/* --- SECTION 1: INTERNSHIP REACH & TRUST --- */}
-      <section className="py-24 px-6 lg:px-12 relative overflow-hidden" style={{ backgroundColor: theme.primary }}>
+      {/* --- SECTION 1: HEADER (Unchanged) --- */}
+      <section className="py-20 px-6 lg:px-12 relative overflow-hidden" style={{ backgroundColor: theme.primary }}>
         <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         <div className="absolute top-0 right-0 w-96 h-96 bg-white opacity-5 blur-[100px] rounded-full"></div>
 
         <div className="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-16 items-center">
           <div className="text-white">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Supporting <br />Future Professionals
+              Get in Touch <br />with Athenura
             </h2>
             <p className="text-teal-100 text-lg mb-8 max-w-md leading-relaxed">
-              Athenura is built to help students and freshers gain real-world experience through structured internships and mentorship.
+              Have questions about our internships? Our team is here to help you start your career journey.
             </p>
             <div className="flex gap-12">
                <div>
-                 <p className="text-4xl font-bold mb-1">100%</p>
-                 <p className="text-teal-200 text-sm">Remote Internships</p>
+                 <p className="text-4xl font-bold mb-1">24/7</p>
+                 <p className="text-teal-200 text-sm">Query Support</p>
                </div>
                <div>
-                 <p className="text-4xl font-bold mb-1">500+</p>
-                 <p className="text-teal-200 text-sm">Learners Trained</p>
+                 <p className="text-4xl font-bold mb-1">1 Hr</p>
+                 <p className="text-teal-200 text-sm">Avg. Response Time</p>
                </div>
             </div>
           </div>
-
-          <div className="relative h-64 lg:h-80 bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 p-8 flex items-center justify-center">
-             <div className="text-center">
-                <div className="inline-block p-4 rounded-full bg-white/20 mb-4 animate-pulse">
-                   <svg className="w-12 h-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 21s-6-4.35-6-10a6 6 0 1112 0c0 5.65-6 10-6 10z" />
-                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                   </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-1">India Based</h3>
-                <p className="text-teal-100">Serving Students Nationwide</p>
-             </div>
-          </div>
         </div>
       </section>
 
-      {/* --- SECTION 2: MAP SECTION --- */}
+      
+
+      {/* --- SECTION 2: INFO & FORM (Replaces Map) --- */}
       <section className="py-24 px-6 lg:px-12" style={{ backgroundColor: theme.bg }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-10 text-center md:text-left">
-            <h2 className="text-3xl font-bold" style={{ color: theme.textDark }}>
-              Our <span style={{ color: theme.primary }}>Presence</span>
-            </h2>
-            <p style={{ color: theme.textGray }}>
-              We operate remotely, making internships accessible to students across India.
-            </p>
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16">
+          
+          {/* LEFT: Informative Contact Details */}
+          <div>
+            <div className="mb-10">
+              <h3 className="text-sm font-bold uppercase tracking-wider mb-2" style={{ color: theme.primary }}>Contact Info</h3>
+              <h2 className="text-3xl font-bold mb-6" style={{ color: theme.textDark }}>We'd love to hear from you</h2>
+              <p style={{ color: theme.textGray }} className="leading-relaxed">
+                Whether you have a question about our program, pricing, or just want to say hello, our team is ready to answer all your questions.
+              </p>
+            </div>
+
+            <div className="space-y-8">
+              {/* Email Card */}
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: theme.primaryLight }}>
+                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke={theme.primary}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg" style={{ color: theme.textDark }}>Email Support</h4>
+                  <p className="text-sm text-gray-500 mb-1">For general inquiries and partnerships.</p>
+                  <a href="mailto:info.athenura@gmail.com" className="font-semibold hover:underline" style={{ color: theme.primary }}>info.athenura@gmail.com</a>
+                </div>
+              </div>
+
+              {/* Operations Card */}
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: theme.primaryLight }}>
+                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke={theme.primary}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg" style={{ color: theme.textDark }}>Working Hours</h4>
+                  <p className="text-sm text-gray-500 mb-1">Our support team is available:</p>
+                  <p className="font-semibold" style={{ color: theme.textDark }}>Mon - Sat: 10:00 AM - 5:30 PM</p>
+                </div>
+              </div>
+
+               {/* Location Card */}
+               <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: theme.primaryLight }}>
+                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke={theme.primary}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg" style={{ color: theme.textDark }}>Remote HQ</h4>
+                  <p className="text-sm text-gray-500 mb-1">Registered Office:</p>
+                  <p className="font-semibold" style={{ color: theme.textDark }}>Uttar Pradesh, India (Serving Pan-India)</p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="relative w-full h-[450px] rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
-             {/* Google Maps Embed */}
-             <iframe 
-               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28005.67980362378!2d77.3414909!3d28.6715694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf1bb41c50fdf%3A0xe6f06fd26a7798ba!2sGhaziabad%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-               width="100%" 
-               height="100%" 
-               style={{ border: 0 }} 
-               allowFullScreen="" 
-               loading="lazy"
-               title="Company Location"
-               className="grayscale hover:grayscale-0 transition-all duration-500"
-             ></iframe>
+          {/* RIGHT: Contact Form */}
+          <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-xl">
+            <h3 className="text-2xl font-bold mb-6" style={{ color: theme.textDark }}>Send us a message</h3>
+            
+            <form className="space-y-5">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <label className="text-sm font-semibold text-gray-600">Name</label>
+                  <input 
+                    type="text" 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your Name" 
+                    className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1E90A8]/50 transition-all"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-sm font-semibold text-gray-600">Phone</label>
+                  <input 
+                    type="tel" 
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="+91 00000 00000" 
+                    className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1E90A8]/50 transition-all"
+                  />
+                </div>
+              </div>
 
-             {/* Floating Address Card */}
-             <div className="absolute bottom-6 left-6 bg-white p-6 rounded-2xl shadow-lg max-w-xs hidden md:block">
-                <h4 className="font-bold text-lg mb-2" style={{ color: theme.textDark }}>Athenura HQ</h4>
-                <p className="text-sm text-gray-500 mb-4">
-                  Uttar Pradesh, India<br />
-                  <span className="text-xs text-teal-600">(Remote-First Operations)</span>
-                </p>
-                <a 
-                  href="https://maps.google.com" 
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-sm font-bold flex items-center gap-2 hover:underline"
-                  style={{ color: theme.primary }}
+              <div className="space-y-1">
+                <label className="text-sm font-semibold text-gray-600">Email Address</label>
+                <input 
+                  type="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="@gmail.com" 
+                  className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1E90A8]/50 transition-all"
+                />
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-sm font-semibold text-gray-600">Message</label>
+                <textarea 
+                  rows="4" 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="How can we help you?" 
+                  className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1E90A8]/50 transition-all resize-none"
+                ></textarea>
+              </div>
+
+              <div className="pt-2 flex flex-col gap-3">
+                {/* Standard Submit */}
+
+                {/* WhatsApp Action (Send via Number) */}
+                <button 
+                  type="button"
+                  onClick={handleWhatsAppSubmit}
+                  className="w-full py-3.5 rounded-xl font-bold border-2 flex items-center justify-center gap-2 hover:bg-green-50 transition-all"
+                  style={{ borderColor: "#25D366", color: "#25D366" }}
                 >
-                  View on Map
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                </a>
-             </div>
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                  Send via WhatsApp
+                </button>
+              </div>
+              <p className="text-xs text-center text-gray-400 mt-2">
+                We respect your privacy. Your number is only used for this inquiry.
+              </p>
+            </form>
           </div>
         </div>
       </section>
 
-      {/* --- SECTION 3: FAQ --- */}
+      {/* --- SECTION 3: FAQ (Same as before) --- */}
       <section className="py-24 px-6 lg:px-12" style={{ backgroundColor: theme.bgAlt }}>
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
@@ -152,21 +251,19 @@ const ContactContent = () => {
         </div>
       </section>
 
-      {/* --- SECTION 4: SOCIAL CONNECT --- */}
+      {/* --- SECTION 4: SOCIAL CONNECT (Same as before) --- */}
       <section className="py-20 px-6 border-t" style={{ backgroundColor: theme.bg, borderColor: theme.primaryLight }}>
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-           <div>
-             <h3 className="text-2xl font-bold mb-2" style={{ color: theme.textDark }}>
-               Stay Connected with Athenura
-             </h3>
-             <p style={{ color: theme.textGray }}>
-               Follow us for internship updates, learning resources, and announcements.
-             </p>
-           </div>
+            <div>
+              <h3 className="text-2xl font-bold mb-2" style={{ color: theme.textDark }}>
+                Stay Connected with Athenura
+              </h3>
+              <p style={{ color: theme.textGray }}>
+                Follow us for internship updates, learning resources, and announcements.
+              </p>
+            </div>
 
-           <div className="flex flex-wrap  gap-2 justify-center">
-              
-              {/* LinkedIn - Original Blue */}
+            <div className="flex flex-wrap  gap-2 justify-center">
               <a href="https://www.linkedin.com/company/athenura/" className="flex items-center gap-2 px-4 py-4 rounded-xl border border-gray-100 bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
                 <div className="w-6 h-6 text-[#0077b5]">
                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -174,7 +271,6 @@ const ContactContent = () => {
                 <span className="font-bold text-gray-700 group-hover:text-[#0077b5] transition-colors">LinkedIn</span>
               </a>
 
-              {/* Instagram - Colorful Gradient */}
               <a href="https://www.instagram.com/athenura.in/" className="flex items-center gap-3 px-4 py-4 rounded-xl border border-gray-100 bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
                 <div className="w-6 h-6 text-gray-800 group-hover:text-[#E1306C]">
                    <svg width="0" height="0">
@@ -190,7 +286,7 @@ const ContactContent = () => {
                 </div>
                 <span className="font-bold text-gray-700 group-hover:text-[#E1306C] transition-colors">Instagram</span>
               </a>
-           </div>
+            </div>
         </div>
       </section>
 

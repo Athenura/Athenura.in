@@ -24,6 +24,7 @@ import EnterMain from './Service/SubServices/EnterpriseSoftwares/EnterMain';
 import UIUXMain from './Service/SubServices/UIUX/UIUXMain';
 import MaintainMain from './Service/SubServices/WebMaintanance/MaintainMain';
 import TestingMain from './Service/SubServices/SoftwareTesting/TestingMain';
+import BusMain from './Service/SubServices/Business/BusMain';
 
 
 const ScrollToTop = () => {
@@ -76,6 +77,7 @@ function App() {
                 <Route path='/services/ui-ux' element={<UIUXMain />} />
                 <Route path='/services/maintenance' element={<MaintainMain />} />
                 <Route path='/services/testing' element={<TestingMain />} />
+                <Route path='/services/automation' element={<BusMain />} />
 
 
                 <Route path='/portfolio' element={<PortfolioMain />} />
