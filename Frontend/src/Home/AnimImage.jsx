@@ -86,7 +86,7 @@ const CareersSection = () => {
           className="relative z-10 overflow-hidden shadow-2xl origin-center md:h-full will-change-transform bg-black"
         >
            <img 
-             src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" 
+             src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fG9mZmljZXxlbnwwfHwwfHx8MA%3D%3D" 
              alt="Athenura Team" 
              className="w-full h-full object-cover brightness-[0.85] md:brightness-[0.95]" 
            />
