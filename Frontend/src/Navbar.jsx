@@ -27,6 +27,7 @@ const Navbar = () => {
       const mobileMenu = document.getElementById("mobile-menu");
       const hamburgerBtn = document.getElementById("hamburger-btn");
 
+      // Only close if clicking OUTSIDE both the menu AND the button
       if (
         isMobileMenuOpen &&
         mobileMenu &&
@@ -167,8 +168,8 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-10">
             
-            {/* Logo */}
-            <NavLink to="/" className="flex-shrink-0 flex items-center gap-2 group relative z-50">
+            {/* Logo - Added pointer-events-auto just in case */}
+            <NavLink to="/" className="flex-shrink-0 flex items-center gap-2 group relative z-40 pointer-events-auto">
               <img 
                 src="/Athenura.png" 
                 alt="Athenura" 
@@ -232,15 +233,24 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Mobile Hamburger */}
-            <div className="lg:hidden flex items-center">
+            {/* Mobile Hamburger - FIXED Z-INDEX AND CLICK AREA */}
+            <div className="lg:hidden flex items-center relative z-50">
               <button
                 id="hamburger-btn"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="relative z-50 p-2 text-gray-600 hover:text-[#28A3B9] focus:outline-none transition-colors"
+                onClick={(e) => {
+                    e.stopPropagation(); // Stop click from bubbling up
+                    setIsMobileMenuOpen(!isMobileMenuOpen);
+                }}
+                className="p-2 -mr-2 text-gray-600 hover:text-[#28A3B9] focus:outline-none transition-colors pointer-events-auto"
+                aria-label="Toggle menu"
               >
-                <div className="relative w-6 h-6 flex justify-center items-center">
-                    {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                <div className="relative w-8 h-8 flex justify-center items-center">
+                    {/* Animate icon swap */}
+                    {isMobileMenuOpen ? (
+                        <X className="w-7 h-7" />
+                    ) : (
+                        <Menu className="w-7 h-7" />
+                    )}
                 </div>
               </button>
             </div>

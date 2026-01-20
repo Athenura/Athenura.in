@@ -166,14 +166,6 @@ const ProjectDetails = ({ project }) => {
                         </span>
                     ))}
                 </div>
-
-                {/* Button */}
-                <button 
-                    className={`group flex items-center gap-3 font-bold transition-all hover:gap-5 ${project.accent}`}
-                >
-                    <span className="border-b-2 border-transparent group-hover:border-current transition-colors">View Case Study</span>
-                    <ArrowUpRight size={20} />
-                </button>
             </motion.div>
         </div>
     )

@@ -92,7 +92,7 @@ const ROADMAP = [
 
 const OurRoadmap = () => {
   return (
-    <section className="relative w-full py-20 md:py-32 bg-slate-50 overflow-hidden font-sans text-slate-900">
+    <section className="relative w-full py-10 md:py-15 bg-slate-50 overflow-hidden font-sans text-slate-900">
       
       {/* 1. Background Elements */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.4]" 

@@ -14,7 +14,7 @@ const HomeMain = () => {
         <HomeHero />
         <HomeService />
         <WhoWeAreSection />
-        <AwardsSection />
+        {/* <AwardsSection /> */}
         <CareersSection />
         <HomeWhyUs />
     </div>

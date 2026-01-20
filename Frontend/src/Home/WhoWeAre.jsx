@@ -288,7 +288,7 @@ const leadershipTeam = [
                             className="rounded-2xl object-cover h-48 hover:scale-105 transition-transform duration-500"
                         />
                         <img
-                            src="https://images.unsplash.com/photo-1552664730-d307ca884978?w-400&h=300&fit=crop"
+                            src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8b2ZmaWNlfGVufDB8fDB8fHww"
                             alt="Office Environment"
                             className="rounded-2xl object-cover h-48 mt-8 hover:scale-105 transition-transform duration-500"
                         />

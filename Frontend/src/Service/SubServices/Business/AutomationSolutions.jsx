@@ -78,7 +78,7 @@ const AutomationSolutions = () => {
   };
 
   return (
-    <section className="py-24 px-6 relative overflow-hidden" style={{ backgroundColor: COLORS.bgAlt }}>
+    <section className="py-10 px-6 relative overflow-hidden" style={{ backgroundColor: COLORS.bgAlt }}>
       
       {/* Background Decorative Line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-transparent via-gray-200 to-transparent" />

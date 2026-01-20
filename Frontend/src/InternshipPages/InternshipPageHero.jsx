@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ArrowRight, BookOpen, Users, Code, 
+import {
+  ArrowRight, BookOpen, Users, Code,
   PenTool, Database, CheckCircle, XCircle, Trophy, Sparkles,
-  Smartphone, Cloud, Shield, Cpu, Terminal, BarChart, 
+  Smartphone, Cloud, Shield, Cpu, Terminal, BarChart,
   Gamepad, Globe, Layers, Search
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -230,7 +230,7 @@ const InternshipHeroQuiz = () => {
   };
 
   // Filter domains based on search
-  const filteredDomains = Object.keys(quizData).filter(key => 
+  const filteredDomains = Object.keys(quizData).filter(key =>
     quizData[key].label.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -238,16 +238,16 @@ const InternshipHeroQuiz = () => {
 
   return (
     <div className="relative w-full min-h-screen bg-white overflow-hidden font-sans selection:bg-[#1E7A86] selection:text-white">
-      
+
       {/* Background Blobs (No changes needed, auto-scales) */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
-        <motion.div 
+        <motion.div
           animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
           transition={{ duration: 20, repeat: Infinity }}
           className="absolute -top-[10%] -left-[10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] rounded-full blur-3xl opacity-10"
           style={{ backgroundColor: theme.primary }}
         />
-        <motion.div 
+        <motion.div
           animate={{ scale: [1, 1.1, 1], x: [0, 50, 0] }}
           transition={{ duration: 15, repeat: Infinity }}
           className="absolute top-[30%] -right-[10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] rounded-full blur-3xl opacity-15"
@@ -257,7 +257,7 @@ const InternshipHeroQuiz = () => {
 
       {/* Main Content */}
       <main className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 flex flex-col lg:flex-row items-center justify-between mt-6 md:mt-12 gap-8 lg:gap-16 pb-12">
-        
+
         {/* Left Side: Static Text */}
         <div className="flex-1  lg:text-left z-20">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
@@ -271,23 +271,36 @@ const InternshipHeroQuiz = () => {
               Select your specific tech stack from the list. Pass the 5-question challenge to instantly unlock your application form.
             </p>
           </motion.div>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-             <div className="flex items-center gap-2 text-gray-500 text-xs md:text-sm">
-                <Users className="w-4 h-4" /> <span>500+ Applicants today</span>
-             </div>
+            <div className="flex items-center gap-2 text-gray-500 text-xs md:text-sm">
+              <Users className="w-4 h-4" /> <span>500+ Applicants today</span>
+            </div>
           </div>
+
+
+          <Link to="/apply-internship">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="mt-6 inline-flex items-center gap-2 px-8 py-4   rounded-xl text-white font-bold text-lg shadow-xl"
+            style={{ background: `linear-gradient(to right, ${theme.primary}, ${theme.secondary})` }}
+            >
+            Start Your Journey
+            <ArrowRight className="w-5 h-5" />
+          </motion.button>
+            </Link>
         </div>
 
         {/* Right Side: QUIZ ENGINE */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           className="flex-1 w-full max-w-md relative perspective-1000"
         >
           <div className="relative bg-white rounded-2xl md:rounded-3xl shadow-2xl border border-gray-100 overflow-hidden min-h-[500px] md:min-h-[500px] flex flex-col">
-            
+
             {/* Window Header */}
             <div className="bg-gray-50 px-4 md:px-6 py-3 md:py-4 border-b border-gray-100 flex justify-between items-center">
               <div className="flex gap-1.5 md:gap-2">
@@ -300,10 +313,10 @@ const InternshipHeroQuiz = () => {
             {/* Content Area */}
             <div className="flex-1 p-5 md:p-8 flex flex-col justify-center">
               <AnimatePresence mode='wait'>
-                
+
                 {/* 1. Category Selection (SCROLLABLE) */}
                 {gameState === 'category' && (
-                  <motion.div 
+                  <motion.div
                     key="category"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -311,13 +324,13 @@ const InternshipHeroQuiz = () => {
                     className="flex flex-col h-full"
                   >
                     <h3 className="text-xl md:text-2xl font-bold text-teal-600 text-center mb-4">Quiz Game</h3>
-                    
+
                     {/* Search Bar */}
                     <div className="relative mb-3 md:mb-4">
                       <Search className="absolute left-3 top-2.5 text-gray-400 w-3.5 h-3.5 md:w-4 md:h-4" />
-                      <input 
-                        type="text" 
-                        placeholder="Search domain..." 
+                      <input
+                        type="text"
+                        placeholder="Search domain..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         className="w-full pl-9 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:border-[#1E7A86] text-xs md:text-sm"
@@ -353,7 +366,7 @@ const InternshipHeroQuiz = () => {
 
                 {/* 2. The Quiz */}
                 {gameState === 'quiz' && (
-                  <motion.div 
+                  <motion.div
                     key="quiz"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -368,9 +381,9 @@ const InternshipHeroQuiz = () => {
                     </div>
 
                     <div className="mb-2">
-                        <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-[#1E7A86] bg-[#1E7A86]/10 px-2 py-1 rounded">
-                          {quizData[category].label}
-                        </span>
+                      <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-[#1E7A86] bg-[#1E7A86]/10 px-2 py-1 rounded">
+                        {quizData[category].label}
+                      </span>
                     </div>
 
                     <h3 className="text-base md:text-lg font-bold text-gray-800 mb-4 md:mb-6 leading-snug min-h-[50px] md:min-h-[60px]">
@@ -381,12 +394,12 @@ const InternshipHeroQuiz = () => {
                       {quizData[category].questions[currentQIndex].options.map((option, idx) => {
                         const isCorrect = idx === quizData[category].questions[currentQIndex].correct;
                         const isSelected = selectedOption === idx;
-                        
+
                         let btnClass = "border-gray-200 hover:border-gray-300 hover:bg-gray-50";
                         if (isAnswered) {
                           if (isSelected && isCorrect) btnClass = "bg-green-100 border-green-500 text-green-800";
                           else if (isSelected && !isCorrect) btnClass = "bg-red-100 border-red-500 text-red-800";
-                          else if (!isSelected && isCorrect) btnClass = "bg-green-50 border-green-200 text-green-700 opacity-60"; 
+                          else if (!isSelected && isCorrect) btnClass = "bg-green-50 border-green-200 text-green-700 opacity-60";
                           else btnClass = "opacity-50 border-gray-100";
                         }
 
@@ -400,7 +413,7 @@ const InternshipHeroQuiz = () => {
                           >
                             <span>{option}</span>
                             {isAnswered && isSelected && (
-                              isCorrect ? <CheckCircle size={16} className="text-green-600"/> : <XCircle size={16} className="text-red-600"/>
+                              isCorrect ? <CheckCircle size={16} className="text-green-600" /> : <XCircle size={16} className="text-red-600" />
                             )}
                           </motion.button>
                         );
@@ -409,7 +422,7 @@ const InternshipHeroQuiz = () => {
 
                     {/* Progress Bar */}
                     <div className="mt-6 md:mt-8 w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
-                      <motion.div 
+                      <motion.div
                         className="h-full bg-[#1E7A86]"
                         initial={{ width: 0 }}
                         animate={{ width: `${((currentQIndex + 1) / 5) * 100}%` }}
@@ -420,7 +433,7 @@ const InternshipHeroQuiz = () => {
 
                 {/* 3. Results Screen */}
                 {gameState === 'result' && (
-                  <motion.div 
+                  <motion.div
                     key="result"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -433,25 +446,25 @@ const InternshipHeroQuiz = () => {
                     <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
                       {passed ? "Assessment Passed!" : "Keep Learning!"}
                     </h3>
-                    
+
                     <p className="text-xs md:text-base text-gray-500 mb-6 md:mb-8 px-2">
                       You scored <span className="font-bold text-[#1E7A86]">{score}/5</span> in {quizData[category].label}.
-                      {passed 
-                        ? " You've unlocked priority access to the application." 
+                      {passed
+                        ? " You've unlocked priority access to the application."
                         : " Don't worry, you can try another domain or retake this one."}
                     </p>
 
                     {passed ? (
-                    <Link to="/apply-internship">
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="w-full py-3 md:py-4 rounded-xl text-white font-bold text-base md:text-lg shadow-xl mb-4"
-                        style={{ background: `linear-gradient(to right, ${theme.primary}, ${theme.secondary})` }}
+                      <Link to="/apply-internship">
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="w-full py-3 md:py-4 rounded-xl text-white font-bold text-base md:text-lg shadow-xl mb-4"
+                          style={{ background: `linear-gradient(to right, ${theme.primary}, ${theme.secondary})` }}
                         >
-                        Apply for {quizData[category].label}
-                      </motion.button>
-                    </Link>
+                          Apply for {quizData[category].label}
+                        </motion.button>
+                      </Link>
                     ) : (
                       <motion.button
                         onClick={resetGame}

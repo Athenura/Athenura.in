@@ -56,7 +56,7 @@ const SERVICES = [
 
 const WhatWeDo = () => {
   return (
-    <section className="relative w-full py-20 md:py-28 bg-slate-50 overflow-hidden font-sans text-slate-900">
+    <section className="relative w-full py-10 md:py-12 bg-slate-50 overflow-hidden font-sans text-slate-900">
       
       {/* 1. Background Elements (Consistent with Theme) */}
       <div className="absolute inset-0 opacity-[0.4] pointer-events-none" 

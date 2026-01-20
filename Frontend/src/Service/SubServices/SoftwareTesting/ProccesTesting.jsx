@@ -41,7 +41,7 @@ const Process = () => {
   return (
     <div className="bg-gray-50 overflow-hidden">
       {/* --- Process/Timeline Section --- */}
-      <section className="max-w-7xl mx-auto px-6">
+      <section id='process' className="max-w-7xl mx-auto px-6">
         
         <div className="text-center mb-20">
           <motion.h2 

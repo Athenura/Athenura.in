@@ -89,7 +89,7 @@ const MORE_INDUSTRIES = [
 ========================================== */
 const TargetIndustries = () => {
   return (
-    <section className="relative py-12 bg-slate-50 font-sans overflow-hidden">
+    <section className="relative py-10 bg-slate-50 font-sans overflow-hidden">
       
       {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03]">

@@ -6,7 +6,6 @@ import {
   Code, 
   ShieldCheck, 
   Rocket, 
-  BarChart3,
   Check
 } from "lucide-react";
 
@@ -56,7 +55,8 @@ const PROCESS_STEPS = [
 ========================================== */
 const DevelopmentProcess = () => {
   return (
-    <section className="relative py-24 bg-slate-50 font-sans overflow-hidden">
+    // CHANGE 1: Reduced py-24 to py-16
+    <section className="relative py-16 bg-slate-50 font-sans overflow-hidden">
       
       {/* Background Texture */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
@@ -66,7 +66,8 @@ const DevelopmentProcess = () => {
       <div className="container mx-auto px-6 relative z-10">
         
         {/* --- Header --- */}
-        <div className="max-w-3xl mx-auto text-center mb-20">
+        {/* CHANGE 2: Reduced mb-20 to mb-12 */}
+        <div className="max-w-3xl mx-auto text-center mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -95,7 +96,8 @@ const DevelopmentProcess = () => {
           <div className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 -translate-x-1/2 md:translate-x-0" />
 
           {/* Steps */}
-          <div className="space-y-12 md:space-y-24">
+          {/* CHANGE 3: Reduced space-y-12/24 to space-y-6/10 */}
+          <div className="space-y-6 md:space-y-10">
             {PROCESS_STEPS.map((step, index) => (
               <TimelineItem key={step.id} data={step} index={index} />
             ))}
@@ -117,24 +119,25 @@ const TimelineItem = ({ data, index }) => {
     <motion.div 
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.7, delay: index * 0.1 }}
-      className={`relative flex flex-col md:flex-row items-center md:justify-between gap-8 ${isEven ? "" : "md:flex-row-reverse"}`}
+      className={`relative flex flex-col md:flex-row items-center md:justify-between gap-6 ${isEven ? "" : "md:flex-row-reverse"}`}
     >
       
       {/* 1. The Content Card */}
       <div className="w-full md:w-[45%] pl-16 md:pl-0">
-        <div className="group bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:shadow-teal-900/5 hover:border-teal-200 transition-all duration-300 relative">
+        {/* CHANGE 4: Reduced padding from p-8 to p-6 for a tighter card feel */}
+        <div className="group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:shadow-teal-900/5 hover:border-teal-200 transition-all duration-300 relative">
           
           {/* Decorative Number Background */}
           <div className="absolute top-4 right-6 text-6xl font-extrabold text-slate-100 opacity-50 group-hover:text-teal-50 group-hover:opacity-100 transition-colors pointer-events-none select-none">
              0{data.id}
           </div>
 
-          <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-teal-700 transition-colors relative z-10">
+          <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-teal-700 transition-colors relative z-10">
             {data.title}
           </h3>
-          <p className="text-slate-500 text-sm leading-relaxed mb-6 relative z-10">
+          <p className="text-slate-500 text-sm leading-relaxed mb-4 relative z-10">
             {data.desc}
           </p>
           
@@ -150,9 +153,10 @@ const TimelineItem = ({ data, index }) => {
       </div>
 
       {/* 2. The Center Node (Connector) */}
-      <div className="absolute left-[28px] md:left-1/2 -translate-x-1/2 w-14 h-14 flex items-center justify-center bg-slate-50 border-4 border-white rounded-full shadow-lg z-20">
-         <div className="w-10 h-10 bg-teal-600 rounded-full flex items-center justify-center text-white shadow-inner shadow-black/10">
-            {data.icon}
+      <div className="absolute left-[28px] md:left-1/2 -translate-x-1/2 w-12 h-12 flex items-center justify-center bg-slate-50 border-4 border-white rounded-full shadow-lg z-20">
+         <div className="w-8 h-8 bg-teal-600 rounded-full flex items-center justify-center text-white shadow-inner shadow-black/10">
+            {/* Cloned the icon with a smaller size to fit the tighter node */}
+            {React.cloneElement(data.icon, { size: 16 })}
          </div>
          {/* Pulse Effect */}
          <div className="absolute inset-0 rounded-full border border-teal-500 opacity-20 animate-ping" />

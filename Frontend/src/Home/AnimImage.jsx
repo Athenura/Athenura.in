@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { ArrowRight, Sparkles, Globe, Star } from 'lucide-react';
 import { Link } from "react-router-dom";
 
 const CareersSection = () => {
@@ -18,9 +18,7 @@ const CareersSection = () => {
 
   // Detect Mobile
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
@@ -31,90 +29,101 @@ const CareersSection = () => {
     offset: ["start start", "end end"],
   });
 
-  // --- Desktop Animations (Scale & Move) ---
-  const desktopScale = useTransform(scrollYProgress, [0, 0.6], [1, 0.45]);
-  const desktopX = useTransform(scrollYProgress, [0, 0.6], ["0%", "-25%"]);
-  const desktopRadius = useTransform(scrollYProgress, [0, 0.6], ["0px", "32px"]);
+  // Soft spring physics for "heavy/smooth" scroll feel
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 60,
+    damping: 20,
+    restDelta: 0.001
+  });
 
-  // --- Mobile Animations (Height Change Only, Keep Full Width) ---
-  // Starts at 65% of screen height, shrinks to 40% of screen height
-  const mobileHeight = useTransform(scrollYProgress, [0, 0.6], ["65vh", "40vh"]);
+  // ============================================
+  // DESKTOP ANIMATIONS (Side-by-side scale)
+  // ============================================
+  const desktopScale = useTransform(smoothProgress, [0, 0.8], [1, 0.45]);
+  const desktopX = useTransform(smoothProgress, [0, 0.8], ["0%", "-25%"]);
+  const desktopRadius = useTransform(smoothProgress, [0, 0.8], ["0px", "32px"]);
+  const desktopContentOpacity = useTransform(smoothProgress, [0.4, 0.8], [0, 1]);
+  const desktopContentY = useTransform(smoothProgress, [0.4, 0.8], [50, 0]);
+
+  // ============================================
+  // MOBILE ANIMATIONS (Sheet Modal Style)
+  // ============================================
+  // Instead of changing height (jittery), we scale the image slightly back
+  const mobileImgScale = useTransform(smoothProgress, [0, 0.7], [1, 0.95]);
+  const mobileImgRadius = useTransform(smoothProgress, [0, 0.7], ["0px", "24px"]);
   
-  // --- Common Animations ---
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-  const contentOpacity = useTransform(scrollYProgress, [0.4, 0.7], [0, 1]);
-  const contentYOffset = useTransform(scrollYProgress, [0.4, 0.7], [50, 0]);
-
-  // Mobile-specific content animation
-  const mobileContentY = useTransform(scrollYProgress, [0.3, 0.6], ["100%", "0%"]);
-  const mobileContentOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1]);
+  // The White Card slides UP from the bottom (TranslateY)
+  // Starts '100%' down (offscreen), ends at '0%' (anchored to bottom)
+  const mobileCardY = useTransform(smoothProgress, [0.1, 0.7], ["100%", "0%"]);
+  
+  // Fade out hero text quickly so it doesn't clash
+  const mobileHeroTextOpacity = useTransform(smoothProgress, [0, 0.2], [1, 0]);
 
   return (
     <section 
       ref={targetRef} 
-      className="relative bg-white mt-[-50px]" 
+      className="relative bg-white" 
       style={{ 
-        height: isMobile ? '250vh' : '350vh' 
+        height: isMobile ? '200vh' : '300vh', // Shorter scroll on mobile
       }}
     >
       
-      {/* Sticky Container */}
-      <div className="sticky top-0 h-screen  w-full overflow-hidden flex flex-col md:flex-row items-center justify-center">
+      {/* Sticky Container: 100dvh prevents jumps when address bar hides */}
+      <div className="sticky top-0 h-[100dvh] w-full overflow-hidden flex flex-col md:flex-row items-center justify-center">
         
-        {/* --- The Transforming Image --- */}
+        {/* --- VISUAL LAYER (Image) --- */}
         <motion.div 
           style={{ 
-            // Mobile: Animate Height, Keep Width 100%, No Radius
-            // Desktop: Animate Scale/X, Full Height, Add Radius
-            height: isMobile ? mobileHeight : "100%",
-            width: isMobile ? "100%" : "100%", 
-            scale: isMobile ? 1 : desktopScale, 
+            // Mobile: Full height always, scale down slightly
+            // Desktop: Full height, scale down significantly to left
+            height: "100%", 
+            width: "100%", 
+            scale: isMobile ? mobileImgScale : desktopScale, 
             x: isMobile ? 0 : desktopX,
-            borderRadius: isMobile ? 0 : desktopRadius,
+            borderRadius: isMobile ? mobileImgRadius : desktopRadius,
           }}
-          className="relative z-10 overflow-hidden shadow-2xl origin-center md:h-full"
+          // 'will-change-transform' forces GPU usage, preventing mobile stutter
+          className="relative z-10 overflow-hidden shadow-2xl origin-center md:h-full will-change-transform bg-black"
         >
            <img 
-             src="https://images.unsplash.com/photo-1758518730178-6e237bc8b87d?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+             src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" 
              alt="Athenura Team" 
-             className="w-full h-full object-cover brightness-[0.95]" 
+             className="w-full h-full object-cover brightness-[0.85] md:brightness-[0.95]" 
            />
 
-           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
-
-           {/* Initial Overlay Text */}
+           {/* Hero Text Overlay */}
            <motion.div 
-             style={{ opacity: overlayOpacity }}
-             className="absolute bottom-6 left-6 md:bottom-24 md:left-24 max-w-4xl z-20"
+             style={{ opacity: isMobile ? mobileHeroTextOpacity : 1 }}
+             className="absolute bottom-10 left-6 md:bottom-24 md:left-24 max-w-4xl z-20 pointer-events-none"
            >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-3 md:mb-6">
-                <Sparkles size={isMobile ? 10 : 12} className="text-[#28A3B9]" />
-                <span className={`${isMobile ? 'text-[9px]' : 'text-xs'} font-bold uppercase tracking-widest text-white`}>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-4 md:mb-6">
+                <Sparkles size={12} className="text-[#28A3B9]" />
+                <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-white">
                   Join the Revolution
                 </span>
               </div>
-              <h2 className={`${isMobile ? 'text-2xl' : 'text-8xl'} font-bold leading-[1.1] text-white tracking-tight`}>
+              <h2 className="text-4xl md:text-8xl font-bold leading-[1.1] text-white tracking-tight">
                 Building the <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#28A3B9] to-white">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#28A3B9] to-cyan-100">
                   Future.
                 </span>
               </h2>
            </motion.div>
         </motion.div>
 
-
-        {/* --- Desktop Content (The Pitch) --- */}
+        {/* --- DESKTOP CONTENT (Right Side) --- */}
         <motion.div 
           style={{ 
-            opacity: isMobile ? 0 : contentOpacity, 
-            y: isMobile ? 0 : contentYOffset 
+            opacity: isMobile ? 0 : desktopContentOpacity, 
+            y: isMobile ? 0 : desktopContentY,
+            display: isMobile ? 'none' : 'flex'
           }}
           className="hidden md:flex absolute top-0 left-auto right-0 h-full w-1/2 flex-col justify-center px-24 z-0 bg-white"
         >
+          {/* ... (Desktop Content Remains Same) ... */}
           <span className="text-sm font-bold tracking-widest uppercase mb-6" style={{ color: theme.secondary }}>
             Career Opportunities
           </span>
-          
           <h3 className="text-6xl font-extrabold text-slate-900 mb-8 leading-tight">
             Work where your <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r" 
@@ -122,18 +131,15 @@ const CareersSection = () => {
               ideas matter.
             </span>
           </h3>
-          
           <p className="text-lg text-slate-600 mb-10 max-w-md leading-relaxed">
             Athenura isn't just a company; it's a launchpad. We are looking for 
             visionaries ready to tackle the world's toughest technical challenges.
           </p>
-
-          <div className="flex flex-col gap-4">
-             <div className="flex gap-4 mb-6">
-                <StatBox number="100%" label="Remote Friendly" theme={theme} isMobile={false} />
-                <StatBox number="4.9" label="Rating" theme={theme} isMobile={false} />
+          <div className="flex flex-col gap-6">
+             <div className="flex gap-6 mb-2">
+                <StatBox number="100%" label="Remote First" icon={<Globe size={18}/>} theme={theme} />
+                <StatBox number="4.9" label="Glassdoor" icon={<Star size={18}/>} theme={theme} />
              </div>
-            
              <Link to="/careers" className="w-fit">
                <button 
                   className="group w-fit flex items-center gap-4 px-8 py-4 rounded-xl text-white font-bold text-lg shadow-xl shadow-[#28A3B9]/20 hover:shadow-2xl hover:scale-105 transition-all duration-300"
@@ -146,22 +152,25 @@ const CareersSection = () => {
           </div>
         </motion.div>
 
-        {/* --- Mobile Content (Slides up from bottom) --- */}
+        {/* --- MOBILE CONTENT (Bottom Sheet) --- */}
+        {/* FIXED: Uses TranslateY instead of Height for smoothness */}
         <motion.div 
           style={{ 
-            opacity: isMobile ? mobileContentOpacity : 0,
-            y: isMobile ? mobileContentY : 0,
+            y: isMobile ? mobileCardY : '100%',
             display: isMobile ? 'flex' : 'none'
           }}
-          className="md:hidden absolute bottom-0 left-0 right-0 h-[55vh] flex flex-col justify-end px-6 pb-8 z-20 bg-white rounded-t-3xl shadow-2xl border-t border-slate-100"
+          className="md:hidden absolute bottom-0 left-0 right-0 h-[55dvh] flex-col justify-start pt-8 px-6 pb-8 z-30 bg-white rounded-t-[32px] shadow-[0_-10px_60px_-15px_rgba(0,0,0,0.3)] will-change-transform"
         >
+          {/* Drag Handle (Visual only) */}
+          <div className="absolute top-3 left-1/2 -translate-x-1/2 w-12 h-1.5 bg-slate-200 rounded-full opacity-60" />
+
           <div className="flex-1 flex flex-col justify-center">
-            <span className="text-xs font-bold tracking-widest uppercase mb-4" style={{ color: theme.secondary }}>
+            <span className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: theme.secondary }}>
               Career Opportunities
             </span>
             
-            <h3 className="text-3xl font-extrabold text-slate-900 mb-4 leading-tight">
-              Work where your{' '}
+            <h3 className="text-3xl font-extrabold text-slate-900 mb-3 leading-tight">
+              Work where your <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r" 
                     style={{ backgroundImage: `linear-gradient(to right, ${theme.secondary}, ${theme.primary})` }}>
                 ideas matter.
@@ -169,23 +178,22 @@ const CareersSection = () => {
             </h3>
             
             <p className="text-sm text-slate-600 mb-6 leading-relaxed">
-              Athenura isn't just a company; it's a launchpad. We are looking for 
-              visionaries ready to tackle the world's toughest technical challenges.
+              We are looking for visionaries ready to tackle the toughest challenges in EdTech.
             </p>
 
-            <div className="flex gap-4 mb-6">
-              <StatBox number="100%" label="Remote Friendly" theme={theme} isMobile={true} />
-              <StatBox number="4.9" label="Rating" theme={theme} isMobile={true} />
+            <div className="flex gap-4">
+              <StatBox number="100%" label="Remote" icon={<Globe size={16}/>} theme={theme} isMobile={true} />
+              <StatBox number="4.9" label="Rating" icon={<Star size={16}/>} theme={theme} isMobile={true} />
             </div>
           </div>
           
-          <Link to="/careers" className="w-full">
+          <Link to="/careers" className="w-full mt-4">
             <button 
-              className="group w-full flex items-center justify-center gap-3 px-6 py-4 rounded-xl text-white font-bold text-base shadow-lg shadow-[#28A3B9]/20 active:scale-[0.98] transition-all duration-200"
+              className="group w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-white font-bold text-base shadow-lg shadow-[#28A3B9]/25 active:scale-[0.98] transition-all duration-200"
               style={{ background: `linear-gradient(to right, ${theme.secondary}, ${theme.primary})` }}
             >
               View Open Positions 
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </Link>
         </motion.div>
@@ -195,16 +203,18 @@ const CareersSection = () => {
   );
 };
 
-const StatBox = ({ number, label, theme, isMobile }) => (
-  <div 
-    className={`border-l-4 ${isMobile ? 'pl-3' : 'pl-4'}`} 
-    style={{ borderColor: theme.primary }}
-  >
-    <div className={`${isMobile ? 'text-lg' : 'text-2xl'} font-bold text-slate-900`}>
-      {number}
+const StatBox = ({ number, label, icon, theme, isMobile = false }) => (
+  <div className="flex items-start gap-3">
+    <div className={`p-2 rounded-lg bg-slate-50 text-[${theme.primary}]`}>
+        {React.cloneElement(icon, { color: theme.primary })}
     </div>
-    <div className={`${isMobile ? 'text-[10px]' : 'text-xs'} font-semibold uppercase text-slate-400`}>
-      {label}
+    <div>
+        <div className={`${isMobile ? 'text-lg' : 'text-xl'} font-bold text-slate-900 leading-none mb-1`}>
+        {number}
+        </div>
+        <div className={`${isMobile ? 'text-[10px]' : 'text-xs'} font-semibold uppercase text-slate-400 tracking-wide`}>
+        {label}
+        </div>
     </div>
   </div>
 );

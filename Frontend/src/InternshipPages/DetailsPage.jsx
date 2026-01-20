@@ -24,7 +24,7 @@ const InternshipDetails = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 px-4 md:px-6 relative overflow-hidden font-sans" style={{ backgroundColor: theme.bg }}>
+    <section className="py-10 md:py-10 px-4 md:px-6 relative overflow-hidden font-sans" style={{ backgroundColor: theme.bg }}>
       
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[500px] md:w-[800px] h-[800px] opacity-5 pointer-events-none">
@@ -78,7 +78,7 @@ const InternshipDetails = () => {
 
               <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 md:mb-3">Industrial-Grade Project Work</h3>
               <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6 max-w-lg leading-relaxed">
-                You won't build "Toy Apps". You will architect scalable solutions. Focus on <span className="font-bold text-[#1E7A86]">System Design</span>, <span className="font-bold text-[#1E7A86]">Security</span>, and <span className="font-bold text-[#1E7A86]">Optimization</span>.
+                You won't build "Toy Apps". You will architect scalable solutions. <br /> Focus on <span className="font-bold text-[#1E7A86]">System Design</span>, <span className="font-bold text-[#1E7A86]">Security</span>, and <span className="font-bold text-[#1E7A86]">Optimization</span>.
               </p>
               
               <div className="grid grid-cols-1 gap-2">
@@ -92,7 +92,7 @@ const InternshipDetails = () => {
             </div>
 
             {/* Visual: Code Pipeline Animation (Hidden on very small mobile to save space, visible on larger) */}
-            <div className="hidden sm:block absolute top-20 -right-16 w-[300px] md:w-[400px] bg-[#1E293B] rounded-xl p-4 md:p-5 shadow-2xl transform rotate-3 group-hover:rotate-0 transition-transform duration-500 border border-gray-700 opacity-90">
+            <div className="hidden sm:block absolute top-20 -right-16 w-[300px] md:w-[400px] bg-[#1E293B] rounded-xl p-5  md:p-5 shadow-2xl transform rotate-3 group-hover:rotate-0 transition-transform duration-500 border border-gray-700 opacity-90">
               <div className="flex items-center gap-4 mb-3 border-b border-gray-700 pb-2">
                  <span className="text-gray-400 text-[10px]">pipeline.yaml</span>
                  <span className="text-gray-500 text-[10px] flex items-center gap-1"><GitMerge size={10}/> master</span>

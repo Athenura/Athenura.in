@@ -45,7 +45,7 @@ const Capabilities = () => {
   const [active, setActive] = useState("design");
 
   return (
-    <section className="min-h-screen md:h-[90vh] md:min-h-[600px] bg-slate-950 flex flex-col justify-center py-12 overflow-hidden relative">
+    <section className="min-h-screen md:h-[90vh] md:min-h-[600px] mb-10 bg-slate-950 flex flex-col justify-center py-12 overflow-hidden relative">
       
       {/* Header */}
       <div className="container mx-auto px-6 mb-8 flex justify-between items-end relative z-10">

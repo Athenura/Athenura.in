@@ -75,10 +75,10 @@ const RoadmapSection = () => {
   ];
 
   return (
-    <section className="py-16 md:py-20 lg:py-32 relative overflow-hidden font-sans" style={{ backgroundColor: theme.bg }}>
+    // CHANGE 1: Reduced py-16/32 to py-12/20
+    <section className="py-12 md:py-16 lg:py-20 relative overflow-hidden font-sans" style={{ backgroundColor: theme.bg }}>
       
       {/* ================= BACKGROUND ANIMATIONS ================= */}
-      
       <div className="absolute inset-0 z-0 opacity-[0.04] pointer-events-none">
         <motion.div
             animate={{ backgroundPosition: ["0px 0px", "40px 40px"] }}
@@ -110,7 +110,8 @@ const RoadmapSection = () => {
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-16 lg:mb-32">
+        {/* CHANGE 2: Reduced mb-16/32 to mb-12/20 */}
+        <div className="text-center mb-12 lg:mb-20">
           
           <motion.h2 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -144,7 +145,8 @@ const RoadmapSection = () => {
              />
           </div>
 
-          <div className="space-y-12 md:space-y-32">
+          {/* CHANGE 3: Reduced spacing from space-y-12/32 to space-y-8/16 */}
+          <div className="space-y-8 md:space-y-16">
             {milestones.map((item, index) => (
               <TimelineItem 
                 key={index} 
@@ -175,7 +177,7 @@ const TimelineItem = ({ item, index, theme }) => {
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: false, amount: 0.2 }}
-        className="pl-16 md:pl-0 w-full md:w-[42%] mb-4 md:mb-0 relative z-10"
+        className="pl-16 md:pl-0 w-full md:w-[45%] mb-0 relative z-10"
       >
         <div className="group relative bg-white p-1 rounded-2xl shadow-lg md:shadow-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 md:hover:-translate-y-2">
             {/* Gradient Border via Background */}
@@ -210,7 +212,7 @@ const TimelineItem = ({ item, index, theme }) => {
                 </p>
 
                 {/* Divider */}
-                <div className="h-px w-full bg-slate-100 mb-4 md:mb-6"></div>
+                <div className="h-px w-full bg-slate-100 mb-4 md:mb-2"></div>
 
                 {/* Deliverables List */}
                 <div className="mb-4 md:mb-6">

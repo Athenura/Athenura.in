@@ -28,31 +28,18 @@ const Hero = () => {
 
   return (
     <div className="min-h-screen bg-white font-sans overflow-x-hidden relative">
-      
+
       {/* --- Background Decorative Blobs --- */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-[#53B5C7]/5 -skew-x-12 transform origin-top-right -z-10" />
       <div className="absolute top-20 left-10 w-64 h-64 bg-[#53B5C7]/10 rounded-full blur-3xl -z-10" />
 
-      {/* Mobile Menu Dropdown */}
-      {isMenuOpen && (
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:hidden absolute top-20 left-0 w-full bg-white shadow-xl p-6 flex flex-col gap-4 z-40 border-t border-gray-100"
-        >
-          <a href="#" className="text-gray-600 font-medium">Services</a>
-          <a href="#" className="text-gray-600 font-medium">Process</a>
-          <button className="px-6 py-3 rounded-lg text-white font-semibold w-full" style={{ backgroundColor: THEME_COLOR }}>
-            Get a Quote
-          </button>
-        </motion.div>
-      )}
+
 
       {/* --- Hero Content --- */}
       <main className="max-w-7xl mx-auto px-6  pb-20 grid md:grid-cols-2 gap-12 items-center">
-        
+
         {/* Left Side: Text */}
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -75,7 +62,15 @@ const Hero = () => {
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
-            <button className="px-8 py-4 rounded-full text-gray-700 font-bold text-lg border-2 border-gray-100 hover:border-[#53B5C7] hover:text-[#53B5C7] transition-all bg-white">
+            <button
+              onClick={() => {
+                document.getElementById("process")?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }}
+              className="px-8 py-4 rounded-full text-gray-700 font-bold text-lg border-2 border-gray-100 hover:border-[#53B5C7] hover:text-[#53B5C7] transition-all bg-white"
+            >
               View Our Process
             </button>
           </motion.div>
@@ -91,14 +86,14 @@ const Hero = () => {
         </motion.div>
 
         {/* Right Side: Animated Illustration */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative h-[400px] md:h-[600px] flex items-center justify-center"
         >
           {/* Main Card */}
-          <motion.div 
+          <motion.div
             animate={{ y: [0, -20, 0] }}
             transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
             className="relative z-10 bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 w-full max-w-md"
@@ -119,9 +114,9 @@ const Hero = () => {
               <div className="flex gap-3 items-center text-gray-400 pl-4">
                 <span>2</span> <span className="text-purple-600">it</span>('<span className="text-green-600">should authenticate valid user</span>', () => {'{'}
               </div> */}
-              
+
               {/* Success Badge */}
-              <motion.div 
+              <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: "100%" }}
                 transition={{ duration: 1.5, delay: 1 }}
@@ -132,10 +127,10 @@ const Hero = () => {
 
               {/* Error Badge (Scanning Animation) */}
               <div className="pl-8 py-2 bg-red-50 rounded text-red-600 flex items-center justify-between border-l-4 border-red-500">
-                 <div className="flex items-center gap-2">
-                   <Bug size={14} /> <span>Critical Bug Found</span>
-                 </div>
-                 <span className="text-xs bg-red-200 px-2 py-0.5 rounded text-red-800">Fixed</span>
+                <div className="flex items-center gap-2">
+                  <Bug size={14} /> <span>Critical Bug Found</span>
+                </div>
+                <span className="text-xs bg-red-200 px-2 py-0.5 rounded text-red-800">Fixed</span>
               </div>
 
               <div className="flex gap-3 items-center text-gray-400">
@@ -144,30 +139,30 @@ const Hero = () => {
             </div>
 
             {/* Floating Elements */}
-            <motion.div 
+            <motion.div
               animate={{ rotate: [0, 10, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
               className="absolute -top-10 -right-10 bg-white p-4 rounded-xl shadow-xl border border-gray-100"
             >
               <div className="flex items-center gap-2 text-gray-800 font-bold">
-                 <div className="w-8 h-8 rounded-full flex items-center justify-center text-white" style={{background: THEME_COLOR}}>
-                    100
-                 </div>
-                 Quality Score
+                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white" style={{ background: THEME_COLOR }}>
+                  100
+                </div>
+                Quality Score
               </div>
             </motion.div>
 
-             <motion.div 
+            <motion.div
               animate={{ y: [0, 15, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
               className="absolute -bottom-8 -left-8 bg-gray-900 text-white p-4 rounded-xl shadow-2xl"
             >
               <div className="flex items-center gap-3">
-                 <Terminal size={20} className="text-[#53B5C7]" />
-                 <div className="text-xs font-mono">
-                    <p>$ npm run test</p>
-                    <p className="text-green-400">Done in 2.45s.</p>
-                 </div>
+                <Terminal size={20} className="text-[#53B5C7]" />
+                <div className="text-xs font-mono">
+                  <p>$ npm run test</p>
+                  <p className="text-green-400">Done in 2.45s.</p>
+                </div>
               </div>
             </motion.div>
 

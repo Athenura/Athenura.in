@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Imported Link
+import { Link } from 'react-router-dom';
 import { FaTwitter, FaLinkedinIn, FaInstagram, FaGithub, FaArrowRight, FaEnvelope, FaPhone } from 'react-icons/fa';
 
 const Footer = () => {
@@ -26,7 +26,6 @@ const Footer = () => {
         { label: 'Terms of Service', link: '/Terms-of-service' },
     ];
 
-    // Updated socialLinks to use specific colors by default (Text Color)
     const socialLinks = [
         {
             icon: <FaLinkedinIn />,
@@ -42,7 +41,7 @@ const Footer = () => {
         },
         {
             icon: <FaTwitter />,
-            link: '',
+            link: 'https://x.com/athenura_in',
             label: 'Twitter',
             colorClass: 'text-[#1DA1F2]'
         },
@@ -59,21 +58,25 @@ const Footer = () => {
             icon: <FaEnvelope />,
             label: 'Email',
             value: 'official@athenura.in',
-            link: 'mailto:official@athenura.in'
+            link: 'mailto:official@athenura.in',
+            colorClass: 'text-[#EA4335]' 
         },
         {
-            icon: <FaPhone />,
+            // ADDED style transform to flip the icon horizontally
+            icon: <FaPhone style={{ transform: 'scaleX(-1)' }} />, 
             label: 'Phone',
             value: '+91 98350 51934',
-            link: 'tel:+919835051934'
+            link: 'tel:+919835051934',
+            colorClass: 'text-[#34A853]' 
         },
     ];
 
     return (
         <footer className="bg-[#1e7a86] text-white">
-            <div className="max-w-8xl mx-auto px-6 sm:px-8 md:px-12 lg:px-20 py-10 md:py-16">
-                <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12">
-                    {/* Logo and Company Info */}
+            <div className="max-w-8xl mx-auto px-6 sm:px-8 md:px-12 lg:px-20 py-12 md:py-16">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 lg:gap-12">
+                    
+                    {/* 1. Logo and Socials */}
                     <div className="lg:col-span-1">
                         <div className="space-y-6">
                             <div className="flex items-center space-x-3">
@@ -88,9 +91,8 @@ const Footer = () => {
                             {/* Social Links Section */}
                             <div className="pt-4">
                                 <h3 className="text-lg font-bold mb-4">Follow Us</h3>
-                                <div className="flex space-x-4">
+                                <div className="flex flex-wrap gap-4">
                                     {socialLinks.map((social, index) => (
-                                        // EXTERNAL LINKS: Must remain <a> tags
                                         <a
                                             key={index}
                                             href={social.link}
@@ -99,7 +101,7 @@ const Footer = () => {
                                             rel="noopener noreferrer"
                                             className={`w-12 h-12 rounded-full bg-white flex items-center justify-center ${social.colorClass} transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg`}
                                         >
-                                            <span className="text-lg">{social.icon}</span>
+                                            <span className="text-xl">{social.icon}</span>
                                         </a>
                                     ))}
                                 </div>
@@ -107,18 +109,17 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Company Links */}
+                    {/* 2. Company Links */}
                     <div>
-                        <h3 className="text-xl font-bold mb-8 pb-3 border-b border-white/30 inline-block">Company</h3>
-                        <ul className="space-y-5">
+                        <h3 className="text-xl font-bold mb-6 pb-2 border-b border-white/30 inline-block">Company</h3>
+                        <ul className="space-y-4">
                             {companyLinks.map((item, index) => (
                                 <li key={index}>
-                                    {/* INTERNAL LINK: Changed to Link */}
                                     <Link
                                         to={item.link}
-                                        className="text-white hover:text-white transition-all duration-300 hover:pl-3 flex items-center group"
+                                        className="text-white hover:text-white transition-all duration-300 hover:pl-2 flex items-center group"
                                     >
-                                        <FaArrowRight className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                        <FaArrowRight className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm" />
                                         <span className="transition-all duration-300">{item.label}</span>
                                     </Link>
                                 </li>
@@ -126,19 +127,18 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Services Links */}
+                    {/* 3. Services Links */}
                     <div>
-                        <h3 className="text-xl font-bold mb-8 pb-3 border-b border-white/30 inline-block">Services</h3>
-                        <ul className="space-y-5">
+                        <h3 className="text-xl font-bold mb-6 pb-2 border-b border-white/30 inline-block">Services</h3>
+                        <ul className="space-y-4">
                             {serviceLinks.map((service, index) => (
                                 <li key={index}>
-                                    {/* INTERNAL LINK: Changed to Link */}
                                     <Link
                                         to={service.link}
-                                        className="block group transition-all duration-300 hover:pl-3"
+                                        className="block group transition-all duration-300 hover:pl-2"
                                     >
                                         <div className="text-white flex flex-row font-semibold text-base mb-1 group-hover:text-white transition-colors duration-300">
-                                            <FaArrowRight className="mr-2 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                            <FaArrowRight className="mr-2 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm" />
                                             {service.label}
                                         </div>
                                     </Link>
@@ -147,26 +147,28 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Contact Information */}
+                    {/* 4. Contact Information */}
                     <div>
-                        <div className="space-y-4">
-                            <h3 className="text-xl font-bold mb-8 pb-3 border-b border-white/30 inline-block">Contact Us</h3>
-                            <div className="space-y-3">
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-bold mb-6 pb-2 border-b border-white/30 inline-block">Contact Us</h3>
+                            <div className="space-y-6">
                                 {contactInfo.map((contact, index) => (
-                                    // EXTERNAL LINKS (Mail/Phone): Must remain <a> tags
                                     <a
                                         key={index}
                                         href={contact.link}
-                                        className="flex items-start space-x-3 group hover:text-white transition-colors duration-300"
+                                        className="flex items-center space-x-4 group"
                                     >
-                                        <div className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center group-hover:bg-white group-hover:text-[#3EC0D2] transition-all duration-300 mt-1">
-                                            <span className="text-sm">{contact.icon}</span>
+                                        {/* Icon Container */}
+                                        <div className={`w-12 h-12 flex-shrink-0 rounded-full bg-white flex items-center justify-center ${contact.colorClass} transition-all duration-300 transform group-hover:-translate-y-1 group-hover:shadow-lg`}>
+                                            <span className="text-lg">{contact.icon}</span>
                                         </div>
-                                        <div>
-                                            <div className="font-medium text-sm">{contact.label}</div>
-                                            <div className="text-white/85 text-sm group-hover:text-white transition-colors duration-300">
+                                        
+                                        {/* Text Info */}
+                                        <div className="flex flex-col">
+                                            <span className="font-bold text-sm uppercase tracking-wide opacity-80">{contact.label}</span>
+                                            <span className="text-white font-medium text-base group-hover:underline decoration-white/50 underline-offset-4 transition-all">
                                                 {contact.value}
-                                            </div>
+                                            </span>
                                         </div>
                                     </a>
                                 ))}
@@ -177,14 +179,13 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom Section */}
-                <div className="mt-10 md:mt-16 pt-6 md:pt-8 border-t border-white/30">
-                    <div className="flex flex-col md:flex-row justify-between items-center space-y-5 md:space-y-0">
-                        <div className="text-white/80 text-sm">
+                <div className="mt-12 md:mt-16 pt-8 border-t border-white/30">
+                    <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                        <div className="text-white/80 text-sm text-center md:text-left">
                             © {currentYear} Athenura Solutions Inc. All rights reserved.
                         </div>
                         <div className="flex flex-wrap justify-center gap-6 text-sm">
                             {legalLinks.map((legal, index) => (
-                                // INTERNAL LINK: Changed to Link
                                 <Link
                                     key={index}
                                     to={legal.link}

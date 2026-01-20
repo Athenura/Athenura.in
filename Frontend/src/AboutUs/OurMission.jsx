@@ -2,7 +2,7 @@ import React from "react";
 
 const OurMissionLight = () => {
     return (
-        <section className="relative w-full py-20 md:py-32 bg-slate-50 overflow-hidden font-sans text-slate-900">
+        <section className="relative w-full py-10 md:py-12 bg-slate-50 overflow-hidden font-sans text-slate-900">
 
             {/* -----------------------------------------------------------------
           BACKGROUND ELEMENTS

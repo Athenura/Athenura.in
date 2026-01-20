@@ -30,7 +30,7 @@ const AthenuraCulture = () => {
 
 
   return (
-    <section className="py-24 overflow-hidden" style={{ backgroundColor: theme.bg }}>
+    <section className="py-12 overflow-hidden" style={{ backgroundColor: theme.bg }}>
       <div className="container mx-auto px-6 lg:px-12">
 
         {/* --- PART 1: OUR VALUES (The Manifesto) --- */}

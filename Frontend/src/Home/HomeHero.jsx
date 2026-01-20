@@ -416,7 +416,7 @@ const HomeHero = () => {
           
           
           {/* Main Headline with stronger impact */}
-          <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-8xl font-black tracking-tight text-[#077c8c] leading-[1.05]">
+          <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-[78px] font-black tracking-tight text-[#077c8c] leading-[1.05]">
             <span className={`block overflow-hidden transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0"}`}>
               <span className={`block transform transition-transform duration-700 ease-out ${isLoaded ? "translate-y-0" : "translate-y-full"}`}>
                 Master Digital

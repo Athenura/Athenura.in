@@ -140,8 +140,14 @@ const ServicesSection = () => {
                   overflow-hidden
                 `}>
                                     {/* Service Number */}
+{/* Service Number */}
                                     <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
-                                        <div className="text-4xl sm:text-5xl font-bold text-[#F3F4F6] leading-none">
+                                        <div className={`
+                                            text-4xl sm:text-5xl font-bold leading-none transition-all duration-500
+                                            ${activeCard === service.id 
+                                                ? `text-transparent bg-clip-text bg-gradient-to-r ${service.color}` 
+                                                : 'text-[#F3F4F6]'}
+                                        `}>
                                             0{service.id}
                                         </div>
                                     </div>
@@ -294,13 +300,13 @@ const ServicesSection = () => {
 
                                     <Link to="/services">
                                     <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1075ac] text-white font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-[#43a1e3]">
-                                        VIEW More SERVICES
+                                        View More Services
                                     </button>
                                     </Link>
 
                                     <a href="https://calendly.com/official-athenura/30min" target="_blank">
                                     <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/40 text-white font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-white/10">
-                                        Book Your FREE Consultation
+                                        Book Your Free Consultation
                                     </button>
                                     </a>
                                 </div>
