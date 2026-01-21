@@ -82,7 +82,7 @@ function App() {
 
 
                 <Route path='/portfolio' element={<PortfolioMain />} />
-                <Route path='/internship-details' element={<InternshipPageMain />} />
+                <Route path='/internship' element={<InternshipPageMain />} />
                 <Route path='/about-us' element={<AboutMain />} />
                 <Route path="/faqs" element={<FaqPage />} />
 

@@ -71,7 +71,7 @@ const ImprovedCareerHero = () => {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <Link to="/internship-details">
+            <Link to="/internship">
             <button
               className="group relative px-8 py-4 rounded-xl font-bold text-white shadow-lg overflow-hidden transition-all hover:scale-[1.02]"
               style={{ backgroundColor: theme.primary }}

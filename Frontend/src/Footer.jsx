@@ -5,12 +5,13 @@ import { FaTwitter, FaLinkedinIn, FaInstagram, FaGithub, FaArrowRight, FaEnvelop
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
+    // 1. UPDATED: Added 'isAnchor: true' to the specific items you requested
     const companyLinks = [
-        { label: 'About Us', link: '/about-us' },
-        { label: 'Careers', link: '/careers' },
-        { label: 'Internship Program', link: '/internship-details' },
-        { label: 'Internship Policy', link: '/internship-policy' },
-        { label: "FAQs", link: "/faqs" }
+        { label: 'About Us', link: '/about-us', isAnchor: true },
+        { label: 'Careers', link: '/careers', isAnchor: true },
+        { label: 'Internship Program', link: '/internship', isAnchor: true },
+        { label: 'Internship Policy', link: '/internship-policy' }, // Defaults to <Link>
+        { label: "FAQs", link: "/faqs" } // Defaults to <Link>
     ];
 
     const serviceLinks = [
@@ -62,7 +63,6 @@ const Footer = () => {
             colorClass: 'text-[#EA4335]' 
         },
         {
-            // ADDED style transform to flip the icon horizontally
             icon: <FaPhone style={{ transform: 'scaleX(-1)' }} />, 
             label: 'Phone',
             value: '+91 98350 51934',
@@ -70,6 +70,9 @@ const Footer = () => {
             colorClass: 'text-[#34A853]' 
         },
     ];
+
+    // Helper variable for consistent styling across both <a> and <Link>
+    const linkClasses = "text-white hover:text-white transition-all duration-300 hover:pl-2 flex items-center group";
 
     return (
         <footer className="bg-[#1e7a86] text-white">
@@ -115,13 +118,18 @@ const Footer = () => {
                         <ul className="space-y-4">
                             {companyLinks.map((item, index) => (
                                 <li key={index}>
-                                    <Link
-                                        to={item.link}
-                                        className="text-white hover:text-white transition-all duration-300 hover:pl-2 flex items-center group"
-                                    >
-                                        <FaArrowRight className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm" />
-                                        <span className="transition-all duration-300">{item.label}</span>
-                                    </Link>
+                                    {/* UPDATED: Logic to choose between <a> and <Link> */}
+                                    {item.isAnchor ? (
+                                        <a href={item.link} className={linkClasses}>
+                                            <FaArrowRight className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm" />
+                                            <span className="transition-all duration-300">{item.label}</span>
+                                        </a>
+                                    ) : (
+                                        <Link to={item.link} className={linkClasses}>
+                                            <FaArrowRight className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm" />
+                                            <span className="transition-all duration-300">{item.label}</span>
+                                        </Link>
+                                    )}
                                 </li>
                             ))}
                         </ul>
