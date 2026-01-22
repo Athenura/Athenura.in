@@ -8,7 +8,7 @@ const Footer = () => {
     // 1. UPDATED: Added 'isAnchor: true' to the specific items you requested
     const companyLinks = [
         { label: 'About Us', link: '/about-us', isAnchor: true },
-        { label: 'Careers', link: '/careers', isAnchor: true },
+        { label: 'Career', link: '/career', isAnchor: true },
         { label: 'Internship Program', link: '/internship', isAnchor: true },
         { label: 'Internship Policy', link: '/internship-policy' }, // Defaults to <Link>
         { label: "FAQs", link: "/faqs" } // Defaults to <Link>

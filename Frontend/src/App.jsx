@@ -62,8 +62,7 @@ function App() {
                 {/* Web Pages */}
 
                 <Route path="/" element={<HomeMain />} />
-                <Route path="/home" element={<HomeMain />} />
-                <Route path="/careers" element={<CareerMain />} />
+                <Route path="/career" element={<CareerMain />} />
                 <Route path="/contact" element={<ContactMain />} />
 
 

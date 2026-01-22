@@ -140,7 +140,7 @@ const CareersSection = () => {
                 <StatBox number="100%" label="Remote First" icon={<Globe size={18}/>} theme={theme} />
                 <StatBox number="4.9" label="Glassdoor" icon={<Star size={18}/>} theme={theme} />
              </div>
-             <Link to="/careers" className="w-fit">
+             <Link to="/career" className="w-fit">
                <button 
                   className="group w-fit flex items-center gap-4 px-8 py-4 rounded-xl text-white font-bold text-lg shadow-xl shadow-[#28A3B9]/20 hover:shadow-2xl hover:scale-105 transition-all duration-300"
                   style={{ background: `linear-gradient(to right, ${theme.secondary}, ${theme.primary})` }}
@@ -187,7 +187,7 @@ const CareersSection = () => {
             </div>
           </div>
           
-          <Link to="/careers" className="w-full mt-4">
+          <Link to="/career" className="w-full mt-4">
             <button 
               className="group w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-white font-bold text-base shadow-lg shadow-[#28A3B9]/25 active:scale-[0.98] transition-all duration-200"
               style={{ background: `linear-gradient(to right, ${theme.secondary}, ${theme.primary})` }}
