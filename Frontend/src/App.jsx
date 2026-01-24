@@ -25,6 +25,7 @@ import UIUXMain from './Service/SubServices/UIUX/UIUXMain';
 import MaintainMain from './Service/SubServices/WebMaintanance/MaintainMain';
 import TestingMain from './Service/SubServices/SoftwareTesting/TestingMain';
 import BusMain from './Service/SubServices/Business/BusMain';
+import OneMonthFeedback from './InternshipPages/OneMonthFeedback';
 // import NotFound from './ErrorPage/ErrorPage';
 
 
@@ -57,8 +58,7 @@ function App() {
                 <Route path="/internship/leave" element={<LeaveFrom />} />
                 <Route path="/internship/performance" element={<VerifyFrom />} />
                 <Route path="/internship/feedback" element={<FeedbackFrom />} />
-
-
+                <Route path="/internship/one-month-feedback" element={<OneMonthFeedback />} />
                 {/* Web Pages */}
 
                 <Route path="/" element={<HomeMain />} />

@@ -72,25 +72,27 @@ const ImprovedCareerHero = () => {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <Link to="/internship">
-            <button
-              className="group relative px-8 py-4 rounded-xl font-bold text-white shadow-lg overflow-hidden transition-all hover:scale-[1.02]"
-              style={{ backgroundColor: theme.primary }}
-            >
-              <div className="absolute inset-0 w-full h-full bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+              <button
+                className="group relative px-8 py-4 rounded-xl font-bold text-white shadow-lg overflow-hidden transition-all hover:scale-[1.02]"
+                style={{ backgroundColor: theme.primary }}
+              >
+                <div className="absolute inset-0 w-full h-full bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
 
-              <span className="relative flex items-center gap-2">
-                Explore Roles
-                <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-              </span>
-            </button>
+                <span className="relative flex items-center gap-2">
+                  Explore Roles
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </span>
+              </button>
             </Link>
 
-            {/* <button
+            <button
+              onClick={() => window.open('/handbook.pdf', '_blank')}
               className="px-8 py-4 rounded-xl font-bold border-2 bg-transparent transition-all hover:bg-white hover:shadow-md"
               style={{ borderColor: `${theme.primary}20`, color: theme.textDark }}
             >
               Read Handbook
-            </button> */}
+            </button>
+
           </div>
 
           {/* Social Proof / Stats */}
