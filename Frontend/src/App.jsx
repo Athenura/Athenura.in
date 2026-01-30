@@ -26,6 +26,7 @@ import MaintainMain from './Service/SubServices/WebMaintanance/MaintainMain';
 import TestingMain from './Service/SubServices/SoftwareTesting/TestingMain';
 import BusMain from './Service/SubServices/Business/BusMain';
 import OneMonthFeedback from './InternshipPages/OneMonthFeedback';
+import NotFound from './NotFound';
 // import NotFound from './ErrorPage/ErrorPage';
 
 
@@ -90,11 +91,8 @@ function App() {
                 <Route path="/internship-policy" element={<InternshipMain />} />
                 <Route path="/privacy-policy" element={<PrivacyMain />} />
                 <Route path="/Terms-of-service" element={<TermsMain />} />
-                {/* <Route path="*" element={<NotFound />} /> */}
-
-
-
-
+                
+                <Route path="*" element={<NotFound />} /> 
               </Routes>
             </div>
           </div>
