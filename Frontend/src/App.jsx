@@ -27,6 +27,7 @@ import TestingMain from './Service/SubServices/SoftwareTesting/TestingMain';
 import BusMain from './Service/SubServices/Business/BusMain';
 import OneMonthFeedback from './InternshipPages/OneMonthFeedback';
 import NotFound from './NotFound';
+import Planner from './Planner';
 // import NotFound from './ErrorPage/ErrorPage';
 
 
@@ -65,6 +66,7 @@ function App() {
                 <Route path="/" element={<HomeMain />} />
                 <Route path="/career" element={<CareerMain />} />
                 <Route path="/contact" element={<ContactMain />} />
+                <Route path="/planner" element={<Planner />} />
 
 
 
