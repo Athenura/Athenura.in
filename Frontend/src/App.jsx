@@ -94,7 +94,6 @@ function App() {
                 <Route path="/privacy-policy" element={<PrivacyMain />} />
                 <Route path="/Terms-of-service" element={<TermsMain />} />
                 
-                <Route path="*" element={<NotFound />} /> 
               </Routes>
             </div>
           </div>
