@@ -197,7 +197,7 @@ const Footer = () => {
                         </div>
                         <div className="mt-4 flex items-start text-sm text-white/90">
                             <FaMapMarkerAlt className="mt-1 mr-2 flex-shrink-0 text-white" />
-                            <span>Sector 62, Noida, Uttar Pradesh</span>
+                            <span>Sector-62, Noida, Uttar Pradesh</span>
                         </div>
                     </div>
 
