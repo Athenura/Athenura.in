@@ -127,7 +127,67 @@ const ContactContent = () => {
         </div>
       </section>
 
+      <section className="py-16 px-6 lg:px-12 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4" style={{ color: theme.textDark }}>
+              Global Reach, <span style={{ color: theme.primary }}>Remote Heart</span>
+            </h2>
+            <p className="text-gray-500 max-w-2xl mx-auto">
+              At Athenura, we empower students across India with impactful digital solutions. Discover us where innovation meets education.
+            </p>
+          </div>
 
+          {/* Map Container with Animation */}
+          <div className="relative group rounded-3xl overflow-hidden shadow-2xl border-4 border-white animate-fadeIn">
+            {/* Simple CSS animation injected via style tag for convenience */}
+            <style>
+              {`
+                @keyframes float {
+                  0% { transform: translateY(0px); }
+                  50% { transform: translateY(-10px); }
+                  100% { transform: translateY(0px); }
+                }
+                .animate-map-float {
+                  animation: float 6s ease-in-out infinite;
+                }
+                .map-overlay {
+                  background: linear-gradient(to bottom, rgba(30, 144, 168, 0.1), transparent);
+                  pointer-events: none;
+                }
+              `}
+            </style>
+
+            <div className="relative w-full h-[450px] md:h-[550px] animate-map-float">
+              {/* The Map */}
+              <iframe
+                title="Athenura Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.378777777823!2d77.3614601942478!3d28.618407722875563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2cb70326146a27db%3A0x39227c4340f97501!2sAthenura!5e0!3m2!1sen!2sin!4v1770454010754!5m2!1sen!2sin"
+                className="absolute inset-0 w-full h-full border-0 grayscale-[20%] contrast-[1.1] transition-all duration-700 group-hover:grayscale-0"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+
+              {/* Decorative Overlay for a "Tech" feel */}
+              <div className="absolute inset-0 map-overlay"></div>
+
+              {/* Floating Badge */}
+              <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 bg-white p-4 rounded-2xl shadow-xl z-20 flex items-center gap-4 border border-teal-100">
+                <div className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center text-white">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-bold text-sm block" style={{ color: theme.textDark }}>Athenura HQ</p>
+                  <p className="text-xs text-gray-500">Connecting talent across India</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
       {/* --- SECTION 2: INFO & FORM (Replaces Map) --- */}
@@ -258,6 +318,12 @@ const ContactContent = () => {
           </div>
         </div>
       </section>
+
+
+
+
+
+
 
       {/* --- SECTION 3: FAQ (Same as before) --- */}
       <section className="py-10 px-6 lg:px-12" style={{ backgroundColor: theme.bgAlt }}>
