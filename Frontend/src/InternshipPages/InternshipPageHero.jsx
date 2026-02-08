@@ -264,7 +264,7 @@ const InternshipHeroQuiz = () => {
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold leading-tight text-gray-900 mb-4 md:mb-6">
               Prove Your Skills. <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1E7A86] to-[#1E90A8]">
-                Get The Internship.
+                Get The Athenura Internship.
               </span>
             </h1>
             <p className="text-sm md:text-xl text-gray-600 mb-6 md:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 md:px-0">

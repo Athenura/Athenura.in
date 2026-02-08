@@ -29,44 +29,44 @@ const WhoWeAreSection = () => {
         return () => clearInterval(scrollInterval);
     }, []);
 
-const leadershipTeam = [
-    {
-        id: 1,
-        name: "Amit Verma",
-        role: "CEO & Founder",
-        image: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=400&h=400&fit=crop&crop=face",
-        bio: "Serial entrepreneur with 15+ years of experience in building scalable digital products and technology-driven businesses.",
-        linkedin: "#",
-        twitter: "#"
-    },
-    {
-        id: 2,
-        name: "Neha Kapoor",
-        role: "Chief Technology Officer",
-        image: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?w=400&h=400&fit=crop&crop=face",
-        bio: "Technology leader specializing in cloud-native architectures, enterprise platforms, and high-performance engineering teams.",
-        linkedin: "#",
-        twitter: "#"
-    },
-    {
-        id: 3,
-        name: "Rohit Malhotra",
-        role: "Head of Engineering",
-        image: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=400&h=400&fit=crop&crop=face",
-        bio: "Expert in scalable system design with a strong focus on agile delivery, code quality, and engineering excellence.",
-        linkedin: "#",
-        twitter: "#"
-    },
-    {
-        id: 4,
-        name: "Ananya Iyer",
-        role: "Design Director",
-        image: "https://images.unsplash.com/photo-1589571894960-20bbe2828d0a?w=400&h=400&fit=crop&crop=face",
-        bio: "User experience strategist with a passion for crafting intuitive interfaces and building strong brand-driven design systems.",
-        linkedin: "#",
-        twitter: "#"
-    },
-];
+    const leadershipTeam = [
+        {
+            id: 1,
+            name: "Amit Verma",
+            role: "CEO & Founder",
+            image: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=400&h=400&fit=crop&crop=face",
+            bio: "Serial entrepreneur with 15+ years of experience in building scalable digital products and technology-driven businesses.",
+            linkedin: "#",
+            twitter: "#"
+        },
+        {
+            id: 2,
+            name: "Neha Kapoor",
+            role: "Chief Technology Officer",
+            image: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?w=400&h=400&fit=crop&crop=face",
+            bio: "Technology leader specializing in cloud-native architectures, enterprise platforms, and high-performance engineering teams.",
+            linkedin: "#",
+            twitter: "#"
+        },
+        {
+            id: 3,
+            name: "Rohit Malhotra",
+            role: "Head of Engineering",
+            image: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=400&h=400&fit=crop&crop=face",
+            bio: "Expert in scalable system design with a strong focus on agile delivery, code quality, and engineering excellence.",
+            linkedin: "#",
+            twitter: "#"
+        },
+        {
+            id: 4,
+            name: "Ananya Iyer",
+            role: "Design Director",
+            image: "https://images.unsplash.com/photo-1589571894960-20bbe2828d0a?w=400&h=400&fit=crop&crop=face",
+            bio: "User experience strategist with a passion for crafting intuitive interfaces and building strong brand-driven design systems.",
+            linkedin: "#",
+            twitter: "#"
+        },
+    ];
 
 
     const companyValues = [
@@ -118,18 +118,20 @@ const leadershipTeam = [
                             Our <span className="text-[#1E7A86]">Story</span>
                         </h3>
                         <p className="text-[#2E2E2E]/70 text-lg leading-relaxed">
-                            Founded with a vision to shape the future of digital innovation, Athenura began as a
-                            focused team driven by creativity, technology, and purpose. Today, we are a growing
-                            organization delivering impactful digital solutions to businesses across diverse
-                            industries and regions.
+                            Founded with a vision to shape the future of <strong>digital innovation</strong>,
+                            Athenura officially established its foundation in <strong>2026</strong> as a
+                            focused team driven by <strong>creativity, technology, and purpose</strong>.
+                            Today, we are a growing organization delivering <strong>impactful digital
+                                solutions</strong> to businesses across <strong>diverse industries and regions</strong>.
                         </p>
 
                         <p className="text-[#2E2E2E]/70 text-lg leading-relaxed">
-                            Our journey is guided by a clear philosophy: build solutions that create real value.
-                            Every strategy we design, every product we develop, and every experience we craft
-                            is centered on solving real-world problems and helping our clients grow with
-                            confidence in a digital-first world.
+                            Our journey is guided by a clear philosophy: <strong>build solutions that create
+                                real value</strong>. Every strategy we design, every product we develop, and
+                            every experience we craft is centered on <strong>solving real-world problems</strong>
+                            and helping our clients grow with <strong>confidence in a digital-first world</strong>.
                         </p>
+
 
 
                         {/* Values Grid */}
@@ -183,7 +185,7 @@ const leadershipTeam = [
                 </div>
 
                 {/* Leadership Team */}
-               
+
 
                 {/* Infinite Loop - Tech Stack */}
                 <div className={`mb-10 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>

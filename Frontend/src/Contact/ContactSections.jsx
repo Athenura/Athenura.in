@@ -77,10 +77,10 @@ const ContactContent = () => {
 
           {/* LEFT CONTENT */}
           <div className="text-white space-y-8">
-            <h2 className="text-4xl md:text-5xl xl:text-6xl font-extrabold leading-tight">
+            <h1 className="text-4xl md:text-5xl xl:text-6xl font-extrabold leading-tight">
               Get in Touch <br />
               <span className="text-teal-200">with Athenura</span>
-            </h2>
+            </h1>
 
             <p className="text-teal-100 text-lg max-w-lg leading-relaxed">
               Have questions about our internships or programs?
