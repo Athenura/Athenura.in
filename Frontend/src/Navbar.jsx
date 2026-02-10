@@ -85,7 +85,7 @@ const Navbar = () => {
       ref={servicesRef}
       onMouseEnter={() => setIsServicesHovered(true)}
       onMouseLeave={() => setIsServicesHovered(false)}
-      className={`absolute left-1/2 -translate-x-1/2 top-[calc(100%+10px)] w-[680px] bg-white/75 backdrop-blur-md rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 transition-all duration-300 ease-out ${
+      className={`absolute left-1/2 -translate-x-1/2 top-[calc(100%+10px)] w-[680px] bg-white/95 backdrop-blur-md rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 transition-all duration-300 ease-out ${
         isServicesOpen || isServicesHovered
           ? "opacity-100 visible translate-y-0"
           : "opacity-0 invisible -translate-y-4"
