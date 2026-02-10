@@ -67,6 +67,7 @@ const Navbar = () => {
     { name: "Career", path: "/career" },
     { name: "Internship", path: "/internship" },
     { name: "Contact", path: "/contact" },
+    { name: "FAQs", path: "/faqs" },
   ];
 
   const servicesData = [
@@ -165,7 +166,7 @@ const Navbar = () => {
             : "bg-white border-b border-gray-100 py-4"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-10">
             
             {/* Logo - Added pointer-events-auto just in case */}
