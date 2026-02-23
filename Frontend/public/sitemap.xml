@@ -19,21 +19,21 @@
     <loc>https://www.athenura.in/career</loc>
     <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.athenura.in/about-us</loc>
     <lastmod>2026-02-10</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.athenura.in/contact</loc>
     <lastmod>2026-02-10</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.5</priority>
   </url>
 
 </urlset>

@@ -47,7 +47,8 @@ function App() {
     <>
       {isLoading ? (
         <Preloader onFinish={() => setIsLoading(false)} />
-      ) : (
+      ) : 
+      (
         <Router>
           <ScrollToTop />
             <Navbar />
@@ -98,7 +99,8 @@ function App() {
           </div>
           <Footer />
         </Router>
-      )}
+      )
+      }
 
       <style jsx global>{`
         /* Optional: Makes in-page anchor links smooth */
@@ -115,6 +117,7 @@ function App() {
         }
       `}</style>
     </>
+    
   );
 }
 
