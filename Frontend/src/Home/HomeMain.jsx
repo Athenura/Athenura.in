@@ -10,10 +10,10 @@ import HomeSEO from '../SEO/HomeSEO'
 const HomeMain = () => {
   return (
     <div>
-      <HomeSEO />
+        <HomeSEO />
         <HomeHero />
-        <HomeService />
         <WhoWeAreSection />
+        <HomeService />
         {/* <AwardsSection /> */}
         <CareersSection />
         <HomeWhyUs />
