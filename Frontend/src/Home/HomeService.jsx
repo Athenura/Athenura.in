@@ -275,45 +275,64 @@ const ServicesSection = () => {
                     className={`mt-16 transition-all duration-1000 ease-out ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
                         }`}
                 >
-                    <div className="max-w-8xl mx-auto px-4">
-                        <div className="rounded-2xl bg-gradient-to-r from-[#2e5f8a] via-[#399ab7] to-[#2e5f8a] px-6 py-8 sm:px-10 sm:py-10">
-                            <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+<div className="max-w-8xl mx-auto px-4 py-16">
+    {/* Main Card with Animated Border Gradient */}
+    <div className="relative group rounded-[2.5rem] p-[2px] overflow-hidden bg-slate-800">
+        {/* Animated Gradient Border Layer */}
+        <div className="absolute inset-[-1000%] animate-[spin_6s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#00f2fe_0%,#4facfe_25%,#00f2fe_50%,#4facfe_75%,#00f2fe_100%)] opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
+        
+        {/* Inner Content Container */}
+        <div className="relative rounded-[2.4rem] bg-[#0b1120] px-8 py-12 sm:px-14 sm:py-16 overflow-hidden">
+            
+            {/* Background Decorative Elements */}
+            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-emerald-500/10 blur-[100px] rounded-full" />
+            <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-blue-400/10 blur-[100px] rounded-full" />
 
-                                {/* Left: Heading */}
-                                <div className="flex-1 text-center lg:text-left">
-                                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
-                                        Transform <br className="hidden sm:block" />
-                                        Your Manual Work To Automated Solutions
-                                    </h3>
-                                </div>
+            <div className="relative flex flex-col lg:flex-row items-center gap-12">
+                
+                {/* Left: Dynamic Heading */}
+                <div className="flex-[1.2] lg:text-left space-y-6">
+                    
+                    <h3 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-[1.05] tracking-tight">
+                        Turn Manual Work<br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500">
+                            Into Automate Solutions.
+                        </span>
+                    </h3>
+                </div>
 
-                                {/* Middle: Description */}
-                                <div className="flex-1 text-center">
-                                    <p className="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed max-w-xl mx-auto">
-                                        Helping 296+ businesses drive measurable growth with high-performance
-                                        marketing and web solutions.
-                                    </p>
-                                </div>
+                {/* Right: Info & Actions */}
+                <div className="flex-1 flex flex-col gap-8">
+                    <p className="text-lg sm:text-xl text-slate-400 leading-relaxed  lg:text-left font-light">
+                        We’ve helped <strong className="text-white font-semibold">296+ global brands</strong> eliminate bottlenecks and reclaim thousands of hours through intelligent web solutions.
+                    </p>
 
-                                {/* Right: CTAs */}
-                                <div className="flex flex-col sm:flex-row items-center gap-4">
+                    <div className="flex flex-col sm:flex-row items-center gap-5">
+                        {/* Shimmer Primary Button */}
+                        <Link to="/services" className="w-full sm:w-auto">
+                            <button className="relative w-full inline-flex items-center justify-center gap-3 px-8 py-4 overflow-hidden font-bold text-white transition-all duration-300 bg-teal-600 rounded-2xl hover:bg-teal-500 hover:scale-[1.03] hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.5)] active:scale-95 group/btn">
+                                <span className="relative z-10 flex items-center gap-2">
+                                    Explore Solutions
+                                    <svg className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                                </span>
+                                {/* Shimmer Effect */}
+                                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                            </button>
+                        </Link>
 
-                                    <Link to="/services">
-                                    <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1075ac] text-white font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-[#43a1e3]">
-                                        View More Services
-                                    </button>
-                                    </Link>
-
-                                    <a href="https://calendly.com/official-athenura/30min" target="_blank">
-                                    <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/40 text-white font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-white/10">
-                                        Book Your Free Consultation
-                                    </button>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
+                        {/* Ghost Button */}
+                        <a href="https://calendly.com/official-athenura/30min" target="_blank" className="w-full sm:w-auto">
+                            <button className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-slate-300 transition-all duration-300 border-2 border-slate-700 rounded-2xl hover:bg-slate-800 hover:text-white hover:border-slate-500">
+                                Book Strategy Call
+                            </button>
+                        </a>
                     </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
                 </div>
 
 
