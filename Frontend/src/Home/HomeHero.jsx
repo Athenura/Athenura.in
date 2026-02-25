@@ -211,16 +211,16 @@ const AthenuraHero = () => {
                 initial={{ opacity: 0, x: 20 }}
                 animate={stage === 'final' ? { opacity: 1, x: 0 } : { opacity: 0 }}
                 transition={{ duration: 1, delay: 0.3 }}
-                className="lg:col-span-5 border-l border-white/10 pl-8 py-4"
+                className="lg:col-span-5 border-l-2 border-[#118296] pl-8 py-4"
               >
                 <p className="text-xl lg:text-2xl leading-relaxed text-gray-400 font-light italic serif">
                   <span className="text-[#28A3B9] text-4xl block mb-2 not-italic">“</span>
                   Athenura bridges the gap between academic theory and industry reality empowering and building the architects of tomorrow.
                   <span className="text-[#28A3B9] text-4xl block mt-1 text-right not-italic">”</span>
                 </p>
-                <div className="mt-6 flex items-center gap-3">
+                <div className="mt-1 flex items-center gap-3">
                   <div className="h-[1px] w-8 bg-[#28A3B9]" />
-                  <span className="text-[10px] uppercase tracking-[0.5em] text-white/40">The Mission</span>
+                  <span className="text-[12px] uppercase tracking-[0.5em] text-white/50">The Mission</span>
                 </div>
               </motion.div>
             </motion.div>
