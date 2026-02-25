@@ -91,7 +91,7 @@ const AthenuraHero = () => {
   const yBg = useTransform(scrollY, [0, 500], [0, 150]);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#030303] overflow-hidden text-white">
+    <div className="relative min-h-[90vh] w-full bg-[#030303] overflow-hidden text-white">
 
       {/* --- BACKGROUND VIDEO LAYER --- */}
       <div className="absolute inset-0 z-0">
@@ -101,7 +101,7 @@ const AthenuraHero = () => {
           playsInline
           /* Fixed Path: In React/Vite, use /filename for public folder files */
           src="/Animate.mp4" 
-          className="w-full h-full object-cover opacity-30"
+          className="w-full h-full object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-black/10" />
       </div>
@@ -110,14 +110,14 @@ const AthenuraHero = () => {
       <motion.canvas
         ref={canvasRef}
         style={{ y: yBg }}
-        className="absolute inset-0 z-[1] opacity-60 pointer-events-none"
+        className="absolute inset-0 z-[1] opacity-80 pointer-events-none"
       />
 
       {/* --- VIGNETTE/GRADIENT LAYER --- */}
       <div className="absolute inset-0 z-[2] bg-[radial-gradient(circle_at_center,transparent_0%,#030303_90%)]" />
 
       {/* --- CONTENT LAYER --- */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8 max-w-7xl mx-auto">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-[80vh] px-8 max-w-7xl mx-auto">
         <AnimatePresence mode="wait">
           {stage === 'brand-reveal' ? (
             <motion.div
@@ -128,7 +128,7 @@ const AthenuraHero = () => {
               transition={{ duration: 0.8 }}
               className="flex flex-col items-center"
             >
-              <div className="flex mb-4">
+              <div className="flex mt-20">
                 {"ATHENURA".split("").map((char, i) => (
                   <motion.span
                     key={i}
