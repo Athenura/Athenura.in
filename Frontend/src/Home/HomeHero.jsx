@@ -91,7 +91,7 @@ const AthenuraHero = () => {
   const yBg = useTransform(scrollY, [0, 500], [0, 150]);
 
   return (
-    <div className="relative min-h-[90vh] w-full bg-[#030303] overflow-hidden text-white">
+    <div className="relative min-h-[92vh] w-full bg-[#030303] overflow-hidden text-white">
 
       {/* --- BACKGROUND VIDEO LAYER --- */}
       <div className="absolute inset-0 z-0">
@@ -165,7 +165,7 @@ const AthenuraHero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 0.4, y: 0 }}
                     transition={{ delay: 0.1, duration: 0.8 }}
-                    className="block italic"
+                    className="block italic mt-15"
                   >
                     Together
                   </motion.span>
