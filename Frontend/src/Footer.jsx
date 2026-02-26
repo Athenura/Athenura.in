@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaTwitter, FaLinkedinIn, FaInstagram, FaGithub, FaArrowRight, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaTwitter, FaLinkedinIn, FaInstagram, FaMedium, FaArrowRight, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -47,9 +47,9 @@ const Footer = () => {
             colorClass: 'text-[#1DA1F2]'
         },
         {
-            icon: <FaGithub />,
-            link: 'https://github.com/Athenura',
-            label: 'GitHub',
+            icon: <FaMedium />,
+            link: 'https://medium.com/@athenura',
+            label: 'Medium',
             colorClass: 'text-[#181717]'
         }
     ];
