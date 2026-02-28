@@ -27,6 +27,15 @@ import TestingMain from './Service/SubServices/SoftwareTesting/TestingMain';
 import BusMain from './Service/SubServices/Business/BusMain';
 import OneMonthFeedback from './InternshipPages/OneMonthFeedback';
 import Planner from './Planner';
+import BlogMain from './Blog/BlogMain';
+import WhyAthenuraExists from './Blog/BlogsContent/WhyAthenuraExists';
+import AthenuraInternshipProgram from './Blog/BlogsContent/AthenuraInternshipProgram';
+import FullStackIntensive from './Blog/BlogsContent/FullStackIntensive';
+import DataScienceInternship from './Blog/BlogsContent/DataScienceInternship';
+import UIUXDesignInternship from './Blog/BlogsContent/UIUXDesignInternship';
+import DigitalMarketingInternship from './Blog/BlogsContent/DigitalMarketingInternship';
+import RemoteInternshipGuide from './Blog/BlogsContent/RemoteInternshipGuide';
+import PortfolioProjectsArticle from './Blog/BlogsContent/PortfolioProjectsArticle';
 // import NotFound from './ErrorPage/ErrorPage';
 
 
@@ -47,59 +56,75 @@ function App() {
     <>
       {isLoading ? (
         <Preloader onFinish={() => setIsLoading(false)} />
-      ) : 
-      (
-        <Router>
-          <ScrollToTop />
+      ) :
+        (
+          <Router>
+            <ScrollToTop />
             <Navbar />
-          <div className="animate-fade-in-up ">
-            <div className="min-h-screen ">
-              <Routes>
-                {/* Extarnal Pages */}
-                <Route path="/apply-internship" element={<ApplyInternship />} />
-                <Route path="/internship/leave" element={<LeaveFrom />} />
-                <Route path="/internship/performance" element={<VerifyFrom />} />
-                <Route path="/internship/feedback" element={<FeedbackFrom />} />
-                <Route path="/internship/one-month-feedback" element={<OneMonthFeedback />} />
-                {/* Web Pages */}
+            <div className="animate-fade-in-up ">
+              <div className="min-h-screen ">
+                <Routes>
+                  {/* Extarnal Pages */}
+                  <Route path="/apply-internship" element={<ApplyInternship />} />
+                  <Route path="/internship/leave" element={<LeaveFrom />} />
+                  <Route path="/internship/performance" element={<VerifyFrom />} />
+                  <Route path="/internship/feedback" element={<FeedbackFrom />} />
+                  <Route path="/internship/one-month-feedback" element={<OneMonthFeedback />} />
+                  {/* Web Pages */}
 
-                <Route path="/" element={<HomeMain />} />
-                <Route path="/career" element={<CareerMain />} />
-                <Route path="/contact" element={<ContactMain />} />
-                <Route path="/planner" element={<Planner />} />
-
-
-
-                <Route path="/services" element={<ServiceMain />} />
-                
-                {/* Sub Service Pages */}
-
-                <Route path='/services/custom-software' element={<CustomMain />} />
-                <Route path='/services/web-apps' element={<WebMain />} />
-                <Route path='/services/enterprise' element={<EnterMain />} />
-                <Route path='/services/ui-ux' element={<UIUXMain />} />
-                <Route path='/services/maintenance' element={<MaintainMain />} />
-                <Route path='/services/testing' element={<TestingMain />} />
-                <Route path='/services/automation' element={<BusMain />} />
+                  <Route path="/" element={<HomeMain />} />
+                  <Route path="/career" element={<CareerMain />} />
+                  <Route path="/contact" element={<ContactMain />} />
+                  <Route path="/planner" element={<Planner />} />
 
 
-                <Route path='/portfolio' element={<PortfolioMain />} />
-                <Route path='/internship' element={<InternshipPageMain />} />
-                <Route path='/about-us' element={<AboutMain />} />
-                <Route path="/faqs" element={<FaqPage />} />
+
+                  <Route path="/services" element={<ServiceMain />} />
+
+                  {/* Sub Service Pages */}
+
+                  <Route path='/services/custom-software' element={<CustomMain />} />
+                  <Route path='/services/web-apps' element={<WebMain />} />
+                  <Route path='/services/enterprise' element={<EnterMain />} />
+                  <Route path='/services/ui-ux' element={<UIUXMain />} />
+                  <Route path='/services/maintenance' element={<MaintainMain />} />
+                  <Route path='/services/testing' element={<TestingMain />} />
+                  <Route path='/services/automation' element={<BusMain />} />
 
 
-                {/* Legal Pages */}
-                <Route path="/internship-policy" element={<InternshipMain />} />
-                <Route path="/privacy-policy" element={<PrivacyMain />} />
-                <Route path="/Terms-of-service" element={<TermsMain />} />
-                
-              </Routes>
+                  <Route path='/portfolio' element={<PortfolioMain />} />
+                  <Route path='/internship' element={<InternshipPageMain />} />
+                  <Route path='/about-us' element={<AboutMain />} />
+                  <Route path="/faqs" element={<FaqPage />} />
+
+                  <Route path='/blogs' element={<BlogMain />} />
+
+                  {/* Blogs Content Pages  */}
+
+                  <Route path='/blogs/why-athenura-exists' element={<WhyAthenuraExists />} />
+                  <Route path='/blogs/athenura-internship-program' element={<AthenuraInternshipProgram />} />
+                  <Route path='/blogs/fullstack-intensive' element={<FullStackIntensive />} />
+                  <Route path='/blogs/data-science-internship' element={<DataScienceInternship />} />
+                  <Route path='/blogs/ui-ux-design-internship' element={<UIUXDesignInternship />} />
+                  <Route path='/blogs/digital-marketing-mastery' element={<DigitalMarketingInternship />} />
+                  <Route path='/blogs/ace-remote-internship' element={<RemoteInternshipGuide />} />
+                  <Route path='/blogs/portfolio-grade-projects' element={<PortfolioProjectsArticle />} />
+
+
+
+
+
+                  {/* Legal Pages */}
+                  <Route path="/internship-policy" element={<InternshipMain />} />
+                  <Route path="/privacy-policy" element={<PrivacyMain />} />
+                  <Route path="/Terms-of-service" element={<TermsMain />} />
+
+                </Routes>
+              </div>
             </div>
-          </div>
-          <Footer />
-        </Router>
-      )
+            <Footer />
+          </Router>
+        )
       }
 
       <style jsx global>{`
@@ -117,7 +142,7 @@ function App() {
         }
       `}</style>
     </>
-    
+
   );
 }
 

@@ -67,7 +67,7 @@ const Navbar = () => {
     { name: "Career", path: "/career" },
     { name: "Internship", path: "/internship" },
     { name: "Contact", path: "/contact" },
-    { name: "FAQs", path: "/faqs" },
+    { name: "Blogs", path: "/blogs" },
   ];
 
   const servicesData = [
@@ -86,27 +86,26 @@ const Navbar = () => {
       ref={servicesRef}
       onMouseEnter={() => setIsServicesHovered(true)}
       onMouseLeave={() => setIsServicesHovered(false)}
-      className={`absolute left-1/2 -translate-x-1/2 top-[calc(100%+10px)] w-[680px] bg-white/95 backdrop-blur-md rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 transition-all duration-300 ease-out ${
-        isServicesOpen || isServicesHovered
-          ? "opacity-100 visible translate-y-0"
-          : "opacity-0 invisible -translate-y-4"
-      } z-50 overflow-hidden`}
+      className={`absolute left-1/2 -translate-x-1/2 top-[calc(100%+10px)] w-[680px] bg-white/95 backdrop-blur-md rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 transition-all duration-300 ease-out ${isServicesOpen || isServicesHovered
+        ? "opacity-100 visible translate-y-0"
+        : "opacity-0 invisible -translate-y-4"
+        } z-50 overflow-hidden`}
     >
-        {/* Decorative top bar */}
-        <div className="h-1 w-full bg-gradient-to-r from-[#28A3B9] to-[#1E90A8]" />
-        
+      {/* Decorative top bar */}
+      <div className="h-1 w-full bg-gradient-to-r from-[#28A3B9] to-[#1E90A8]" />
+
       <div className="p-8">
         <div className="flex justify-between items-end mb-6">
-            <div>
-                <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-[#28A3B9]" />
-                    Our Expertise
-                </h3>
-                <p className="text-sm text-gray-500 mt-1">Explore our comprehensive digital solutions</p>
-            </div>
-            <Link to="/services" onClick={handleServiceClick} className="text-xs font-semibold text-[#28A3B9] hover:text-[#1E90A8] flex items-center gap-1 group">
-                View all services <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
-            </Link>
+          <div>
+            <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-[#28A3B9]" />
+              Our Expertise
+            </h3>
+            <p className="text-sm text-gray-500 mt-1">Explore our comprehensive digital solutions</p>
+          </div>
+          <Link to="/services" onClick={handleServiceClick} className="text-xs font-semibold text-[#28A3B9] hover:text-[#1E90A8] flex items-center gap-1 group">
+            View all services <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
@@ -160,21 +159,20 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`sticky top-0 z-50 transition-all duration-300 w-full ${
-          scrolled
-            ? "bg-white/90 backdrop-blur-md shadow-lg py-2"
-            : "bg-white border-b border-gray-100 py-4"
-        }`}
+        className={`sticky top-0 z-50 transition-all duration-300 w-full ${scrolled
+          ? "bg-white/90 backdrop-blur-md shadow-lg py-2"
+          : "bg-white border-b border-gray-100 py-4"
+          }`}
       >
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-10">
-            
+
             {/* Logo - Added pointer-events-auto just in case */}
             <NavLink to="/" className="flex-shrink-0 flex items-center gap-2 group relative z-40 pointer-events-auto">
-              <img 
-                src="/Athenura.png" 
-                alt="Athenura" 
-                className={`transition-all duration-300 ${scrolled ? 'h-10' : 'h-12 sm:h-14'}`} 
+              <img
+                src="/Athenura.png"
+                alt="Athenura"
+                className={`transition-all duration-300 ${scrolled ? 'h-13' : 'h-14 sm:h-16'}`}
               />
             </NavLink>
 
@@ -191,17 +189,15 @@ const Navbar = () => {
                       <button
                         ref={servicesButtonRef}
                         onClick={() => setIsServicesOpen(!isServicesOpen)}
-                        className={`flex items-center px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${
-                          isServicesOpen || isServicesHovered
-                            ? "text-[#28A3B9] bg-[#28A3B9]/10"
-                            : "text-gray-600 hover:text-[#28A3B9] hover:bg-gray-50"
-                        }`}
+                        className={`flex items-center px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${isServicesOpen || isServicesHovered
+                          ? "text-[#28A3B9] bg-[#28A3B9]/10"
+                          : "text-gray-600 hover:text-[#28A3B9] hover:bg-gray-50"
+                          }`}
                       >
                         {item.name}
                         <ChevronDown
-                          className={`ml-1.5 w-4 h-4 transition-transform duration-300 ${
-                            isServicesOpen || isServicesHovered ? "rotate-180" : ""
-                          }`}
+                          className={`ml-1.5 w-4 h-4 transition-transform duration-300 ${isServicesOpen || isServicesHovered ? "rotate-180" : ""
+                            }`}
                         />
                       </button>
                       <ServicesDropdown />
@@ -210,10 +206,9 @@ const Navbar = () => {
                     <NavLink
                       to={item.path}
                       className={({ isActive }) =>
-                        `relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${
-                          isActive
-                            ? "text-[#28A3B9] bg-[#28A3B9]/10"
-                            : "text-gray-600 hover:text-[#28A3B9] hover:bg-gray-50"
+                        `relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${isActive
+                          ? "text-[#28A3B9] bg-[#28A3B9]/10"
+                          : "text-gray-600 hover:text-[#28A3B9] hover:bg-gray-50"
                         }`
                       }
                     >
@@ -226,9 +221,17 @@ const Navbar = () => {
               {/* Enhanced CTA Button */}
               <div className="pl-4 ml-2">
                 <Link to="/apply-internship">
-                  <button className="group relative px-6 py-2.5 bg-[#28A3B9] text-white text-sm font-semibold rounded-full overflow-hidden shadow-md shadow-[#28A3B9]/20 hover:shadow-lg hover:shadow-[#28A3B9]/30 hover:-translate-y-0.5 transition-all duration-300">
-                    <span className="relative z-10">Apply for Internship</span>
-                    <div className="absolute inset-0 h-full w-full scale-0 rounded-full transition-all duration-300 group-hover:scale-100 group-hover:bg-white/20" />
+                  <button className="group relative flex items-center justify-center gap-2 px-8 py-3 bg-black text-white text-sm font-semibold rounded-full overflow-hidden transition-all">
+                    <span className="relative z-10 flex items-center gap-2 group-hover:text-white">
+                      Apply Now
+                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </span>
+
+                    {/* Main Color Fill */}
+                    <div className="absolute inset-0 bg-[#28A3B9] translate-y-[100%] group-hover:translate-y-0 transition-transform duration-200 ease-out"></div>
+
+                    {/* Shimmer Effect */}
+                    <div className="absolute top-0 -inset-full h-full w-1/2 z-20 block transform -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-shine" />
                   </button>
                 </Link>
               </div>
@@ -239,19 +242,19 @@ const Navbar = () => {
               <button
                 id="hamburger-btn"
                 onClick={(e) => {
-                    e.stopPropagation(); // Stop click from bubbling up
-                    setIsMobileMenuOpen(!isMobileMenuOpen);
+                  e.stopPropagation(); // Stop click from bubbling up
+                  setIsMobileMenuOpen(!isMobileMenuOpen);
                 }}
                 className="p-2 -mr-2 text-gray-600 hover:text-[#28A3B9] focus:outline-none transition-colors pointer-events-auto"
                 aria-label="Toggle menu"
               >
                 <div className="relative w-8 h-8 flex justify-center items-center">
-                    {/* Animate icon swap */}
-                    {isMobileMenuOpen ? (
-                        <X className="w-7 h-7" />
-                    ) : (
-                        <Menu className="w-7 h-7" />
-                    )}
+                  {/* Animate icon swap */}
+                  {isMobileMenuOpen ? (
+                    <X className="w-7 h-7" />
+                  ) : (
+                    <Menu className="w-7 h-7" />
+                  )}
                 </div>
               </button>
             </div>
@@ -262,11 +265,10 @@ const Navbar = () => {
       {/* Enhanced Mobile Menu Overlay */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 z-40 lg:hidden bg-white/95 backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-          isMobileMenuOpen
-            ? "opacity-100 translate-y-0 visible"
-            : "opacity-0 -translate-y-full invisible"
-        }`}
+        className={`fixed inset-0 z-40 lg:hidden bg-white/95 backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isMobileMenuOpen
+          ? "opacity-100 translate-y-0 visible"
+          : "opacity-0 -translate-y-full invisible"
+          }`}
       >
         <div className="flex flex-col h-full pt-24 px-6 pb-8 overflow-y-auto">
           <nav className="space-y-2">
@@ -276,23 +278,20 @@ const Navbar = () => {
                   <div className="overflow-hidden">
                     <button
                       onClick={() => setOpenDropdown(openDropdown === item.name ? null : item.name)}
-                      className={`flex items-center justify-between w-full py-4 text-lg font-medium transition-colors ${
-                        openDropdown === item.name ? "text-[#28A3B9]" : "text-gray-800"
-                      }`}
+                      className={`flex items-center justify-between w-full py-4 text-lg font-medium transition-colors ${openDropdown === item.name ? "text-[#28A3B9]" : "text-gray-800"
+                        }`}
                     >
                       {item.name}
                       <ChevronDown
-                        className={`w-5 h-5 transition-transform duration-300 ${
-                          openDropdown === item.name ? "rotate-180 text-[#28A3B9]" : "text-gray-400"
-                        }`}
+                        className={`w-5 h-5 transition-transform duration-300 ${openDropdown === item.name ? "rotate-180 text-[#28A3B9]" : "text-gray-400"
+                          }`}
                       />
                     </button>
-                    <div className={`grid transition-all duration-300 ease-in-out ${
-                        openDropdown === item.name ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                    }`}>
-                        <div className="overflow-hidden">
-                            <MobileServicesDropdown />
-                        </div>
+                    <div className={`grid transition-all duration-300 ease-in-out ${openDropdown === item.name ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                      }`}>
+                      <div className="overflow-hidden">
+                        <MobileServicesDropdown />
+                      </div>
                     </div>
                   </div>
                 ) : (
@@ -300,8 +299,7 @@ const Navbar = () => {
                     to={item.path}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={({ isActive }) =>
-                      `block py-4 text-lg font-medium transition-colors ${
-                        isActive ? "text-[#28A3B9]" : "text-gray-800 hover:text-[#28A3B9]"
+                      `block py-4 text-lg font-medium transition-colors ${isActive ? "text-[#28A3B9]" : "text-gray-800 hover:text-[#28A3B9]"
                       }`
                     }
                   >
@@ -314,13 +312,20 @@ const Navbar = () => {
 
           <div className="mt-auto pt-8">
             <Link to="/apply-internship" onClick={() => setIsMobileMenuOpen(false)}>
-              <button className="w-full py-4 bg-[#28A3B9] text-white text-lg font-semibold rounded-xl shadow-lg shadow-[#28A3B9]/20 active:scale-[0.98] transition-all">
-                Apply for Internship
+              <button className="group w-full py-4 bg-[#28A3B9] text-white text-lg font-semibold rounded-xl shadow-lg shadow-[#28A3B9]/20 active:scale-[0.98] transition-all duration-300 hover:bg-black flex items-center justify-center gap-2">
+
+                <span>Apply Now</span>
+
+                <ArrowRight
+                  size={20}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
+
               </button>
             </Link>
-            
+
             <div className="mt-8 text-center text-xs text-gray-400">
-                © {new Date().getFullYear()} Athenura. All rights reserved.
+              © {new Date().getFullYear()} Athenura. All rights reserved.
             </div>
           </div>
         </div>
