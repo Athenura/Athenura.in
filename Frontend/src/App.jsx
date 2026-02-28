@@ -36,6 +36,7 @@ import UIUXDesignInternship from './Blog/BlogsContent/UIUXDesignInternship';
 import DigitalMarketingInternship from './Blog/BlogsContent/DigitalMarketingInternship';
 import RemoteInternshipGuide from './Blog/BlogsContent/RemoteInternshipGuide';
 import PortfolioProjectsArticle from './Blog/BlogsContent/PortfolioProjectsArticle';
+import ErrorPage from './ErrorPage';
 // import NotFound from './ErrorPage/ErrorPage';
 
 
@@ -118,6 +119,9 @@ function App() {
                   <Route path="/internship-policy" element={<InternshipMain />} />
                   <Route path="/privacy-policy" element={<PrivacyMain />} />
                   <Route path="/Terms-of-service" element={<TermsMain />} />
+
+                  <Route path='*' element={ <ErrorPage />} />
+
 
                 </Routes>
               </div>
