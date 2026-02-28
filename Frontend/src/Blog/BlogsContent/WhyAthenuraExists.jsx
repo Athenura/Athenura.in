@@ -66,9 +66,17 @@ const WhyAthenuraExists = () => {
 
             {/* HERO SECTION */}
             <section className="relative h-[80vh] w-full overflow-hidden flex items-center">
-                <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 z-0 hidden lg:block">
                     <img
-                        src= "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
+                        src= "https://ik.imagekit.io/vtfcbjo5c/atheo.png"
+                        alt="Athenura Background"
+                        className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-transparent" />
+                </div>
+                <div className="absolute inset-0 z-0 block lg:hidden">
+                    <img
+                        src= "https://ik.imagekit.io/vtfcbjo5c/atheomobile.png"
                         alt="Athenura Background"
                         className="w-full h-full object-cover"
                     />

@@ -10,7 +10,7 @@ const BLOG_DATA = [
         date: "February 28, 2026",
         title: "Why Athenura Exists and How It Actually Prepares You for Work",
         description: "Discover the mission behind Athenura and how our internship ecosystem transforms learners into industry-ready professionals through real projects and mentorship.",
-        image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+        image: "https://ik.imagekit.io/vtfcbjo5c/atheomobile.png",
         featured: true
     },
     {
@@ -18,9 +18,9 @@ const BLOG_DATA = [
         slug: "athenura-internship-program",
         category: "Internship",
         date: "February 26 2026",
-        title: "Athenura Internship Program: From Classroom Learning to Industry Execution",
+        title: "Athenura Internship: From Classroom Learning to Industry Execution",
         description: "Explore how the Athenura Internship Program bridges the gap between academic knowledge and real-world industry experience through structured mentorship, live projects, and placement opportunities.",
-        image: "https://ik.imagekit.io/vtfcbjo5c/image.png",
+        image: "https://ik.imagekit.io/vtfcbjo5c/classmobile.png",
         featured: true
     },
     {
@@ -68,7 +68,7 @@ const BLOG_DATA = [
         slug: "ace-remote-internship",
         category: "Career",
         date: "February 28, 2026",
-        title: "How to Ace Your First Remote Internship",
+        title: "How to Ace Your First Remote Internship in 2026",
         description: "A practical guide to excelling in your first remote internship — from communication and productivity to delivering measurable impact and building long-term career opportunities.",
         image: "https://ik.imagekit.io/vtfcbjo5c/howtoace.png",
         featured: false
@@ -103,7 +103,7 @@ const BlogContent = () => {
 
     return (
         <div className="bg-white min-h-screen font-sans text-black">
-            <div className="max-w-7xl mx-auto px-6 py-20">
+            <div className="max-w-7xl mx-auto px-6 pb-20">
 
                 {/* --- SECTION: FEATURED BLOGS --- */}
                 <div className="mb-24">

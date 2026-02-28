@@ -60,7 +60,7 @@ const BlogHero = () => {
     const yBg = useTransform(scrollY, [0, 500], [0, 100]);
 
     return (
-        <div className="relative min-h-[95vh] w-full bg-white overflow-hidden text-black">
+        <div className="relative min-h-[80vh] w-full bg-white overflow-hidden text-black">
             {/* --- CANVAS LAYER --- */}
             <motion.canvas
                 ref={canvasRef}
@@ -71,7 +71,7 @@ const BlogHero = () => {
             {/* --- GRADIENT OVERLAY (Flipped to White) --- */}
             <div className="absolute inset-0 z-[2] bg-[radial-gradient(circle_at_center,transparent_0%,#ffffff_100%)]" />
 
-            <div className="relative z-10 flex flex-col items-center justify-center min-h-[90vh] px-8 max-w-7xl mx-auto">
+            <div className="relative z-10 flex flex-col items-center justify-center min-h-[80vh] px-8 max-w-7xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -88,14 +88,6 @@ const BlogHero = () => {
                             Deep dives into strategy, technology, marketing, and innovation shaping modern industries.
                             <span className="text-black font-semibold"> Curated by the Athenura team.</span>
                         </p>
-
-                        <div className="mt-10 flex items-center gap-8">
-                            <button className="group relative overflow-hidden px-8 py-4 bg-black text-white font-bold uppercase text-xs tracking-widest transition-all">
-                                <span className="relative z-10">Start Reading</span>
-                                <div className="absolute inset-0 translate-y-full bg-[#28A3B9] transition-transform group-hover:translate-y-0" />
-                            </button>
-                            <div className="h-[1px] w-24 bg-black/10" />
-                        </div>
                     </div>
 
                     {/* RIGHT: FEATURED CARD (Light Mode Glassmorphism) */}
