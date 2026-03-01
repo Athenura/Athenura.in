@@ -27,12 +27,22 @@ const AthenuraHero = () => {
   const opacityContent = useTransform(scrollY, [0, 200], [1, 0.9]);
 
   // Interest options
-  const interestOptions = [
-    { value: 'web-development', label: 'Web Development', icon: '🌐' },
-    { value: 'digital-marketing', label: 'Digital Marketing', icon: '📱' },
-    { value: 'custom-software', label: 'Custom Software', icon: '💻' },
-    { value: 'other', label: 'Other', icon: '✨' }
-  ];
+const interestOptions = [
+  { value: 'website-development', label: 'Website Development' },
+  { value: 'software-development', label: 'Software Development' },
+  { value: 'ui-ux-design', label: 'UI/UX Design' },
+  { value: 'mobile-app-development', label: 'Mobile App Development' },
+  { value: 'digital-marketing', label: 'Digital Marketing' },
+  { value: 'video-editing', label: 'Video Editing' },
+  { value: 'graphic-design', label: 'Graphic Design' },
+  { value: 'ecommerce-development', label: 'E-Commerce Development' },
+  { value: 'seo-services', label: 'SEO Services' },
+  { value: 'social-media-management', label: 'Social Media Management' },
+  { value: 'content-creation', label: 'Content Creation' },
+  { value: 'landing-page-design', label: 'Landing Page Design' },
+  { value: 'website-maintenance', label: 'Website Maintenance' },
+  { value: 'tech-consultation', label: 'Tech Consultation' }
+];
 
   // --- 1. Video Ping-Pong Logic ---
   useEffect(() => {
@@ -392,14 +402,14 @@ const AthenuraHero = () => {
               {/* Left Side: Image/Visual (Hidden on small mobile if needed, but here responsive) */}
               <div className="relative w-full md:w-5/12 hidden lg:block h-48 md:h-auto bg-[#1A1A1A]">
                 <img
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+                  src="/Contact.png"
                   alt="Collaboration"
                   className="w-full h-full object-cover opacity-60"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#0A0A0A] via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
                   <h4 className="text-xl font-bold text-white mb-1">Our Creative Lab</h4>
-                  <p className="text-xs text-[#28A3B9] font-medium uppercase tracking-wider">Join 500+ Happy Clients</p>
+                  <p className="text-xs text-[#28A3B9] font-medium uppercase tracking-wider">Trusted by Growing Businesses</p>
                 </div>
               </div>
 
@@ -415,7 +425,7 @@ const AthenuraHero = () => {
                   </svg>
                 </button>
 
-                <div className="mb-6">
+                <div className="mb-8 mt-8">
                   <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Partner with Athenura</h3>
                   <p className="text-gray-400 text-sm">We'll reach out via WhatsApp to discuss your vision.</p>
                 </div>
@@ -479,7 +489,7 @@ const AthenuraHero = () => {
                         <option value="" className="bg-[#1A1A1A]">Select a service...</option>
                         {interestOptions.map((option) => (
                           <option key={option.value} value={option.value} className="bg-[#1A1A1A]">
-                            {option.icon} {option.label}
+                          {option.label}
                           </option>
                         ))}
                       </select>
@@ -497,7 +507,7 @@ const AthenuraHero = () => {
                     disabled={isSubmitting}
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.99 }}
-                    className="w-full py-4 bg-[#28A3B9] hover:bg-[#2cb5cc] text-white rounded-xl font-bold shadow-lg shadow-[#28A3B9]/20 transition-all flex items-center justify-center gap-2"
+                    className="w-full py-4 bg-[#156977] hover:bg-[#1c7c8d] text-white rounded-xl font-bold shadow-lg shadow-[#28A3B9]/20 transition-all flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? "Processing..." : "Send WhatsApp Enquiry"}
                   </motion.button>
