@@ -5,7 +5,6 @@ import BlogContent from './BlogPage'
 
 const BlogMain = () => {
     const siteUrl = 'https://athenura.in';
-    const pageUrl = typeof window !== 'undefined' ? window.location.href : `${siteUrl}/insights`;
     const canonicalUrl = `${siteUrl}/insights`;
     
     const pageTitle = "Insights & Resources - Athenura Blog | Career Development, Internships & Professional Growth";
@@ -30,8 +29,6 @@ const BlogMain = () => {
             "@type": "Thing",
             "name": "Career Development, Internships, Professional Growth"
         },
-        "datePublished": publishedDate,
-        "dateModified": modifiedDate,
         "inLanguage": "en-US",
         "publisher": {
             "@type": "Organization",
