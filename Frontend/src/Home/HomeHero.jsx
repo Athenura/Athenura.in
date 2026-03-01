@@ -468,7 +468,7 @@ const interestOptions = [
                         name="whatsapp"
                         value={formData.whatsapp}
                         onChange={handleInputChange}
-                        className="w-full pl-8 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-[#28A3B9] outline-none text-white text-sm transition-all"
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-[#28A3B9] outline-none text-white text-sm transition-all"
                         placeholder="+91 98765 43210"
                         required
                       />
