@@ -400,7 +400,7 @@ const interestOptions = [
             >
 
               {/* Left Side: Image/Visual (Hidden on small mobile if needed, but here responsive) */}
-              <div className="relative w-full md:w-5/12 hidden lg:block h-48 md:h-auto bg-[#1A1A1A]">
+              <div className="relative w-full md:w-5/12 hidden md:block h-48 md:h-auto bg-[#1A1A1A]">
                 <img
                   src="/Contact.png"
                   alt="Collaboration"
