@@ -54,21 +54,334 @@ import {
     FaRocketchat
 } from 'react-icons/fa';
 
+import { Helmet } from 'react-helmet-async';
+
 const PortfolioProjectsArticle = () => {
-    const blogUrl = typeof window !== 'undefined' ? window.location.href : 'https://athenura.com/insights/portfolio-grade-projects-guide';
-    const blogTitle = "The Importance of Portfolio-Grade Projects: Complete Guide 2026";
+    const siteUrl = 'https://athenura.in';
+    const blogUrl = typeof window !== 'undefined' ? window.location.href : `${siteUrl}/insights/portfolio-grade-projects-guide`;
+    const canonicalUrl = `${siteUrl}/insights/portfolio-grade-projects-guide`;
+    
+    const blogTitle = "The Importance of Portfolio-Grade Projects: Complete Guide 2026 | Athenura Insights";
+    const blogDescription = "Learn why portfolio projects beat certificates, what makes work 'portfolio-ready,' and how to build compelling project evidence that lands jobs. Complete guide with checklist and examples.";
+    
+    const imageUrl = "https://ik.imagekit.io/vtfcbjo5c/portfolio.png";
+    const publishedDate = "2026-02-28";
+    const modifiedDate = "2026-03-01";
+    const authorName = "Athenura Insights Team";
+    const authorUrl = `${siteUrl}/author/insights-team`;
 
     const shareOnLinkedIn = () => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(blogUrl)}`, '_blank');
-    const shareOnTwitter = () => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(blogTitle)}&url=${encodeURIComponent(blogUrl)}`, '_blank');
+    const shareOnTwitter = () => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(blogTitle)}&url=${encodeURIComponent(blogUrl)}&via=athenura_in`, '_blank');
     const shareOnWhatsApp = () => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(blogTitle + " " + blogUrl)}`, '_blank');
     const copyToClipboard = () => {
         navigator.clipboard.writeText(blogUrl);
         alert("Link copied to clipboard!");
     };
 
+    // Article Structured Data
+    const articleStructuredData = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "The Importance of Portfolio-Grade Projects: Complete Guide 2026",
+        "description": blogDescription,
+        "image": {
+            "@type": "ImageObject",
+            "url": imageUrl,
+            "width": 1200,
+            "height": 630
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Athenura",
+            "url": siteUrl,
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://athenura.in/AthenuraCircle.png"
+            }
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Athenura",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://athenura.in/AthenuraCircle.png"
+            }
+        },
+        "datePublished": publishedDate,
+        "dateModified": modifiedDate,
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": canonicalUrl
+        },
+        "keywords": "portfolio projects, coding portfolio, project-based learning, technical portfolio, developer portfolio, github portfolio, project checklist, interview preparation, job search tips, career development",
+        "articleSection": "Career Development",
+        "wordCount": 2500,
+        "timeRequired": "PT10M",
+        "inLanguage": "en-US",
+        "isAccessibleForFree": true
+    };
+
+    // Breadcrumb Structured Data
+    const breadcrumbData = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": siteUrl
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Insights",
+                "item": `${siteUrl}/insights`
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Portfolio-Grade Projects Guide",
+                "item": canonicalUrl
+            }
+        ]
+    };
+
+    // Organization Schema
+    const organizationData = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://athenura.in/#organization",
+        "name": "Athenura",
+        "url": siteUrl,
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://athenura.in/AthenuraCircle.png",
+            "width": 500,
+            "height": 500
+        },
+        "sameAs": [
+            "https://twitter.com/athenura_in",
+            "https://linkedin.com/company/athenura",
+            "https://facebook.com/athenura",
+            "https://instagram.com/athenura.in",
+            "https://youtube.com/@athenura"
+        ],
+        "description": "Remote-first skill development platform offering digital marketing, data science, and development internships",
+        "foundingDate": "2026",
+        "email": "official@athenura.in"
+    };
+
+    // FAQ Schema based on article content
+    const faqData = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Why are portfolio projects more important than certificates?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Employers hire evidence, not promises. A resume line that says 'Learned React' is vague, while a deployed app with documented architecture demonstrates actual capability. Projects make your competence visible."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What makes a project portfolio-grade?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Portfolio-grade projects have end-to-end completeness, clear problem and audience, measurable outcomes, readable code and documentation, design for reuse, and polished presentation."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I build portfolio projects without burning out?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Start with a one-sentence product brief, define a single measurable objective, ship a minimal MVP fast, iterate in small increments, document decisions, deploy and record a walkthrough, and get feedback."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What are good portfolio project ideas?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Domain-focused tools (student budget planner), mini SaaS apps, data stories with dashboards, design systems, and optimization case studies are all excellent portfolio projects."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How should I present my portfolio projects?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Prepare three artifacts: a live link or recorded demo (1-2 minutes), a GitHub repository with comprehensive README, and a one-page case study covering problem, approach, results, and learnings."
+                }
+            }
+        ]
+    };
+
+    // How-To Schema for building portfolio projects
+    const howToData = {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Build a Portfolio-Grade Project",
+        "description": "A step-by-step guide to building impressive portfolio projects that attract employers",
+        "totalTime": "P2W",
+        "estimatedCost": {
+            "@type": "MonetaryAmount",
+            "currency": "USD",
+            "value": "0"
+        },
+        "step": [
+            {
+                "@type": "HowToStep",
+                "name": "Start with a product brief",
+                "text": "Write a one-sentence brief: 'A lightweight budgeting app for first-year students to track weekly spending and forecast savings.'"
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Define measurable objective",
+                "text": "Define a single measurable objective like 'Enable users to forecast next-month balance with 10% error' or 'Reduce form abandonment rate by 20%'."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Ship minimal MVP",
+                "text": "Build the smallest thing that demonstrates core value. Prefer one polished flow over multiple half-finished features."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Iterate in increments",
+                "text": "Make incremental improvements, add tests, refactor, and document each iteration in your case study."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Document decisions",
+                "text": "Explain why you made specific technical choices - this shows depth of thought."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Deploy and record demo",
+                "text": "Create a 60-90 second screencast explaining user flow and architecture."
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Get feedback and iterate",
+                "text": "Share with mentors or peers, run usability tests, and incorporate learnings."
+            }
+        ],
+        "tool": [
+            {
+                "@type": "HowToTool",
+                "name": "GitHub"
+            },
+            {
+                "@type": "HowToTool",
+                "name": "Code Editor"
+            },
+            {
+                "@type": "HowToTool",
+                "name": "Screen Recording Software"
+            }
+        ],
+        "supply": [
+            {
+                "@type": "HowToSupply",
+                "name": "Technical skills in your domain"
+            },
+            {
+                "@type": "HowToSupply",
+                "name": "Project management tools"
+            }
+        ]
+    };
+
 
     return (
         <>
+            <Helmet>
+                {/* ---------- BASIC META TAGS ---------- */}
+                <html lang="en" />
+                <title>{blogTitle}</title>
+                <meta name="description" content={blogDescription} />
+                <meta name="keywords" content="portfolio projects, coding portfolio, project-based learning, technical portfolio, developer portfolio, github portfolio, project checklist, interview preparation, job search tips, career development, build portfolio, portfolio guide, student portfolio, tech portfolio examples" />
+                <meta name="author" content="Athenura Insights Team" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+                <meta name="googlebot" content="index, follow" />
+                <meta name="google-site-verification" content="your-verification-code" />
+                
+                {/* ---------- CANONICAL URL ---------- */}
+                <link rel="canonical" href={canonicalUrl} />
+                
+                {/* ---------- OPEN GRAPH / FACEBOOK ---------- */}
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content={canonicalUrl} />
+                <meta property="og:title" content="The Importance of Portfolio-Grade Projects: Complete Guide 2026" />
+                <meta property="og:description" content={blogDescription} />
+                <meta property="og:image" content={imageUrl} />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:alt" content="Portfolio-grade projects development guide" />
+                <meta property="og:site_name" content="Athenura" />
+                <meta property="og:locale" content="en_US" />
+                <meta property="article:published_time" content={publishedDate} />
+                <meta property="article:modified_time" content={modifiedDate} />
+                <meta property="article:author" content={authorUrl} />
+                <meta property="article:section" content="Career Development" />
+                <meta property="article:tag" content="Portfolio" />
+                <meta property="article:tag" content="Career" />
+                <meta property="article:tag" content="Projects" />
+                <meta property="article:tag" content="Job Search" />
+                <meta property="article:tag" content="Development" />
+                
+                {/* ---------- TWITTER CARD ---------- */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@athenura_in" />
+                <meta name="twitter:creator" content="@athenura_in" />
+                <meta name="twitter:title" content="Portfolio-Grade Projects: Complete Guide 2026" />
+                <meta name="twitter:description" content={blogDescription} />
+                <meta name="twitter:image" content={imageUrl} />
+                <meta name="twitter:image:alt" content="Guide to building portfolio-grade projects" />
+                
+                {/* ---------- ADDITIONAL META ---------- */}
+                <meta name="application-name" content="Athenura" />
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+                <meta name="apple-mobile-web-app-title" content="Athenura Insights" />
+                <meta name="format-detection" content="telephone=no" />
+                <meta name="mobile-web-app-capable" content="yes" />
+                <meta name="theme-color" content="#28A3B9" />
+                
+                {/* ---------- STRUCTURED DATA ---------- */}
+                <script type="application/ld+json">
+                    {JSON.stringify(articleStructuredData)}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(breadcrumbData)}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(organizationData)}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(faqData)}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(howToData)}
+                </script>
+                
+                {/* ---------- PERFORMANCE OPTIMIZATION ---------- */}
+                <link rel="preconnect" href="https://ik.imagekit.io" />
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="dns-prefetch" href="https://ik.imagekit.io" />
+                <link rel="preconnect" href="https://images.unsplash.com" />
+                
+                {/* ---------- HREFLANG ---------- */}
+                <link rel="alternate" href={canonicalUrl} hreflang="en" />
+                <link rel="alternate" href={canonicalUrl} hreflang="x-default" />
+                
+            </Helmet>
+
+
             <div className="bg-white min-h-screen font-sans text-gray-800">
 
                 {/* HERO SECTION */}

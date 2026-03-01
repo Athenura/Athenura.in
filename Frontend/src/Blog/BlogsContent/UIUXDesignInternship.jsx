@@ -61,21 +61,374 @@ import {
 } from 'react-icons/fa';
 import handbook from "../../../public/handbook.pdf"
 import { Link } from "react-router-dom"
+import {Helmet} from "react-helmet-async"
 
 const UIUXDesignInternship = () => {
+    const siteUrl = 'https://athenura.in';
+    const programUrl = typeof window !== 'undefined' ? window.location.href : `${siteUrl}/internship/ui-ux-design`;
+    const canonicalUrl = `${siteUrl}/internship/ui-ux-design`;
+    
+    const programTitle = "UI/UX Design Professional Internship at Athenura | Applications Open 2026";
+    const programDescription = "Join Athenura's UI/UX Design Professional Internship — a hands-on, project-first program. Learn user research, prototyping, design systems, and usability testing through real projects. Build a portfolio of case studies with mentorship from industry designers.";
+    
+    const imageUrl = "https://ik.imagekit.io/vtfcbjo5c/uiux.png";
+    const publishedDate = "2026-03-01";
+    const modifiedDate = "2026-03-01";
 
-    const blogUrl = typeof window !== 'undefined' ? window.location.href : '';
-    const blogTitle = "Applications Open UI/UX Design Professional Internship at Athenura";
-
-    const shareOnLinkedIn = () => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(blogUrl)}`, '_blank');
-    const shareOnTwitter = () => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(blogTitle)}&url=${encodeURIComponent(blogUrl)}`, '_blank');
-    const shareOnWhatsApp = () => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(blogTitle + " " + blogUrl)}`, '_blank');
+    const shareOnLinkedIn = () => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(programUrl)}`, '_blank');
+    const shareOnTwitter = () => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(programTitle)}&url=${encodeURIComponent(programUrl)}&via=athenura_in`, '_blank');
+    const shareOnWhatsApp = () => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(programTitle + " " + programUrl)}`, '_blank');
     const copyToClipboard = () => {
-        navigator.clipboard.writeText(blogUrl);
+        navigator.clipboard.writeText(programUrl);
         alert("Link copied to clipboard!");
     };
 
+    // EducationalOccupationalProgram Schema for UI/UX Design
+    const programStructuredData = {
+        "@context": "https://schema.org",
+        "@type": "EducationalOccupationalProgram",
+        "name": "UI/UX Design Professional Internship",
+        "description": programDescription,
+        "educationalProgramMode": "remote",
+        "timeToComplete": "P3M to P8M",
+        "occupationalCredentialAwarded": [
+            "UI/UX Design Certificate",
+            "Letter of Recommendation",
+            "Excellence Certificate",
+            "Design Portfolio"
+        ],
+        "programPrerequisites": "Basic familiarity with design tools (Figma/Sketch)",
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "Athenura",
+            "sameAs": siteUrl,
+            "logo": "https://athenura.in/AthenuraCircle.png",
+            "email": "official@athenura.in",
+            "foundingDate": "2026"
+        },
+        "timeOfPublication": publishedDate,
+        "dateModified": modifiedDate,
+        "mainEntityOfPage": canonicalUrl,
+        "image": imageUrl,
+        "keywords": "UI UX design internship, product design internship, UX research internship, Figma internship, design mentorship, user experience internship, user interface design program, remote design internship, product design portfolio",
+        "educationalCredentialAwarded": [
+            "Internship Certificate",
+            "Letter of Recommendation",
+            "Excellence Certificate",
+            "Design Portfolio with Case Studies",
+            "Figma Design Files"
+        ],
+        "hasCourse": [
+            {
+                "@type": "Course",
+                "name": "Foundations & User Research",
+                "description": "User research methods, interviews, contextual inquiry, persona synthesis, user journeys, and task analysis",
+                "provider": { "@type": "Organization", "name": "Athenura" }
+            },
+            {
+                "@type": "Course",
+                "name": "Interaction & Visual Design",
+                "description": "Wireframing, prototyping workflows (Figma/Sketch), accessibility (WCAG), responsive design, visual systems, and interaction patterns",
+                "provider": { "@type": "Organization", "name": "Athenura" }
+            },
+            {
+                "@type": "Course",
+                "name": "Product Design & Collaboration",
+                "description": "Design thinking applied to product metrics, design handoff, usability testing, and iteration based on user feedback",
+                "provider": { "@type": "Organization", "name": "Athenura" }
+            },
+            {
+                "@type": "Course",
+                "name": "Design Systems & Documentation",
+                "description": "Creating design tokens, component libraries, and developer-ready documentation",
+                "provider": { "@type": "Organization", "name": "Athenura" }
+            },
+            {
+                "@type": "Course",
+                "name": "Portfolio & Career Preparation",
+                "description": "Case study creation, design critique practice, and interview preparation",
+                "provider": { "@type": "Organization", "name": "Athenura" }
+            }
+        ],
+        "jobOutcomeInfo": [
+            "UI/UX Designer",
+            "Product Designer",
+            "UX Researcher",
+            "Interaction Designer",
+            "Visual Designer",
+            "Design Systems Designer",
+            "UX/UI Developer"
+        ],
+        "occupationalCategory": [
+            "27-1024.00 - Graphic Designers",
+            "15-1255.00 - Web and Digital Interface Designers",
+            "11-9041.00 - Architectural and Engineering Managers"
+        ]
+    };
+
+    // Breadcrumb Schema
+    const breadcrumbData = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": siteUrl
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Internships",
+                "item": `${siteUrl}/internships`
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "UI/UX Design Professional Internship",
+                "item": canonicalUrl
+            }
+        ]
+    };
+
+    // Organization Schema
+    const organizationData = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://athenura.in/#organization",
+        "name": "Athenura",
+        "url": siteUrl,
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://athenura.in/AthenuraCircle.png",
+            "width": 500,
+            "height": 500
+        },
+        "sameAs": [
+            "https://twitter.com/athenura_in",
+            "https://linkedin.com/company/athenura",
+            "https://facebook.com/athenura",
+            "https://instagram.com/athenura.in",
+            "https://youtube.com/athenura"
+        ],
+        "description": "Remote-first skill development platform offering UI/UX design, digital marketing, data science, and development internships",
+        "foundingDate": "2026",
+        "email": "official@athenura.in",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "IN"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "official@athenura.in",
+            "availableLanguage": ["English", "Hindi"]
+        }
+    };
+
+    // FAQ Schema based on content
+    const faqData = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is the duration of the UI/UX Design Professional Internship?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The internship runs for 3–8 months, depending on project complexity and your learning pace."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What are the prerequisites for this internship?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You need basic familiarity with design tools like Figma or Sketch. No prior degree required — just curiosity, attention to detail, and willingness to test assumptions with users."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What will I learn in this internship?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You'll learn user research methods, wireframing and prototyping, visual design systems, accessibility (WCAG), usability testing, design handoff to engineering, and how to create compelling case studies."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What projects will I work on?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You'll work on real projects including Micro-SaaS dashboard redesign, mobile app onboarding flows, e-commerce checkout optimization, and design system starter kits."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you provide placement support?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we offer portfolio refinement sessions, mock interviews and critique for product design interviews, and fast-track considerations for partner companies."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is the internship remote?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, the program is 100% remote with flexible schedules and weekly design review sessions."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What tools will I use?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You'll use industry tools including Figma, FigJam, InVision, and basic HTML/CSS for interactive prototypes."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What certification will I receive?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You'll receive an Internship Certificate, performance-based Letter of Recommendation, Excellence Certificate for top performers, and a portfolio with 2-3 high-quality case studies."
+                }
+            }
+        ]
+    };
+
+    // Course Schema for better education SEO
+    const courseData = {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "UI/UX Design Professional Internship",
+        "description": programDescription,
+        "provider": {
+            "@type": "Organization",
+            "name": "Athenura",
+            "sameAs": siteUrl,
+            "logo": "https://athenura.in/AthenuraCircle.png"
+        },
+        "coursePrerequisites": "Basic design tools familiarity",
+        "educationalCredentialAwarded": "UI/UX Design Certificate",
+        "timeRequired": "P3M",
+        "offers": {
+            "@type": "Offer",
+            "category": "Free",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "online",
+            "courseWorkload": "PT10H",
+            "startDate": "2026-03-15",
+            "endDate": "2026-11-15",
+            "location": {
+                "@type": "Place",
+                "name": "Remote",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Remote",
+                    "addressCountry": "Global"
+                }
+            }
+        },
+        "teaches": [
+            "User Research Methods",
+            "Wireframing and Prototyping",
+            "Visual Design Systems",
+            "Accessibility (WCAG)",
+            "Usability Testing",
+            "Design Handoff",
+            "Case Study Creation"
+        ]
+    };
+
     return (
+
+        <>
+         <Helmet>
+                {/* ---------- BASIC META TAGS ---------- */}
+                <html lang="en" />
+                <title>{programTitle}</title>
+                <meta name="description" content={programDescription} />
+                <meta name="keywords" content="UI UX design internship, product design internship, UX research internship, Figma internship, design mentorship, user experience internship, user interface design program, remote design internship, product design portfolio, ui ux training, design bootcamp, ux design course, ui design program, product design mentorship" />
+                <meta name="author" content="Athenura" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+                <meta name="googlebot" content="index, follow" />
+                <meta name="google-site-verification" content="your-verification-code" />
+                
+                {/* ---------- CANONICAL URL ---------- */}
+                <link rel="canonical" href={canonicalUrl} />
+                
+                {/* ---------- OPEN GRAPH / FACEBOOK ---------- */}
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={canonicalUrl} />
+                <meta property="og:title" content="UI/UX Design Professional Internship at Athenura | Build Your Product Design Portfolio" />
+                <meta property="og:description" content={programDescription} />
+                <meta property="og:image" content={imageUrl} />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:alt" content="Athenura UI/UX Design Professional Internship Program" />
+                <meta property="og:site_name" content="Athenura" />
+                <meta property="og:locale" content="en_US" />
+                
+                {/* ---------- TWITTER CARD ---------- */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@athenura_in" />
+                <meta name="twitter:creator" content="@athenura_in" />
+                <meta name="twitter:title" content="UI/UX Design Professional Internship - Applications Open" />
+                <meta name="twitter:description" content={programDescription} />
+                <meta name="twitter:image" content={imageUrl} />
+                <meta name="twitter:image:alt" content="UI/UX Design Internship at Athenura" />
+                
+                {/* ---------- ADDITIONAL META ---------- */}
+                <meta name="application-name" content="Athenura" />
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+                <meta name="apple-mobile-web-app-title" content="Athenura UI/UX Design" />
+                <meta name="format-detection" content="telephone=no" />
+                <meta name="mobile-web-app-capable" content="yes" />
+                <meta name="theme-color" content="#28A3B9" />
+                
+                {/* ---------- STRUCTURED DATA ---------- */}
+                <script type="application/ld+json">
+                    {JSON.stringify(programStructuredData)}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(breadcrumbData)}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(organizationData)}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(faqData)}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(courseData)}
+                </script>
+                
+                {/* ---------- PERFORMANCE OPTIMIZATION ---------- */}
+                <link rel="preconnect" href="https://ik.imagekit.io" />
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="dns-prefetch" href="https://ik.imagekit.io" />
+                <link rel="preconnect" href="https://images.unsplash.com" />
+                
+                {/* ---------- HREFLANG ---------- */}
+                <link rel="alternate" href={canonicalUrl} hreflang="en" />
+                <link rel="alternate" href={canonicalUrl} hreflang="x-default" />
+                
+            </Helmet>
         <div className="bg-white min-h-screen font-sans text-black">
 
             {/* HERO SECTION */}
@@ -542,6 +895,7 @@ const UIUXDesignInternship = () => {
                 }
             `}</style>
         </div>
+        </>
     );
 };
 

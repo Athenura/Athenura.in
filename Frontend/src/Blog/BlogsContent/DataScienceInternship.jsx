@@ -49,21 +49,316 @@ import {
 } from 'react-icons/fa';
 import handbook from "../../../public/handbook.pdf"
 import { Link } from "react-router-dom"
+import { Helmet } from 'react-helmet-async';
+
+
 
 const DataScienceInternship = () => {
+    const siteUrl = 'https://athenura.in';
+    const programUrl = typeof window !== 'undefined' ? window.location.href : `${siteUrl}/internship/data-science-analytics`;
+    const canonicalUrl = `${siteUrl}/internship/data-science-analytics`;
+    
+    const programTitle = "Data Science & Analytics Internship at Athenura | Applications Open 2026";
+    const programDescription = "Join Athenura's Data Science & Analytics Internship — a hands-on, project-first program. Learn Python, ML, and analytics through real-world projects with mentorship. Build portfolio-grade work and launch your data career.";
+    
+    const imageUrl = "https://ik.imagekit.io/vtfcbjo5c/data%20science.png";
+    const publishedDate = "2026-03-01";
+    const modifiedDate = "2026-03-01";
 
-    const blogUrl = typeof window !== 'undefined' ? window.location.href : '';
-    const blogTitle = "Applications Open Data Science & Analytics Internship at Athenura";
-
-    const shareOnLinkedIn = () => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(blogUrl)}`, '_blank');
-    const shareOnTwitter = () => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(blogTitle)}&url=${encodeURIComponent(blogUrl)}`, '_blank');
-    const shareOnWhatsApp = () => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(blogTitle + " " + blogUrl)}`, '_blank');
+    const shareOnLinkedIn = () => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(programUrl)}`, '_blank');
+    const shareOnTwitter = () => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(programTitle)}&url=${encodeURIComponent(programUrl)}&via=athenura`, '_blank');
+    const shareOnWhatsApp = () => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(programTitle + " " + programUrl)}`, '_blank');
     const copyToClipboard = () => {
-        navigator.clipboard.writeText(blogUrl);
+        navigator.clipboard.writeText(programUrl);
         alert("Link copied to clipboard!");
     };
 
+    // EducationalOccupationalProgram Schema for Data Science
+    const programStructuredData = {
+        "@context": "https://schema.org",
+        "@type": "EducationalOccupationalProgram",
+        "name": "Data Science & Analytics Internship",
+        "description": programDescription,
+        "educationalProgramMode": "remote",
+        "timeToComplete": "P3M to P6M",
+        "occupationalCredentialAwarded": [
+            "Data Science Internship Certificate",
+            "Letter of Recommendation",
+            "Excellence Certificate"
+        ],
+        "programPrerequisites": "Basic Python programming and statistics fundamentals",
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "Athenura",
+            "sameAs": siteUrl,
+            "logo": "https://athenura.in/logo.png"
+        },
+        "timeOfPublication": publishedDate,
+        "dateModified": modifiedDate,
+        "mainEntityOfPage": canonicalUrl,
+        "image": imageUrl,
+        "keywords": "data science internship, analytics internship, python data science, machine learning internship, data analytics program, remote data internship",
+        "educationalCredentialAwarded": [
+            "Internship Certificate",
+            "Letter of Recommendation",
+            "Excellence Certificate",
+            "Portfolio Endorsement"
+        ],
+        "hasCourse": [
+            {
+                "@type": "Course",
+                "name": "Data Foundations",
+                "description": "Data wrangling, ETL, and exploratory data analysis with Python",
+                "provider": { "@type": "Organization", "name": "Athenura" }
+            },
+            {
+                "@type": "Course",
+                "name": "Machine Learning & Modeling",
+                "description": "Regression, classification, clustering, and model validation",
+                "provider": { "@type": "Organization", "name": "Athenura" }
+            },
+            {
+                "@type": "Course",
+                "name": "Analytics Product Development",
+                "description": "Building and deploying analytics products and dashboards",
+                "provider": { "@type": "Organization", "name": "Athenura" }
+            }
+        ],
+        "jobOutcomeInfo": [
+            "Data Analyst",
+            "Junior Data Scientist",
+            "Business Intelligence Analyst",
+            "Analytics Engineer",
+            "Machine Learning Intern"
+        ],
+        "occupationalCategory": [
+            "15-2051.00 - Data Scientists",
+            "15-2041.00 - Statisticians",
+            "15-1211.00 - Computer Systems Analysts"
+        ]
+    };
+
+    // Breadcrumb Schema
+    const breadcrumbData = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": siteUrl
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Internships",
+                "item": `${siteUrl}/internships`
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Data Science & Analytics",
+                "item": canonicalUrl
+            }
+        ]
+    };
+
+    // Organization Schema
+    const organizationData = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Athenura",
+        "url": siteUrl,
+        "logo": "/AthenuraCircle.png",
+        "sameAs": [
+            "https://twitter.com/athenura_in",
+            "https://linkedin.com/company/athenura",
+            "https://facebook.com/athenura",
+            "https://instagram.com/athenura.in",
+            "https://youtube.com/@Athenura"
+        ],
+        "description": "Remote-first skill development platform offering digital marketing, data science, and development internships",
+        "foundingDate": "2026",
+        "email": "official@athenura.in"
+    };
+
+    // FAQ Schema based on content
+    const faqData = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is the duration of the Data Science & Analytics Internship?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The internship runs for 3–6 months, depending on project complexity and your learning pace."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What are the prerequisites for this internship?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You need basic Python programming skills and familiarity with statistics fundamentals. Curiosity and commitment to learning are more important than advanced credentials."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What projects will I build during the internship?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You'll work on end-to-end projects like Customer Churn Prediction, Sales Forecasting Pipelines, Recommendation Engines, and A/B Test Analysis Toolkits."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you provide placement support?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we offer resume and LinkedIn optimization, mock interviews, and internal referrals to partner companies for high-performing interns."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is the internship remote?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, the program is 100% remote with flexible schedules designed to accommodate your existing commitments."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What certification will I receive?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You'll receive an Internship Certificate, performance-based Letter of Recommendation, Excellence Certificate for top performers, and Portfolio Endorsement for your project work."
+                }
+            }
+        ]
+    };
+
+    // Course Schema for better education SEO
+    const courseData = {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "Data Science & Analytics Internship",
+        "description": programDescription,
+        "provider": {
+            "@type": "Organization",
+            "name": "Athenura",
+            "sameAs": siteUrl
+        },
+        "coursePrerequisites": "Basic Python and statistics",
+        "educationalCredentialAwarded": "Internship Certificate",
+        "timeRequired": "P3M",
+        "offers": {
+            "@type": "Offer",
+            "category": "Free",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "online",
+            "courseWorkload": "PT10H",
+            "startDate": "2026-03-15",
+            "endDate": "2026-09-15",
+            "location": {
+                "@type": "Place",
+                "name": "Remote",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Remote",
+                    "addressCountry": "Global"
+                }
+            }
+        }
+    };
+
     return (
+
+        <>
+
+        <Helmet>
+                {/* ---------- BASIC META TAGS ---------- */}
+                <html lang="en" />
+                <title>{programTitle}</title>
+                <meta name="description" content={programDescription} />
+                <meta name="keywords" content="data science internship, analytics internship, python data science, machine learning internship, data analytics program, remote internship, data science projects, mentorship, athenura, data science training, ml internship, data analyst internship, business analytics" />
+                <meta name="author" content="Athenura" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+                <meta name="googlebot" content="index, follow" />
+                
+                {/* ---------- CANONICAL URL ---------- */}
+                <link rel="canonical" href={canonicalUrl} />
+                
+                {/* ---------- OPEN GRAPH / FACEBOOK ---------- */}
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={canonicalUrl} />
+                <meta property="og:title" content="Data Science & Analytics Internship at Athenura | Learn by Building" />
+                <meta property="og:description" content={programDescription} />
+                <meta property="og:image" content={imageUrl} />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:alt" content="Athenura Data Science & Analytics Internship Program" />
+                <meta property="og:site_name" content="Athenura" />
+                <meta property="og:locale" content="en_US" />
+                
+                {/* ---------- TWITTER CARD ---------- */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@athenura" />
+                <meta name="twitter:creator" content="@athenura" />
+                <meta name="twitter:title" content="Data Science & Analytics Internship - Applications Open" />
+                <meta name="twitter:description" content={programDescription} />
+                <meta name="twitter:image" content={imageUrl} />
+                <meta name="twitter:image:alt" content="Data Science Internship at Athenura" />
+                
+                {/* ---------- ADDITIONAL META ---------- */}
+                <meta name="application-name" content="Athenura" />
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+                <meta name="apple-mobile-web-app-title" content="Athenura Data Science" />
+                <meta name="format-detection" content="telephone=no" />
+                <meta name="mobile-web-app-capable" content="yes" />
+                <meta name="theme-color" content="#28A3B9" />
+                
+                {/* ---------- STRUCTURED DATA ---------- */}
+                <script type="application/ld+json">
+                    {JSON.stringify(programStructuredData)}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(breadcrumbData)}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(organizationData)}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(faqData)}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(courseData)}
+                </script>
+                
+                {/* ---------- PERFORMANCE OPTIMIZATION ---------- */}
+                <link rel="preconnect" href="https://ik.imagekit.io" />
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="dns-prefetch" href="https://ik.imagekit.io" />
+                <link rel="preconnect" href="https://images.unsplash.com" />
+                
+                {/* ---------- HREFLANG ---------- */}
+                <link rel="alternate" href={canonicalUrl} hreflang="en" />
+                <link rel="alternate" href={canonicalUrl} hreflang="x-default" />
+            </Helmet>
+       
         <div className="bg-white min-h-screen font-sans text-black">
 
             {/* HERO SECTION */}
@@ -527,6 +822,7 @@ const DataScienceInternship = () => {
                 }
             `}</style>
         </div>
+         </>
     );
 };
 

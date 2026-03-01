@@ -16,6 +16,7 @@ import {
     FaQuoteRight
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const SIMILAR_POSTS = [
     {
@@ -49,19 +50,239 @@ const SIMILAR_POSTS = [
 ];
 
 const WhyAthenuraExists = () => {
-
-    const blogUrl = typeof window !== 'undefined' ? window.location.href : '';
-    const blogTitle = "Why Athenura Exists and How It Actually Prepares You for Work";
-
+    const siteUrl = 'https://athenura.in';
+    const blogUrl = typeof window !== 'undefined' ? window.location.href : `${siteUrl}/blog/why-athenura-exists`;
+    const canonicalUrl = `${siteUrl}/blog/why-athenura-exists`;
+    
+    const blogTitle = "Why Athenura Exists and How It Actually Prepares You for Work | Skills Over Certificates";
+    const blogDescription = "Discover why Athenura was created to bridge the gap between academic learning and real-world execution. Learn how we prepare you for actual work—not just more certificates.";
+    
+    const imageUrl = "https://ik.imagekit.io/vtfcbjo5c/atheo.png";
+    const publishedDate = "2026-02-28";
+    const modifiedDate = "2026-03-01";
+    const authorName = "Athenura Editorial Team";
+    const authorUrl = `${siteUrl}/author/editorial-team`;
+    
     const shareOnLinkedIn = () => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(blogUrl)}`, '_blank');
-    const shareOnTwitter = () => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(blogTitle)}&url=${encodeURIComponent(blogUrl)}`, '_blank');
+    const shareOnTwitter = () => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(blogTitle)}&url=${encodeURIComponent(blogUrl)}&via=athenura`, '_blank');
     const shareOnWhatsApp = () => window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(blogTitle + " " + blogUrl)}`, '_blank');
     const copyToClipboard = () => {
         navigator.clipboard.writeText(blogUrl);
         alert("Link copied to clipboard!");
     };
 
+    // Article Structured Data
+    const articleStructuredData = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Why Athenura Exists and How It Actually Prepares You for Work",
+        "description": blogDescription,
+        "image": imageUrl,
+        "author": {
+            "@type": "Organization",
+            "name": "Athenura",
+            "url": siteUrl,
+            "logo": {
+                "@type": "ImageObject",
+                "url": `${siteUrl}/logo.png`
+            }
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Athenura",
+            "logo": {
+                "@type": "ImageObject",
+                "url": `${siteUrl}/logo.png`
+            }
+        },
+        "datePublished": publishedDate,
+        "dateModified": modifiedDate,
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": canonicalUrl
+        },
+        "keywords": "internship, skill development, career preparation, remote work, professional growth, education gap, mentorship, project-based learning",
+        "articleSection": "Mission & Vision",
+        "wordCount": 1500, // Estimate
+        "timeRequired": "PT8M", // 8 minutes read
+        "inLanguage": "en-US",
+        "isAccessibleForFree": true
+    };
+
+    // Breadcrumb Structured Data
+    const breadcrumbData = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": siteUrl
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": `${siteUrl}/blog`
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Why Athenura Exists",
+                "item": canonicalUrl
+            }
+        ]
+    };
+
+    // Organization Structured Data (for brand authority)
+    const organizationData = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Athenura",
+        "url": siteUrl,
+        "logo": "/AthenuraCircle.png",
+        "sameAs": [
+            "https://twitter.com/athenura_in",
+            "https://linkedin.com/company/athenura",
+            "https://facebook.com/athenura",
+            "https://instagram.com/athenura.in",
+            "https://youtube.com/athenura"
+        ],
+        "description": "Remote-first skill development platform offering digital marketing, data science, and development internships",
+        "foundingDate": "2026",
+        "email": "official@athenura.in"
+    };
+
+    // FAQ Structured Data (based on content)
+    const faqData = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is Athenura?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Athenura is a remote-first, skill-focused internship and learning ecosystem designed to prepare students for real-world professional environments through hands-on exposure, job-ready skills, and portfolio-grade projects."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How is Athenura different from traditional education?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Unlike traditional education that focuses on theory and certificates, Athenura emphasizes real-world execution, responsibility, and continuous feedback. Interns work on live projects, not dummy assignments."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Who can join Athenura?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Athenura is for students seeking practical exposure, final-year candidates, fresh graduates, career switchers, self-learners, and high-agency individuals ready to take ownership of their learning."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does Athenura provide placement support?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, Athenura offers placement opportunities through hiring networks, internal referrals, and recommendation letters for high-performing contributors, plus mock interview preparation."
+                }
+            }
+        ]
+    };
+
     return (
+
+        <>
+
+
+        <Helmet>
+                {/* ---------- BASIC META TAGS ---------- */}
+                <html lang="en" />
+                <title>{blogTitle}</title>
+                <meta name="description" content={blogDescription} />
+                <meta name="keywords" content="Athenura, why Athenura exists, skill development, internship, career preparation, remote learning, project-based learning, mentorship, education gap, professional growth, job-ready skills, portfolio projects" />
+                <meta name="author" content="Athenura Editorial Team" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+                <meta name="googlebot" content="index, follow" />
+                <meta name="google-site-verification" content="your-verification-code" /> {/* Add your verification code */}
+                
+                {/* ---------- CANONICAL URL ---------- */}
+                <link rel="canonical" href={canonicalUrl} />
+                
+                {/* ---------- OPEN GRAPH / FACEBOOK ---------- */}
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content={canonicalUrl} />
+                <meta property="og:title" content="Why Athenura Exists: From Classroom Concepts to Career-Ready Skills" />
+                <meta property="og:description" content={blogDescription} />
+                <meta property="og:image" content={imageUrl} />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:alt" content="Athenura - Bridging the gap between education and employment" />
+                <meta property="og:site_name" content="Athenura" />
+                <meta property="og:locale" content="en_US" />
+                <meta property="article:published_time" content={publishedDate} />
+                <meta property="article:modified_time" content={modifiedDate} />
+                <meta property="article:author" content={authorUrl} />
+                <meta property="article:section" content="Mission & Vision" />
+                <meta property="article:tag" content="Internship" />
+                <meta property="article:tag" content="Skill Development" />
+                <meta property="article:tag" content="Career Preparation" />
+                <meta property="article:tag" content="Remote Work" />
+                <meta property="article:tag" content="Mentorship" />
+                <meta property="article:tag" content="Professional Growth" />
+                
+                {/* ---------- TWITTER CARD ---------- */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@athenura" />
+                <meta name="twitter:creator" content="@athenura" />
+                <meta name="twitter:title" content="Why Athenura Exists: Skills Over Certificates" />
+                <meta name="twitter:description" content={blogDescription} />
+                <meta name="twitter:image" content={imageUrl} />
+                <meta name="twitter:image:alt" content="Athenura mission and vision" />
+                
+                {/* ---------- ADDITIONAL META ---------- */}
+                <meta name="application-name" content="Athenura" />
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+                <meta name="apple-mobile-web-app-title" content="Athenura" />
+                <meta name="format-detection" content="telephone=no" />
+                <meta name="mobile-web-app-capable" content="yes" />
+                <meta name="theme-color" content="#28A3B9" />
+                
+                {/* ---------- STRUCTURED DATA ---------- */}
+                <script type="application/ld+json">
+                    {JSON.stringify(articleStructuredData)}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(breadcrumbData)}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(organizationData)}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(faqData)}
+                </script>
+                
+                {/* ---------- PERFORMANCE OPTIMIZATION ---------- */}
+                <link rel="preconnect" href="https://ik.imagekit.io" />
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="dns-prefetch" href="https://ik.imagekit.io" />
+                <link rel="preconnect" href="https://images.unsplash.com" />
+                
+                {/* ---------- HREFLANG (if multilingual) ---------- */}
+                <link rel="alternate" href={canonicalUrl} hreflang="en" />
+                <link rel="alternate" href={canonicalUrl} hreflang="x-default" />
+                
+            </Helmet>
+
+
+
+
         <div className="bg-white min-h-screen font-sans text-black">
 
             {/* HERO SECTION */}
@@ -400,9 +621,8 @@ const WhyAthenuraExists = () => {
                     </div>
                 </aside>
             </div>
-
-
         </div>
+         </>
     );
 };
 

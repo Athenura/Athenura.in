@@ -121,7 +121,7 @@ const AthenuraInternshipProgram = () => {
             "@type": "Organization",
             "name": "Athenura",
             "sameAs": siteUrl,
-            "logo": "https://ik.imagekit.io/vtfcbjo5c/athenura-logo.png"
+            "logo": "../../../public/Athenura.png",
         },
         "timeOfPublication": publishedDate,
         "dateModified": modifiedDate,
@@ -178,6 +178,8 @@ const AthenuraInternshipProgram = () => {
             }
         ]
     };
+
+    
 
     // FAQ structured data
     const faqData = {
