@@ -180,7 +180,7 @@ const interestOptions = [
       `_Enquiry received from website hero section_`;
 
     // WhatsApp business number (replace with your actual WhatsApp business number)
-    const whatsappNumber = "916396949336"; // Replace with your WhatsApp Business number
+    const whatsappNumber = "919835051934"; // Replace with your WhatsApp Business number
 
     // Create WhatsApp URL without redirecting
     const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
