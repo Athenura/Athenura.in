@@ -34,7 +34,7 @@ const ContactContent = () => {
     // Replace this number with your actual support WhatsApp number
     const supportNumber = "919835051934";
 
-    const text = `*New Inquiry via Website*%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Email:* ${formData.email}%0A*Message:* ${formData.message}`;
+    const text = `*New Inquiry via Website Contact Page *%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Email:* ${formData.email}%0A*Message:* ${formData.message}`;
 
     window.open(`https://wa.me/${supportNumber}?text=${text}`, '_blank');
   };

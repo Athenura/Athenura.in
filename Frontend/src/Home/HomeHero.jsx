@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Link } from "react-router-dom";
 
@@ -6,6 +7,32 @@ const AthenuraHero = () => {
   const canvasRef = useRef(null);
   const videoRef = useRef(null);
   const [stage, setStage] = useState('brand-reveal');
+  const [showPopup, setShowPopup] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    whatsapp: '',
+    interest: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  // Scroll-based transformations
+  const { scrollY } = useScroll();
+  const yVideo = useTransform(scrollY, [0, 500], [0, -50]);
+  const scaleVideo = useTransform(scrollY, [0, 500], [1, 1.1]);
+  const yCanvas = useTransform(scrollY, [0, 500], [0, 150]);
+  const opacityCanvas = useTransform(scrollY, [0, 300], [0.8, 0.3]);
+  const yContent = useTransform(scrollY, [0, 300], [0, 30]);
+  const opacityContent = useTransform(scrollY, [0, 200], [1, 0.9]);
+
+  // Interest options
+  const interestOptions = [
+    { value: 'web-development', label: 'Web Development', icon: '🌐' },
+    { value: 'digital-marketing', label: 'Digital Marketing', icon: '📱' },
+    { value: 'custom-software', label: 'Custom Software', icon: '💻' },
+    { value: 'other', label: 'Other', icon: '✨' }
+  ];
 
   // --- 1. Video Ping-Pong Logic ---
   useEffect(() => {
@@ -17,11 +44,11 @@ const AthenuraHero = () => {
 
     const handleTimeUpdate = () => {
       const buffer = 0.1; // Small buffer to prevent getting stuck
-      
+
       // If we are playing forward and reach the end
       if (video.playbackRate > 0 && video.currentTime >= video.duration - buffer) {
         video.playbackRate = -1.0;
-      } 
+      }
       // If we are playing backward and reach the start
       else if (video.playbackRate < 0 && video.currentTime <= buffer) {
         video.playbackRate = 1.0;
@@ -77,7 +104,14 @@ const AthenuraHero = () => {
     draw();
 
     const revealTimer = setTimeout(() => setStage('morphing'), 3000);
-    const finalTimer = setTimeout(() => setStage('final'), 4000);
+    const finalTimer = setTimeout(() => {
+      setStage('final');
+      // Show popup after final stage with a slight delay
+      setTimeout(() => {
+        console.log('Showing popup now'); // Debug log
+        setShowPopup(true);
+      }, 1000);
+    }, 4000);
 
     return () => {
       cancelAnimationFrame(animationFrameId);
@@ -87,37 +121,134 @@ const AthenuraHero = () => {
     };
   }, []);
 
-  const { scrollY } = useScroll();
-  const yBg = useTransform(scrollY, [0, 500], [0, 150]);
+  // Handle form input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    // Validate form
+    if (!formData.name || !formData.email || !formData.whatsapp || !formData.interest) {
+      setSubmitStatus({ type: 'error', message: 'Please fill in all fields' });
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Validate WhatsApp number (basic validation)
+    const phoneRegex = /^\+?[\d\s-]{10,}$/;
+    if (!phoneRegex.test(formData.whatsapp.replace(/\s/g, ''))) {
+      setSubmitStatus({ type: 'error', message: 'Please enter a valid WhatsApp number' });
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setSubmitStatus({ type: 'error', message: 'Please enter a valid email address' });
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Prepare WhatsApp message
+    const interestLabel = interestOptions.find(opt => opt.value === formData.interest)?.label || formData.interest;
+
+    const message = `*New Client Enquiry - Athenura*%0A%0A` +
+      `*Name:* ${formData.name}%0A` +
+      `*Email:* ${formData.email}%0A` +
+      `*WhatsApp:* ${formData.whatsapp}%0A` +
+      `*Interest:* ${interestLabel}%0A%0A` +
+      `_Enquiry received from website hero section_`;
+
+    // WhatsApp business number (replace with your actual WhatsApp business number)
+    const whatsappNumber = "916396949336"; // Replace with your WhatsApp Business number
+
+    // Create WhatsApp URL without redirecting
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
+
+    try {
+      // Open WhatsApp in a new tab/window
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+
+      setSubmitStatus({
+        type: 'success',
+        message: 'Enquiry sent successfully! Check WhatsApp to complete the conversation.'
+      });
+
+      // Reset form after successful submission
+      setTimeout(() => {
+        setFormData({
+          name: '',
+          email: '',
+          whatsapp: '',
+          interest: ''
+        });
+        setSubmitStatus(null);
+      }, 3000);
+
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Failed to send enquiry. Please try again.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Close popup
+  const handleClosePopup = () => {
+    setShowPopup(false);
+    setSubmitStatus(null);
+  };
+
+  // Debug effect to monitor popup state
+  useEffect(() => {
+    console.log('Popup state changed:', showPopup);
+  }, [showPopup]);
 
   return (
     <div className="relative min-h-[92vh] w-full bg-[#030303] overflow-hidden text-white">
 
-      {/* --- BACKGROUND VIDEO LAYER --- */}
-      <div className="absolute inset-0 z-0">
+      {/* --- BACKGROUND VIDEO LAYER WITH SCROLL EFFECT --- */}
+      <motion.div 
+        style={{ y: yVideo, scale: scaleVideo }}
+        className="absolute inset-0 z-0"
+      >
         <video
           ref={videoRef}
           muted
           playsInline
-          /* Fixed Path: In React/Vite, use /filename for public folder files */
-          src="/Animate.mp4" 
+          src="/Animate.mp4"
           className="w-full h-full object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-black/10" />
-      </div>
+      </motion.div>
 
-      {/* --- CANVAS LAYER --- */}
+      {/* --- CANVAS LAYER WITH SCROLL EFFECT --- */}
       <motion.canvas
         ref={canvasRef}
-        style={{ y: yBg }}
-        className="absolute inset-0 z-[1] opacity-80 pointer-events-none"
+        style={{ y: yCanvas, opacity: opacityCanvas }}
+        className="absolute inset-0 z-[1] pointer-events-none"
       />
 
       {/* --- VIGNETTE/GRADIENT LAYER --- */}
       <div className="absolute inset-0 z-[2] bg-[radial-gradient(circle_at_center,transparent_0%,#030303_90%)]" />
 
-      {/* --- CONTENT LAYER --- */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-[80vh] px-8 max-w-7xl mx-auto">
+      {/* --- CONTENT LAYER WITH SCROLL EFFECT --- */}
+      <motion.div 
+        style={{ y: yContent, opacity: opacityContent }}
+        className="relative z-10 flex flex-col items-center justify-center min-h-[80vh] px-8 max-w-7xl mx-auto"
+      >
         <AnimatePresence mode="wait">
           {stage === 'brand-reveal' ? (
             <motion.div
@@ -193,11 +324,12 @@ const AthenuraHero = () => {
                   transition={{ duration: 0.8 }}
                   className="mt-12 flex flex-wrap gap-6 items-center"
                 >
-                  <Link to="/contact">
-                    <button className="px-10 py-4 bg-white text-black rounded-full font-semibold hover:bg-[#28A3B9] hover:text-white transition-all duration-500">
-                      Innovate
-                    </button>
-                  </Link>
+                  <button
+                    onClick={() => setShowPopup(true)}
+                    className="px-10 py-4 bg-white text-black rounded-full font-semibold hover:bg-[#28A3B9] hover:text-white transition-all duration-500"
+                  >
+                    Innovate
+                  </button>
 
                   <Link to="/portfolio">
                     <button className="text-xs uppercase tracking-widest border-b border-white/20 pb-1 hover:border-[#28A3B9] transition-colors">
@@ -226,8 +358,158 @@ const AthenuraHero = () => {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </motion.div>
 
+      {/* --- PORTAL-BASED POPUP MODAL --- */}
+      {showPopup && createPortal(
+     <AnimatePresence>
+          <motion.div
+            key="popup-modal"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{ position: 'fixed', top: 95, left: 0, right: 0, bottom: 0, zIndex: 100 }}
+            className="flex items-start justify-center p-4 md:p-6 overflow-y-auto"
+          >
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={handleClosePopup}
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm"
+            />
+
+            {/* Main Container */}
+            <motion.div
+              initial={{ scale: 0.9, y: 40, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.9, y: 40, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative z-50 bg-[#0A0A0A] border border-white/10 rounded-3xl overflow-hidden max-w-4xl w-full shadow-2xl flex flex-col md:flex-row"
+            >
+
+              {/* Left Side: Image/Visual (Hidden on small mobile if needed, but here responsive) */}
+              <div className="relative w-full md:w-5/12 hidden lg:block h-48 md:h-auto bg-[#1A1A1A]">
+                <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+                  alt="Collaboration"
+                  className="w-full h-full object-cover opacity-60"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#0A0A0A] via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <h4 className="text-xl font-bold text-white mb-1">Our Creative Lab</h4>
+                  <p className="text-xs text-[#28A3B9] font-medium uppercase tracking-wider">Join 500+ Happy Clients</p>
+                </div>
+              </div>
+
+              {/* Right Side: Form */}
+              <div className="w-full md:w-7/12 p-6 md:p-10 relative">
+                {/* Close Button */}
+                <button
+                  onClick={handleClosePopup}
+                  className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+
+                <div className="mb-6">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Partner with Athenura</h3>
+                  <p className="text-gray-400 text-sm">We'll reach out via WhatsApp to discuss your vision.</p>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Name & Email Group for Desktop */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-400 uppercase tracking-tight mb-1.5">Full Name</label>
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-[#28A3B9] outline-none text-white text-sm transition-all"
+                        placeholder="Your Full Name"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-semibold text-gray-400 uppercase tracking-tight mb-1.5">Email</label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-[#28A3B9] outline-none text-white text-sm transition-all"
+                        placeholder="gmail@example.com"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  {/* WhatsApp Number */}
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-400 uppercase tracking-tight mb-1.5">WhatsApp Number</label>
+                    <div className="relative">
+                      <input
+                        type="tel"
+                        name="whatsapp"
+                        value={formData.whatsapp}
+                        onChange={handleInputChange}
+                        className="w-full pl-8 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-[#28A3B9] outline-none text-white text-sm transition-all"
+                        placeholder="+91 98765 43210"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  {/* Interest Selection - NOW A DROPDOWN */}
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-400 uppercase tracking-tight mb-1.5">I'm interested in</label>
+                    <div className="relative">
+                      <select
+                        name="interest"
+                        value={formData.interest}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-[#28A3B9] outline-none text-white text-sm appearance-none cursor-pointer transition-all"
+                        required
+                      >
+                        <option value="" className="bg-[#1A1A1A]">Select a service...</option>
+                        {interestOptions.map((option) => (
+                          <option key={option.value} value={option.value} className="bg-[#1A1A1A]">
+                            {option.icon} {option.label}
+                          </option>
+                        ))}
+                      </select>
+                      <div className="absolute right-4 top-4 pointer-events-none text-gray-500">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Submit Button */}
+                  <motion.button
+                    type="submit"
+                    disabled={isSubmitting}
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                    className="w-full py-4 bg-[#28A3B9] hover:bg-[#2cb5cc] text-white rounded-xl font-bold shadow-lg shadow-[#28A3B9]/20 transition-all flex items-center justify-center gap-2"
+                  >
+                    {isSubmitting ? "Processing..." : "Send WhatsApp Enquiry"}
+                  </motion.button>
+                </form>
+              </div>
+            </motion.div>
+          </motion.div>
+      </AnimatePresence>,
+        document.body
+      )}
+
+      {/* Explore Indicator */}
       <motion.div
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 3 }}
