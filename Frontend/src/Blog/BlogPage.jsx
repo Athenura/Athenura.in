@@ -75,7 +75,7 @@ const BLOG_DATA = [
     },
     {
         id: 8,
-        slug: "importance-of-portfolio-grade-projects",
+        slug: "portfolio-grade-projects",
         category: "Education",
         date: "February 28, 2026",
         title: "The Importance of Portfolio-Grade Projects",
@@ -131,7 +131,7 @@ const BlogContent = () => {
                                 <Link to={`/blogs/${post.slug}`}>
                                     <img
                                         src={post.image}
-                                        className="absolute inset-0 w-full h-full object-fit mix-blend-multiply group-hover:scale-105 transition-transform duration-700"
+                                        className="absolute inset-0 w-full h-full object-center lg:object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-700"
                                         alt={post.title}
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
