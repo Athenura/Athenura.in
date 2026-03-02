@@ -37,6 +37,8 @@ import DigitalMarketingInternship from './Blog/BlogsContent/DigitalMarketingInte
 import RemoteInternshipGuide from './Blog/BlogsContent/RemoteInternshipGuide';
 import PortfolioProjectsArticle from './Blog/BlogsContent/PortfolioProjectsArticle';
 import ErrorPage from './ErrorPage';
+import AcademicVsIndustryArticle from './Blog/BlogsContent/AcademicVsIndustryArticle';
+import MentorshipGrowthArticle from './Blog/BlogsContent/MentorshipGrowthArticle';
 // import NotFound from './ErrorPage/ErrorPage';
 
 
@@ -110,6 +112,8 @@ function App() {
                   <Route path='/blogs/digital-marketing-mastery' element={<DigitalMarketingInternship />} />
                   <Route path='/blogs/ace-remote-internship' element={<RemoteInternshipGuide />} />
                   <Route path='/blogs/portfolio-grade-projects' element={<PortfolioProjectsArticle />} />
+                  <Route path='/blogs/bridging-the-gap' element={<AcademicVsIndustryArticle />} />
+                  <Route path='/blogs/mentorship-growth' element={<MentorshipGrowthArticle />} />
 
 
 

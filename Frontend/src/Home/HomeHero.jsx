@@ -382,13 +382,13 @@ const interestOptions = [
             className="flex items-start justify-center p-4 md:p-6 overflow-y-auto"
           >
             {/* Backdrop */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={handleClosePopup}
               className="fixed inset-0 bg-black/50 backdrop-blur-sm"
-            />
+            /> */}
 
             {/* Main Container */}
             <motion.div

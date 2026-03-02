@@ -37,14 +37,14 @@ const SIMILAR_POSTS = [
         id: 3,
         title: "Bridging the Gap: Academic vs Industry Skills",
         category: "Engineering",
-        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=400&q=80",
+        image: "https://ik.imagekit.io/cn4giet1a/Gemini_Generated_Image_xwpzj2xwpzj2xwpz.png",
         slug: "bridging-the-gap"
     },
     {
         id: 4,
         title: "Why Mentorship is the Secret to Faster Growth",
         category: "Mentorship",
-        image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80",
+        image: "https://ik.imagekit.io/cn4giet1a/Gemini_Generated_Image_tefjeutefjeutefj.png",
         slug: "mentorship-growth"
     }
 ];

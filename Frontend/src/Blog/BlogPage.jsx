@@ -83,6 +83,27 @@ const BLOG_DATA = [
         image: "https://ik.imagekit.io/vtfcbjo5c/portfolio.png",
         featured: false
     },
+    {
+        id: 9,
+        slug: "bridging-the-gap",
+        category: "Engineering",
+        date: "February 15, 2026",
+        title: "Bridging the Gap: Academic vs Industry Skills",
+        description: "Understanding the critical gap between academic learning and real-world industry expectations — and how students can develop practical, job-ready skills alongside theoretical knowledge.",
+        image: "https://ik.imagekit.io/cn4giet1a/Gemini_Generated_Image_xwpzj2xwpzj2xwpz.png",
+        featured: false
+    },
+    {
+        id: 10,
+        slug: "mentorship-growth",
+        category: "Mentorship",
+        date: "March 1, 2026",
+        title: "Why Mentorship is the Secret to Faster Growth",
+        description: "Discover how mentorship accelerates learning, builds confidence, expands networks, and helps individuals achieve career goals faster through guided experience and accountability.",
+        image: "https://ik.imagekit.io/cn4giet1a/Gemini_Generated_Image_gdsr9fgdsr9fgdsr.png",
+        featured: false
+    },
+
 ];
 
 const BlogContent = () => {
