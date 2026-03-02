@@ -79,7 +79,7 @@ const BlogHero = () => {
                     className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-end pb-12"
                 >
                     {/* LEFT: TEXT CONTENT */}
-                    <div className="lg:col-span-7">
+                    <div className="lg:col-span-7 mt-10 lg:mt-0">
                         <h1 className="text-[12vw] lg:text-[6.5vw] leading-[0.9] font-black uppercase tracking-tighter text-black">
                             The <span className="text-[#28A3B9]">Growth</span> <br />
                             <span className="italic font-light text-gray-400" style={{ fontFamily: 'serif' }}>Chronicles</span>
