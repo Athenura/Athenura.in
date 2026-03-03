@@ -220,7 +220,7 @@ const CreativePortfolioSection = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-2xl mb-16">
           <h2 className="text-6xl font-black text-slate-900 tracking-tighter leading-none mb-6">
-            LATEST <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600">WORKS.</span>
+            LATEST <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-teal-600">WORKS.</span>
           </h2>
           <p className="text-xl text-slate-500 font-medium leading-relaxed">
             A showcase of creative projects across various disciplines. Click to expand and explore the full story.
