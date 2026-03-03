@@ -1,439 +1,247 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, memo } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Image, Layers, Palette, Sparkles, Eye,
-  Download, Share2, Heart, Star, Grid3X3,
-  Maximize2, X, ChevronLeft, ChevronRight,
-  Clock, Users, Award, ThumbsUp, FolderOpen,
-  TrendingUp, Camera, PenTool, FileText,
-  Facebook, Twitter, Instagram, Link2
-} from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Layers, Share2 } from 'lucide-react';
+
+// --- Memoized Project Card to prevent unnecessary re-renders ---
+const ProjectCard = memo(({ project, onOpen }) => (
+  <motion.div
+    layoutId={`card-container-${project.id}`}
+    onClick={() => onOpen(project)}
+    className="relative h-[450px] w-full group cursor-pointer"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    whileHover={{ y: -8 }}
+    transition={{ type: "spring", stiffness: 300, damping: 25 }}
+  >
+    <div className="relative w-full h-full bg-white rounded-[32px] overflow-hidden shadow-lg border border-slate-100 flex flex-col">
+      <motion.img 
+        layoutId={`card-image-${project.id}`}
+        src={project.slides[0].url} 
+        alt={project.title} 
+        className="w-full h-2/3 object-cover group-hover:scale-105 transition-transform duration-700"
+      />
+      <div className="p-6 flex-1 flex flex-col justify-center">
+        <span className="text-[10px] font-bold tracking-[0.2em] text-cyan-600 uppercase mb-2 block">
+          {project.type}
+        </span>
+        <h3 className="text-xl font-bold text-slate-900 leading-tight">
+          {project.title}
+        </h3>
+        <div className="flex gap-2 mt-4 items-center">
+          <div className="flex -space-x-2">
+            {project.slides.slice(0, 3).map((s, i) => (
+              <div key={i} className="w-7 h-7 rounded-full border-2 border-white overflow-hidden bg-slate-100 shadow-sm">
+                <img src={s.url} className="w-full h-full object-cover" alt="" />
+              </div>
+            ))}
+          </div>
+          <span className="text-[11px] text-slate-400 font-bold ml-1 uppercase">
+            {project.slides.length} Slides
+          </span>
+        </div>
+      </div>
+      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md p-2 rounded-2xl shadow-sm">
+        <Layers size={16} className="text-slate-700" />
+      </div>
+    </div>
+  </motion.div>
+));
 
 const CreativePortfolioSection = () => {
-  // --- Configuration & Theme ---
-  const theme = {
-    primary: '#1E7A86', // Pink for creative vibe
-    secondary: '#1E7A86',
-    accent: '#F2B807', // Gold accent
-    bg: '#fff',
-    cardBg: '#ffffff',
-    textMain: '#1a0f24',
-    textMuted: '#6b5b7c',
-  };
-
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Dummy project data with multiple slides/pages
   const projects = [
     {
       id: 1,
-      type: "Poster Series",
+      type: "Branding",
       title: "Summer Music Festival",
-      client: "BeatWave Events",
-      year: "2024",
-      description:
-        "Vibrant poster series for a 3-day music festival featuring electronic, rock, and indie artists.",
+      description: "A vibrant visual identity system for a 3-day music festival. Includes poster art, ticket designs, and social media assets.",
       slides: [
-        {
-          id: 1,
-          type: "image",
-          url: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
-          alt: "Main Festival Poster",
-          caption: "Main Event Poster"
-        },
-      ],
-      tags: ["Music", "Festival", "Vibrant", "Typography"]
+        { url: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30", caption: "Main Poster" },
+        { url: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4", caption: "Artist Passes" },
+        { url: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3", caption: "Stage Branding" },
+      ]
     },
-
     {
       id: 2,
-      type: "Flyer Collection",
-      title: "Restaurant Grand Opening",
-      client: "Spice Kitchen",
-      year: "2024",
-      description:
-        "A collection of promotional flyers for a new restaurant opening, including menu teasers and special offers.",
+      type: "Marketing",
+      title: "Spice Kitchen Opening",
+      description: "Elegant restaurant marketing materials designed to showcase high-end culinary experiences and menu variety.",
       slides: [
-        {
-          id: 1,
-          type: "image",
-          url: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5",
-          alt: "Grand Opening Flyer",
-          caption: "Opening Announcement"
-        },
-        {
-          id: 2,
-          type: "image",
-          url: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe",
-          alt: "Menu Specials",
-          caption: "Signature Dishes"
-        },
-      ],
-      tags: ["Restaurant", "Food", "Promotional", "Elegant"]
+        { url: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5", caption: "Grand Opening" },
+        { url: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe", caption: "Menu Specials" },
+      ]
     },
-
     {
       id: 3,
-      type: "Carousel Design",
-      title: "Product Launch Story",
-      client: "TechGadget Pro",
-      year: "2024",
-      description:
-        "Instagram carousel design telling the story of a new smartwatch launch with 5 engaging slides.",
+      type: "Social Media",
+      title: "Smartwatch Launch",
+      description: "A high-converting Instagram carousel series focusing on feature highlights and lifestyle integration.",
       slides: [
-        {
-          id: 1,
-          type: "image",
-          url: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b",
-          alt: "Teaser Slide",
-          caption: "The Wait is Over"
-        },
-        {
-          id: 2,
-          type: "image",
-          url: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
-          alt: "Features Slide",
-          caption: "Key Features"
-        },
-      ],
-      tags: ["Social Media", "Carousel", "Product", "Storytelling"]
+        { url: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b", caption: "Teaser Slide" },
+        { url: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9", caption: "Feature Spotlight" },
+      ]
     },
   ];
 
-
-  const handleShare = async () => {
-    const shareData = {
-      title: document.title,
-      text: "Check out this project!",
-      url: window.location.href,
-    };
-
-    try {
-      if (navigator.share) {
-        await navigator.share(shareData);
-      } else {
-        await navigator.clipboard.writeText(window.location.href);
-        alert("Link copied to clipboard!");
-      }
-    } catch (error) {
-      console.error("Error sharing:", error);
-    }
-  };
-
-  // Open project popup
-  const openProject = (project) => {
-    setSelectedProject(project);
-    setCurrentSlide(0);
-    document.body.style.overflow = 'hidden';
-  };
-
-  // Close project popup
-  const closeProject = () => {
+  const closeProject = useCallback(() => {
     setSelectedProject(null);
     setCurrentSlide(0);
     document.body.style.overflow = 'auto';
-  };
+  }, []);
 
-  // Navigate slides
-  const nextSlide = () => {
-    if (selectedProject) {
-      setCurrentSlide((prev) =>
-        prev === selectedProject.slides.length - 1 ? 0 : prev + 1
-      );
-    }
-  };
+  const openProject = useCallback((project) => {
+    setSelectedProject(project);
+    document.body.style.overflow = 'hidden';
+  }, []);
 
-  const prevSlide = () => {
-    if (selectedProject) {
-      setCurrentSlide((prev) =>
-        prev === 0 ? selectedProject.slides.length - 1 : prev - 1
-      );
-    }
-  };
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (!selectedProject) return;
-
-      if (e.key === 'Escape') {
-        closeProject();
-      } else if (e.key === 'ArrowRight') {
-        nextSlide();
-      } else if (e.key === 'ArrowLeft') {
-        prevSlide();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedProject, currentSlide]);
-
-  // Popup Portal Component
+  // --- PORTAL MODAL COMPONENT ---
   const ProjectPopup = () => {
     if (!selectedProject) return null;
 
     return createPortal(
-      <AnimatePresence mode="wait">
-        <motion.div
+      <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8">
+        {/* Backdrop */}
+        <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
-          style={{ backgroundColor: 'rgba(0, 0, 0, 0.9)' }}
           onClick={closeProject}
+          className="absolute inset-0 bg-slate-950/60 backdrop-blur-2xl"
+        />
+
+        {/* Sliding Window */}
+        <motion.div
+          layoutId={`card-container-${selectedProject.id}`}
+          className="relative w-full max-w-7xl h-full max-h-[850px] bg-white rounded-[40px] shadow-2xl overflow-hidden flex flex-col md:flex-row z-10"
+          onClick={(e) => e.stopPropagation()}
         >
-          {/* Popup Content */}
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-6xl max-h-[90vh] bg-white rounded-3xl overflow-hidden shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Header */}
-            <div className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-black/50 to-transparent p-4 flex justify-between items-center">
-              <div className="flex items-center gap-2">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white backdrop-blur-sm">
-                  {selectedProject.type}
-                </span>
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white backdrop-blur-sm">
-                  {selectedProject.slides.length} Slides
-                </span>
-              </div>
-              <button
-                onClick={closeProject}
-                className="p-2 rounded-full bg-white/20 hover:bg-white/30 text-white backdrop-blur-sm transition-all"
+          {/* Left: Interactive Carousel */}
+          <div className="relative flex-[2] bg-slate-50 flex items-center justify-center overflow-hidden border-b md:border-b-0 md:border-r border-slate-100">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={currentSlide}
+                layoutId={currentSlide === 0 ? `card-image-${selectedProject.id}` : undefined}
+                src={selectedProject.slides[currentSlide].url}
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -100, opacity: 0 }}
+                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                className="max-h-full max-w-full object-contain p-8 md:p-12 select-none"
+                draggable="false"
+              />
+            </AnimatePresence>
+
+            {/* Nav Controls */}
+            <div className="absolute inset-0 flex items-center justify-between px-4 pointer-events-none">
+              <button 
+                onClick={() => setCurrentSlide(prev => (prev > 0 ? prev - 1 : selectedProject.slides.length - 1))}
+                className="p-4 rounded-full bg-white/90 shadow-xl pointer-events-auto hover:scale-110 active:scale-95 transition-all text-slate-900"
               >
-                <X size={20} />
+                <ChevronLeft size={24} />
+              </button>
+              <button 
+                onClick={() => setCurrentSlide(prev => (prev < selectedProject.slides.length - 1 ? prev + 1 : 0))}
+                className="p-4 rounded-full bg-white/90 shadow-xl pointer-events-auto hover:scale-110 active:scale-95 transition-all text-slate-900"
+              >
+                <ChevronRight size={24} />
               </button>
             </div>
 
-            {/* Main Content */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 h-full">
-              {/* Image Viewer */}
-              <div className="lg:col-span-2 bg-slate-900 relative min-h-[400px] lg:min-h-[600px] flex items-center justify-center">
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={currentSlide}
-                    src={selectedProject.slides[currentSlide].url}
-                    alt={selectedProject.slides[currentSlide].alt}
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -50 }}
-                    transition={{ duration: 0.3 }}
-                    className="max-w-full max-h-full object-contain p-4"
-                  />
-                </AnimatePresence>
-
-                {/* Navigation Arrows */}
-                {selectedProject.slides.length > 1 && (
-                  <>
-                    <button
-                      onClick={prevSlide}
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all"
-                    >
-                      <ChevronLeft size={24} />
-                    </button>
-                    <button
-                      onClick={nextSlide}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all"
-                    >
-                      <ChevronRight size={24} />
-                    </button>
-                  </>
-                )}
-
-                {/* Slide Counter */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm backdrop-blur-sm">
-                  {currentSlide + 1} / {selectedProject.slides.length}
-                </div>
-
-                {/* Caption */}
-                <div className="absolute bottom-4 left-4 right-4 text-center text-white text-sm bg-black/50 px-4 py-2 rounded-full max-w-md mx-auto backdrop-blur-sm">
-                  {selectedProject.slides[currentSlide].caption}
-                </div>
-              </div>
-
-              {/* Details Panel */}
-              <div className="bg-white p-6 overflow-y-auto max-h-[600px]">
-                <div className="hidden md:block">
-                  <h2 className="text-2xl font-bold text-slate-800 mb-2">
-                    {selectedProject.title}
-                  </h2>
-                  <p className="text-sm text-slate-500 mb-1">
-                    Client: {selectedProject.client}
-                  </p>
-                  <p className="text-xs text-slate-400 mb-4">
-                    {selectedProject.year}
-                  </p>
-
-                  <p className="text-slate-600 text-sm mb-6">
-                    {selectedProject.description}
-                  </p>
-                </div>
-
-                {/* Thumbnail Strip */}
-                <div className="mb-10">
-                  <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">All Slides</h3>
-                  <div className="flex gap-2 overflow-x-auto pb-2">
-                    {selectedProject.slides.map((slide, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setCurrentSlide(idx)}
-                        className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all
-                          ${currentSlide === idx ? `border-[${theme.primary}]` : 'border-transparent opacity-60'}`}
-                      >
-                        <img src={slide.url} alt={slide.alt} className="w-full h-full object-cover" />
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Tags */}
-                <div className="mb-6 hidden md:block">
-                  <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Tags</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.tags.map((tag, idx) => (
-                      <span key={idx} className="px-3 py-1 bg-slate-100 rounded-full text-xs text-slate-600">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Stats */}
-
-                {/* Action Buttons */}
-                <div className="flex gap-2">
-                  <button
-                    onClick={handleShare}
-                    className="flex-1 py-2 px-4 border border-slate-200 rounded-xl text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors flex items-center justify-center gap-2"
-                  >
-                    <Share2 size={16} />
-                    Share
-                  </button>
-                </div>
-              </div>
+            {/* Counter */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-5 py-2 rounded-full text-xs font-black shadow-lg">
+              {currentSlide + 1} / {selectedProject.slides.length}
             </div>
-          </motion.div>
+          </div>
+
+          {/* Right: Info Sidebar */}
+          <div className="flex-1 p-8 md:p-14 flex flex-col justify-between overflow-y-auto">
+            <div className="space-y-8">
+              <div className="flex justify-between items-start">
+                <span className="px-4 py-1.5 bg-cyan-50 text-cyan-600 rounded-full text-[10px] font-black uppercase tracking-widest">
+                  Project Gallery
+                </span>
+                <button onClick={closeProject} className="p-3 hover:bg-slate-100 rounded-full transition-colors text-slate-400">
+                  <X size={24} />
+                </button>
+              </div>
+
+                            <div>
+                <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">View All Slides</h4>
+                <div className="flex gap-3 overflow-x-auto pb-4 no-scrollbar">
+                  {selectedProject.slides.map((slide, i) => (
+                    <button 
+                      key={i} 
+                      onClick={() => setCurrentSlide(i)}
+                      className={`flex-shrink-0 w-20 h-20 rounded-2xl overflow-hidden border-4 transition-all ${
+                        currentSlide === i ? 'border-cyan-500 scale-105 shadow-md' : 'border-transparent opacity-40 hover:opacity-100'
+                      }`}
+                    >
+                      <img src={slide.url} className="w-full h-full object-cover" alt="" />
+                    </button>
+                  ))}
+                </div>
+              </div>
+              
+              <div>
+                <h2 className="text-4xl font-black text-slate-900 mb-4 tracking-tight">
+                  {selectedProject.title}
+                </h2>
+                <p className="text-slate-500 leading-relaxed text-lg">
+                  {selectedProject.description}
+                </p>
+              </div>
+              
+              {/* Thumbnail Quick-Jump */}
+
+            </div>
+
+            <button className="w-full bg-slate-900 text-white py-5 rounded-[20px] font-bold flex items-center justify-center gap-3 hover:bg-cyan-700 transition-all shadow-xl shadow-slate-200 mt-8">
+              <Share2 size={20} /> Share This Portfolio
+            </button>
+          </div>
         </motion.div>
-      </AnimatePresence>,
+      </div>,
       document.body
     );
   };
 
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden font-sans" style={{ backgroundColor: theme.bg }}>
-
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 20px 20px, ${theme.primary} 1px, transparent 1px)`,
-          backgroundSize: '40px 40px'
-        }}></div>
+    <section className="py-24 bg-slate-50 min-h-screen relative overflow-hidden">
+      {/* Background accents */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-40">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-cyan-100 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-50 rounded-full blur-[120px]" />
       </div>
 
-      <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-10">
-
-        {/* --- Header Section --- */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight"
-          >
-            Visual Stories That <br className="md:hidden" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r"
-              style={{ backgroundImage: `linear-gradient(to right, ${theme.secondary}, ${theme.primary})` }}>
-              Captivate & Convert
-            </span>
-          </motion.h2>
-          <p className="mt-6 text-slate-600 text-lg max-w-2xl mx-auto">
-            From posters to social media carousels each design tells a unique story. Click any project to explore every slide in detail.
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-2xl mb-16">
+          <h2 className="text-6xl font-black text-slate-900 tracking-tighter leading-none mb-6">
+            LATEST <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600">WORKS.</span>
+          </h2>
+          <p className="text-xl text-slate-500 font-medium leading-relaxed">
+            A showcase of creative projects across various disciplines. Click to expand and explore the full story.
           </p>
         </div>
 
-
-        {/* --- Creative Grid / Portfolio --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, idx) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * idx }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-lg hover:shadow-xl transition-all cursor-pointer group"
-              onClick={() => openProject(project)}
-            >
-              {/* Preview Image Stack */}
-              <div className="relative h-48 bg-slate-100 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-
-                {/* Show first slide as main image */}
-                <img
-                  src={project.slides[0].url}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-
-                {/* Slide count badge */}
-                <div className="absolute top-3 right-3 z-20 bg-black/70 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1 backdrop-blur-sm">
-                  <Layers size={12} />
-                  {project.slides.length} {project.slides.length === 1 ? 'slide' : 'slides'}
-                </div>
-
-                {/* Type badge */}
-                <div className="absolute bottom-3 left-3 z-20 bg-white/90 text-slate-800 text-xs px-2 py-1 rounded-full font-medium">
-                  {project.type}
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-5">
-
-                <p className="text-xs text-slate-400 mb-3">Client: {project.client} • {project.year}</p>
-
-                <p className="text-sm text-slate-600 line-clamp-2 mb-4">{project.description}</p>
-
-                {/* Mini slide previews */}
-                <div className="flex items-center gap-1 mb-4">
-                  {project.slides.slice(0, 3).map((slide, slideIdx) => (
-                    <div key={slideIdx} className="w-8 h-8 rounded bg-slate-100 overflow-hidden border border-slate-200">
-                      <img src={slide.url} alt="" className="w-full h-full object-cover" />
-                    </div>
-                  ))}
-                  {project.slides.length > 3 && (
-                    <div className="w-8 h-8 rounded bg-slate-100 flex items-center justify-center text-xs text-slate-500 font-medium border border-slate-200">
-                      +{project.slides.length - 3}
-                    </div>
-                  )}
-                </div>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-1 mb-3">
-                  {project.tags.slice(0, 3).map((tag, tagIdx) => (
-                    <span key={tagIdx} className="px-2 py-0.5 bg-slate-100 rounded text-xs text-slate-600">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {projects.map((project) => (
+            <ProjectCard 
+              key={project.id} 
+              project={project} 
+              onOpen={openProject} 
+            />
           ))}
         </div>
-
       </div>
 
-      {/* Project Popup Portal */}
-      <ProjectPopup />
+      {/* Popup Portal renders outside the main section hierarchy */}
+      <AnimatePresence>
+        {selectedProject && <ProjectPopup />}
+      </AnimatePresence>
     </section>
   );
 };
