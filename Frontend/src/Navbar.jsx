@@ -64,8 +64,8 @@ const Navbar = () => {
     { name: "Home", path: "/" },
     { name: "Services", path: "/services", hasDropdown: true },
     { name: "Portfolio", path: "/portfolio" },
-    { name: "About Us", path: "/about-us" },
     { name: "Internship", path: "/internship" },
+    { name: "About Us", path: "/about-us" },
     { name: "Contact", path: "/contact" },
     { name: "Blogs", path: "/blogs" },
   ];
@@ -272,7 +272,7 @@ const Navbar = () => {
       >
         <div className="flex flex-col h-full pt-24 px-6 pb-8 overflow-y-auto">
           <nav className="space-y-2">
-            {navigationItems.map((item, idx) => (
+            {navigationItems.map((item) => (
               <div key={item.name} className="border-b border-gray-100 last:border-0 pb-2">
                 {item.hasDropdown ? (
                   <div className="overflow-hidden">

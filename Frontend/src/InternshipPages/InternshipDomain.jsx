@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Users, Palette, MousePointer, Monitor, Server, Layers, 
@@ -49,6 +50,19 @@ const InternshipDomains = () => {
     });
 
     return () => clearTimeout(timer);
+  }, [selectedRole]);
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (selectedRole) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
   }, [selectedRole]);
 
   const internshipRoles = [
@@ -277,7 +291,116 @@ const InternshipDomains = () => {
     setSelectedRole(null);
   };
 
+  // Modal component rendered with portal
+  const Modal = () => {
+    if (!selectedRole) return null;
 
+    return createPortal(
+      <AnimatePresence>
+        {selectedRole && (
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6">
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              exit={{ opacity: 0 }} 
+              onClick={handleCloseModal}
+              className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            />
+            
+            {/* Modal Card Structure */}
+            <motion.div 
+              layoutId={`card-${selectedRole.id}`}
+              className="bg-white w-full max-w-2xl rounded-2xl md:rounded-3xl shadow-2xl relative z-[10000] overflow-hidden flex flex-col max-h-[85vh] md:max-h-[80vh]"
+            >
+              
+              {/* 1. Modal Header (Fixed, No Scroll) */}
+              <div className={`p-5 md:p-8 ${selectedRole.color.split(' ')[0]} bg-opacity-20 shrink-0 relative`}>
+                <button 
+                  onClick={handleCloseModal}
+                  className="absolute top-4 right-4 p-2 bg-white/60 hover:bg-white rounded-full transition-colors z-20"
+                >
+                  <X size={18} className="text-gray-600 md:w-5 md:h-5" />
+                </button>
+                
+                <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4 pr-10">
+                  <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center bg-white shadow-sm shrink-0 ${selectedRole.color.split(' ')[1]}`}>
+                    <selectedRole.icon size={24} className="md:w-7 md:h-7" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 leading-tight">{selectedRole.title}</h3>
+                    <div className="flex items-center gap-2 mt-1">
+                      <Briefcase size={12} className="text-gray-500" />
+                      <p className="text-xs md:text-sm font-medium opacity-80">{selectedRole.details.duration} Internship</p>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-xs md:text-base text-gray-700 leading-relaxed max-w-xl">
+                  {selectedRole.desc}
+                </p>
+              </div>
+
+              {/* 2. Modal Body (Scrollable Area) */}
+              <div 
+                ref={modalBodyRef}
+                className="p-5 md:p-8 overflow-y-auto modal-scroll-container flex-1"
+              >
+                {/* Responsibilities */}
+                <div className="mb-6 md:mb-8">
+                  <h4 className="text-xs md:text-sm font-bold uppercase tracking-wider text-gray-400 mb-3 md:mb-4">
+                    Key Responsibilities
+                  </h4>
+                  <ul className="space-y-3">
+                    {selectedRole.details.responsibilities.map((resp, idx) => (
+                      <li key={idx} className="flex items-start gap-3 text-sm text-gray-600 leading-relaxed">
+                        <CheckCircle2 size={16} className="text-[#1E7A86] mt-0.5 shrink-0" />
+                        <span>{resp}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Skills Grid */}
+                <div>
+                  <h4 className="text-xs md:text-sm font-bold uppercase tracking-wider text-gray-400 mb-3 md:mb-4">Skills You'll Master</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedRole.details.skills.map((skill, idx) => (
+                      <span key={idx} className="px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-100 text-xs font-semibold text-gray-600">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Additional Info */}
+                <div className="mt-8 p-4 bg-gray-50 rounded-xl border border-gray-100">
+                  <p className="text-sm text-gray-600 mb-2">
+                    <span className="font-semibold">Note:</span> This internship includes mentorship, real-world projects, and a certificate upon successful completion.
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    Applications are reviewed on a rolling basis. Early applicants have higher chances of selection.
+                  </p>
+                </div>
+              </div>
+
+              {/* 3. Modal Footer (Fixed, No Scroll) */}
+              <div className="p-4 md:p-6 border-t border-gray-100 bg-white shrink-0 z-20">
+                <Link to="/apply-internship">
+                  <button 
+                    className="w-full py-3 rounded-xl bg-[#1E7A86] text-white font-bold text-sm hover:bg-[#155d66] transition-colors shadow-lg shadow-[#1E7A86]/20 active:scale-95 transform"
+                  >
+                    Apply for {selectedRole.title}
+                  </button>
+                </Link>
+              </div>
+
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>,
+      document.body
+    );
+  };
 
   return (
     <section className="px-4 md:px-6 font-sans relative" style={{ backgroundColor: theme.bg }}>
@@ -380,109 +503,8 @@ const InternshipDomains = () => {
           ))}
         </motion.div>
 
-        {/* --- Modal / Expanded View --- */}
-        <AnimatePresence>
-          {selectedRole && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
-              {/* Backdrop */}
-              <motion.div 
-                initial={{ opacity: 0 }} 
-                animate={{ opacity: 1 }} 
-                exit={{ opacity: 0 }} 
-                onClick={handleCloseModal}
-                className="absolute inset-0 bg-black/40 backdrop-blur-sm"
-              />
-              
-              {/* Modal Card Structure */}
-              <motion.div 
-                layoutId={`card-${selectedRole.id}`}
-                className="bg-white w-full max-w-2xl rounded-2xl md:rounded-3xl shadow-2xl relative z-10 overflow-hidden flex flex-col max-h-[85vh] md:max-h-[80vh]"
-              >
-                
-                {/* 1. Modal Header (Fixed, No Scroll) */}
-                <div className={`p-5 md:p-8 ${selectedRole.color.split(' ')[0]} bg-opacity-20 shrink-0 relative`}>
-                  <button 
-                    onClick={handleCloseModal}
-                    className="absolute top-4 right-4 p-2 bg-white/60 hover:bg-white rounded-full transition-colors z-20"
-                  >
-                    <X size={18} className="text-gray-600 md:w-5 md:h-5" />
-                  </button>
-                  
-                  <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4 pr-10">
-                    <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center bg-white shadow-sm shrink-0 ${selectedRole.color.split(' ')[1]}`}>
-                      <selectedRole.icon size={24} className="md:w-7 md:h-7" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl md:text-2xl font-bold text-gray-900 leading-tight">{selectedRole.title}</h3>
-                      <div className="flex items-center gap-2 mt-1">
-                        <Briefcase size={12} className="text-gray-500" />
-                        <p className="text-xs md:text-sm font-medium opacity-80">{selectedRole.details.duration} Internship</p>
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-xs md:text-base text-gray-700 leading-relaxed max-w-xl">
-                    {selectedRole.desc}
-                  </p>
-                </div>
-
-                {/* 2. Modal Body (Scrollable Area) */}
-                <div 
-                  ref={modalBodyRef}
-                  className="p-5 md:p-8 overflow-y-auto modal-scroll-container flex-1"
-                >
-                  {/* Responsibilities */}
-                  <div className="mb-6 md:mb-8">
-                    <h4 className="text-xs md:text-sm font-bold uppercase tracking-wider text-gray-400 mb-3 md:mb-4">
-                      Key Responsibilities
-                    </h4>
-                    <ul className="space-y-3">
-                      {selectedRole.details.responsibilities.map((resp, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-sm text-gray-600 leading-relaxed">
-                          <CheckCircle2 size={16} className="text-[#1E7A86] mt-0.5 shrink-0" />
-                          <span>{resp}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Skills Grid */}
-                  <div>
-                    <h4 className="text-xs md:text-sm font-bold uppercase tracking-wider text-gray-400 mb-3 md:mb-4">Skills You'll Master</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedRole.details.skills.map((skill, idx) => (
-                        <span key={idx} className="px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-100 text-xs font-semibold text-gray-600">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Additional Info */}
-                  <div className="mt-8 p-4 bg-gray-50 rounded-xl border border-gray-100">
-                    <p className="text-sm text-gray-600 mb-2">
-                      <span className="font-semibold">Note:</span> This internship includes mentorship, real-world projects, and a certificate upon successful completion.
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      Applications are reviewed on a rolling basis. Early applicants have higher chances of selection.
-                    </p>
-                  </div>
-                </div>
-
-                {/* 3. Modal Footer (Fixed, No Scroll) */}
-                <div className="p-4 md:p-6 border-t border-gray-100 bg-white shrink-0 z-20">
-                    <Link to="/apply-internship">
-                  <button 
-                    className="w-full py-3 rounded-xl bg-[#1E7A86] text-white font-bold text-sm hover:bg-[#155d66] transition-colors shadow-lg shadow-[#1E7A86]/20 active:scale-95 transform"
-                    >
-                    Apply for {selectedRole.title}
-                  </button>
-                      </Link>
-                </div>
-
-              </motion.div>
-            </div>
-          )}
-        </AnimatePresence>
+        {/* Modal rendered with portal */}
+        <Modal />
 
       </div>
     </section>

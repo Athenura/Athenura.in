@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { FaGraduationCap, FaCheckCircle, FaTasks, FaShieldAlt, FaChevronDown, FaChevronUp, FaEnvelope, FaRocket, FaSearch, FaExternalLinkAlt } from "react-icons/fa";
+import { FaGraduationCap, FaCheckCircle, FaTasks, FaShieldAlt, FaChevronDown, FaChevronUp, FaEnvelope, FaRocket, FaSearch, FaExternalLinkAlt, FaUsers, FaBuilding, FaQuestionCircle } from "react-icons/fa";
 import { RiLightbulbFlashLine } from "react-icons/ri";
 
 const FaqPage = () => {
@@ -14,8 +14,180 @@ const FaqPage = () => {
         gradient: "linear-gradient(135deg, #1E90A8 0%, #156A7A 100%)",
     };
 
-    // Content derived from your Internship & Privacy Policy PDFs
-    const faqData = [
+    // ===== CLIENT FAQS (from your comprehensive list) =====
+    const clientFaqs = [
+        // About Athenura
+        {
+            category: "About Athenura",
+            icon: <FaBuilding />,
+            questions: [
+                {
+                    q: "What does Athenura do?",
+                    a: "Athenura provides custom software development, AI-powered solutions, business automation, digital marketing, branding, and strategic growth services for startups and growing businesses."
+                },
+                {
+                    q: "Who are your ideal clients?",
+                    a: "We work with startups, SMEs, educational institutions, service-based companies, and growing enterprises looking for scalable digital solutions."
+                },
+                {
+                    q: "Do you work internationally?",
+                    a: "Yes. As a remote-first organization, we serve clients globally."
+                }
+            ]
+        },
+        // Technical Services
+        {
+            category: "Technical Services",
+            icon: <FaRocket />,
+            questions: [
+                {
+                    q: "What technical services do you provide?",
+                    a: "We offer: Custom Software Development, Web Application Development, AI & Automation Solutions, Business Dashboards, Website Design & Redesign, and Performance Optimization."
+                },
+                {
+                    q: "Can you build a complete custom system from scratch?",
+                    a: "Yes. We design, develop, test, and deploy fully customized systems tailored to your business requirements."
+                },
+                {
+                    q: "Do you redesign or upgrade existing websites?",
+                    a: "Yes. We modernize outdated websites with improved UI/UX, performance optimization, and SEO improvements."
+                },
+                {
+                    q: "What technologies do you use?",
+                    a: "We work with modern stacks like React, Node.js, Python, cloud platforms, AI/ML frameworks, and scalable databases."
+                },
+                {
+                    q: "Do you provide mobile app development?",
+                    a: "Yes, we can build responsive web apps and mobile-friendly solutions. Dedicated mobile apps can also be developed based on project scope."
+                }
+            ]
+        },
+        // Non-Technical & Growth Services
+        {
+            category: "Non-Technical & Growth Services",
+            icon: <RiLightbulbFlashLine />,
+            questions: [
+                {
+                    q: "Do you provide digital marketing services?",
+                    a: "Yes. We offer SEO, social media marketing, paid ads management, content marketing, and brand positioning strategies."
+                },
+                {
+                    q: "Can you manage our social media accounts?",
+                    a: "Yes. We handle content creation, posting, engagement strategies, and analytics reporting."
+                },
+                {
+                    q: "Do you help with branding?",
+                    a: "Yes. We assist with brand strategy, messaging, identity positioning, and professional presence development."
+                },
+                {
+                    q: "Can you generate leads for our business?",
+                    a: "Yes. We create structured lead generation funnels and digital campaigns to improve conversions."
+                },
+                {
+                    q: "Do you provide business consultation for startups?",
+                    a: "Yes. We guide startups with digital strategy, growth planning, competitor analysis, and market positioning."
+                }
+            ]
+        },
+        // Project Process
+        {
+            category: "Project Process",
+            icon: <FaTasks />,
+            questions: [
+                {
+                    q: "How does the project process work?",
+                    a: "Our process includes: Requirement discussion, Strategy & proposal, Development phase, Testing & quality assurance, Deployment, and Ongoing support."
+                },
+                {
+                    q: "How do we start working with Athenura?",
+                    a: "You can contact us via our website or email. We schedule a consultation to understand your requirements before sharing a proposal."
+                },
+                {
+                    q: "How long does a project take?",
+                    a: "Project timelines vary based on complexity. Small projects may take 3–6 weeks, while advanced systems may take 2–4 months."
+                },
+                {
+                    q: "How do you communicate during the project?",
+                    a: "We provide regular updates, milestone reviews, and transparent communication through scheduled meetings."
+                }
+            ]
+        },
+        // Pricing & Contracts
+        {
+            category: "Pricing & Contracts",
+            icon: <FaCheckCircle />,
+            questions: [
+                {
+                    q: "How much do your services cost?",
+                    a: "Pricing depends on scope, features, and timeline. We provide customized quotes after analyzing your requirements."
+                },
+                {
+                    q: "Do you offer fixed pricing or hourly billing?",
+                    a: "We offer both models depending on project type."
+                },
+                {
+                    q: "Is there a payment structure?",
+                    a: "Typically, we follow milestone-based payments for transparency and security."
+                },
+                {
+                    q: "Do you sign contracts or NDAs?",
+                    a: "Yes. We sign service agreements and Non-Disclosure Agreements when required."
+                }
+            ]
+        },
+        // Security & Confidentiality
+        {
+            category: "Security & Confidentiality",
+            icon: <FaShieldAlt />,
+            questions: [
+                {
+                    q: "Is my data secure?",
+                    a: "Yes. We follow secure coding practices and ensure strict confidentiality."
+                },
+                {
+                    q: "Do you provide secure hosting support?",
+                    a: "Yes. We guide clients in choosing secure and scalable hosting environments."
+                }
+            ]
+        },
+        // Support & Maintenance
+        {
+            category: "Support & Maintenance",
+            icon: <FaTasks />,
+            questions: [
+                {
+                    q: "Do you provide post-launch support?",
+                    a: "Yes. We offer maintenance, updates, optimization, and technical assistance after deployment."
+                },
+                {
+                    q: "Can we request feature upgrades later?",
+                    a: "Yes. We support scalable upgrades as your business grows."
+                }
+            ]
+        },
+        // Working With Athenura
+        {
+            category: "Working With Athenura",
+            icon: <FaUsers />,
+            questions: [
+                {
+                    q: "Why should we choose Athenura?",
+                    a: "Structured development process, modern technology stack, business + technical expertise, transparent communication, and scalable long-term solutions."
+                },
+                {
+                    q: "Do you offer long-term partnerships?",
+                    a: "Yes. We focus on long-term collaboration rather than one-time projects."
+                },
+                {
+                    q: "Can we outsource ongoing work to Athenura?",
+                    a: "Yes. We provide dedicated support and outsourcing solutions for continuous business needs."
+                }
+            ]
+        }
+    ];
+
+    // ===== INTERN FAQS (from your original list + expanded) =====
+    const internFaqs = [
         {
             category: "Internship Program Overview",
             icon: <FaGraduationCap />,
@@ -100,25 +272,40 @@ const FaqPage = () => {
 
     const [openItems, setOpenItems] = useState({});
     const [searchTerm, setSearchTerm] = useState("");
+    const [activeTab, setActiveTab] = useState("clients"); // "clients" or "interns"
     const sectionRefs = useRef([]);
 
-    const toggleItem = (categoryIndex, questionIndex) => {
-        const key = `${categoryIndex}-${questionIndex}`;
+    const toggleItem = (sectionType, categoryIndex, questionIndex) => {
+        const key = `${sectionType}-${categoryIndex}-${questionIndex}`;
         setOpenItems(prev => ({
             ...prev,
             [key]: !prev[key]
         }));
     };
 
+    const toggleAllInCategory = (sectionType, categoryIndex, questions) => {
+        const allKeys = questions.map((_, qIdx) => `${sectionType}-${categoryIndex}-${qIdx}`);
+        const allOpen = allKeys.every(key => openItems[key]);
+        const newState = {};
+        allKeys.forEach(key => newState[key] = !allOpen);
+        setOpenItems(prev => ({ ...prev, ...newState }));
+    };
 
+    // Filter based on search term
+    const filterFaqs = (faqs) => {
+        if (!searchTerm) return faqs;
+        
+        return faqs.map(section => ({
+            ...section,
+            questions: section.questions.filter(q => 
+                q.q.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                q.a.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+        })).filter(section => section.questions.length > 0);
+    };
 
-    const filteredFaqData = faqData.map(section => ({
-        ...section,
-        questions: searchTerm ? section.questions.filter(q => 
-            q.q.toLowerCase().includes(searchTerm.toLowerCase()) || 
-            q.a.toLowerCase().includes(searchTerm.toLowerCase())
-        ) : section.questions
-    })).filter(section => section.questions.length > 0);
+    const filteredClientFaqs = filterFaqs(clientFaqs);
+    const filteredInternFaqs = filterFaqs(internFaqs);
 
     return (
         <div className="min-h-screen font-sans relative overflow-hidden" style={{ backgroundColor: theme.bg }}>
@@ -151,7 +338,7 @@ const FaqPage = () => {
                         </h1>
 
                         <p className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed max-w-3xl mx-auto mb-6 md:mb-10 px-4" style={{ color: theme.textGray }}>
-                            Everything you need to know about our internship program, policies, and privacy standards.
+                            Everything you need to know about our services, internship program, policies, and privacy standards.
                         </p>
 
                         {/* Search Bar */}
@@ -186,90 +373,227 @@ const FaqPage = () => {
                 </div>
             </section>
 
+            {/* --- TAB NAVIGATION --- */}
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-12 mb-8 md:mb-12">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button
+                        onClick={() => setActiveTab("clients")}
+                        className={`relative px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-3 ${
+                            activeTab === "clients" 
+                                ? "text-white shadow-lg scale-105" 
+                                : "bg-white border hover:shadow-md"
+                        }`}
+                        style={activeTab === "clients" ? { background: theme.gradient } : { borderColor: theme.border, color: theme.textDark }}
+                    >
+                        <FaBuilding className="w-5 h-5" />
+                        For Clients & Partners
+                    </button>
+                    <button
+                        onClick={() => setActiveTab("interns")}
+                        className={`relative px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-3 ${
+                            activeTab === "interns" 
+                                ? "text-white shadow-lg scale-105" 
+                                : "bg-white border hover:shadow-md"
+                        }`}
+                        style={activeTab === "interns" ? { background: theme.gradient } : { borderColor: theme.border, color: theme.textDark }}
+                    >
+                        <FaGraduationCap className="w-5 h-5" />
+                        For Interns & Students
+                    </button>
+                </div>
+            </div>
+
             {/* --- FAQ CONTENT --- */}
             <section className="pb-16 md:pb-24 px-4 sm:px-6 lg:px-12 relative">
                 <div className="max-w-8xl mx-auto">
 
-                    {/* FAQ Sections */}
-                    <div className="space-y-6 md:space-y-12">
-                        {filteredFaqData.map((section, idx) => (
-                            <div 
-                                key={idx} 
-                                ref={el => sectionRefs.current[idx] = el}
-                                className="animate-fade-in-up bg-white rounded-2xl md:rounded-3xl border shadow-lg overflow-hidden"
-                                style={{ animationDelay: `${idx * 150}ms` }}
-                            >
-                                {/* Category Header */}
-                                <div className="p-4 sm:p-6 md:p-8 border-b" style={{ backgroundColor: theme.primaryLight, borderColor: theme.border }}>
-                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                                        <div className="flex items-center gap-3 md:gap-4">
-                                            <div className="p-2 sm:p-3 md:p-4 rounded-xl md:rounded-2xl bg-white shadow-md">
-                                                <span className="text-xl md:text-2xl" style={{ color: theme.primary }}>
-                                                    {section.icon}
-                                                </span>
-                                            </div>
-                                            <div>
-                                                <h2 className="text-lg sm:text-xl md:text-2xl font-bold" style={{ color: theme.textDark }}>{section.category}</h2>
-                                                <p className="text-xs sm:text-sm" style={{ color: theme.textGray }}>{section.questions.length} questions in this section</p>
-                                            </div>
-                                        </div>
-                                        <button 
-                                            onClick={() => {
-                                                const allKeys = section.questions.map((_, qIdx) => `${idx}-${qIdx}`);
-                                                const allOpen = allKeys.every(key => openItems[key]);
-                                                const newState = {};
-                                                allKeys.forEach(key => newState[key] = !allOpen);
-                                                setOpenItems(prev => ({ ...prev, ...newState }));
-                                            }}
-                                            className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium hover:shadow transition-all duration-300 self-start sm:self-auto"
-                                            style={{ backgroundColor: theme.white, color: theme.primary, border: `1px solid ${theme.border}` }}
-                                        >
-                                            {section.questions.every((_, qIdx) => openItems[`${idx}-${qIdx}`]) ? 'Collapse All' : 'Expand All'}
-                                        </button>
-                                    </div>
-                                </div>
+                    {/* CLIENT FAQS SECTION */}
+                    {activeTab === "clients" && (
+                        <div className="space-y-6 md:space-y-12">
+                            <div className="text-center mb-8">
+                                <h2 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: theme.textDark }}>
+                                    Frequently Asked <span style={{ color: theme.primary }}>by Clients</span>
+                                </h2>
+                                <p className="text-sm md:text-base" style={{ color: theme.textGray }}>
+                                    Everything you need to know about working with Athenura
+                                </p>
+                            </div>
 
-                                {/* Questions */}
-                                <div className="divide-y" style={{ borderColor: theme.border }}>
-                                    {section.questions.map((item, qIdx) => {
-                                        const isOpen = openItems[`${idx}-${qIdx}`];
-                                        return (
-                                            <div key={qIdx} className="transition-all duration-300 hover:bg-gray-50">
-                                                <button
-                                                    onClick={() => toggleItem(idx, qIdx)}
-                                                    className="w-full flex items-center justify-between p-4 sm:p-6 md:p-8 text-left focus:outline-none group"
+                            {filteredClientFaqs.length > 0 ? (
+                                filteredClientFaqs.map((section, idx) => (
+                                    <div 
+                                        key={`client-${idx}`} 
+                                        ref={el => sectionRefs.current[`client-${idx}`] = el}
+                                        className="animate-fade-in-up bg-white rounded-2xl md:rounded-3xl border shadow-lg overflow-hidden"
+                                        style={{ animationDelay: `${idx * 100}ms` }}
+                                    >
+                                        {/* Category Header */}
+                                        <div className="p-4 sm:p-6 md:p-8 border-b" style={{ backgroundColor: theme.primaryLight, borderColor: theme.border }}>
+                                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                                <div className="flex items-center gap-3 md:gap-4">
+                                                    <div className="p-2 sm:p-3 md:p-4 rounded-xl md:rounded-2xl bg-white shadow-md">
+                                                        <span className="text-xl md:text-2xl" style={{ color: theme.primary }}>
+                                                            {section.icon}
+                                                        </span>
+                                                    </div>
+                                                    <div>
+                                                        <h3 className="text-lg sm:text-xl md:text-2xl font-bold" style={{ color: theme.textDark }}>{section.category}</h3>
+                                                        <p className="text-xs sm:text-sm" style={{ color: theme.textGray }}>{section.questions.length} questions</p>
+                                                    </div>
+                                                </div>
+                                                <button 
+                                                    onClick={() => toggleAllInCategory('client', idx, section.questions)}
+                                                    className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium hover:shadow transition-all duration-300 self-start sm:self-auto"
+                                                    style={{ backgroundColor: theme.white, color: theme.primary, border: `1px solid ${theme.border}` }}
                                                 >
-                                                    <div className="flex items-start gap-3 sm:gap-4 flex-1">
-                                                        <div className={`mt-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'rotate-180' : ''}`} style={{ backgroundColor: isOpen ? theme.primaryLight : 'transparent' }}>
-                                                            {isOpen ? 
-                                                                <FaChevronUp className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: theme.primary }} /> : 
-                                                                <FaChevronDown className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: theme.textGray }} />
-                                                            }
-                                                        </div>
-                                                        <div className="flex-1 min-w-0">
-                                                            <h3 className="text-sm sm:text-base md:text-lg font-semibold mb-1 sm:mb-2 group-hover:translate-x-1 transition-transform duration-300" style={{ color: isOpen ? theme.primary : theme.textDark }}>
-                                                                {item.q}
-                                                            </h3>
-                                                            <div className={`overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-96 opacity-100 mt-2 sm:mt-4' : 'max-h-0 opacity-0'}`}>
-                                                                <p className="leading-relaxed pr-2 sm:pr-8 text-xs sm:text-sm md:text-base" style={{ color: theme.textGray }}>
-                                                                    {item.a}
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="shrink-0 ml-2 sm:ml-4">
-                                                        <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-teal-50 scale-110' : 'bg-gray-50 group-hover:scale-110'}`}>
-                                                            <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${isOpen ? 'bg-teal-500 scale-150' : 'bg-gray-400'}`}></div>
-                                                        </div>
-                                                    </div>
+                                                    {section.questions.every((_, qIdx) => openItems[`client-${idx}-${qIdx}`]) ? 'Collapse All' : 'Expand All'}
                                                 </button>
                                             </div>
-                                        );
-                                    })}
+                                        </div>
+
+                                        {/* Questions */}
+                                        <div className="divide-y" style={{ borderColor: theme.border }}>
+                                            {section.questions.map((item, qIdx) => {
+                                                const isOpen = openItems[`client-${idx}-${qIdx}`];
+                                                return (
+                                                    <div key={qIdx} className="transition-all duration-300 hover:bg-gray-50">
+                                                        <button
+                                                            onClick={() => toggleItem('client', idx, qIdx)}
+                                                            className="w-full flex items-center justify-between p-4 sm:p-6 md:p-8 text-left focus:outline-none group"
+                                                        >
+                                                            <div className="flex items-start gap-3 sm:gap-4 flex-1">
+                                                                <div className={`mt-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'rotate-180' : ''}`} style={{ backgroundColor: isOpen ? theme.primaryLight : 'transparent' }}>
+                                                                    {isOpen ? 
+                                                                        <FaChevronUp className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: theme.primary }} /> : 
+                                                                        <FaChevronDown className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: theme.textGray }} />
+                                                                    }
+                                                                </div>
+                                                                <div className="flex-1 min-w-0">
+                                                                    <h4 className="text-sm sm:text-base md:text-lg font-semibold mb-1 sm:mb-2 group-hover:translate-x-1 transition-transform duration-300" style={{ color: isOpen ? theme.primary : theme.textDark }}>
+                                                                        {item.q}
+                                                                    </h4>
+                                                                    <div className={`overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-96 opacity-100 mt-2 sm:mt-4' : 'max-h-0 opacity-0'}`}>
+                                                                        <p className="leading-relaxed pr-2 sm:pr-8 text-xs sm:text-sm md:text-base" style={{ color: theme.textGray }}>
+                                                                            {item.a}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div className="shrink-0 ml-2 sm:ml-4">
+                                                                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-teal-50 scale-110' : 'bg-gray-50 group-hover:scale-110'}`}>
+                                                                    <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${isOpen ? 'bg-teal-500 scale-150' : 'bg-gray-400'}`}></div>
+                                                                </div>
+                                                            </div>
+                                                        </button>
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                ))
+                            ) : (
+                                <div className="text-center py-16 bg-white rounded-3xl border shadow-lg">
+                                    <FaQuestionCircle className="w-16 h-16 mx-auto mb-4 opacity-30" style={{ color: theme.textGray }} />
+                                    <h3 className="text-xl font-bold mb-2" style={{ color: theme.textDark }}>No matching questions</h3>
+                                    <p className="text-sm" style={{ color: theme.textGray }}>Try adjusting your search terms</p>
                                 </div>
+                            )}
+                        </div>
+                    )}
+
+                    {/* INTERN FAQS SECTION */}
+                    {activeTab === "interns" && (
+                        <div className="space-y-6 md:space-y-12">
+                            <div className="text-center mb-8">
+                                <h2 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: theme.textDark }}>
+                                    Frequently Asked <span style={{ color: theme.primary }}>by Interns</span>
+                                </h2>
+                                <p className="text-sm md:text-base" style={{ color: theme.textGray }}>
+                                    Everything about our internship program, policies, and opportunities
+                                </p>
                             </div>
-                        ))}
-                    </div>
+
+                            {filteredInternFaqs.length > 0 ? (
+                                filteredInternFaqs.map((section, idx) => (
+                                    <div 
+                                        key={`intern-${idx}`} 
+                                        ref={el => sectionRefs.current[`intern-${idx}`] = el}
+                                        className="animate-fade-in-up bg-white rounded-2xl md:rounded-3xl border shadow-lg overflow-hidden"
+                                        style={{ animationDelay: `${idx * 100}ms` }}
+                                    >
+                                        {/* Category Header */}
+                                        <div className="p-4 sm:p-6 md:p-8 border-b" style={{ backgroundColor: theme.primaryLight, borderColor: theme.border }}>
+                                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                                <div className="flex items-center gap-3 md:gap-4">
+                                                    <div className="p-2 sm:p-3 md:p-4 rounded-xl md:rounded-2xl bg-white shadow-md">
+                                                        <span className="text-xl md:text-2xl" style={{ color: theme.primary }}>
+                                                            {section.icon}
+                                                        </span>
+                                                    </div>
+                                                    <div>
+                                                        <h3 className="text-lg sm:text-xl md:text-2xl font-bold" style={{ color: theme.textDark }}>{section.category}</h3>
+                                                        <p className="text-xs sm:text-sm" style={{ color: theme.textGray }}>{section.questions.length} questions</p>
+                                                    </div>
+                                                </div>
+                                                <button 
+                                                    onClick={() => toggleAllInCategory('intern', idx, section.questions)}
+                                                    className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium hover:shadow transition-all duration-300 self-start sm:self-auto"
+                                                    style={{ backgroundColor: theme.white, color: theme.primary, border: `1px solid ${theme.border}` }}
+                                                >
+                                                    {section.questions.every((_, qIdx) => openItems[`intern-${idx}-${qIdx}`]) ? 'Collapse All' : 'Expand All'}
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        {/* Questions */}
+                                        <div className="divide-y" style={{ borderColor: theme.border }}>
+                                            {section.questions.map((item, qIdx) => {
+                                                const isOpen = openItems[`intern-${idx}-${qIdx}`];
+                                                return (
+                                                    <div key={qIdx} className="transition-all duration-300 hover:bg-gray-50">
+                                                        <button
+                                                            onClick={() => toggleItem('intern', idx, qIdx)}
+                                                            className="w-full flex items-center justify-between p-4 sm:p-6 md:p-8 text-left focus:outline-none group"
+                                                        >
+                                                            <div className="flex items-start gap-3 sm:gap-4 flex-1">
+                                                                <div className={`mt-1 w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'rotate-180' : ''}`} style={{ backgroundColor: isOpen ? theme.primaryLight : 'transparent' }}>
+                                                                    {isOpen ? 
+                                                                        <FaChevronUp className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: theme.primary }} /> : 
+                                                                        <FaChevronDown className="w-3 h-3 sm:w-4 sm:h-4" style={{ color: theme.textGray }} />
+                                                                    }
+                                                                </div>
+                                                                <div className="flex-1 min-w-0">
+                                                                    <h4 className="text-sm sm:text-base md:text-lg font-semibold mb-1 sm:mb-2 group-hover:translate-x-1 transition-transform duration-300" style={{ color: isOpen ? theme.primary : theme.textDark }}>
+                                                                        {item.q}
+                                                                    </h4>
+                                                                    <div className={`overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-96 opacity-100 mt-2 sm:mt-4' : 'max-h-0 opacity-0'}`}>
+                                                                        <p className="leading-relaxed pr-2 sm:pr-8 text-xs sm:text-sm md:text-base" style={{ color: theme.textGray }}>
+                                                                            {item.a}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div className="shrink-0 ml-2 sm:ml-4">
+                                                                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-teal-50 scale-110' : 'bg-gray-50 group-hover:scale-110'}`}>
+                                                                    <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-300 ${isOpen ? 'bg-teal-500 scale-150' : 'bg-gray-400'}`}></div>
+                                                                </div>
+                                                            </div>
+                                                        </button>
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                ))
+                            ) : (
+                                <div className="text-center py-16 bg-white rounded-3xl border shadow-lg">
+                                    <FaQuestionCircle className="w-16 h-16 mx-auto mb-4 opacity-30" style={{ color: theme.textGray }} />
+                                    <h3 className="text-xl font-bold mb-2" style={{ color: theme.textDark }}>No matching questions</h3>
+                                    <p className="text-sm" style={{ color: theme.textGray }}>Try adjusting your search terms</p>
+                                </div>
+                            )}
+                        </div>
+                    )}
 
                     {/* Support CTA */}
                     <div className="mt-12 md:mt-20 relative overflow-hidden rounded-2xl md:rounded-3xl" style={{ backgroundColor: theme.white, border: `1px solid ${theme.border}` }}>
@@ -282,7 +606,7 @@ const FaqPage = () => {
                             
                             <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 md:mb-4" style={{ color: theme.textDark }}>Can't find what you're looking for?</h3>
                             <p className="text-sm sm:text-base md:text-lg mb-6 md:mb-8 max-w-2xl mx-auto px-2" style={{ color: theme.textGray }}>
-                                Our dedicated support team is ready to help you with any specific questions about our internship program.
+                                Our dedicated support team is ready to help you with any specific questions about our services or internship program.
                             </p>
                             
                             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">

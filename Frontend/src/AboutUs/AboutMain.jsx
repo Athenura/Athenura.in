@@ -358,10 +358,10 @@ const AboutMain = () => {
             {/* Your existing component JSX */}
             <div>
                 <AboutHero />
-                <WhoWeAre />
+                <OurRoadmap />
                 <OurMission />
                 <WhatWeDo />
-                <OurRoadmap />
+                <WhoWeAre />
                 <CommunityLearning />
             </div>
         </>
