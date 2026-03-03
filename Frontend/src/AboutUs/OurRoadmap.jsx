@@ -18,7 +18,7 @@ const OurHistory = () => {
       <div className="container relative mx-auto px-6 md:px-12 max-w-8xl z-10">
 
         {/* Main Content Grid: Text Left | Image Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center py-16">
 
           {/* LEFT COLUMN - History Text */}
           <div className="space-y-6 animate-fade-in">
@@ -52,35 +52,11 @@ const OurHistory = () => {
             {/* Main Image Card */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-white">
               <img
-                src="https://img.freepik.com/premium-photo/indian-business-team-professional-group-photo-business-promotion_1257902-483.jpg"
+                src="ATHENURA-TEAM.png"
                 alt="Athenura history and foundation"
                 className="w-full h-auto object-cover"
               />
-
-              {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent"></div>
-
-              {/* Floating year badge */}
-              <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm px-5 py-2 rounded-full shadow-xl">
-                <span className="text-sm font-bold text-[#1E7A86]">Est. 2026</span>
-              </div>
-
-              {/* Bottom caption */}
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="bg-white/90 backdrop-blur-sm p-4 rounded-xl shadow-lg">
-                  <p className="text-xs text-slate-600 font-medium">
-                    Remote-first · AI-driven · Human-centered
-                  </p>
-                  <p className="text-xs text-slate-400 mt-1">
-                    From skill development to digital innovation
-                  </p>
-                </div>
-              </div>
             </div>
-
-            {/* Decorative background blobs */}
-            <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-[#2093AB]/10 rounded-full blur-3xl -z-10"></div>
-            <div className="absolute -top-6 -left-6 w-48 h-48 bg-[#1E7A86]/10 rounded-full blur-3xl -z-10"></div>
           </div>
         </div>
 

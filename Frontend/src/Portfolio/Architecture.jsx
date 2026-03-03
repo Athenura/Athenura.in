@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, memo } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Layers, Share2 } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Layers, Share2, Check } from 'lucide-react';
 
 // --- Memoized Project Card to prevent unnecessary re-renders ---
 const ProjectCard = memo(({ project, onOpen }) => (
@@ -16,10 +16,10 @@ const ProjectCard = memo(({ project, onOpen }) => (
     transition={{ type: "spring", stiffness: 300, damping: 25 }}
   >
     <div className="relative w-full h-full bg-white rounded-[32px] overflow-hidden shadow-lg border border-slate-100 flex flex-col">
-      <motion.img 
+      <motion.img
         layoutId={`card-image-${project.id}`}
-        src={project.slides[0].url} 
-        alt={project.title} 
+        src={project.slides[0].url}
+        alt={project.title}
         className="w-full h-2/3 object-cover group-hover:scale-105 transition-transform duration-700"
       />
       <div className="p-6 flex-1 flex flex-col justify-center">
@@ -52,17 +52,31 @@ const ProjectCard = memo(({ project, onOpen }) => (
 const CreativePortfolioSection = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [copied, setCopied] = useState(false);
 
   const projects = [
     {
       id: 1,
       type: "Branding",
-      title: "Summer Music Festival",
-      description: "A vibrant visual identity system for a 3-day music festival. Includes poster art, ticket designs, and social media assets.",
+      title: "Burger Campaign Design",
+      description: "A bold and modern promotional branding design for a premium stacked burger campaign. Includes poster layout, promotional banner, and contact strip branding for digital and print marketing.",
       slides: [
-        { url: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30", caption: "Main Poster" },
-        { url: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4", caption: "Artist Passes" },
-        { url: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3", caption: "Stage Branding" },
+        {
+          url: "https://ik.imagekit.io/cn4giet1a/Athenura%201%20Carousel/1.png",
+          caption: "Stacked With Flavour – Hero Poster Design"
+        },
+        {
+          url: "https://ik.imagekit.io/cn4giet1a/Athenura%201%20Carousel/2.png",
+          caption: "Special Sunday Offer – Clean Promotional Layout"
+        },
+        {
+          url: "https://ik.imagekit.io/cn4giet1a/Athenura%201%20Carousel/3.png",
+          caption: "Love At First Bite – Social Media Campaign Creative"
+        },
+        {
+          url: "https://ik.imagekit.io/cn4giet1a/Athenura%201%20Carousel/4.png",
+          caption: "Burger Combo Presentation – Menu Highlight Visual"
+        }
       ]
     },
     {
@@ -90,6 +104,7 @@ const CreativePortfolioSection = () => {
   const closeProject = useCallback(() => {
     setSelectedProject(null);
     setCurrentSlide(0);
+    setCopied(false);
     document.body.style.overflow = 'auto';
   }, []);
 
@@ -98,6 +113,40 @@ const CreativePortfolioSection = () => {
     document.body.style.overflow = 'hidden';
   }, []);
 
+  const handleShare = async () => {
+    if (!selectedProject) return;
+
+    // Get the current page URL (e.g., https://yourdomain.com/portfolio)
+    const pageUrl = window.location.href;
+    const projectTitle = selectedProject.title;
+    const slideCaption = selectedProject.slides[currentSlide].caption;
+
+    // Create a descriptive string
+    const shareText = `Check out "${slideCaption}" from the ${projectTitle} project on my portfolio!`;
+
+    try {
+      if (navigator.share) {
+        // Native Share (Mobile/Safari)
+        await navigator.share({
+          title: projectTitle,    // The title of the shared content
+          text: shareText,       // The descriptive text
+          url: pageUrl,          // The actual link to the website
+        });
+      } else {
+        // Fallback: Clipboard (Desktop)
+        // On desktop, we usually copy the Page URL so they can paste it
+        await navigator.clipboard.writeText(pageUrl);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }
+    } catch (err) {
+      // User might have cancelled the share, which is fine
+      if (err.name !== 'AbortError') {
+        console.error("Share failed:", err);
+      }
+    }
+  };
+
   // --- PORTAL MODAL COMPONENT ---
   const ProjectPopup = () => {
     if (!selectedProject) return null;
@@ -105,7 +154,7 @@ const CreativePortfolioSection = () => {
     return createPortal(
       <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8">
         {/* Backdrop */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -137,14 +186,14 @@ const CreativePortfolioSection = () => {
 
             {/* Nav Controls */}
             <div className="absolute inset-0 flex items-center justify-between px-4 pointer-events-none">
-              <button 
-                onClick={() => setCurrentSlide(prev => (prev > 0 ? prev - 1 : selectedProject.slides.length - 1))}
+              <button
+                onClick={() => { setCurrentSlide(prev => (prev > 0 ? prev - 1 : selectedProject.slides.length - 1)); setCopied(false); }}
                 className="p-4 rounded-full bg-white/90 shadow-xl pointer-events-auto hover:scale-110 active:scale-95 transition-all text-slate-900"
               >
                 <ChevronLeft size={24} />
               </button>
-              <button 
-                onClick={() => setCurrentSlide(prev => (prev < selectedProject.slides.length - 1 ? prev + 1 : 0))}
+              <button
+                onClick={() => { setCurrentSlide(prev => (prev < selectedProject.slides.length - 1 ? prev + 1 : 0)); setCopied(false); }}
                 className="p-4 rounded-full bg-white/90 shadow-xl pointer-events-auto hover:scale-110 active:scale-95 transition-all text-slate-900"
               >
                 <ChevronRight size={24} />
@@ -169,23 +218,21 @@ const CreativePortfolioSection = () => {
                 </button>
               </div>
 
-                            <div>
+              <div>
                 <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">View All Slides</h4>
                 <div className="flex gap-3 overflow-x-auto pb-4 no-scrollbar">
                   {selectedProject.slides.map((slide, i) => (
-                    <button 
-                      key={i} 
-                      onClick={() => setCurrentSlide(i)}
-                      className={`flex-shrink-0 w-20 h-20 rounded-2xl overflow-hidden border-4 transition-all ${
-                        currentSlide === i ? 'border-cyan-500 scale-105 shadow-md' : 'border-transparent opacity-40 hover:opacity-100'
-                      }`}
+                    <button
+                      key={i}
+                      onClick={() => { setCurrentSlide(i); setCopied(false); }}
+                      className={`flex-shrink-0 w-20 h-20 rounded-2xl overflow-hidden border-4 transition-all ${currentSlide === i ? 'border-cyan-500 scale-105 shadow-md' : 'border-transparent opacity-40 hover:opacity-100'}`}
                     >
                       <img src={slide.url} className="w-full h-full object-cover" alt="" />
                     </button>
                   ))}
                 </div>
               </div>
-              
+
               <div>
                 <h2 className="text-4xl font-black text-slate-900 mb-4 tracking-tight">
                   {selectedProject.title}
@@ -193,14 +240,22 @@ const CreativePortfolioSection = () => {
                 <p className="text-slate-500 leading-relaxed text-lg">
                   {selectedProject.description}
                 </p>
+                <div className="mt-4 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                  <p className="text-[10px] font-bold text-slate-400 uppercase mb-1">Current Slide</p>
+                  <p className="text-slate-700 font-medium">{selectedProject.slides[currentSlide].caption}</p>
+                </div>
               </div>
-              
-              {/* Thumbnail Quick-Jump */}
-
             </div>
 
-            <button className="w-full bg-slate-900 text-white py-5 rounded-[20px] font-bold flex items-center justify-center gap-3 hover:bg-cyan-700 transition-all shadow-xl shadow-slate-200 mt-8">
-              <Share2 size={20} /> Share This Portfolio
+            <button
+              onClick={handleShare}
+              className={`w-full py-5 rounded-[20px] font-bold flex items-center justify-center gap-3 transition-all shadow-xl mt-8 ${copied
+                ? "bg-teal-600 text-white shadow-teal-200 scale-[0.98]"
+                : "bg-slate-900 text-white shadow-slate-200 hover:bg-cyan-700 active:scale-95"
+                }`}
+            >
+              {copied ? <Check size={20} /> : <Share2 size={20} />}
+              {copied ? "Image Link Copied!" : "Share Current Slide"}
             </button>
           </div>
         </motion.div>
@@ -229,16 +284,15 @@ const CreativePortfolioSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map((project) => (
-            <ProjectCard 
-              key={project.id} 
-              project={project} 
-              onOpen={openProject} 
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onOpen={openProject}
             />
           ))}
         </div>
       </div>
 
-      {/* Popup Portal renders outside the main section hierarchy */}
       <AnimatePresence>
         {selectedProject && <ProjectPopup />}
       </AnimatePresence>
