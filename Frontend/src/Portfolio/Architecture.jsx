@@ -79,26 +79,6 @@ const CreativePortfolioSection = () => {
         }
       ]
     },
-    {
-      id: 2,
-      type: "Marketing",
-      title: "Spice Kitchen Opening",
-      description: "Elegant restaurant marketing materials designed to showcase high-end culinary experiences and menu variety.",
-      slides: [
-        { url: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5", caption: "Grand Opening" },
-        { url: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe", caption: "Menu Specials" },
-      ]
-    },
-    {
-      id: 3,
-      type: "Social Media",
-      title: "Smartwatch Launch",
-      description: "A high-converting Instagram carousel series focusing on feature highlights and lifestyle integration.",
-      slides: [
-        { url: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b", caption: "Teaser Slide" },
-        { url: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9", caption: "Feature Spotlight" },
-      ]
-    },
   ];
 
   const closeProject = useCallback(() => {
