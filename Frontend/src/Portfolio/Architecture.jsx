@@ -43,20 +43,6 @@ const CreativePortfolioSection = () => {
           alt: "Main Festival Poster",
           caption: "Main Event Poster"
         },
-        {
-          id: 2,
-          type: "image",
-          url: "https://images.unsplash.com/photo-1506157786151-b8491531f063",
-          alt: "Lineup Poster",
-          caption: "Artist Lineup"
-        },
-        {
-          id: 3,
-          type: "image",
-          url: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745",
-          alt: "Schedule Poster",
-          caption: "Daily Schedule"
-        }
       ],
       tags: ["Music", "Festival", "Vibrant", "Typography"]
     },
@@ -84,20 +70,6 @@ const CreativePortfolioSection = () => {
           alt: "Menu Specials",
           caption: "Signature Dishes"
         },
-        {
-          id: 3,
-          type: "image",
-          url: "https://images.unsplash.com/photo-1559339352-11d035aa65de",
-          alt: "Happy Hour",
-          caption: "Happy Hour Specials"
-        },
-        {
-          id: 4,
-          type: "image",
-          url: "https://images.unsplash.com/photo-1524661135-423995f22d0b",
-          alt: "Location Map",
-          caption: "Location & Contact"
-        }
       ],
       tags: ["Restaurant", "Food", "Promotional", "Elegant"]
     },
@@ -125,27 +97,6 @@ const CreativePortfolioSection = () => {
           alt: "Features Slide",
           caption: "Key Features"
         },
-        {
-          id: 3,
-          type: "image",
-          url: "https://images.unsplash.com/photo-1546868871-7041f2a55e12",
-          alt: "Comparison Slide",
-          caption: "Versus Previous Model"
-        },
-        {
-          id: 4,
-          type: "image",
-          url: "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
-          alt: "Lifestyle Slide",
-          caption: "In Action"
-        },
-        {
-          id: 5,
-          type: "image",
-          url: "https://images.unsplash.com/photo-1512499617640-c2f999098c01",
-          alt: "CTA Slide",
-          caption: "Get Yours Now"
-        }
       ],
       tags: ["Social Media", "Carousel", "Product", "Storytelling"]
     },
