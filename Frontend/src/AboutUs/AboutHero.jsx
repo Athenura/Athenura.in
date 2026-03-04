@@ -224,7 +224,7 @@ const AboutHero = () => {
                 {/* Left Content */}
                 <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
 
-                    <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1]">
+                    <h1 className="text-5xl sm:text-6xl lg:text-7xl text-left font-black tracking-tight leading-[1.1]">
                         We are <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2093AB] via-[#2093AB] to-[#1E7A86]">
                             <DecryptingText text="ATHENURA ...." />
@@ -232,7 +232,7 @@ const AboutHero = () => {
                         Building the Future.
                     </h1>
 
-                    <p className="mt-6 text-lg text-slate-600 max-w-lg leading-relaxed">
+                    <p className="mt-6 text-lg text-slate-600 max-w-lg leading-relaxed text-justify">
                         At <span className="font-semibold text-slate-800">Athenura</span>, we design intelligent
                         digital solutions that blend technology, innovation, and purpose.
                         Driven by logic and guided by humanity, we build scalable systems that
