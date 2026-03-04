@@ -18,7 +18,8 @@ const OurMissionLight = () => {
       <div className="absolute -bottom-32 left-1/3 w-[600px] h-[600px] bg-purple-200 rounded-full mix-blend-multiply filter blur-[90px] opacity-20 animate-blob animation-delay-4000"></div>
 
       {/* Main container: now flex row on large screens */}
-      <div className="container relative mx-auto px-6 md:px-12 z-10 flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-16">
+      <div className="container relative mx-auto px-6 md:px-12 z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+
         {/* --- LEFT CONTENT (text & pillars) --- */}
         <div className="flex-1 text-left">
 

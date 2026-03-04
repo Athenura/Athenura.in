@@ -35,7 +35,7 @@ const AdvancedPortfolio = () => {
       image: "/Stich4.png",
       link: "#",
     },
-
+    
     {
       id: 4,
       title: "Raadhyam Music",
@@ -57,7 +57,7 @@ const AdvancedPortfolio = () => {
       image: "/Stich.png",
       link: "#",
     },
-
+    
   ];
 
   // --- FILTER LOGIC ---
@@ -251,7 +251,6 @@ const AdvancedPortfolio = () => {
         rounded-full
         text-xs sm:text-sm
         font-bold
-        mb-5
         whitespace-nowrap
         transition-all duration-300
         border
