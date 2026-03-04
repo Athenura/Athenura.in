@@ -321,7 +321,7 @@ const AdvancedPortfolio = () => {
 
         {/* Load More Button */}
         {visibleCount < filteredProjects.length && (
-          <div className="flex justify-center mt-16">
+          <div className="flex justify-center mt-16 mb-5">
             <button
               onClick={handleLoadMore}
               disabled={loadingMore}
