@@ -104,7 +104,7 @@ const ContactTrust = () => {
           </div>
 
           {/* Additional Trust Badge */}
-          <div className="flex items-center gap-4 pt-4 text-sm text-slate-400">
+          <div className="flex items-center gap-4 pt-4 text-sm text-slate-400 mb-5">
             <span>4.9/5 Client Satisfaction</span>
             <span>GDPR Compliant</span>
           </div>
