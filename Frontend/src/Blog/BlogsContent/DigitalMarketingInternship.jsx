@@ -365,8 +365,7 @@ const DigitalMarketingInternship = () => {
                 <meta name="keywords" content="digital marketing internship, marketing internship, SEO internship, paid ads internship, social media marketing internship, content marketing internship, digital marketing program, remote marketing internship, athenura digital marketing, marketing mentorship, campaign management internship, google ads internship, facebook ads internship" />
                 <meta name="author" content="Athenura" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-                <meta name="googlebot" content="index, follow" />
+<meta name="robots" content="index, follow" />                <meta name="googlebot" content="index, follow" />
                 <meta name="google-site-verification" content="your-verification-code" />
 
                 {/* ---------- CANONICAL URL ---------- */}

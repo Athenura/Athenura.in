@@ -306,8 +306,7 @@ const PortfolioProjectsArticle = () => {
                 <meta name="keywords" content="portfolio projects, coding portfolio, project-based learning, technical portfolio, developer portfolio, github portfolio, project checklist, interview preparation, job search tips, career development, build portfolio, portfolio guide, student portfolio, tech portfolio examples" />
                 <meta name="author" content="Athenura Insights Team" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-                <meta name="googlebot" content="index, follow" />
+<meta name="robots" content="index, follow" />                <meta name="googlebot" content="index, follow" />
                 <meta name="google-site-verification" content="your-verification-code" />
                 
                 {/* ---------- CANONICAL URL ---------- */}

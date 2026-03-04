@@ -72,10 +72,10 @@ const AcademicVsIndustryArticle = () => {
     const siteUrl = 'https://athenura.in';
     const blogUrl = typeof window !== 'undefined' ? window.location.href : `${siteUrl}/bridging-the-gap`;
     const canonicalUrl = `${siteUrl}/bridging-the-gap`;
-    
+
     const blogTitle = "Bridging the Academic vs Industry Skills Gap: Complete Guide 2026 | Athenura Insights";
     const blogDescription = "Discover why the academic vs industry skills gap exists, what employers actually look for, and a practical 90-day action plan to bridge the gap with portfolio-ready projects.";
-    
+
     const imageUrl = "https://ik.imagekit.io/vtfcbjo5c/academic-vs-industry.jpg";
 
     const shareOnLinkedIn = () => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(blogUrl)}`, '_blank');
@@ -309,13 +309,12 @@ const AcademicVsIndustryArticle = () => {
                 <meta name="keywords" content="academic vs industry skills, skills gap, university to career, industry ready graduates, employability skills, professional skills development, tech skills gap, workplace skills, graduate employability, career readiness, academic industry divide, practical skills, industry tools, mentorship programs, portfolio projects, hiring managers expectations, remote work skills, digital transformation skills, future of work skills, continuous learning" />
                 <meta name="author" content="Athenura Insights Team" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-                <meta name="googlebot" content="index, follow" />
+                <meta name="robots" content="index, follow" />                <meta name="googlebot" content="index, follow" />
                 <meta name="google-site-verification" content="your-verification-code" />
-                
+
                 {/* ---------- CANONICAL URL ---------- */}
                 <link rel="canonical" href={canonicalUrl} />
-                
+
                 {/* ---------- OPEN GRAPH / FACEBOOK ---------- */}
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content={canonicalUrl} />
@@ -335,7 +334,7 @@ const AcademicVsIndustryArticle = () => {
                 <meta property="article:tag" content="Professional Development" />
                 <meta property="article:tag" content="Graduate Employability" />
                 <meta property="article:tag" content="Workplace Skills" />
-                
+
                 {/* ---------- TWITTER CARD ---------- */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@athenura_in" />
@@ -344,7 +343,7 @@ const AcademicVsIndustryArticle = () => {
                 <meta name="twitter:description" content={blogDescription} />
                 <meta name="twitter:image" content={imageUrl} />
                 <meta name="twitter:image:alt" content="Guide to bridging academic and industry skills gap" />
-                
+
                 {/* ---------- ADDITIONAL META ---------- */}
                 <meta name="application-name" content="Athenura" />
                 <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -353,7 +352,7 @@ const AcademicVsIndustryArticle = () => {
                 <meta name="format-detection" content="telephone=no" />
                 <meta name="mobile-web-app-capable" content="yes" />
                 <meta name="theme-color" content="#28A3B9" />
-                
+
                 {/* ---------- STRUCTURED DATA ---------- */}
                 <script type="application/ld+json">
                     {JSON.stringify(articleStructuredData)}
@@ -370,17 +369,17 @@ const AcademicVsIndustryArticle = () => {
                 <script type="application/ld+json">
                     {JSON.stringify(howToData)}
                 </script>
-                
+
                 {/* ---------- PERFORMANCE OPTIMIZATION ---------- */}
                 <link rel="preconnect" href="https://ik.imagekit.io" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="dns-prefetch" href="https://ik.imagekit.io" />
                 <link rel="preconnect" href="https://images.unsplash.com" />
-                
+
                 {/* ---------- HREFLANG ---------- */}
                 <link rel="alternate" href={canonicalUrl} hreflang="en" />
                 <link rel="alternate" href={canonicalUrl} hreflang="x-default" />
-                
+
             </Helmet>
 
 

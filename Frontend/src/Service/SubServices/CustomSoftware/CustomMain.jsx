@@ -378,8 +378,7 @@ const CustomMain = () => {
                 <meta name="keywords" content="custom software development, enterprise software development, web application development, mobile app development, API integration, legacy system modernization, software development company India, custom application development, tailored software solutions, business software development" />
                 <meta name="author" content="Athenura" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-                <meta name="googlebot" content="index, follow" />
+<meta name="robots" content="index, follow" />                <meta name="googlebot" content="index, follow" />
                 
                 {/* ---------- CANONICAL URL ---------- */}
                 <link rel="canonical" href={canonicalUrl} />

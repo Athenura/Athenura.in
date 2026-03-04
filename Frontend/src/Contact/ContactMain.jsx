@@ -159,8 +159,7 @@ const ContactMain = () => {
                 <meta name="keywords" content="contact athenura, athenura support, athenura help, contact for internships, athenura inquiries, athenura email, reach athenura, athenura team contact, internship support, career guidance contact" />
                 <meta name="author" content="Athenura" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-                <meta name="googlebot" content="index, follow" />
+<meta name="robots" content="index, follow" />                <meta name="googlebot" content="index, follow" />
                 
                 {/* ---------- CANONICAL URL ---------- */}
                 <link rel="canonical" href={canonicalUrl} />

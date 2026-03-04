@@ -444,8 +444,7 @@ const WebMain = () => {
                 <meta name="keywords" content="web application development, custom web apps, SaaS development, e-commerce development, enterprise web portals, API development, progressive web apps, PWA development, dashboard development, web development company, React development, Node.js development, full stack web development" />
                 <meta name="author" content="Athenura" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-                <meta name="googlebot" content="index, follow" />
+<meta name="robots" content="index, follow" />                <meta name="googlebot" content="index, follow" />
                 
                 {/* ---------- CANONICAL URL ---------- */}
                 <link rel="canonical" href={canonicalUrl} />

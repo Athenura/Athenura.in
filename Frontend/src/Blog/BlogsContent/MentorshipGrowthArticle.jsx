@@ -329,8 +329,7 @@ const MentorshipGrowthArticle = () => {
                 <meta name="keywords" content="mentorship, career mentorship, professional growth, mentor, mentee, finding a mentor, mentorship program, mentorship benefits, mentorship guide, career acceleration, mentorship tips, mentorship strategies, mentorship sprint, mentorship plan, mentorship relationships, career mentor, technical mentor, peer mentorship, group mentorship, mentorship outcomes, mentorship success, mentorship accountability, career development, professional development, networking, mentorship advice, mentorship best practices, mentorship for students, mentorship for professionals" />
                 <meta name="author" content="Athenura Insights Team" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-                <meta name="googlebot" content="index, follow" />
+<meta name="robots" content="index, follow" />                <meta name="googlebot" content="index, follow" />
                 <meta name="google-site-verification" content="your-verification-code" />
                 
                 {/* ---------- CANONICAL URL ---------- */}

@@ -412,8 +412,7 @@ const EnterMain = () => {
                 <meta name="keywords" content="enterprise software, ERP systems, CRM platforms, supply chain management, business intelligence, digital transformation, enterprise solutions, large-scale software, corporate software, ERP development, CRM development, enterprise application development, business software India" />
                 <meta name="author" content="Athenura" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-                <meta name="googlebot" content="index, follow" />
+<meta name="robots" content="index, follow" />                <meta name="googlebot" content="index, follow" />
                 
                 {/* ---------- CANONICAL URL ---------- */}
                 <link rel="canonical" href={canonicalUrl} />

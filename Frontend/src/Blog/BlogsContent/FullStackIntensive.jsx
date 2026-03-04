@@ -345,8 +345,7 @@ const FullStackIntensive = () => {
                 <meta name="keywords" content="full stack development internship, MERN stack internship, web development intensive, full stack bootcamp, react node internship, javascript full stack, remote coding bootcamp, developer mentorship, athenura full stack, learn full stack development, full stack program, coding internship" />
                 <meta name="author" content="Athenura" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-                <meta name="googlebot" content="index, follow" />
+<meta name="robots" content="index, follow" />                <meta name="googlebot" content="index, follow" />
                 <meta name="google-site-verification" content="your-verification-code" />
 
                 {/* ---------- CANONICAL URL ---------- */}

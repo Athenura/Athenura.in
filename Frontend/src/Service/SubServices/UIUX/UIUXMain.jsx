@@ -436,8 +436,7 @@ const UIUXMain = () => {
                 <meta name="keywords" content="UI UX design, user experience design, user interface design, product design, UX research, wireframing, prototyping, visual design, usability testing, design systems, mobile app design, web design, dashboard design, Figma design, UX strategy, interaction design" />
                 <meta name="author" content="Athenura" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-                <meta name="googlebot" content="index, follow" />
+<meta name="robots" content="index, follow" />                <meta name="googlebot" content="index, follow" />
                 
                 {/* ---------- CANONICAL URL ---------- */}
                 <link rel="canonical" href={canonicalUrl} />

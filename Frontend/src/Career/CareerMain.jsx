@@ -172,8 +172,7 @@ const CareerMain = () => {
                 <meta name="keywords" content="career at athenura, work at athenura, athenura jobs, athenura internships, athenura culture, join athenura, remote careers, startup careers, edtech careers, skill development careers" />
                 <meta name="author" content="Athenura" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-                <meta name="googlebot" content="index, follow" />
+<meta name="robots" content="index, follow" />                <meta name="googlebot" content="index, follow" />
                 
                 {/* ---------- CANONICAL URL ---------- */}
                 <link rel="canonical" href={canonicalUrl} />

@@ -133,8 +133,8 @@ const ContactTrust = () => {
           {/* Testimonial 1: Client Success */}
           <div className="absolute top-12 left-0 animate-[float_7s_ease-in-out_infinite]">
             <ClientTestimonial 
-              avatar="https://i.pravatar.cc/150?img=7"
-              name="Anjali Sharma"
+              avatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkAJEkJQ1WumU0hXNpXdgBt9NUKc0QDVIiaw&s"
+              name="Vinay Gupta"
               company="CEO, TechFlow"
               quote="Athenura delivered our platform ahead of schedule. True partners."
               rating={5}

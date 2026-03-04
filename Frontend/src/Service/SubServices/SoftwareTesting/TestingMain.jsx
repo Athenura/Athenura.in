@@ -399,8 +399,7 @@ const TestingMain = () => {
                 <meta name="keywords" content="software testing, QA services, quality assurance, automation testing, performance testing, security testing, API testing, mobile app testing, manual testing, test automation, software QA, testing services India, regression testing, load testing, penetration testing" />
                 <meta name="author" content="Athenura" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-                <meta name="googlebot" content="index, follow" />
+<meta name="robots" content="index, follow" />                <meta name="googlebot" content="index, follow" />
                 
                 {/* ---------- CANONICAL URL ---------- */}
                 <link rel="canonical" href={canonicalUrl} />

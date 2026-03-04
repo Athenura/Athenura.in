@@ -444,8 +444,7 @@ const MaintainMain = () => {
                 <meta name="keywords" content="website maintenance, web maintenance services, website care, website support, security updates, website backups, performance monitoring, bug fixes, content updates, SEO maintenance, emergency website support, website management, wordpress maintenance, website upkeep" />
                 <meta name="author" content="Athenura" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-                <meta name="googlebot" content="index, follow" />
+<meta name="robots" content="index, follow" />                <meta name="googlebot" content="index, follow" />
                 
                 {/* ---------- CANONICAL URL ---------- */}
                 <link rel="canonical" href={canonicalUrl} />

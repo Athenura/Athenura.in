@@ -10,10 +10,10 @@ import CommunityLearning from './Learning'
 const AboutMain = () => {
     const siteUrl = 'https://athenura.in';
     const canonicalUrl = `${siteUrl}/about-us`;
-    
+
     const pageTitle = "About Athenura - Our Story, Mission & Vision | Empowering Careers Through Skill Development";
     const pageDescription = "Learn about Athenura's journey, mission, and vision. We're a remote-first skill development platform dedicated to bridging the gap between education and employment through hands-on learning, mentorship, and real-world projects.";
-    
+
     const imageUrl = "https://ik.imagekit.io/vtfcbjo5c/athenura-about-og.jpg";
 
     // WebPage Schema for about page
@@ -281,12 +281,11 @@ const AboutMain = () => {
                 <meta name="keywords" content="about athenura, athenura story, our mission, our vision, skill development platform, athenura team, company background, athenura values, remote-first company, edtech company, career development platform, about us" />
                 <meta name="author" content="Athenura" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-                <meta name="googlebot" content="index, follow" />
-                
+                <meta name="robots" content="index, follow" />                <meta name="googlebot" content="index, follow" />
+
                 {/* ---------- CANONICAL URL ---------- */}
                 <link rel="canonical" href={canonicalUrl} />
-                
+
                 {/* ---------- OPEN GRAPH ---------- */}
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content={canonicalUrl} />
@@ -298,7 +297,7 @@ const AboutMain = () => {
                 <meta property="og:image:alt" content="About Athenura - Our Story and Mission" />
                 <meta property="og:site_name" content="Athenura" />
                 <meta property="og:locale" content="en_US" />
-                
+
                 {/* ---------- TWITTER CARD ---------- */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content="@athenura_in" />
@@ -307,7 +306,7 @@ const AboutMain = () => {
                 <meta name="twitter:description" content={pageDescription} />
                 <meta name="twitter:image" content={imageUrl} />
                 <meta name="twitter:image:alt" content="About Athenura" />
-                
+
                 {/* ---------- ADDITIONAL META ---------- */}
                 <meta name="application-name" content="Athenura" />
                 <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -316,14 +315,14 @@ const AboutMain = () => {
                 <meta name="format-detection" content="telephone=no" />
                 <meta name="mobile-web-app-capable" content="yes" />
                 <meta name="theme-color" content="#28A3B9" />
-                
+
                 {/* ---------- ABOUT-SPECIFIC META ---------- */}
                 <meta name="company:name" content="Athenura" />
                 <meta name="company:founded" content="2026" />
                 <meta name="company:mission" content="Bridge the gap between education and employment" />
                 <meta name="company:type" content="Skill Development Platform" />
                 <meta name="company:workstyle" content="Remote-first" />
-                
+
                 {/* ---------- STRUCTURED DATA ---------- */}
                 <script type="application/ld+json">
                     {JSON.stringify(webpageData)}
@@ -343,13 +342,13 @@ const AboutMain = () => {
                 <script type="application/ld+json">
                     {JSON.stringify(profilePageData)}
                 </script>
-                
+
                 {/* ---------- PERFORMANCE OPTIMIZATION ---------- */}
                 <link rel="preconnect" href="https://ik.imagekit.io" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="dns-prefetch" href="https://ik.imagekit.io" />
                 <link rel="preconnect" href="https://images.unsplash.com" />
-                
+
                 {/* ---------- HREFLANG ---------- */}
                 <link rel="alternate" href={canonicalUrl} hreflang="en" />
                 <link rel="alternate" href={canonicalUrl} hreflang="x-default" />

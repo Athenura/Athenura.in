@@ -207,8 +207,7 @@ const WhyAthenuraExists = () => {
                 <meta name="keywords" content="Athenura, why Athenura exists, skill development, internship, career preparation, remote learning, project-based learning, mentorship, education gap, professional growth, job-ready skills, portfolio projects" />
                 <meta name="author" content="Athenura Editorial Team" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-                <meta name="googlebot" content="index, follow" />
+<meta name="robots" content="index, follow" />                <meta name="googlebot" content="index, follow" />
                 <meta name="google-site-verification" content="your-verification-code" /> {/* Add your verification code */}
                 
                 {/* ---------- CANONICAL URL ---------- */}

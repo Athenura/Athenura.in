@@ -364,8 +364,7 @@ const UIUXDesignInternship = () => {
                 <meta name="keywords" content="UI UX design internship, product design internship, UX research internship, Figma internship, design mentorship, user experience internship, user interface design program, remote design internship, product design portfolio, ui ux training, design bootcamp, ux design course, ui design program, product design mentorship" />
                 <meta name="author" content="Athenura" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-                <meta name="googlebot" content="index, follow" />
+<meta name="robots" content="index, follow" />                <meta name="googlebot" content="index, follow" />
                 <meta name="google-site-verification" content="your-verification-code" />
                 
                 {/* ---------- CANONICAL URL ---------- */}

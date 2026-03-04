@@ -273,8 +273,7 @@ const InternshipPageMain = () => {
                 <meta name="keywords" content="internships, remote internships, data science internship, full stack development internship, UI UX design internship, digital marketing internship, student internships, graduate internships, career development, skill building, professional training, athenura internships" />
                 <meta name="author" content="Athenura" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-                <meta name="googlebot" content="index, follow" />
+<meta name="robots" content="index, follow" />                <meta name="googlebot" content="index, follow" />
                 
                 {/* ---------- CANONICAL URL ---------- */}
                 <link rel="canonical" href={canonicalUrl} />
