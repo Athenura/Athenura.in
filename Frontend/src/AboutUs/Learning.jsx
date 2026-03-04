@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 // ----------------------------------------------------------------------
 // DATA: Learning Initiatives
@@ -159,12 +160,11 @@ const CommunityLearning = () => {
         <div className="mt-20 text-center animate-fade-in-up delay-300">
             <h4 className="text-xl font-bold text-slate-900 mb-6">Ready to start your journey?</h4>
             <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+              <Link to="/apply-internship">
                 <button className="px-8 py-3 rounded-full bg-[#1E7A86] text-white font-semibold shadow-lg shadow-[#1E7A86]/30 hover:bg-[#165e67] hover:scale-105 transition-all duration-300">
                     Apply for Internship
                 </button>
-                <button className="px-8 py-3 rounded-full bg-white text-slate-600 font-semibold border border-slate-200 shadow-sm hover:bg-slate-50 hover:text-[#1E7A86] transition-all duration-300">
-                    Browse Free Resources
-                </button>
+              </Link>
             </div>
         </div>
 
