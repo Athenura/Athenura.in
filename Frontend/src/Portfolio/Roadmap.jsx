@@ -1061,55 +1061,6 @@ const RoadmapSection = () => {
             </p>
           </div>
 
-          {/* Service Categories Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
-            <button
-              onClick={() => setActiveServiceCategory('all')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeServiceCategory === 'all'
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
-            >
-              All Services
-            </button>
-            <button
-              onClick={() => setActiveServiceCategory('enterprise')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeServiceCategory === 'enterprise'
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
-            >
-              Enterprise
-            </button>
-            <button
-              onClick={() => setActiveServiceCategory('technology')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeServiceCategory === 'technology'
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
-            >
-              Technology
-            </button>
-            <button
-              onClick={() => setActiveServiceCategory('consulting')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeServiceCategory === 'consulting'
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
-            >
-              Consulting
-            </button>
-            <button
-              onClick={() => setActiveServiceCategory('training')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeServiceCategory === 'training'
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
-            >
-              Training
-            </button>
-          </div>
-
           {/* Services Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <AnimatePresence mode="wait">
