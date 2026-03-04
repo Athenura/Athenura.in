@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, memo } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Layers, Share2 } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Layers, Share2, Check } from 'lucide-react';
 
 // --- Memoized Project Card to prevent unnecessary re-renders ---
 const ProjectCard = memo(({ project, onOpen }) => (
@@ -52,24 +52,29 @@ const ProjectCard = memo(({ project, onOpen }) => (
 const CreativePortfolioSection = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isShared, setIsShared] = useState(false);
 
   const projects = [
     {
-      id: 1,
+      id: 2,
       type: "Branding",
-      title: "Summer Music Festival",
-      description: "A vibrant visual identity system for a 3-day music festival. Includes poster art, ticket designs, and social media assets.",
+      title: "Burger Campaign Design",
+      client: "Food & Restaurant Promotion",
+      year: "2025",
+      description: "A bold and modern promotional branding design for a premium burger campaign. The project includes multiple poster styles featuring vibrant food visuals, strong typography, and a consistent red-themed branding layout for digital marketing and restaurant promotions.",
       slides: [
-        { url: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30", caption: "Main Poster" },
-        { url: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4", caption: "Artist Passes" },
-        { url: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3", caption: "Stage Branding" },
+        { id: 1, type: "image", url: "https://ik.imagekit.io/cn4giet1a/Athenura%201%20Carousel/1.png?updatedAt=1772541061256", caption: "Stacked With Flavour" },
+        { id: 2, type: "image", url: "https://ik.imagekit.io/cn4giet1a/Athenura%201%20Carousel/2.png?updatedAt=1772541061273", caption: "Special Sunday Burger" },
+        { id: 3, type: "image", url: "https://ik.imagekit.io/cn4giet1a/Athenura%201%20Carousel/3.png?updatedAt=1772541060971", caption: "Love At First Bite" },
+        { id: 4, type: "image", url: "https://ik.imagekit.io/cn4giet1a/Athenura%201%20Carousel/4.png?updatedAt=1772541061303", caption: "Combo Meal Promotion" }
       ]
-    },
+    }
   ];
 
   const closeProject = useCallback(() => {
     setSelectedProject(null);
     setCurrentSlide(0);
+    setIsShared(false);
     document.body.style.overflow = 'auto';
   }, []);
 
@@ -78,13 +83,34 @@ const CreativePortfolioSection = () => {
     document.body.style.overflow = 'hidden';
   }, []);
 
-  // --- PORTAL MODAL COMPONENT ---
+  // --- SHARE FUNCTIONALITY ---
+  const handleShare = async (project) => {
+    const shareText = `${project.title}\n\n${project.description}`;
+    const shareUrl = window.location.href;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: project.title,
+          text: shareText,
+          url: shareUrl,
+        });
+      } catch (err) {
+        console.log("Error sharing:", err);
+      }
+    } else {
+      // Fallback: Copy to clipboard
+      navigator.clipboard.writeText(`${shareText}\n\nView here: ${shareUrl}`);
+      setIsShared(true);
+      setTimeout(() => setIsShared(false), 2000);
+    }
+  };
+
   const ProjectPopup = () => {
     if (!selectedProject) return null;
 
     return createPortal(
       <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8">
-        {/* Backdrop */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -93,7 +119,6 @@ const CreativePortfolioSection = () => {
           className="absolute inset-0 bg-slate-950/60 backdrop-blur-2xl"
         />
 
-        {/* Sliding Window */}
         <motion.div
           layoutId={`card-container-${selectedProject.id}`}
           className="relative w-full max-w-7xl h-full max-h-[850px] bg-white rounded-[40px] shadow-2xl overflow-hidden flex flex-col md:flex-row z-10"
@@ -106,16 +131,15 @@ const CreativePortfolioSection = () => {
                 key={currentSlide}
                 layoutId={currentSlide === 0 ? `card-image-${selectedProject.id}` : undefined}
                 src={selectedProject.slides[currentSlide].url}
-                initial={{ x: 100, opacity: 0 }}
+                initial={{ x: 50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                exit={{ x: -100, opacity: 0 }}
+                exit={{ x: -50, opacity: 0 }}
                 transition={{ type: "spring", damping: 25, stiffness: 200 }}
                 className="max-h-full max-w-full object-contain p-8 md:p-12 select-none"
                 draggable="false"
               />
             </AnimatePresence>
 
-            {/* Nav Controls */}
             <div className="absolute inset-0 flex items-center justify-between px-4 pointer-events-none">
               <button 
                 onClick={() => setCurrentSlide(prev => (prev > 0 ? prev - 1 : selectedProject.slides.length - 1))}
@@ -131,7 +155,6 @@ const CreativePortfolioSection = () => {
               </button>
             </div>
 
-            {/* Counter */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-5 py-2 rounded-full text-xs font-black shadow-lg">
               {currentSlide + 1} / {selectedProject.slides.length}
             </div>
@@ -149,15 +172,15 @@ const CreativePortfolioSection = () => {
                 </button>
               </div>
 
-                            <div>
-                <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">View All Slides</h4>
+              <div>
+                <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">Quick Navigation</h4>
                 <div className="flex gap-3 overflow-x-auto pb-4 no-scrollbar">
                   {selectedProject.slides.map((slide, i) => (
                     <button 
                       key={i} 
                       onClick={() => setCurrentSlide(i)}
-                      className={`flex-shrink-0 w-20 h-20 rounded-2xl overflow-hidden border-4 transition-all ${
-                        currentSlide === i ? 'border-cyan-500 scale-105 shadow-md' : 'border-transparent opacity-40 hover:opacity-100'
+                      className={`flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden border-2 transition-all ${
+                        currentSlide === i ? 'border-cyan-500 scale-105' : 'border-transparent opacity-50'
                       }`}
                     >
                       <img src={slide.url} className="w-full h-full object-cover" alt="" />
@@ -174,13 +197,16 @@ const CreativePortfolioSection = () => {
                   {selectedProject.description}
                 </p>
               </div>
-              
-              {/* Thumbnail Quick-Jump */}
-
             </div>
 
-            <button className="w-full bg-slate-900 text-white py-5 rounded-[20px] font-bold flex items-center justify-center gap-3 hover:bg-cyan-700 transition-all shadow-xl shadow-slate-200 mt-8">
-              <Share2 size={20} /> Share This Portfolio
+            <button 
+              onClick={() => handleShare(selectedProject)}
+              className={`w-full py-5 rounded-[20px] font-bold flex items-center justify-center gap-3 transition-all shadow-xl mt-8 ${
+                isShared ? 'bg-green-500 text-white shadow-green-100' : 'bg-slate-900 text-white shadow-slate-200 hover:bg-cyan-700'
+              }`}
+            >
+              {isShared ? <Check size={20} /> : <Share2 size={20} />}
+              {isShared ? "Copied to Clipboard!" : "Share This Portfolio"}
             </button>
           </div>
         </motion.div>
@@ -191,7 +217,6 @@ const CreativePortfolioSection = () => {
 
   return (
     <section className="py-24 bg-slate-50 min-h-screen relative overflow-hidden">
-      {/* Background accents */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-40">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-cyan-100 rounded-full blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-50 rounded-full blur-[120px]" />
@@ -203,7 +228,7 @@ const CreativePortfolioSection = () => {
             LATEST <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-teal-600">WORKS.</span>
           </h2>
           <p className="text-xl text-slate-500 font-medium leading-relaxed">
-            A showcase of creative projects across various disciplines. Click to expand and explore the full story.
+            Explore our creative branding campaigns and visual stories.
           </p>
         </div>
 
@@ -218,7 +243,6 @@ const CreativePortfolioSection = () => {
         </div>
       </div>
 
-      {/* Popup Portal renders outside the main section hierarchy */}
       <AnimatePresence>
         {selectedProject && <ProjectPopup />}
       </AnimatePresence>

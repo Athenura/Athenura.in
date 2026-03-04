@@ -586,22 +586,43 @@ const RoadmapSection = () => {
                     disabled={isSubmitting || submitStatus === 'success'}
                   >
                     <option value="">Select a service (optional)</option>
-                    <optgroup label="Enterprise Solutions">
-                      <option value="Enterprise Internship Management">Enterprise Internship Management</option>
-                      <option value="Talent Pipeline as a Service">Talent Pipeline as a Service</option>
+                    <optgroup label="Website Development">
+                      <option value="Business Website Development">Business Website Development</option>
+                      <option value="E-commerce Website Development">E-commerce Website Development</option>
+                      <option value="Custom Web Application">Custom Web Application</option>
+                      <option value="Landing Page Design">Landing Page Design</option>
+                      <option value="Website Maintenance & Support">Website Maintenance & Support</option>
                     </optgroup>
-                    <optgroup label="Technology">
-                      <option value="Custom Platform Development">Custom Platform Development</option>
-                      <option value="AI-Powered Learning Platform">AI-Powered Learning Platform</option>
-                      <option value="DevOps & Cloud Infrastructure">DevOps & Cloud Infrastructure</option>
+
+                    <optgroup label="Digital Marketing">
+                      <option value="Search Engine Optimization (SEO)">Search Engine Optimization (SEO)</option>
+                      <option value="Social Media Marketing">Social Media Marketing</option>
+                      <option value="Google Ads & PPC Campaigns">Google Ads & PPC Campaigns</option>
+                      <option value="Content Marketing">Content Marketing</option>
+                      <option value="Email Marketing">Email Marketing</option>
                     </optgroup>
-                    <optgroup label="Consulting">
-                      <option value="Internship Program Design">Internship Program Design</option>
-                      <option value="HR Tech Advisory">HR Tech Advisory</option>
+
+                    <optgroup label="Design & Branding">
+                      <option value="Logo Design">Logo Design</option>
+                      <option value="Brand Identity Design">Brand Identity Design</option>
+                      <option value="Social Media Post Design">Social Media Post Design</option>
+                      <option value="Poster & Banner Design">Poster & Banner Design</option>
+                      <option value="UI/UX Design">UI/UX Design</option>
                     </optgroup>
-                    <optgroup label="Training">
-                      <option value="Mentor Excellence Program">Mentor Excellence Program</option>
-                      <option value="Intern Readiness Bootcamp">Intern Readiness Bootcamp</option>
+
+                    <optgroup label="Video & Media">
+                      <option value="Video Editing">Video Editing</option>
+                      <option value="Promotional Video Production">Promotional Video Production</option>
+                      <option value="YouTube Video Editing">YouTube Video Editing</option>
+                      <option value="Reels & Short Video Editing">Reels & Short Video Editing</option>
+                      <option value="Motion Graphics">Motion Graphics</option>
+                    </optgroup>
+
+                    <optgroup label="Technology Services">
+                      <option value="Mobile App Development">Mobile App Development</option>
+                      <option value="API Development & Integration">API Development & Integration</option>
+                      <option value="Cloud Hosting & Deployment">Cloud Hosting & Deployment</option>
+                      <option value="AI Integration & Automation">AI Integration & Automation</option>
                     </optgroup>
                   </select>
                 </div>
@@ -1045,8 +1066,8 @@ const RoadmapSection = () => {
             <button
               onClick={() => setActiveServiceCategory('all')}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeServiceCategory === 'all'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
             >
               All Services
@@ -1054,8 +1075,8 @@ const RoadmapSection = () => {
             <button
               onClick={() => setActiveServiceCategory('enterprise')}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeServiceCategory === 'enterprise'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
             >
               Enterprise
@@ -1063,8 +1084,8 @@ const RoadmapSection = () => {
             <button
               onClick={() => setActiveServiceCategory('technology')}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeServiceCategory === 'technology'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
             >
               Technology
@@ -1072,8 +1093,8 @@ const RoadmapSection = () => {
             <button
               onClick={() => setActiveServiceCategory('consulting')}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeServiceCategory === 'consulting'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
             >
               Consulting
@@ -1081,8 +1102,8 @@ const RoadmapSection = () => {
             <button
               onClick={() => setActiveServiceCategory('training')}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeServiceCategory === 'training'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
             >
               Training
@@ -1164,8 +1185,8 @@ const RoadmapSection = () => {
             <button
               onClick={() => setActiveFilter('all')}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === 'all'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
             >
               All Milestones
@@ -1173,8 +1194,8 @@ const RoadmapSection = () => {
             <button
               onClick={() => setActiveFilter('completed')}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === 'completed'
-                  ? 'bg-green-600 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                ? 'bg-green-600 text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
             >
               Completed
@@ -1182,8 +1203,8 @@ const RoadmapSection = () => {
             <button
               onClick={() => setActiveFilter('in-progress')}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === 'in-progress'
-                  ? 'bg-orange-600 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                ? 'bg-orange-600 text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
             >
               In Progress
@@ -1191,8 +1212,8 @@ const RoadmapSection = () => {
             <button
               onClick={() => setActiveFilter('planned')}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === 'planned'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
             >
               Planned
