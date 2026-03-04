@@ -250,6 +250,7 @@ const AdvancedPortfolio = () => {
         py-2 sm:py-2.5
         rounded-full
         text-xs sm:text-sm
+        mb-5
         font-bold
         whitespace-nowrap
         transition-all duration-300
@@ -321,7 +322,7 @@ const AdvancedPortfolio = () => {
 
         {/* Load More Button */}
         {visibleCount < filteredProjects.length && (
-          <div className="flex justify-center mt-16 mb-5">
+          <div className="flex justify-center mt-16">
             <button
               onClick={handleLoadMore}
               disabled={loadingMore}
