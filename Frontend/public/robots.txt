@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.athenura.in/sitemap.xml
+Sitemap: https://athenura.in/sitemap.xml
