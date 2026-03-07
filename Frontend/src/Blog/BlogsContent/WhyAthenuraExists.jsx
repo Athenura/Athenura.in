@@ -1,4 +1,5 @@
 import React from 'react';
+import BlogAd from "../BlogAd"
 import { motion } from 'framer-motion';
 import {
     FaLinkedin,
@@ -351,6 +352,8 @@ const WhyAthenuraExists = () => {
                 {/* BLOG CONTENT */}
                 <main className="lg:col-span-7 prose prose-lg max-w-none text-gray-800 leading-relaxed">
 
+                    <BlogAd />
+
                     {/* Opening Quote */}
                     <section className="mb-16">
                         <p className="text-2xl font-light text-gray-500 italic border-l-4 border-[#28A3B9] pl-8 py-2">
@@ -471,6 +474,8 @@ const WhyAthenuraExists = () => {
                         ))}
                     </div>
 
+                    <BlogAd />
+
                     {/* Placement Support */}
                     <h2 className="text-3xl font-black uppercase tracking-tight text-black mt-16 mb-8">How Athenura Prepares You Beyond Skills</h2>
 
@@ -579,6 +584,8 @@ const WhyAthenuraExists = () => {
                             <button onClick={copyToClipboard} className="p-3 bg-gray-100 rounded-full text-gray-600 hover:bg-black hover:text-white transition-colors"><FaLink /></button>
                         </div>
                     </div>
+
+                    <BlogAd />
 
                     {/* CTA */}
                     <div className="bg-black p-12 rounded-[2rem] text-center text-white mt-32">

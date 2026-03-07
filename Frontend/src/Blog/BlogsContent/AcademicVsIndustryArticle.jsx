@@ -67,6 +67,7 @@ import {
 } from 'react-icons/fa';
 
 import { Helmet } from 'react-helmet-async';
+import BlogAd from '../BlogAd';
 
 const AcademicVsIndustryArticle = () => {
     const siteUrl = 'https://athenura.in';
@@ -471,6 +472,8 @@ const AcademicVsIndustryArticle = () => {
                             </div>
                         </section>
 
+                        <BlogAd />
+
                         {/* Why the gap exists */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-8 flex items-center gap-3">
                             <span className="w-10 h-10 bg-[#28A3B9] rounded-full flex items-center justify-center text-white text-lg">1</span>
@@ -645,6 +648,8 @@ const AcademicVsIndustryArticle = () => {
                             </div>
                         </div>
 
+                        <BlogAd />
+
                         {/* 90-day action plan */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-8 flex items-center gap-3">
                             <span className="w-10 h-10 bg-[#28A3B9] rounded-full flex items-center justify-center text-white text-lg">5</span>
@@ -745,6 +750,9 @@ const AcademicVsIndustryArticle = () => {
                                 Employers increasingly hire for evidence of capability rather than credentials alone. Remote work, rapid technology shifts, and leaner teams demand newcomers who can integrate quickly and contribute measurable value. Bridging the gap improves employability, reduces ramp-up time for companies, and creates stronger, more resilient careers.
                             </p>
                         </div>
+
+
+                        <BlogAd />
 
                         {/* Final Thoughts */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-6">Final Thoughts</h2>

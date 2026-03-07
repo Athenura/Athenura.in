@@ -55,6 +55,7 @@ import {
 } from 'react-icons/fa';
 
 import { Helmet } from 'react-helmet-async';
+import BlogAd from '../BlogAd';
 
 const PortfolioProjectsArticle = () => {
     const siteUrl = 'https://athenura.in';
@@ -473,6 +474,8 @@ const PortfolioProjectsArticle = () => {
                             </p>
                         </section>
 
+                        <BlogAd />
+                        
                         {/* Why Portfolio Projects Beat Certificates */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-8 flex items-center gap-3">
                             <span className="w-10 h-10 bg-[#28A3B9] rounded-full flex items-center justify-center text-white text-lg">1</span>
@@ -645,6 +648,8 @@ const PortfolioProjectsArticle = () => {
                             </div>
                         </div>
 
+                        <BlogAd />
+
                         {/* Project Ideas */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-8 flex items-center gap-3">
                             <span className="w-10 h-10 bg-[#28A3B9] rounded-full flex items-center justify-center text-white text-lg">4</span>
@@ -751,7 +756,8 @@ const PortfolioProjectsArticle = () => {
 
                         {/* Final Note */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-6">Final Note Make Projects Part of Your Learning Cycle</h2>
-
+                        
+                        <BlogAd />
                         <div className="relative p-8 bg-gray-50 rounded-3xl overflow-hidden my-10 border border-gray-200">
                             <div className="absolute top-0 right-0 w-64 h-64 bg-[#28A3B9] opacity-5 rounded-full -mr-20 -mt-20"></div>
                             <div className="relative z-10">

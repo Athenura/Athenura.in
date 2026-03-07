@@ -76,6 +76,7 @@ import {
 } from 'react-icons/fa';
 
 import { Helmet } from 'react-helmet-async';
+import BlogAd from '../BlogAd';
 
 const MentorshipGrowthArticle = () => {
     const siteUrl = 'https://athenura.in';
@@ -489,6 +490,8 @@ const MentorshipGrowthArticle = () => {
                             </div>
                         </section>
 
+                        <BlogAd />
+
                         {/* What mentorship actually does */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-8 flex items-center gap-3">
                             <span className="w-10 h-10 bg-[#28A3B9] rounded-full flex items-center justify-center text-white text-lg">1</span>
@@ -660,6 +663,8 @@ const MentorshipGrowthArticle = () => {
                             </div>
                         </div>
 
+                        <BlogAd />
+
                         {/* How to be a great mentee */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-8 flex items-center gap-3">
                             <span className="w-10 h-10 bg-[#28A3B9] rounded-full flex items-center justify-center text-white text-lg">5</span>
@@ -819,6 +824,8 @@ const MentorshipGrowthArticle = () => {
                                 ))}
                             </ul>
                         </div>
+
+                        <BlogAd />
 
                         {/* Parting thought */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-6">Parting Thought</h2>

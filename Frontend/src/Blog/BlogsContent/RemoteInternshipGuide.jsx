@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import BlogAd from "../BlogAd"
 import {
     FaLinkedin,
     FaTwitter,
@@ -525,6 +526,8 @@ const RemoteInternshipGuide = () => {
                             </div>
                         </section>
 
+                       <BlogAd /> 
+
                         {/* 1. Before Day One */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-6 flex items-center gap-3">
                             <span className="w-10 h-10 bg-[#28A3B9] rounded-full flex items-center justify-center text-white text-lg">1</span>
@@ -658,6 +661,8 @@ const RemoteInternshipGuide = () => {
                                 </div>
                             </div>
                         </div>
+
+                        <BlogAd />
 
                         {/* 5. Time Management & Focus */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-6 flex items-center gap-3">
@@ -808,6 +813,8 @@ const RemoteInternshipGuide = () => {
                                 ))}
                             </div>
                         </div>
+
+                        <BlogAd />
 
                         {/* Final Thought */}
                         <div className="relative p-10 bg-gradient-to-br from-[#28A3B9]/5 to-transparent rounded-3xl my-12 border border-[#28A3B9]/20">

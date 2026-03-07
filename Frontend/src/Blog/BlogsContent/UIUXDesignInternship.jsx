@@ -62,6 +62,7 @@ import {
 import handbook from "../../../public/handbook.pdf"
 import { Link } from "react-router-dom"
 import {Helmet} from "react-helmet-async"
+import BlogAd from '../BlogAd';
 
 const UIUXDesignInternship = () => {
     const siteUrl = 'https://athenura.in';
@@ -507,6 +508,8 @@ const UIUXDesignInternship = () => {
                         </p>
                     </section>
 
+                    <BlogAd />
+
                     {/* Why This Internship Matters */}
                     <div className="bg-black text-white p-10 rounded-3xl my-12">
                         <h3 className="text-2xl font-black mb-4 flex items-center gap-2">
@@ -689,6 +692,8 @@ const UIUXDesignInternship = () => {
                         Each project finishes with a public-facing case study (problem, hypothesis, process, solution, and measurable impact) and a production-ready Figma file or prototype link.
                     </p>
 
+                    <BlogAd />
+
                     {/* Mentorship Section */}
                     <h2 className="text-3xl font-black uppercase tracking-tight text-black mt-16 mb-8 flex items-center gap-3">
                         <span className="w-8 h-8 bg-[#28A3B9] rounded-full flex items-center justify-center text-white text-sm">04</span>
@@ -789,6 +794,8 @@ const UIUXDesignInternship = () => {
                             Design work that moves products forward requires more than craft: it requires research-backed decisions, repeatable workflows, and the ability to collaborate with product and engineering. The UI/UX Design Professional Internship at Athenura trains designers to do exactly that — producing portfolio-ready work, learning to measure impact, and practicing the communication skills hiring teams reward.
                         </p>
                     </div>
+
+                    <BlogAd />
 
                     {/* Final CTA */}
                     <div className="bg-black p-16 rounded-[2rem] text-center text-white mt-16 mb-8 relative overflow-hidden">

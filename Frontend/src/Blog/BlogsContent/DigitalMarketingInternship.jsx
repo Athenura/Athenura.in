@@ -89,6 +89,7 @@ import {
 import handbook from "../../../public/handbook.pdf"
 import { Link } from "react-router-dom"
 import { Helmet } from 'react-helmet-async';
+import BlogAd from '../BlogAd';
 
 
 const DigitalMarketingInternship = () => {
@@ -511,6 +512,8 @@ const DigitalMarketingInternship = () => {
                             </p>
                         </section>
 
+                        <BlogAd />
+
                         {/* Why This Internship Matters */}
                         <div className="bg-black text-white p-10 rounded-3xl my-12">
                             <h3 className="text-2xl font-black mb-4 flex items-center gap-2">
@@ -689,6 +692,8 @@ const DigitalMarketingInternship = () => {
                             </div>
                         </div>
 
+                        <BlogAd />
+
                         {/* Project-First Learning Approach */}
                         <h2 className="text-3xl font-black uppercase tracking-tight text-black mt-16 mb-8 flex items-center gap-3">
                             <span className="w-8 h-8 bg-[#28A3B9] rounded-full flex items-center justify-center text-white text-sm">03</span>
@@ -863,6 +868,8 @@ const DigitalMarketingInternship = () => {
                                 <li>Take ownership of results</li>
                             </ul>
                         </div>
+
+                        <BlogAd />
 
                         {/* Final Word */}
                         <h2 className="text-3xl font-black uppercase tracking-tight text-black mt-16 mb-8">Final Word</h2>

@@ -36,6 +36,7 @@ import {
 import handbook from "../../../public/handbook.pdf";
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import BlogAd from '../BlogAd';
 const SIMILAR_PROGRAMS = [
     {
         id: 1,
@@ -414,6 +415,8 @@ const AthenuraInternshipProgram = () => {
                             </div>
                         </section>
 
+                        <BlogAd />
+
                         {/* Introduction */}
                         <div className="space-y-6 text-lg">
                             <p>
@@ -503,6 +506,9 @@ const AthenuraInternshipProgram = () => {
                                 </div>
                             ))}
                         </div>
+
+                        <BlogAd />
+
 
                         {/* Program Details */}
                         <h2 className="text-3xl font-black uppercase tracking-tight text-black mt-16 mb-8">Program Structure</h2>
@@ -646,6 +652,9 @@ const AthenuraInternshipProgram = () => {
                                 If you seek certificates without effort, this program is not a fit. But if you're ready to take ownership, accept feedback, and produce measurable work — Athenura is built for you.
                             </p>
                         </div>
+
+                        <BlogAd />
+
 
                         {/* Final Word */}
                         <div className="border-t-2 border-gray-100 pt-12 mt-12">
