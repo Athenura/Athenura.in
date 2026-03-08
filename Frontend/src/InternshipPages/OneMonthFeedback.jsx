@@ -1,24 +1,22 @@
 const OneMonthFeedback = () => {
   return (
-    <div className="w-full min-h-screen overflow-auto">
+    <div className="w-full min-h-screen">
       <iframe
         src="https://athenura-feedback-form.vercel.app/feedback"
         className="w-full border-0 responsive-feedback-iframe"
-        style={{ 
-          width: '100%'
-        }}
         title="Athenura Feedback Form"
-        scrolling="no"
       />
-      
+
       <style>{`
         .responsive-feedback-iframe {
-          height: 1500px; /* Desktop default - adjust as needed */
+          width: 100%;
+          height: 800px; /* Desktop */
+          overflow-y: auto;
         }
-        
+
         @media (max-width: 767px) {
           .responsive-feedback-iframe {
-            height: 1225px; /* Mobile - adjust as needed */
+            height: 600px; /* Mobile */
           }
         }
       `}</style>
