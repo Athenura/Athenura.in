@@ -2,21 +2,31 @@ import React, { useEffect, useRef, useState } from "react";
 
 const BlogAd = () => {
   const adRef = useRef(null);
-  const [loaded, setLoaded] = useState(false);
+  const [showAd, setShowAd] = useState(false);
 
+  // wait for page content
   useEffect(() => {
-    try {
-      if (window.adsbygoogle && adRef.current) {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-        setLoaded(true);
-      }
-    } catch (e) {
-      console.log(e);
-    }
+    const timer = setTimeout(() => {
+      setShowAd(true);
+    }, 1500);
+
+    return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    if (showAd && window.adsbygoogle) {
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }, [showAd]);
+
+  if (!showAd) return null;
+
   return (
-    <div style={{ display: loaded ? "block" : "none", margin: "30px 0" }}>
+    <div style={{ margin: "30px 0" }}>
       <ins
         ref={adRef}
         className="adsbygoogle"

@@ -39,118 +39,111 @@ import PortfolioProjectsArticle from './Blog/BlogsContent/PortfolioProjectsArtic
 import ErrorPage from './ErrorPage';
 import AcademicVsIndustryArticle from './Blog/BlogsContent/AcademicVsIndustryArticle';
 import MentorshipGrowthArticle from './Blog/BlogsContent/MentorshipGrowthArticle';
-// import NotFound from './ErrorPage/ErrorPage';
 
+/* keep all your existing imports */
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
-  useEffect(() => {
+  React.useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [pathname]);
 
   return null;
 };
 
-function App() {
-  const [isLoading, setIsLoading] = useState(true);
+const Layout = () => {
+  const location = useLocation();
+  const [loading, setLoading] = useState(true);
+
+  // detect blog pages
+  const isBlogPage = location.pathname.startsWith("/blogs");
 
   return (
     <>
-      {isLoading ? (
-        <Preloader onFinish={() => setIsLoading(false)} />
-      ) :
-        (
-          <Router>
-            <ScrollToTop />
-            <Navbar />
-            <div className="animate-fade-in-up ">
-              <div className="min-h-screen ">
-                <Routes>
-                  {/* Extarnal Pages */}
-                  <Route path="/apply-internship" element={<ApplyInternship />} />
-                  <Route path="/internship/leave" element={<LeaveFrom />} />
-                  <Route path="/internship/performance" element={<VerifyFrom />} />
-                  <Route path="/internship/feedback" element={<FeedbackFrom />} />
-                  <Route path="/internship/one-month-feedback" element={<OneMonthFeedback />} />
-                  {/* Web Pages */}
+      {/* Preloader only for NON BLOG pages */}
+      {!isBlogPage && loading && (
+        <Preloader onFinish={() => setLoading(false)} />
+      )}
 
-                  <Route path="/" element={<HomeMain />} />
-                  <Route path="/career" element={<CareerMain />} />
-                  <Route path="/contact" element={<ContactMain />} />
-                  <Route path="/planner" element={<Planner />} />
+      {(isBlogPage || !loading) && (
+        <>
+          <Navbar />
 
+          <div className="animate-fade-in-up">
+            <div className="min-h-screen">
 
+              <Routes>
 
-                  <Route path="/services" element={<ServiceMain />} />
+                {/* External Pages */}
+                <Route path="/apply-internship" element={<ApplyInternship />} />
+                <Route path="/internship/leave" element={<LeaveFrom />} />
+                <Route path="/internship/performance" element={<VerifyFrom />} />
+                <Route path="/internship/feedback" element={<FeedbackFrom />} />
+                <Route path="/internship/one-month-feedback" element={<OneMonthFeedback />} />
 
-                  {/* Sub Service Pages */}
+                {/* Main Pages */}
+                <Route path="/" element={<HomeMain />} />
+                <Route path="/career" element={<CareerMain />} />
+                <Route path="/contact" element={<ContactMain />} />
+                <Route path="/planner" element={<Planner />} />
 
-                  <Route path='/services/custom-software' element={<CustomMain />} />
-                  <Route path='/services/web-apps' element={<WebMain />} />
-                  <Route path='/services/enterprise' element={<EnterMain />} />
-                  <Route path='/services/ui-ux' element={<UIUXMain />} />
-                  <Route path='/services/maintenance' element={<MaintainMain />} />
-                  <Route path='/services/testing' element={<TestingMain />} />
-                  <Route path='/services/automation' element={<BusMain />} />
+                <Route path="/services" element={<ServiceMain />} />
 
+                {/* Services */}
+                <Route path="/services/custom-software" element={<CustomMain />} />
+                <Route path="/services/web-apps" element={<WebMain />} />
+                <Route path="/services/enterprise" element={<EnterMain />} />
+                <Route path="/services/ui-ux" element={<UIUXMain />} />
+                <Route path="/services/maintenance" element={<MaintainMain />} />
+                <Route path="/services/testing" element={<TestingMain />} />
+                <Route path="/services/automation" element={<BusMain />} />
 
-                  <Route path='/portfolio' element={<PortfolioMain />} />
-                  <Route path='/internship' element={<InternshipPageMain />} />
-                  <Route path='/about-us' element={<AboutMain />} />
-                  <Route path="/faqs" element={<FaqPage />} />
+                <Route path="/portfolio" element={<PortfolioMain />} />
+                <Route path="/internship" element={<InternshipPageMain />} />
+                <Route path="/about-us" element={<AboutMain />} />
+                <Route path="/faqs" element={<FaqPage />} />
 
-                  <Route path='/blogs' element={<BlogMain />} />
+                {/* Blog list */}
+                <Route path="/blogs" element={<BlogMain />} />
 
-                  {/* Blogs Content Pages  */}
+                {/* Blog Articles */}
+                <Route path="/blogs/why-athenura-exists" element={<WhyAthenuraExists />} />
+                <Route path="/blogs/athenura-internship-program" element={<AthenuraInternshipProgram />} />
+                <Route path="/blogs/fullstack-intensive" element={<FullStackIntensive />} />
+                <Route path="/blogs/data-science-internship" element={<DataScienceInternship />} />
+                <Route path="/blogs/ui-ux-design-internship" element={<UIUXDesignInternship />} />
+                <Route path="/blogs/digital-marketing-mastery" element={<DigitalMarketingInternship />} />
+                <Route path="/blogs/ace-remote-internship" element={<RemoteInternshipGuide />} />
+                <Route path="/blogs/portfolio-grade-projects" element={<PortfolioProjectsArticle />} />
+                <Route path="/blogs/bridging-the-gap" element={<AcademicVsIndustryArticle />} />
+                <Route path="/blogs/mentorship-growth" element={<MentorshipGrowthArticle />} />
 
-                  <Route path='/blogs/why-athenura-exists' element={<WhyAthenuraExists />} />
-                  <Route path='/blogs/athenura-internship-program' element={<AthenuraInternshipProgram />} />
-                  <Route path='/blogs/fullstack-intensive' element={<FullStackIntensive />} />
-                  <Route path='/blogs/data-science-internship' element={<DataScienceInternship />} />
-                  <Route path='/blogs/ui-ux-design-internship' element={<UIUXDesignInternship />} />
-                  <Route path='/blogs/digital-marketing-mastery' element={<DigitalMarketingInternship />} />
-                  <Route path='/blogs/ace-remote-internship' element={<RemoteInternshipGuide />} />
-                  <Route path='/blogs/portfolio-grade-projects' element={<PortfolioProjectsArticle />} />
-                  <Route path='/blogs/bridging-the-gap' element={<AcademicVsIndustryArticle />} />
-                  <Route path='/blogs/mentorship-growth' element={<MentorshipGrowthArticle />} />
+                {/* Legal */}
+                <Route path="/internship-policy" element={<InternshipMain />} />
+                <Route path="/privacy-policy" element={<PrivacyMain />} />
+                <Route path="/Terms-of-service" element={<TermsMain />} />
 
+                <Route path="*" element={<ErrorPage />} />
 
+              </Routes>
 
-
-
-                  {/* Legal Pages */}
-                  <Route path="/internship-policy" element={<InternshipMain />} />
-                  <Route path="/privacy-policy" element={<PrivacyMain />} />
-                  <Route path="/Terms-of-service" element={<TermsMain />} />
-
-                  <Route path='*' element={ <ErrorPage />} />
-
-
-                </Routes>
-              </div>
             </div>
-            <Footer />
-          </Router>
-        )
-      }
+          </div>
 
-      <style jsx global>{`
-        /* Optional: Makes in-page anchor links smooth */
-        html {
-          scroll-behavior: smooth;
-        }
-
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up {
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
-      `}</style>
+          <Footer />
+        </>
+      )}
     </>
+  );
+};
 
+function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <Layout />
+    </Router>
   );
 }
 

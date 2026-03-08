@@ -31,7 +31,7 @@ const Preloader = ({ onFinish }) => {
         setFadeProp("opacity-0 translate-y-4"); // Reset position for next word
       }, 500); 
 
-    }, 1200); // Each word stays for 1.2 seconds
+    }, 700); // Each word stays for 1.2 seconds
 
     return () => {
       clearTimeout(showTimeout);
