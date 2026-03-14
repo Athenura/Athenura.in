@@ -378,17 +378,10 @@ const interestOptions = [
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            style={{ position: 'fixed', top: 95, left: 0, right: 0, bottom: 0, zIndex: 100 }}
-            className="flex items-start justify-center p-4 md:p-6 overflow-y-auto"
+            style={{ position: 'fixed', top: 60, left: 0, right: 0, bottom: 0, zIndex: 100 }}
+            className="flex items-start justify-center p-4 md:p-6 overflow-y-hidden"
           >
-            {/* Backdrop */}
-            {/* <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={handleClosePopup}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm"
-            /> */}
+
 
             {/* Main Container */}
             <motion.div
@@ -426,7 +419,7 @@ const interestOptions = [
                 </button>
 
                 <div className="mb-8 mt-8">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Partner with Athenura</h3>
+                  <h3 className="text-xl md:text-3xl font-bold text-white mb-2">Be aPartner with Athenura</h3>
                   <p className="text-gray-400 text-sm">We'll reach out via WhatsApp to discuss your vision.</p>
                 </div>
 

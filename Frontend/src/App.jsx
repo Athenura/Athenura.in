@@ -39,6 +39,7 @@ import PortfolioProjectsArticle from './Blog/BlogsContent/PortfolioProjectsArtic
 import ErrorPage from './ErrorPage';
 import AcademicVsIndustryArticle from './Blog/BlogsContent/AcademicVsIndustryArticle';
 import MentorshipGrowthArticle from './Blog/BlogsContent/MentorshipGrowthArticle';
+import AthenuraChat from './Chatbot';
 
 /* keep all your existing imports */
 
@@ -130,6 +131,7 @@ const Layout = () => {
 
             </div>
           </div>
+          <AthenuraChat />
 
           <Footer />
         </>
