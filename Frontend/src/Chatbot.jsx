@@ -63,7 +63,7 @@ const AthenuraChat = () => {
 
         try {
             const response = await fetch(
-                "https://athenura-chatbot.onrender.com/chat/",
+                "https://athenura-chatbot-1.onrender.com/chat/",
                 {
                     method: "POST",
                     headers: {
