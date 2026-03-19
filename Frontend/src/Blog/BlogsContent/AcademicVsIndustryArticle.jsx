@@ -472,7 +472,7 @@ const AcademicVsIndustryArticle = () => {
                             </div>
                         </section>
 
-                        <BlogAd />
+                        {/* Final Note */}
 
                         {/* Why the gap exists */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-8 flex items-center gap-3">
@@ -648,7 +648,7 @@ const AcademicVsIndustryArticle = () => {
                             </div>
                         </div>
 
-                        <BlogAd />
+                        {/* Final Note */}
 
                         {/* 90-day action plan */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-8 flex items-center gap-3">
@@ -752,7 +752,7 @@ const AcademicVsIndustryArticle = () => {
                         </div>
 
 
-                        <BlogAd />
+                        {/* Final Note */}
 
                         {/* Final Thoughts */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-6">Final Thoughts</h2>

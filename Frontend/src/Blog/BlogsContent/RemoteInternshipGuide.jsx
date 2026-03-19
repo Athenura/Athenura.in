@@ -526,7 +526,7 @@ const RemoteInternshipGuide = () => {
                             </div>
                         </section>
 
-                       <BlogAd /> 
+                       {/* Final Note */} 
 
                         {/* 1. Before Day One */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-6 flex items-center gap-3">
@@ -662,7 +662,7 @@ const RemoteInternshipGuide = () => {
                             </div>
                         </div>
 
-                        <BlogAd />
+                        {/* Final Note */}
 
                         {/* 5. Time Management & Focus */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-6 flex items-center gap-3">
@@ -814,7 +814,7 @@ const RemoteInternshipGuide = () => {
                             </div>
                         </div>
 
-                        <BlogAd />
+                        {/* Final Note */}
 
                         {/* Final Thought */}
                         <div className="relative p-10 bg-gradient-to-br from-[#28A3B9]/5 to-transparent rounded-3xl my-12 border border-[#28A3B9]/20">

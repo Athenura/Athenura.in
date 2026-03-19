@@ -512,7 +512,7 @@ const DigitalMarketingInternship = () => {
                             </p>
                         </section>
 
-                        <BlogAd />
+                        {/* Final Note */}
 
                         {/* Why This Internship Matters */}
                         <div className="bg-black text-white p-10 rounded-3xl my-12">
@@ -692,7 +692,7 @@ const DigitalMarketingInternship = () => {
                             </div>
                         </div>
 
-                        <BlogAd />
+                        {/* Final Note */}
 
                         {/* Project-First Learning Approach */}
                         <h2 className="text-3xl font-black uppercase tracking-tight text-black mt-16 mb-8 flex items-center gap-3">
@@ -869,7 +869,7 @@ const DigitalMarketingInternship = () => {
                             </ul>
                         </div>
 
-                        <BlogAd />
+                        {/* Final Note */}
 
                         {/* Final Word */}
                         <h2 className="text-3xl font-black uppercase tracking-tight text-black mt-16 mb-8">Final Word</h2>

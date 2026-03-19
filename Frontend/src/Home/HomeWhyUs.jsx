@@ -183,15 +183,15 @@ const WhyUsSection = () => {
         role: "CTO, Nexus Solutions",
         content: "Athenura helped us modernize our digital infrastructure seamlessly. Their technical clarity and execution speed truly set them apart.",
         company: "NexaTech Solutions",
-        image: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=150&h=150&fit=crop&crop=face"
+        image: "https://yashamishra.pythonanywhere.com/static/images/yash_profile.jpg"
     },
     {
         id: 2,
-        name: "Suresh Sharma",
+        name: "Suresh Sharma",  
         role: "Head of Technology, BrightMind Systems",
         content: "The Athenura team understood our vision from day one. Their innovative mindset and problem-solving skills delivered exceptional results.",
         company: "BrightMind Systems",
-        image: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?w=150&h=150&fit=crop&crop=face"
+        image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202603/aman-gottumukkala--elon-musk--xai--claude-161254492-16x9_0.jpg?VersionId=_CK6jFIr9EmuJ2M0eIdBPuY78BKBFWnx&size=690%3A388"
     },
     {
         id: 3,
@@ -199,7 +199,7 @@ const WhyUsSection = () => {
         role: "Engineering Director, ScaleGrow India",
         content: "Athenura’s solutions were scalable, future-ready, and perfectly aligned with our business goals. A highly reliable technology partner.",
         company: "ScaleGrow India",
-        image: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=150&h=150&fit=crop&crop=face"
+        image: "https://images.openai.com/static-rsc-1/1WZJLU8fgTbFTrVA51ToAi3eJyhGr2BGQkIyBL7HDgj2jxitTeLVB_f1cERjhoXB9inJRs_Y3s3EBaWwr1GuDdZ6r_tewBtOdji8hk0e_1zx0t7d49uj5tP5rC4GHaaHGR2I0Di_TNgihqPO6OFTZw"
     }
     ];
 
@@ -219,7 +219,7 @@ const WhyUsSection = () => {
                         Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1E7A86] to-[#A7DADC]">Choose Us</span>
                     </h1>
 
-                    <p className="text-lg sm:text-xl text-[#2E2E2E]/80 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-lg mb-5 sm:text-xl text-[#2E2E2E]/80 max-w-3xl mx-auto leading-relaxed">
                         We combine deep technical expertise with strategic business insight to deliver solutions
                         that drive measurable results and sustainable competitive advantage.
                     </p>

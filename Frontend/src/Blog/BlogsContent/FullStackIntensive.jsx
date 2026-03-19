@@ -492,7 +492,7 @@ const FullStackIntensive = () => {
                             </p>
                         </section>
 
-                        <BlogAd />
+                        {/* Final Note */}
 
                         {/* Short Version Card */}
                         <div className="bg-black text-white p-10 rounded-3xl my-12">
@@ -653,7 +653,7 @@ const FullStackIntensive = () => {
                             Batch sizes are kept intentionally small to preserve quality mentorship and meaningful feedback. The program cadence balances self-paced work with scheduled mentor touchpoints.
                         </p>
 
-                        <BlogAd />
+                        {/* Final Note */}
 
                         {/* Projects You'll Graduate With */}
                         <h2 className="text-3xl font-black uppercase tracking-tight text-black mt-16 mb-8 flex items-center gap-3">
@@ -756,7 +756,7 @@ const FullStackIntensive = () => {
                             ))}
                         </div>
 
-                        <BlogAd />
+                        {/* Final Note */}
 
                         {/* Final CTA */}
                         <div className="bg-black p-16 rounded-[2rem] text-center text-white mt-16 mb-8 relative overflow-hidden">

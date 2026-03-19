@@ -415,7 +415,7 @@ const AthenuraInternshipProgram = () => {
                             </div>
                         </section>
 
-                        <BlogAd />
+                        {/* Final Note */}
 
                         {/* Introduction */}
                         <div className="space-y-6 text-lg">
@@ -507,7 +507,7 @@ const AthenuraInternshipProgram = () => {
                             ))}
                         </div>
 
-                        <BlogAd />
+                        {/* Final Note */}
 
 
                         {/* Program Details */}
@@ -653,7 +653,7 @@ const AthenuraInternshipProgram = () => {
                             </p>
                         </div>
 
-                        <BlogAd />
+                        {/* Final Note */}
 
 
                         {/* Final Word */}

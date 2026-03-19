@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  FileText, Clock, Briefcase, Code, 
-  Users, CheckCircle, Zap, GraduationCap, 
+import {
+  FileText, Clock, Briefcase, Code,
+  Users, CheckCircle, Zap, GraduationCap,
   Terminal, GitMerge, Cpu
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const InternshipDetails = () => {
   const theme = {
@@ -25,7 +26,7 @@ const InternshipDetails = () => {
 
   return (
     <section className="py-10 md:py-10 px-4 md:px-6 relative overflow-hidden font-sans" style={{ backgroundColor: theme.bg }}>
-      
+
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[500px] md:w-[800px] h-[800px] opacity-5 pointer-events-none">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -33,11 +34,62 @@ const InternshipDetails = () => {
         </svg>
       </div>
 
+      <div className="max-w-7xl mx-auto py-14 px-6 md:px-10">
+
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+
+          {/* Left Content */}
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-5">
+              The Athenura Internship Program
+            </h2>
+
+            <p className="text-gray-600 text-base text-justify md:text-lg leading-relaxed mb-4">
+              The Athenura Internship Program is designed to provide students and
+              aspiring professionals with practical industry exposure. Instead of
+              focusing only on theory, interns work on real-world projects that
+              help them understand how modern technology companies build products.
+            </p>
+
+            <p className="text-gray-600 text-base text-justify md:text-lg leading-relaxed mb-4">
+              During the program, participants collaborate with mentors and teams
+              while working on technologies like web development, artificial
+              intelligence, data science, cloud computing, and digital marketing.
+              This hands-on approach helps interns gain valuable technical and
+              problem-solving skills.
+            </p>
+
+            <p className="text-gray-600 text-base text-justify md:text-lg leading-relaxed">
+              By the end of the internship, interns build a strong portfolio, gain
+              experience with professional workflows, and develop the confidence
+              needed to start their careers in the technology industry.
+            </p>
+
+            <Link to="/apply-internship" className="inline-block mt-6 px-6 py-3 bg-[#1E7A86] text-white rounded-lg font-semibold hover:bg-[#16616b] transition">
+              Apply for Internship
+            </Link>
+          </div>
+
+
+          {/* Right Image */}
+          <div className="relative">
+            <img
+              src="/INTERNSHIPS.png"
+              alt="Athenura Internship Program"
+              className="rounded-2xl shadow-xl w-full object-cover"
+            />
+          </div>
+
+        </div>
+
+      </div>
+
+
       <div className="max-w-7xl mx-auto relative z-10">
-        
+
         {/* Section Header */}
         <div className="text-center mb-10 md:mb-16 max-w-3xl mx-auto">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight"
@@ -53,16 +105,16 @@ const InternshipDetails = () => {
         </div>
 
         {/* --- BENTO GRID LAYOUT --- */}
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
           className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-auto"
         >
-          
+
           {/* 1. Real World Projects (Large Card - Top Left) */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="md:col-span-2 md:row-span-2 bg-white rounded-2xl md:rounded-3xl p-5 md:p-8 shadow-xl border border-gray-100 relative overflow-hidden group hover:border-[#1E7A86]/30 transition-all duration-300 flex flex-col justify-between"
           >
@@ -80,7 +132,7 @@ const InternshipDetails = () => {
               <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6 max-w-lg leading-relaxed">
                 You won't build "Toy Apps". You will architect scalable solutions. <br /> Focus on <span className="font-bold text-[#1E7A86]">System Design</span>, <span className="font-bold text-[#1E7A86]">Security</span>, and <span className="font-bold text-[#1E7A86]">Optimization</span>.
               </p>
-              
+
               <div className="grid grid-cols-1 gap-2">
                 {['CI/CD Pipeline Implementation', 'Microservices Architecture', 'Agile & Jira Workflows'].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 md:gap-3 text-xs md:text-sm font-medium text-gray-700 bg-gray-50 p-2 rounded-lg border border-gray-100">
@@ -94,8 +146,8 @@ const InternshipDetails = () => {
             {/* Visual: Code Pipeline Animation (Hidden on very small mobile to save space, visible on larger) */}
             <div className="hidden sm:block absolute top-20 -right-16 w-[300px] md:w-[400px] bg-[#1E293B] rounded-xl p-5  md:p-5 shadow-2xl transform rotate-3 group-hover:rotate-0 transition-transform duration-500 border border-gray-700 opacity-90">
               <div className="flex items-center gap-4 mb-3 border-b border-gray-700 pb-2">
-                 <span className="text-gray-400 text-[10px]">pipeline.yaml</span>
-                 <span className="text-gray-500 text-[10px] flex items-center gap-1"><GitMerge size={10}/> master</span>
+                <span className="text-gray-400 text-[10px]">pipeline.yaml</span>
+                <span className="text-gray-500 text-[10px] flex items-center gap-1"><GitMerge size={10} /> master</span>
               </div>
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
@@ -111,77 +163,77 @@ const InternshipDetails = () => {
           </motion.div>
 
           {/* 2. Tenure (Right Top) */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="md:col-span-1 bg-[#1E7A86] rounded-2xl md:rounded-3xl p-5 md:p-6 text-white shadow-lg relative overflow-hidden group"
           >
-             <div className="absolute right-0 top-0 w-24 h-24 bg-white opacity-10 rounded-full blur-2xl transform translate-x-5 -translate-y-5"></div>
-             
-             <div className="flex items-center gap-3 mb-2 md:mb-3">
-               <div className="p-1.5 md:p-2 bg-white/20 rounded-lg backdrop-blur-sm">
-                 <Clock size={16} className="md:w-5 md:h-5 text-white" />
-               </div>
-               <span className="font-semibold text-white/80 uppercase text-[10px] md:text-xs tracking-wider">Duration</span>
-             </div>
-             
-             <h3 className="text-2xl md:text-3xl font-extrabold mb-1">3 - 8 Months</h3>
-             <p className="text-white/80 text-xs md:text-sm mt-1">
-               Deep-dive mastery. Remote/Hybrid flexible options.
-             </p>
+            <div className="absolute right-0 top-0 w-24 h-24 bg-white opacity-10 rounded-full blur-2xl transform translate-x-5 -translate-y-5"></div>
+
+            <div className="flex items-center gap-3 mb-2 md:mb-3">
+              <div className="p-1.5 md:p-2 bg-white/20 rounded-lg backdrop-blur-sm">
+                <Clock size={16} className="md:w-5 md:h-5 text-white" />
+              </div>
+              <span className="font-semibold text-white/80 uppercase text-[10px] md:text-xs tracking-wider">Duration</span>
+            </div>
+
+            <h3 className="text-2xl md:text-3xl font-extrabold mb-1">3 - 8 Months</h3>
+            <p className="text-white/80 text-xs md:text-sm mt-1">
+              Deep-dive mastery. Remote/Hybrid flexible options.
+            </p>
           </motion.div>
 
           {/* 3. LOR (Right Bottom) */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="md:col-span-1 bg-white rounded-2xl md:rounded-3xl p-5 md:p-6 shadow-lg border border-gray-100 flex flex-col justify-between group hover:shadow-xl transition-shadow"
           >
-             <div className="flex justify-between items-start mb-2">
-               <div>
-                 <h3 className="font-bold text-gray-900 text-base md:text-lg">Performance LOR</h3>
-                 <p className="text-[10px] md:text-xs text-gray-500 mt-1">Signed by CEO</p>
-               </div>
-               <div className="p-1.5 md:p-2 bg-yellow-50 rounded-lg text-yellow-600">
-                 <FileText size={18} className="md:w-5 md:h-5" />
-               </div>
-             </div>
-             <p className="text-xs text-gray-500 mt-2 leading-tight">
-               A detailed letter validating your specific contributions, not a generic template.
-             </p>
-             <div className="mt-3 w-8 h-1 bg-green-500 rounded-full"></div>
+            <div className="flex justify-between items-start mb-2">
+              <div>
+                <h3 className="font-bold text-gray-900 text-base md:text-lg">Performance LOR</h3>
+                <p className="text-[10px] md:text-xs text-gray-500 mt-1">Signed by CEO</p>
+              </div>
+              <div className="p-1.5 md:p-2 bg-yellow-50 rounded-lg text-yellow-600">
+                <FileText size={18} className="md:w-5 md:h-5" />
+              </div>
+            </div>
+            <p className="text-xs text-gray-500 mt-2 leading-tight">
+              A detailed letter validating your specific contributions, not a generic template.
+            </p>
+            <div className="mt-3 w-8 h-1 bg-green-500 rounded-full"></div>
           </motion.div>
 
           {/* 4. Career Acceleration (Bottom Full Width) */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
             className="md:col-span-3 bg-gradient-to-r from-[#1E293B] to-[#0F172A] rounded-2xl md:rounded-3xl p-6 md:p-8 text-white shadow-lg relative overflow-hidden group"
           >
-             <div className="absolute right-0 bottom-0 w-40 h-40 bg-[#1E7A86] opacity-10 rounded-full blur-3xl"></div>
-             
-             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-               <div className="flex-1">
-                 <div className="flex items-center gap-3 mb-2">
-                    <Briefcase size={20} className="text-[#1E90A8]" />
-                    <h3 className="font-bold text-lg md:text-xl">Career Acceleration Module</h3>
-                 </div>
-                 <p className="text-xs md:text-sm text-gray-400 max-w-xl">
-                   We prepare you for the job market. While we don't guarantee a job, we guarantee you'll be ready for one.
-                 </p>
-               </div>
-               
-               <div className="flex flex-wrap gap-2 md:gap-4">
-                 {['ATS Resume Building', 'Mock Tech Interviews', 'GitHub Portfolio Polish'].map((item, i) => (
-                   <span key={i} className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/10 text-[10px] md:text-xs font-medium backdrop-blur-md">
-                     {item}
-                   </span>
-                 ))}
-               </div>
-             </div>
+            <div className="absolute right-0 bottom-0 w-40 h-40 bg-[#1E7A86] opacity-10 rounded-full blur-3xl"></div>
+
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-2">
+                  <Briefcase size={20} className="text-[#1E90A8]" />
+                  <h3 className="font-bold text-lg md:text-xl">Career Acceleration Module</h3>
+                </div>
+                <p className="text-xs md:text-sm text-gray-400 max-w-xl">
+                  We prepare you for the job market. While we don't guarantee a job, we guarantee you'll be ready for one.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-2 md:gap-4">
+                {['ATS Resume Building', 'Mock Tech Interviews', 'GitHub Portfolio Polish'].map((item, i) => (
+                  <span key={i} className="px-3 py-1.5 rounded-lg bg-white/10 border border-white/10 text-[10px] md:text-xs font-medium backdrop-blur-md">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
         </motion.div>
 
         {/* --- BOTTOM: ADDITIONAL GAINS STRIP --- */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -193,15 +245,15 @@ const InternshipDetails = () => {
             { icon: Zap, title: "Soft Skills", desc: "Leadership training" },
             { icon: GraduationCap, title: "Alumni Club", desc: "Lifetime access" },
           ].map((perk, idx) => (
-             <div key={idx} className="flex flex-col items-center text-center gap-2 md:gap-3">
-               <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#1E7A86]/10 flex items-center justify-center text-[#1E7A86] shrink-0">
-                 <perk.icon size={16} className="md:w-5 md:h-5" />
-               </div>
-               <div>
-                 <h4 className="font-bold text-gray-900 text-xs md:text-sm">{perk.title}</h4>
-                 <p className="text-[10px] md:text-xs text-gray-500">{perk.desc}</p>
-               </div>
-             </div>
+            <div key={idx} className="flex flex-col items-center text-center gap-2 md:gap-3">
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#1E7A86]/10 flex items-center justify-center text-[#1E7A86] shrink-0">
+                <perk.icon size={16} className="md:w-5 md:h-5" />
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 text-xs md:text-sm">{perk.title}</h4>
+                <p className="text-[10px] md:text-xs text-gray-500">{perk.desc}</p>
+              </div>
+            </div>
           ))}
         </motion.div>
 

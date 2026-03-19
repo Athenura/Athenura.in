@@ -438,7 +438,7 @@ const DataScienceInternship = () => {
                         </p>
                     </section>
 
-                    <BlogAd />
+                    {/* Final Note */}
 
                     {/* Why This Internship Matters */}
                     <div className="bg-black text-white p-10 rounded-3xl my-12">
@@ -623,7 +623,7 @@ const DataScienceInternship = () => {
                     </p>
 
 
-                    <BlogAd />
+                    {/* Final Note */}
 
                     {/* Mentorship Section */}
                     <h2 className="text-3xl font-black uppercase tracking-tight text-black mt-16 mb-8 flex items-center gap-3">
@@ -731,7 +731,7 @@ const DataScienceInternship = () => {
                     </div>
 
 
-                    <BlogAd />
+                    {/* Final Note */}
 
                     {/* Final CTA */}
                     <div className="bg-black p-16 rounded-[2rem] text-center text-white mt-16 mb-8 relative overflow-hidden">

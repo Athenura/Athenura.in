@@ -44,7 +44,7 @@ const ContactTrust = () => {
         <div className={`space-y-8 transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>  
 
           {/* Headline */}
-          <h1 className="text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight" style={{ color: theme.textDark }}>
+          <h1 className="text-5xl lg:text-5xl font-extrabold tracking-tight leading-tight" style={{ color: theme.textDark }}>
             Let's build something{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#26a5b6] to-[#2b8387]">
               remarkable together.

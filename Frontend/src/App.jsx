@@ -40,6 +40,7 @@ import ErrorPage from './ErrorPage';
 import AcademicVsIndustryArticle from './Blog/BlogsContent/AcademicVsIndustryArticle';
 import MentorshipGrowthArticle from './Blog/BlogsContent/MentorshipGrowthArticle';
 import AthenuraChat from './Chatbot';
+import IndustryReadyArticle from './Blog/BlogsContent/IndustryReadyArticle';
 
 /* keep all your existing imports */
 
@@ -119,6 +120,8 @@ const Layout = () => {
                 <Route path="/blogs/portfolio-grade-projects" element={<PortfolioProjectsArticle />} />
                 <Route path="/blogs/bridging-the-gap" element={<AcademicVsIndustryArticle />} />
                 <Route path="/blogs/mentorship-growth" element={<MentorshipGrowthArticle />} />
+                <Route path="/blogs/industry-ready-guide" element={<IndustryReadyArticle />} />
+
 
                 {/* Legal */}
                 <Route path="/internship-policy" element={<InternshipMain />} />

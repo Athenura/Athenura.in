@@ -153,7 +153,7 @@ const WhoWeAreSection = () => {
                         <div className="absolute -inset-4 bg-gradient-to-r from-[#A7DADC]/20 to-[#1E7A86]/25 rounded-3xl"></div>
                         <div className="relative bg-white rounded-2xl overflow-hidden shadow-xl border border-[#F3F4F6]">
                             <img
-                                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
+                                src="/startup.jpg"
                                 alt="Our Team"
                                 className="w-full h-72 sm:h-80 object-cover"
                             />
@@ -285,22 +285,22 @@ const WhoWeAreSection = () => {
 
                     <div className="grid grid-cols-2 gap-4">
                         <img
-                            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop"
+                            src="https://i.pinimg.com/1200x/76/02/41/760241680866b4e758f335d0d0984e3b.jpg"
                             alt="Team Collaboration"
                             className="rounded-2xl object-cover h-48 hover:scale-105 transition-transform duration-500"
                         />
                         <img
-                            src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8b2ZmaWNlfGVufDB8fDB8fHww"
+                            src="https://i.pinimg.com/1200x/74/4b/7f/744b7fa3aa996bfd97b868a988fd3af0.jpg"
                             alt="Office Environment"
                             className="rounded-2xl object-cover h-48 mt-8 hover:scale-105 transition-transform duration-500"
                         />
                         <img
-                            src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=300&fit=crop"
+                            src="https://i.pinimg.com/1200x/c5/d5/e6/c5d5e61bab34d399431cbc03311e67b2.jpg"
                             alt="Team Event"
                             className="rounded-2xl object-cover h-48 hover:scale-105 transition-transform duration-500"
                         />
                         <img
-                            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=300&fit=crop"
+                            src="https://i.pinimg.com/1200x/25/de/06/25de06a1d527a61beffcf31b7b1b88c0.jpg"
                             alt="Work Culture"
                             className="rounded-2xl object-cover h-48 mt-8 hover:scale-105 transition-transform duration-500"
                         />

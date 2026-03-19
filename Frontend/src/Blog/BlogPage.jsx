@@ -103,6 +103,16 @@ const BLOG_DATA = [
         image: "https://ik.imagekit.io/cn4giet1a/Gemini_Generated_Image_gdsr9fgdsr9fgdsr.png",
         featured: false
     },
+    {
+        id: 11,
+        slug: "industry-ready-guide",
+        category: "Mentorship",
+        date: "March 1, 2026",
+        title: "How to Become Industry Ready Before Graduation",
+        description: "A comprehensive guide to developing industry-ready skills, building a strong portfolio, and gaining real-world experience before graduation to launch a successful career.",
+        image: "https://i.pinimg.com/736x/2f/2e/4e/2f2e4eca52d953565cb95cc49439dc4f.jpg",
+        featured: false
+    },
 
 ];
 
@@ -111,8 +121,14 @@ const BlogContent = () => {
     const [loading, setLoading] = useState(false);
 
     // Filter logic
-    const featuredBlogs = BLOG_DATA.filter(post => post.featured);
-    const allArticles = BLOG_DATA.filter(post => !post.featured);
+    // Filter logic
+    const featuredBlogs = BLOG_DATA
+        .filter(post => post.featured)
+        .sort((a, b) => a.id - b.id);   // oldest first
+
+    const allArticles = BLOG_DATA
+        .filter(post => !post.featured)
+        .sort((a, b) => b.id - a.id);   // oldest first
 
     const handleLoadMore = () => {
         setLoading(true);

@@ -490,7 +490,7 @@ const MentorshipGrowthArticle = () => {
                             </div>
                         </section>
 
-                        <BlogAd />
+                        {/* Final Note */}
 
                         {/* What mentorship actually does */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-8 flex items-center gap-3">
@@ -663,7 +663,7 @@ const MentorshipGrowthArticle = () => {
                             </div>
                         </div>
 
-                        <BlogAd />
+                        {/* Final Note */}
 
                         {/* How to be a great mentee */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-8 flex items-center gap-3">
@@ -825,7 +825,7 @@ const MentorshipGrowthArticle = () => {
                             </ul>
                         </div>
 
-                        <BlogAd />
+                        {/* Final Note */}
 
                         {/* Parting thought */}
                         <h2 className="text-3xl font-black text-gray-900 mt-16 mb-6">Parting Thought</h2>
