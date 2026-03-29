@@ -35,7 +35,7 @@ const AdvancedPortfolio = () => {
       image: "/Stich4.png",
       link: "#",
     },
-    
+
     {
       id: 4,
       title: "Raadhyam Music",
@@ -57,17 +57,32 @@ const AdvancedPortfolio = () => {
       image: "/Stich.png",
       link: "#",
     },
-    
+    {
+      id: 7,
+      title: "Revica Ai",
+      category: "Ai Tools",
+      image: "/Revica.png",
+      link: "#",
+    },
+    {
+      id: 8,
+      title: "Builder CRM",
+      category: "Web Development",
+      image: "/Builder.png",
+      link: "#",
+    },  
+
   ];
 
   // --- FILTER LOGIC ---
   // 1. Get unique categories from data
   const categories = ["All", ...new Set(projects.map(item => item.category))];
 
+  const sortedProjects = [...projects].sort((a, b) => b.id - a.id);
   // 2. Filter projects based on selection
   const filteredProjects = activeCategory === "All"
-    ? projects
-    : projects.filter(project => project.category === activeCategory);
+    ? sortedProjects
+    : sortedProjects.filter(project => project.category === activeCategory);
 
   // 3. Slice for "Load More" functionality
   const visibleProjects = filteredProjects.slice(0, visibleCount);

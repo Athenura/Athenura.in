@@ -79,4 +79,18 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://athenura.in/blogs/industry-ready-guide</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://athenura.in/blogs/college-to-industry-gap</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

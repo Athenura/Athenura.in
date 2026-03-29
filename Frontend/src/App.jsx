@@ -41,6 +41,7 @@ import AcademicVsIndustryArticle from './Blog/BlogsContent/AcademicVsIndustryArt
 import MentorshipGrowthArticle from './Blog/BlogsContent/MentorshipGrowthArticle';
 import AthenuraChat from './Chatbot';
 import IndustryReadyArticle from './Blog/BlogsContent/IndustryReadyArticle';
+import CollegeCurriculumGap from './Blog/BlogsContent/CollegeCurriculumGap';
 
 /* keep all your existing imports */
 
@@ -121,6 +122,7 @@ const Layout = () => {
                 <Route path="/blogs/bridging-the-gap" element={<AcademicVsIndustryArticle />} />
                 <Route path="/blogs/mentorship-growth" element={<MentorshipGrowthArticle />} />
                 <Route path="/blogs/industry-ready-guide" element={<IndustryReadyArticle />} />
+                <Route path="/blogs/college-to-industry-gap" element={<CollegeCurriculumGap />} />
 
 
                 {/* Legal */}

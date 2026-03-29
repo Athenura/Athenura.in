@@ -69,7 +69,7 @@ const BLOG_DATA = [
         category: "Career",
         date: "February 28, 2026",
         title: "How to Ace Your First Remote Internship in 2026",
-        description: "A practical guide to excelling in your first remote internship — from communication and productivity to delivering measurable impact and building long-term career opportunities.",
+        description: "A practical guide to excelling in your first remote internship from communication and productivity to delivering measurable impact and building long-term career opportunities.",
         image: "https://ik.imagekit.io/vtfcbjo5c/howtoace.png",
         featured: false
     },
@@ -79,7 +79,7 @@ const BLOG_DATA = [
         category: "Education",
         date: "February 28, 2026",
         title: "The Importance of Portfolio-Grade Projects",
-        description: "Why real-world, portfolio-grade projects matter more than certificates — and how building complete, measurable work can dramatically improve your career opportunities.",
+        description: "Why real-world, portfolio-grade projects matter more than certificates and how building complete, measurable work can dramatically improve your career opportunities.",
         image: "https://ik.imagekit.io/vtfcbjo5c/portfolio.png",
         featured: false
     },
@@ -89,7 +89,7 @@ const BLOG_DATA = [
         category: "Engineering",
         date: "February 15, 2026",
         title: "Bridging the Gap: Academic vs Industry Skills",
-        description: "Understanding the critical gap between academic learning and real-world industry expectations — and how students can develop practical, job-ready skills alongside theoretical knowledge.",
+        description: "Understanding the critical gap between academic learning and real-world industry expectations and how students can develop practical, job-ready skills alongside theoretical knowledge.",
         image: "https://ik.imagekit.io/cn4giet1a/Gemini_Generated_Image_xwpzj2xwpzj2xwpz.png",
         featured: false
     },
@@ -113,6 +113,18 @@ const BLOG_DATA = [
         image: "https://i.pinimg.com/736x/2f/2e/4e/2f2e4eca52d953565cb95cc49439dc4f.jpg",
         featured: false
     },
+    {
+        id: 12,
+        slug: "college-to-industry-gap",
+        category: "Mentorship",
+        date: "March 1, 2026",
+        title: "Bridging the Gap: Academic vs Industry Skills",
+        description: "Understanding the critical gap between academic learning and real-world industry expectations and how students can develop practical, job-ready skills alongside theoretical knowledge.",
+        image: "https://ik.imagekit.io/cn4giet1a/Blue%20and%20White%20Calm%20Education%20YouTube%20Thumbnail.png",
+        featured: false
+    },
+
+
 
 ];
 
