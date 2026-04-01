@@ -12,7 +12,9 @@ const AthenuraHero = () => {
     name: '',
     email: '',
     whatsapp: '',
-    interest: ''
+    interest: '',
+    remarks: ''
+
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -27,22 +29,22 @@ const AthenuraHero = () => {
   const opacityContent = useTransform(scrollY, [0, 200], [1, 0.9]);
 
   // Interest options
-const interestOptions = [
-  { value: 'website-development', label: 'Website Development' },
-  { value: 'software-development', label: 'Software Development' },
-  { value: 'ui-ux-design', label: 'UI/UX Design' },
-  { value: 'mobile-app-development', label: 'Mobile App Development' },
-  { value: 'digital-marketing', label: 'Digital Marketing' },
-  { value: 'video-editing', label: 'Video Editing' },
-  { value: 'graphic-design', label: 'Graphic Design' },
-  { value: 'ecommerce-development', label: 'E-Commerce Development' },
-  { value: 'seo-services', label: 'SEO Services' },
-  { value: 'social-media-management', label: 'Social Media Management' },
-  { value: 'content-creation', label: 'Content Creation' },
-  { value: 'landing-page-design', label: 'Landing Page Design' },
-  { value: 'website-maintenance', label: 'Website Maintenance' },
-  { value: 'tech-consultation', label: 'Tech Consultation' }
-];
+  const interestOptions = [
+    { value: 'website-development', label: 'Website Development' },
+    { value: 'software-development', label: 'Software Development' },
+    { value: 'ui-ux-design', label: 'UI/UX Design' },
+    { value: 'mobile-app-development', label: 'Mobile App Development' },
+    { value: 'digital-marketing', label: 'Digital Marketing' },
+    { value: 'video-editing', label: 'Video Editing' },
+    { value: 'graphic-design', label: 'Graphic Design' },
+    { value: 'ecommerce-development', label: 'E-Commerce Development' },
+    { value: 'seo-services', label: 'SEO Services' },
+    { value: 'social-media-management', label: 'Social Media Management' },
+    { value: 'content-creation', label: 'Content Creation' },
+    { value: 'landing-page-design', label: 'Landing Page Design' },
+    { value: 'website-maintenance', label: 'Website Maintenance' },
+    { value: 'tech-consultation', label: 'Tech Consultation' }
+  ];
 
   // --- 1. Video Ping-Pong Logic ---
   useEffect(() => {
@@ -230,7 +232,7 @@ const interestOptions = [
     <div className="relative min-h-[92vh] w-full bg-[#030303] overflow-hidden text-white">
 
       {/* --- BACKGROUND VIDEO LAYER WITH SCROLL EFFECT --- */}
-      <motion.div 
+      <motion.div
         style={{ y: yVideo, scale: scaleVideo }}
         className="absolute inset-0 z-0"
       >
@@ -255,7 +257,7 @@ const interestOptions = [
       <div className="absolute inset-0 z-[2] bg-[radial-gradient(circle_at_center,transparent_0%,#030303_90%)]" />
 
       {/* --- CONTENT LAYER WITH SCROLL EFFECT --- */}
-      <motion.div 
+      <motion.div
         style={{ y: yContent, opacity: opacityContent }}
         className="relative z-10 flex flex-col items-center justify-center min-h-[80vh] px-8 max-w-7xl mx-auto"
       >
@@ -372,16 +374,15 @@ const interestOptions = [
 
       {/* --- PORTAL-BASED POPUP MODAL --- */}
       {showPopup && createPortal(
-     <AnimatePresence>
+        <AnimatePresence>
           <motion.div
             key="popup-modal"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             style={{ position: 'fixed', top: 60, left: 0, right: 0, bottom: 0, zIndex: 100 }}
-            className="flex items-start justify-center p-4 md:p-6 overflow-y-hidden"
+            className="flex items-start justify-center p-4 md:p-6 overflow-y-auto scrollbar-hide"
           >
-
 
             {/* Main Container */}
             <motion.div
@@ -418,9 +419,15 @@ const interestOptions = [
                   </svg>
                 </button>
 
-                <div className="mb-8 mt-8">
-                  <h3 className="text-xl md:text-3xl font-bold text-white mb-2">Be aPartner with Athenura</h3>
-                  <p className="text-gray-400 text-sm">We'll reach out via WhatsApp to discuss your vision.</p>
+                <div className="mb-8">
+                  <h3 className="text-xl md:text-xl font-bold text-white mb-2">
+                    Start Your Project with Athenura
+                  </h3>
+
+                  {/* Subtitle */}
+                  <p className="text-gray-400 text-sm mb-2">
+                    Share your idea in 30 seconds we’ll connect with you on WhatsApp to bring it to life.
+                  </p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -482,7 +489,7 @@ const interestOptions = [
                         <option value="" className="bg-[#1A1A1A]">Select a service...</option>
                         {interestOptions.map((option) => (
                           <option key={option.value} value={option.value} className="bg-[#1A1A1A]">
-                          {option.label}
+                            {option.label}
                           </option>
                         ))}
                       </select>
@@ -492,6 +499,21 @@ const interestOptions = [
                         </svg>
                       </div>
                     </div>
+                  </div>
+
+                  {/* Remarks / Additional Details */}
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-400 uppercase tracking-tight mb-1.5">
+                      Additional Details (Optional)
+                    </label>
+                    <textarea
+                      name="remarks"
+                      value={formData.remarks}
+                      onChange={handleInputChange}
+                      rows={3}
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:border-[#28A3B9] outline-none text-white text-sm transition-all resize-none"
+                      placeholder="Tell us about your idea, budget, timeline..."
+                    />
                   </div>
 
                   {/* Submit Button */}
@@ -504,11 +526,15 @@ const interestOptions = [
                   >
                     {isSubmitting ? "Processing..." : "Send WhatsApp Enquiry"}
                   </motion.button>
+                                    {/* Trust / Privacy Line */}
+                  <p className="text-[11px] text-teal-400 italic mt-2 text-center">
+                    We respect your privacy. No spam. Only meaningful conversation.
+                  </p>
                 </form>
               </div>
             </motion.div>
           </motion.div>
-      </AnimatePresence>,
+        </AnimatePresence>,
         document.body
       )}
 
