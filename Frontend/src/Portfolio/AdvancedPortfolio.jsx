@@ -62,15 +62,15 @@ const AdvancedPortfolio = () => {
       title: "Revica Ai",
       category: "Ai Tools",
       image: "/Revica.png",
-      link: "#",
+      link: "https://revica-ai.athenura.in/",
     },
     {
       id: 8,
       title: "Builder CRM",
       category: "Web Development",
       image: "/Builder.png",
-      link: "#",
-    },  
+      link: "https://builder.athenura.in/",
+    },
 
   ];
 
@@ -304,7 +304,13 @@ const AdvancedPortfolio = () => {
                 />
 
                 {/* Minimal Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1E7A86]/70 via-[#1E7A86]/20 to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-center justify-center">
+          <div className="
+  absolute inset-0 
+  bg-gradient-to-t from-[#1E7A86]/70 via-[#1E7A86]/20 to-transparent 
+  opacity-100 sm:opacity-0 sm:group-hover:opacity-60 
+  transition-opacity duration-300 
+  flex items-center justify-center
+">
                   <div className="flex gap-4 transform translate-y-10 group-hover:translate-y-0 transition-transform duration-500">
 
 
@@ -315,6 +321,12 @@ const AdvancedPortfolio = () => {
                       rel="noopener noreferrer"
                       className="p-4 bg-[#35B4C7] text-white rounded-full shadow-xl hover:scale-110 transition-transform"
                       title="Visit Live Site"
+                      onClick={(e) => {
+                        if (!project.link || project.link === "#") {
+                          e.preventDefault();
+                          alert("Project link coming soon!");
+                        }
+                      }}
                     >
                       <ExternalLink size={24} />
                     </a>

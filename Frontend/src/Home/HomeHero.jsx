@@ -149,7 +149,7 @@ const AthenuraHero = () => {
     setSubmitStatus(null);
 
     // Validate form
-    if (!formData.name || !formData.email || !formData.whatsapp || !formData.interest) {
+    if (!formData.name || !formData.email || !formData.whatsapp || !formData.interest || !formData.remarks) {
       setSubmitStatus({ type: 'error', message: 'Please fill in all fields' });
       setIsSubmitting(false);
       return;
@@ -178,7 +178,8 @@ const AthenuraHero = () => {
       `*Name:* ${formData.name}%0A` +
       `*Email:* ${formData.email}%0A` +
       `*WhatsApp:* ${formData.whatsapp}%0A` +
-      `*Interest:* ${interestLabel}%0A%0A` +
+      `*Interest:* ${interestLabel}%0A` +
+      `*Remarks:* ${formData.remarks}%0A%0A` +
       `_Enquiry received from website hero section_`;
 
     // WhatsApp business number (replace with your actual WhatsApp business number)
@@ -210,7 +211,7 @@ const AthenuraHero = () => {
     } catch (error) {
       setSubmitStatus({
         type: 'error',
-        message: 'Failed to send enquiry. Please try again.'
+        message: 'Failed to send enquiry. Please try again.', error
       });
     } finally {
       setIsSubmitting(false);
