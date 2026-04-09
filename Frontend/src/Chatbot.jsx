@@ -1,18 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 /**
- * Athenura Floating Chat – React + Tailwind version
- * Original design preserved, extra micro‑animations added.
- * Uses the same backend API: https://athenura-chatbot.onrender.com/chat/
+ * Simple Chat Bot – React + Tailwind version
+ * Uses API: https://new-chat-bot-5lhs.onrender.com
  */
-const AthenuraChat = () => {
+const SimpleChatBot = () => {
     // ------------------ State ------------------
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState([
         { text: 'Hello 👋 Welcome to Athenura.', type: 'bot' },
     ]);
     const [inputValue, setInputValue] = useState('');
-    const [currentRole, setCurrentRole] = useState('visitor'); // 'visitor' | 'intern'
     const [showTyping, setShowTyping] = useState(false);
 
     // ------------------ Refs ------------------
@@ -63,7 +61,7 @@ const AthenuraChat = () => {
 
         try {
             const response = await fetch(
-                "https://athenura-chatbot.onrender.com/chat/",
+                "https://new-chat-bot-5lhs.onrender.com/chat",
                 {
                     method: "POST",
                     headers: {
@@ -71,7 +69,6 @@ const AthenuraChat = () => {
                     },
                     body: JSON.stringify({
                         message: trimmed,
-                        role: currentRole,
                     }),
                 }
             );
@@ -83,7 +80,8 @@ const AthenuraChat = () => {
             const data = await response.json();
 
             hideTypingIndicator();
-            addMessage(data.response, "bot");
+            // Adjust based on your API response structure
+            addMessage(data.response || data.message || data.reply || "I received your message!", "bot");
 
         } catch (error) {
             console.error("Chatbot Error:", error);
@@ -102,7 +100,7 @@ const AthenuraChat = () => {
     // ------------------ Render ------------------
     return (
         <>
-            {/* Custom keyframe animations (added to Tailwind) */}
+            {/* Custom keyframe animations */}
             <style>{`
         @keyframes gentle-pulse {
           0% { box-shadow: 0 8px 20px rgba(40, 127, 138, 0.4); }
@@ -132,10 +130,6 @@ const AthenuraChat = () => {
         }
         .wave {
           display: inline-block;
-          animation: wave-animation 1.8s infinite;
-          transform-origin: 70% 70%;
-        }
-        .wave {
           animation: wave 1.8s infinite;
         }
         .animate-message-pop {
@@ -184,7 +178,7 @@ const AthenuraChat = () => {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
                         </span>
-                        Start
+                        Online
                     </div>
                     <button
                         onClick={closeChat}
@@ -209,7 +203,7 @@ const AthenuraChat = () => {
                         >
                             {msg.type === 'bot' && msg.text.includes('👋') ? (
                                 <span>
-                                    Hello <span className="wave">👋</span> Welcome to Athenura Internship.
+                                    Hello <span className="wave">👋</span> Welcome to Athenura.
                                 </span>
                             ) : (
                                 msg.text
@@ -225,39 +219,8 @@ const AthenuraChat = () => {
                     )}
                 </div>
 
-                {/* Footer with role selector and input */}
-                <div className="bg-white border-t border-gray-200 px-4 py-4 flex flex-col gap-3 flex-shrink-0">
-                    {/* Role segmented control */}
-                    <div className="flex bg-[#f0f4f8] rounded-full p-1 border border-[#d0d9e2]">
-                        <button
-                            onClick={() => setCurrentRole('visitor')}
-                            className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-full text-sm font-medium transition-all ${currentRole === 'visitor'
-                                ? 'bg-white text-[#287F8A] shadow-sm'
-                                : 'text-gray-600 hover:bg-white/50'
-                                }`}
-                        >
-                            <svg viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4 fill-none">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                                <circle cx="12" cy="7" r="4" />
-                            </svg>
-                            Guest
-                        </button>
-                        <button
-                            onClick={() => setCurrentRole('intern')}
-                            className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-full text-sm font-medium transition-all ${currentRole === 'intern'
-                                ? 'bg-white text-[#287F8A] shadow-sm'
-                                : 'text-gray-600 hover:bg-white/50'
-                                }`}
-                        >
-                            <svg viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" fill="none" className="w-4 h-4">
-                                <path d="M2 9l10-4 10 4-10 4-10-4z" />
-                                <path d="M6 11v3c0 1.5 3 3 6 3s6-1.5 6-3v-3" />
-                                <circle cx="12" cy="18.5" r="1.5" />
-                            </svg>
-                            Intern
-                        </button>
-                    </div>
-
+                {/* Footer with input only (no role selector) */}
+                <div className="bg-white border-t border-gray-200 px-4 py-4 flex-shrink-0">
                     {/* Input bar */}
                     <div className="flex items-center bg-[#f0f4f8] rounded-full border border-[#d0d9e2] focus-within:border-[#287F8A] focus-within:ring-2 focus-within:ring-[#287F8A]/20 focus-within:bg-white transition-all">
                         <input
@@ -286,4 +249,4 @@ const AthenuraChat = () => {
     );
 };
 
-export default AthenuraChat;
+export default SimpleChatBot;
