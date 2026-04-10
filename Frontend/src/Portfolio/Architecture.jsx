@@ -8,18 +8,18 @@ const ProjectCard = memo(({ project, onOpen }) => (
   <motion.div
     layoutId={`card-container-${project.id}`}
     onClick={() => onOpen(project)}
-    className="relative h-[450px] w-full group cursor-pointer"
+    className="relative h-[500px] w-full group cursor-pointer"
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     whileHover={{ y: -8 }}
     transition={{ type: "spring", stiffness: 300, damping: 25 }}
   >
-    <div className="relative w-full h-full bg-white rounded-[32px] overflow-hidden shadow-lg border border-slate-100 flex flex-col">
-      <motion.img 
+    <div className="relative w-full h-full bg-white  overflow-hidden shadow-lg border border-slate-100 flex flex-col">
+      <motion.img
         layoutId={`card-image-${project.id}`}
-        src={project.slides[0].url} 
-        alt={project.title} 
+        src={project.slides[0].url}
+        alt={project.title}
         className="w-full h-2/3 object-cover group-hover:scale-105 transition-transform duration-700"
       />
       <div className="p-6 flex-1 flex flex-col justify-center">
@@ -56,7 +56,7 @@ const CreativePortfolioSection = () => {
 
   const projects = [
     {
-      id: 2,
+      id: 1,
       type: "Branding",
       title: "Burger Campaign Design",
       client: "Food & Restaurant Promotion",
@@ -67,6 +67,68 @@ const CreativePortfolioSection = () => {
         { id: 2, type: "image", url: "https://ik.imagekit.io/cn4giet1a/Athenura%201%20Carousel/2.png?updatedAt=1772541061273", caption: "Special Sunday Burger" },
         { id: 3, type: "image", url: "https://ik.imagekit.io/cn4giet1a/Athenura%201%20Carousel/3.png?updatedAt=1772541060971", caption: "Love At First Bite" },
         { id: 4, type: "image", url: "https://ik.imagekit.io/cn4giet1a/Athenura%201%20Carousel/4.png?updatedAt=1772541061303", caption: "Combo Meal Promotion" }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "Branding",
+      "title": "Matcha Campaign Design",
+      "client": "Beverage & Cafe Promotion",
+      "year": "2025",
+      "description": "A clean and aesthetic promotional branding design for a premium matcha beverage campaign. The project features multiple poster styles highlighting iced matcha latte, matcha cream drinks, and minimal green-themed visuals. The design focuses on modern typography, soft color palettes, and a refreshing natural vibe suitable for cafes, beverage brands, and digital marketing promotions.",
+      "slides": [
+        {
+          "id": 1,
+          "type": "image",
+          "url": "https://ik.imagekit.io/cn4giet1a/Matcha/9.png",
+          "caption": "Matcha Minimalism Aesthetic"
+        },
+        {
+          "id": 2,
+          "type": "image",
+          "url": "https://ik.imagekit.io/cn4giet1a/Matcha/10.png",
+          "caption": "Iced Matcha Latte Promotion"
+        },
+        {
+          "id": 3,
+          "type": "image",
+          "url": "https://ik.imagekit.io/cn4giet1a/Matcha/11.png",
+          "caption": "New Menu Matcha Cream Latte"
+        },
+        {
+          "id": 4,
+          "type": "image",
+          "url": "https://ik.imagekit.io/cn4giet1a/Matcha/8.png",
+          "caption": "Original Matcha Drink Showcase"
+        }
+      ],
+    },
+    {
+      "id": 3,
+      "type": "Branding",
+      "title": "Coffee Campaign Design",
+      "client": "Beverage & Cafe Promotion",
+      "year": "2025",
+      "description": "A bold and modern promotional branding design for a premium coffee campaign. The project showcases multiple poster styles including iced coffee, hot latte, and brown sugar coffee visuals. The design uses warm brown tones, strong typography, and dynamic layouts to create an engaging and appetizing visual identity for cafes, coffee brands, and digital marketing promotions.",
+      "slides": [
+        {
+          "id": 1,
+          "type": "image",
+          "url": "https://ik.imagekit.io/cn4giet1a/coffee/12.png",
+          "caption": "Buy 1 Get 1 Coffee Offer"
+        },
+        {
+          "id": 2,
+          "type": "image",
+          "url": "https://ik.imagekit.io/cn4giet1a/coffee/13.png",
+          "caption": "Brown Sugar Iced Coffee Promotion"
+        },
+        {
+          "id": 3,
+          "type": "image",
+          "url": "https://ik.imagekit.io/cn4giet1a/coffee/14.png",
+          "caption": "Coffee Collection & Discount Campaign"
+        }
       ]
     }
   ];
@@ -111,7 +173,7 @@ const CreativePortfolioSection = () => {
 
     return createPortal(
       <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -141,13 +203,13 @@ const CreativePortfolioSection = () => {
             </AnimatePresence>
 
             <div className="absolute inset-0 flex items-center justify-between px-4 pointer-events-none">
-              <button 
+              <button
                 onClick={() => setCurrentSlide(prev => (prev > 0 ? prev - 1 : selectedProject.slides.length - 1))}
                 className="p-4 rounded-full bg-white/90 shadow-xl pointer-events-auto hover:scale-110 active:scale-95 transition-all text-slate-900"
               >
                 <ChevronLeft size={24} />
               </button>
-              <button 
+              <button
                 onClick={() => setCurrentSlide(prev => (prev < selectedProject.slides.length - 1 ? prev + 1 : 0))}
                 className="p-4 rounded-full bg-white/90 shadow-xl pointer-events-auto hover:scale-110 active:scale-95 transition-all text-slate-900"
               >
@@ -176,19 +238,18 @@ const CreativePortfolioSection = () => {
                 <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">Quick Navigation</h4>
                 <div className="flex gap-3 overflow-x-auto pb-4 no-scrollbar">
                   {selectedProject.slides.map((slide, i) => (
-                    <button 
-                      key={i} 
+                    <button
+                      key={i}
                       onClick={() => setCurrentSlide(i)}
-                      className={`flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden border-2 transition-all ${
-                        currentSlide === i ? 'border-cyan-500 scale-105' : 'border-transparent opacity-50'
-                      }`}
+                      className={`flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden border-2 transition-all ${currentSlide === i ? 'border-cyan-500 scale-105' : 'border-transparent opacity-50'
+                        }`}
                     >
                       <img src={slide.url} className="w-full h-full object-cover" alt="" />
                     </button>
                   ))}
                 </div>
               </div>
-              
+
               <div>
                 <h2 className="text-4xl font-black text-slate-900 mb-4 tracking-tight">
                   {selectedProject.title}
@@ -199,11 +260,10 @@ const CreativePortfolioSection = () => {
               </div>
             </div>
 
-            <button 
+            <button
               onClick={() => handleShare(selectedProject)}
-              className={`w-full py-5 rounded-[20px] font-bold flex items-center justify-center gap-3 transition-all shadow-xl mt-8 ${
-                isShared ? 'bg-green-500 text-white shadow-green-100' : 'bg-slate-900 text-white shadow-slate-200 hover:bg-cyan-700'
-              }`}
+              className={`w-full py-5 rounded-[20px] font-bold flex items-center justify-center gap-3 transition-all shadow-xl mt-8 ${isShared ? 'bg-green-500 text-white shadow-green-100' : 'bg-slate-900 text-white shadow-slate-200 hover:bg-cyan-700'
+                }`}
             >
               {isShared ? <Check size={20} /> : <Share2 size={20} />}
               {isShared ? "Copied to Clipboard!" : "Share This Portfolio"}
@@ -234,10 +294,10 @@ const CreativePortfolioSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map((project) => (
-            <ProjectCard 
-              key={project.id} 
-              project={project} 
-              onOpen={openProject} 
+            <ProjectCard
+              key={project.id}
+              project={project}
+              onOpen={openProject}
             />
           ))}
         </div>

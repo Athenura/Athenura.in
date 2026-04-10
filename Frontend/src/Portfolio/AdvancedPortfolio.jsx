@@ -52,26 +52,54 @@ const AdvancedPortfolio = () => {
     },
     {
       id: 6,
+      title: "Email Verifier",
+      category: "Web Development",
+      image: "/emailverifier.png",
+      link: "https://athenura-email-verifier.onrender.com/",
+    },
+    {
+      id: 7,
       title: "E-Wing AI Automation",
       category: "AI Automation",
       image: "/Stich.png",
       link: "#",
     },
     {
-      id: 7,
+      id: 8,
       title: "Revica Ai",
       category: "Ai Tools",
       image: "/Revica.png",
       link: "https://revica-ai.athenura.in/",
     },
+
     {
-      id: 8,
+      id: 9,
+      title: "Social Genie",
+      category: "Web Development",
+      image: "/socialgenie.png",
+      link: "https://socialgenie.athenura.in/",
+    },
+    {
+      id: 10,
       title: "Builder CRM",
       category: "Web Development",
       image: "/Builder.png",
       link: "https://builder.athenura.in/",
     },
-
+    {
+      id: 11,
+      title: "Aura Cafe",
+      category: "Web Development",
+      image: "/AuraCafe.png",
+      link: "https://aura-udopi.vercel.app/",
+    },
+    {
+      id: 12,
+      title: "KIKI Cafe",
+      category: "Web Development",
+      image: "/Kiki.png",
+      link: "https://kiki-tau-teal.vercel.app/",
+    },
   ];
 
   // --- FILTER LOGIC ---
@@ -304,7 +332,7 @@ const AdvancedPortfolio = () => {
                 />
 
                 {/* Minimal Overlay */}
-          <div className="
+                <div className="
   absolute inset-0 
   bg-gradient-to-t from-[#1E7A86]/70 via-[#1E7A86]/20 to-transparent 
   opacity-100 sm:opacity-0 sm:group-hover:opacity-60 
