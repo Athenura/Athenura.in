@@ -183,7 +183,7 @@ const WhyUsSection = () => {
         role: "CTO, Nexus Solutions",
         content: "Athenura helped us modernize our digital infrastructure seamlessly. Their technical clarity and execution speed truly set them apart.",
         company: "NexaTech Solutions",
-        image: "https://yashamishra.pythonanywhere.com/static/images/yash_profile.jpg"
+        image: "https://i.pinimg.com/736x/af/ec/5f/afec5fd5f1b41e103947872f46669be6.jpg"
     },
     {
         id: 2,

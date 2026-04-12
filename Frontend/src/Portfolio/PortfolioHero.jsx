@@ -163,7 +163,7 @@ const HeroSection = () => {
               <div className="w-2 h-2 lg:w-3 lg:h-3 rounded-full bg-red-400"></div>
               <div className="w-2 h-2 lg:w-3 lg:h-3 rounded-full bg-yellow-400"></div>
               <div className="w-2 h-2 lg:w-3 lg:h-3 rounded-full bg-green-400"></div>
-              <span className="text-[8px] lg:text-[10px] text-slate-400 ml-2">athenura.com/dashboard</span>
+              <span className="text-[8px] lg:text-[10px] text-slate-400 ml-2">athenura.in/dashboard</span>
             </div>
             
             {/* Professional Dashboard UI */}
