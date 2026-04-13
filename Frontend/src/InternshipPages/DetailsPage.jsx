@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import {
   FileText, Clock, Briefcase, Code,
   Users, CheckCircle, Zap, GraduationCap,
-  Terminal, GitMerge, Cpu
+  Terminal, GitMerge, Cpu, Wallet 
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -202,6 +202,52 @@ const InternshipDetails = () => {
             <div className="mt-3 w-8 h-1 bg-green-500 rounded-full"></div>
           </motion.div>
 
+                    {/* 4. Stipend Opportunity */}
+<motion.div
+  variants={itemVariants}
+  className="md:col-span-3 bg-gradient-to-r from-green-50 via-emerald-50 to-green-100 rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-lg border border-green-200 relative overflow-hidden group hover:shadow-xl transition-all"
+>
+  {/* Background Blur Effect */}
+  <div className="absolute top-0 right-0 w-40 h-40 bg-green-400/10 rounded-full blur-3xl"></div>
+
+  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative z-10">
+
+    {/* Left Content */}
+    <div className="flex items-start gap-4 flex-1">
+      <div className="p-3 bg-green-500/10 rounded-2xl text-green-600">
+        <Wallet size={24} />
+      </div>
+
+      <div>
+        <h3 className="font-bold text-gray-900 text-xl md:text-2xl">
+          Performance-Based Stipend Opportunity
+        </h3>
+        <p className="text-sm text-gray-600 mt-2 max-w-2xl leading-relaxed">
+          Exceptional interns may get the chance to contribute to 
+          <span className="font-semibold text-green-700"> live client projects </span>
+          and earn stipend/revenue-sharing incentives based on performance,
+          contribution, and project impact.
+        </p>
+      </div>
+    </div>
+
+    {/* Right Tags */}
+    <div className="flex flex-wrap gap-3">
+      {["Paid Projects", "Bonus Incentives", "Revenue Sharing"].map((tag, i) => (
+        <span
+          key={i}
+          className="px-4 py-2 rounded-xl text-xs font-semibold bg-green-200/60 text-green-800"
+        >
+          {tag}
+        </span>
+      ))}
+    </div>
+
+  </div>
+</motion.div>
+
+          
+
           {/* 4. Career Acceleration (Bottom Full Width) */}
           <motion.div
             variants={itemVariants}
@@ -229,6 +275,9 @@ const InternshipDetails = () => {
               </div>
             </div>
           </motion.div>
+
+
+
 
         </motion.div>
 

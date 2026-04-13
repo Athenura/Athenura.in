@@ -104,6 +104,19 @@ const WhyUsSection = () => {
                 "Proactive technology upgrades"
             ],
             gradient: "from-[#1E7A86] to-[#2E2E2E]"
+        },
+        {
+            id: 5,
+            title: "Performance Based Stipend",
+            description:
+                "Outstanding interns get opportunities to contribute to real client-based projects and earn stipend/revenue-sharing incentives based on their performance and impact.",
+            gradient: "from-green-500 to-emerald-400",
+            features: [
+                "Work on Live Client Projects",
+                "Revenue Sharing Opportunities",
+                "Performance Bonus Incentives",
+                "Real Industry Exposure"
+            ]
         }
     ];
 
@@ -177,30 +190,30 @@ const WhyUsSection = () => {
     ];
 
     const testimonials = [
-    {
-        id: 1,
-        name: "Rahul Mehta",
-        role: "CTO, Nexus Solutions",
-        content: "Athenura helped us modernize our digital infrastructure seamlessly. Their technical clarity and execution speed truly set them apart.",
-        company: "NexaTech Solutions",
-        image: "https://i.pinimg.com/736x/af/ec/5f/afec5fd5f1b41e103947872f46669be6.jpg"
-    },
-    {
-        id: 2,
-        name: "Suresh Sharma",  
-        role: "Head of Technology, BrightMind Systems",
-        content: "The Athenura team understood our vision from day one. Their innovative mindset and problem-solving skills delivered exceptional results.",
-        company: "BrightMind Systems",
-        image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202603/aman-gottumukkala--elon-musk--xai--claude-161254492-16x9_0.jpg?VersionId=_CK6jFIr9EmuJ2M0eIdBPuY78BKBFWnx&size=690%3A388"
-    },
-    {
-        id: 3,
-        name: "Amit Verma",
-        role: "Engineering Director, ScaleGrow India",
-        content: "Athenura’s solutions were scalable, future-ready, and perfectly aligned with our business goals. A highly reliable technology partner.",
-        company: "ScaleGrow India",
-        image: "https://images.openai.com/static-rsc-1/1WZJLU8fgTbFTrVA51ToAi3eJyhGr2BGQkIyBL7HDgj2jxitTeLVB_f1cERjhoXB9inJRs_Y3s3EBaWwr1GuDdZ6r_tewBtOdji8hk0e_1zx0t7d49uj5tP5rC4GHaaHGR2I0Di_TNgihqPO6OFTZw"
-    }
+        {
+            id: 1,
+            name: "Rahul Mehta",
+            role: "CTO, Nexus Solutions",
+            content: "Athenura helped us modernize our digital infrastructure seamlessly. Their technical clarity and execution speed truly set them apart.",
+            company: "NexaTech Solutions",
+            image: "https://i.pinimg.com/736x/af/ec/5f/afec5fd5f1b41e103947872f46669be6.jpg"
+        },
+        {
+            id: 2,
+            name: "Suresh Sharma",
+            role: "Head of Technology, BrightMind Systems",
+            content: "The Athenura team understood our vision from day one. Their innovative mindset and problem-solving skills delivered exceptional results.",
+            company: "BrightMind Systems",
+            image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202603/aman-gottumukkala--elon-musk--xai--claude-161254492-16x9_0.jpg?VersionId=_CK6jFIr9EmuJ2M0eIdBPuY78BKBFWnx&size=690%3A388"
+        },
+        {
+            id: 3,
+            name: "Amit Verma",
+            role: "Engineering Director, ScaleGrow India",
+            content: "Athenura’s solutions were scalable, future-ready, and perfectly aligned with our business goals. A highly reliable technology partner.",
+            company: "ScaleGrow India",
+            image: "https://images.openai.com/static-rsc-1/1WZJLU8fgTbFTrVA51ToAi3eJyhGr2BGQkIyBL7HDgj2jxitTeLVB_f1cERjhoXB9inJRs_Y3s3EBaWwr1GuDdZ6r_tewBtOdji8hk0e_1zx0t7d49uj5tP5rC4GHaaHGR2I0Di_TNgihqPO6OFTZw"
+        }
     ];
 
     return (
@@ -302,8 +315,8 @@ const WhyUsSection = () => {
                                     key={index}
                                     onClick={() => setActiveBenefit(index)}
                                     className={`w-3 h-3 rounded-full transition-all duration-300 ${activeBenefit === index
-                                            ? 'bg-gradient-to-r from-[#1E7A86] to-[#A7DADC] scale-125 shadow-lg'
-                                            : 'bg-[#A7DADC]/30 hover:bg-[#A7DADC]/50'
+                                        ? 'bg-gradient-to-r from-[#1E7A86] to-[#A7DADC] scale-125 shadow-lg'
+                                        : 'bg-[#A7DADC]/30 hover:bg-[#A7DADC]/50'
                                         }`}
                                     aria-label={`View advantage ${index + 1}`}
                                 />
