@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Link } from "react-router-dom";
+import $ from "jquery";
+import "jquery.ripples";
 
 const AthenuraHero = () => {
   const canvasRef = useRef(null);
@@ -27,6 +29,77 @@ const AthenuraHero = () => {
   const opacityCanvas = useTransform(scrollY, [0, 300], [0.8, 0.3]);
   const yContent = useTransform(scrollY, [0, 300], [0, 30]);
   const opacityContent = useTransform(scrollY, [0, 200], [1, 0.9]);
+
+  const rippleRef = useRef(null);
+  const rippleVideoRef = useRef(null);
+
+  useEffect(() => {
+    if (!rippleVideoRef.current) return;
+
+    $(rippleVideoRef.current).ripples({
+      resolution: 2048,
+      dropRadius: 105,
+      perturbance: 0.50,
+      interactive: true,
+    });
+
+    const interval = setInterval(() => {
+      $(rippleVideoRef.current).ripples(
+        "drop",
+        Math.random() * window.innerWidth,
+        Math.random() * window.innerHeight,
+        35,
+        0.12
+      );
+    }, 1200);
+
+    return () => {
+      clearInterval(interval);
+      $(rippleVideoRef.current).ripples("destroy");
+    };
+  }, []);
+  // --- ENHANCED RIPPLE EFFECT ---
+  useEffect(() => {
+    if (rippleRef.current) {
+      // Initialize jQuery Ripples with stronger, more dramatic settings
+      $(rippleRef.current).ripples({
+        resolution: 2048,
+        dropRadius: 55,          // Increased from 35 to 45 for larger ripples
+        perturbance: 0.35,       // Increased from 0.18 to 0.35 for more distortion
+        interactive: true,
+        intensity: 0.25,         // Added intensity parameter for stronger effect
+      });
+
+      // Add an initial ripple to demonstrate the effect
+      setTimeout(() => {
+        if (rippleRef.current) {
+          try {
+            // Trigger a ripple at the center of the screen
+            const $ripple = $(rippleRef.current);
+            $ripple.ripples('drop', window.innerWidth / 2, window.innerHeight / 2, 80, 0.35);
+          } catch (e) { console.log(e) }
+        }
+      }, 500);
+
+      // Optional: Create periodic subtle ripples for ambient effect
+      const interval = setInterval(() => {
+        if (rippleRef.current && document.hasFocus()) {
+          try {
+            const randomX = Math.random() * window.innerWidth;
+            const randomY = Math.random() * window.innerHeight;
+            $(rippleRef.current).ripples('drop', randomX, randomY, 50, 0.2);
+          } catch (e) { console.log(e) }
+        }
+      }, 8000);
+
+      return () => {
+        clearInterval(interval);
+        try {
+          $(rippleRef.current).ripples("destroy");
+        } catch (e) { console.log(e) }
+      };
+    }
+  }, []);
 
   // Interest options
   const interestOptions = [
@@ -149,8 +222,8 @@ const AthenuraHero = () => {
     setSubmitStatus(null);
 
     // Validate form
-    if (!formData.name || !formData.email || !formData.whatsapp || !formData.interest || !formData.remarks) {
-      setSubmitStatus({ type: 'error', message: 'Please fill in all fields' });
+    if (!formData.name || !formData.email || !formData.whatsapp || !formData.interest) {
+      setSubmitStatus({ type: 'error', message: 'Please fill in all required fields' });
       setIsSubmitting(false);
       return;
     }
@@ -179,7 +252,7 @@ const AthenuraHero = () => {
       `*Email:* ${formData.email}%0A` +
       `*WhatsApp:* ${formData.whatsapp}%0A` +
       `*Interest:* ${interestLabel}%0A` +
-      `*Remarks:* ${formData.remarks}%0A%0A` +
+      `*Remarks:* ${formData.remarks || 'Not provided'}%0A%0A` +
       `_Enquiry received from website hero section_`;
 
     // WhatsApp business number (replace with your actual WhatsApp business number)
@@ -203,7 +276,8 @@ const AthenuraHero = () => {
           name: '',
           email: '',
           whatsapp: '',
-          interest: ''
+          interest: '',
+          remarks: ''
         });
         setSubmitStatus(null);
       }, 3000);
@@ -230,20 +304,31 @@ const AthenuraHero = () => {
   }, [showPopup]);
 
   return (
-    <div className="relative min-h-[92vh] w-full bg-[#030303] overflow-hidden text-white">
+    <div
+      ref={rippleRef}
+      className="relative min-h-[92vh] w-full bg-[#030303] overflow-hidden text-white"
+    >
+      {/* Overlay to ensure ripples are visible but not overwhelming */}
+      <div className="absolute inset-0 z-[1] bg-black/20 pointer-events-none" />
 
       {/* --- BACKGROUND VIDEO LAYER WITH SCROLL EFFECT --- */}
       <motion.div
         style={{ y: yVideo, scale: scaleVideo }}
         className="absolute inset-0 z-0"
       >
-        <video
-          ref={videoRef}
-          muted
-          playsInline
-          src="/Animate.mp4"
-          className="w-full h-full object-cover opacity-60"
-        />
+        <div
+          ref={rippleVideoRef}
+          className="w-full h-full"
+        >
+          <video
+            ref={videoRef}
+            muted
+            playsInline
+            src="/Animate.mp4"
+            className="w-full h-full object-cover opacity-60"
+          />
+        </div>
+
         <div className="absolute inset-0 bg-black/10" />
       </motion.div>
 
@@ -251,11 +336,11 @@ const AthenuraHero = () => {
       <motion.canvas
         ref={canvasRef}
         style={{ y: yCanvas, opacity: opacityCanvas }}
-        className="absolute inset-0 z-[1] pointer-events-none"
+        className="absolute inset-0 z-[2] pointer-events-none"
       />
 
       {/* --- VIGNETTE/GRADIENT LAYER --- */}
-      <div className="absolute inset-0 z-[2] bg-[radial-gradient(circle_at_center,transparent_0%,#030303_90%)]" />
+      <div className="absolute inset-0 z-[3] bg-[radial-gradient(circle_at_center,transparent_0%,#030303_90%)]" />
 
       {/* --- CONTENT LAYER WITH SCROLL EFFECT --- */}
       <motion.div
@@ -381,10 +466,10 @@ const AthenuraHero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            style={{ position: 'fixed', top: 60, left: 0, right: 0, bottom: 0, zIndex: 100 }}
-            className="flex items-start justify-center p-4 md:p-6 overflow-y-auto scrollbar-hide"
+            style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 100 }}
+            className="flex items-center justify-center p-4 md:p-6 overflow-y-auto scrollbar-hide bg-black/60 backdrop-blur-sm"
+            onClick={handleClosePopup}
           >
-
             {/* Main Container */}
             <motion.div
               initial={{ scale: 0.9, y: 40, opacity: 0 }}
@@ -392,8 +477,8 @@ const AthenuraHero = () => {
               exit={{ scale: 0.9, y: 40, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               className="relative z-50 bg-[#0A0A0A] border border-white/10 rounded-3xl overflow-hidden max-w-4xl w-full shadow-2xl flex flex-col md:flex-row"
+              onClick={(e) => e.stopPropagation()}
             >
-
               {/* Left Side: Image/Visual (Hidden on small mobile if needed, but here responsive) */}
               <div className="relative w-full md:w-5/12 hidden md:block h-48 md:h-auto bg-[#1A1A1A]">
                 <img
@@ -427,15 +512,24 @@ const AthenuraHero = () => {
 
                   {/* Subtitle */}
                   <p className="text-gray-400 text-sm mb-2">
-                    Share your idea in 30 seconds we’ll connect with you on WhatsApp to bring it to life.
+                    Share your idea in 30 seconds we'll connect with you on WhatsApp to bring it to life.
                   </p>
                 </div>
+
+                {submitStatus && (
+                  <div className={`mb-4 p-3 rounded-lg text-sm ${submitStatus.type === 'success'
+                      ? 'bg-green-500/20 text-green-400 border border-green-500/30'
+                      : 'bg-red-500/20 text-red-400 border border-red-500/30'
+                    }`}>
+                    {submitStatus.message}
+                  </div>
+                )}
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   {/* Name & Email Group for Desktop */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-semibold text-gray-400 uppercase tracking-tight mb-1.5">Full Name</label>
+                      <label className="block text-xs font-semibold text-gray-400 uppercase tracking-tight mb-1.5">Full Name *</label>
                       <input
                         type="text"
                         name="name"
@@ -447,7 +541,7 @@ const AthenuraHero = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold text-gray-400 uppercase tracking-tight mb-1.5">Email</label>
+                      <label className="block text-xs font-semibold text-gray-400 uppercase tracking-tight mb-1.5">Email *</label>
                       <input
                         type="email"
                         name="email"
@@ -462,7 +556,7 @@ const AthenuraHero = () => {
 
                   {/* WhatsApp Number */}
                   <div>
-                    <label className="block text-xs font-semibold text-gray-400 uppercase tracking-tight mb-1.5">WhatsApp Number</label>
+                    <label className="block text-xs font-semibold text-gray-400 uppercase tracking-tight mb-1.5">WhatsApp Number *</label>
                     <div className="relative">
                       <input
                         type="tel"
@@ -476,9 +570,9 @@ const AthenuraHero = () => {
                     </div>
                   </div>
 
-                  {/* Interest Selection - NOW A DROPDOWN */}
+                  {/* Interest Selection - DROPDOWN */}
                   <div>
-                    <label className="block text-xs font-semibold text-gray-400 uppercase tracking-tight mb-1.5">I'm interested in</label>
+                    <label className="block text-xs font-semibold text-gray-400 uppercase tracking-tight mb-1.5">I'm interested in *</label>
                     <div className="relative">
                       <select
                         name="interest"
@@ -525,10 +619,18 @@ const AthenuraHero = () => {
                     whileTap={{ scale: 0.99 }}
                     className="w-full py-4 bg-[#156977] hover:bg-[#1c7c8d] text-white rounded-xl font-bold shadow-lg shadow-[#28A3B9]/20 transition-all flex items-center justify-center gap-2"
                   >
-                    {isSubmitting ? "Processing..." : "Send WhatsApp Enquiry"}
+                    {isSubmitting ? (
+                      <>
+                        <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Processing...
+                      </>
+                    ) : "Send WhatsApp Enquiry"}
                   </motion.button>
-                                    {/* Trust / Privacy Line */}
-                  <p className="text-[11px] text-teal-400 italic mt-2 text-center">
+                  {/* Trust / Privacy Line */}
+                  <p className="text-[11px] text-gray-500 italic mt-2 text-center">
                     We respect your privacy. No spam. Only meaningful conversation.
                   </p>
                 </form>
@@ -543,7 +645,7 @@ const AthenuraHero = () => {
       <motion.div
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 3 }}
-        className="absolute bottom-10 left-10 flex flex-col items-start gap-4 opacity-40"
+        className="absolute bottom-10 left-10 flex flex-col items-start gap-4 opacity-40 z-20"
       >
         <div className="w-16 h-[1px] bg-white" />
         <span className="text-[9px] uppercase tracking-[0.5em]">Explore</span>
