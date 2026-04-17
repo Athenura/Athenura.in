@@ -7,9 +7,9 @@ const ApplyInternship = () => {
     const updateHeight = () => {
       // Check if it's mobile (typically width < 768px)
       if (window.innerWidth < 768) {
-        setIframeHeight('2800px'); // Mobile height
+        setIframeHeight('3000px'); // Mobile height
       } else {
-        setIframeHeight('2300px'); // Desktop height
+        setIframeHeight('2400px'); // Desktop height
       }
     };
 
