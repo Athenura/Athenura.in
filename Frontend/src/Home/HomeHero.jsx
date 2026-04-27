@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Link } from "react-router-dom";
-import $ from "jquery";
-import "jquery.ripples";
 
 const AthenuraHero = () => {
   const canvasRef = useRef(null);
@@ -30,119 +28,31 @@ const AthenuraHero = () => {
   const yContent = useTransform(scrollY, [0, 300], [0, 30]);
   const opacityContent = useTransform(scrollY, [0, 200], [1, 0.9]);
 
-  const rippleRef = useRef(null);
-  const rippleVideoRef = useRef(null);
-
-  useEffect(() => {
-    if (!rippleVideoRef.current) return;
-
-    $(rippleVideoRef.current).ripples({
-      resolution: 2048,
-      dropRadius: 105,
-      perturbance: 0.50,
-      interactive: true,
-    });
-
-    const interval = setInterval(() => {
-      $(rippleVideoRef.current).ripples(
-        "drop",
-        Math.random() * window.innerWidth,
-        Math.random() * window.innerHeight,
-        35,
-        0.12
-      );
-    }, 1200);
-
-    return () => {
-      clearInterval(interval);
-      $(rippleVideoRef.current).ripples("destroy");
-    };
-  }, []);
-  // --- ENHANCED RIPPLE EFFECT ---
-  useEffect(() => {
-    if (rippleRef.current) {
-      // Initialize jQuery Ripples with stronger, more dramatic settings
-      $(rippleRef.current).ripples({
-        resolution: 2048,
-        dropRadius: 55,          // Increased from 35 to 45 for larger ripples
-        perturbance: 0.35,       // Increased from 0.18 to 0.35 for more distortion
-        interactive: true,
-        intensity: 0.25,         // Added intensity parameter for stronger effect
-      });
-
-      // Add an initial ripple to demonstrate the effect
-      setTimeout(() => {
-        if (rippleRef.current) {
-          try {
-            // Trigger a ripple at the center of the screen
-            const $ripple = $(rippleRef.current);
-            $ripple.ripples('drop', window.innerWidth / 2, window.innerHeight / 2, 80, 0.35);
-          } catch (e) { console.log(e) }
-        }
-      }, 500);
-
-      // Optional: Create periodic subtle ripples for ambient effect
-      const interval = setInterval(() => {
-        if (rippleRef.current && document.hasFocus()) {
-          try {
-            const randomX = Math.random() * window.innerWidth;
-            const randomY = Math.random() * window.innerHeight;
-            $(rippleRef.current).ripples('drop', randomX, randomY, 50, 0.2);
-          } catch (e) { console.log(e) }
-        }
-      }, 8000);
-
-      return () => {
-        clearInterval(interval);
-        try {
-          $(rippleRef.current).ripples("destroy");
-        } catch (e) { console.log(e) }
-      };
-    }
-  }, []);
-
-  // Interest options
-  const interestOptions = [
-    { value: 'website-development', label: 'Website Development' },
-    { value: 'software-development', label: 'Software Development' },
-    { value: 'ui-ux-design', label: 'UI/UX Design' },
-    { value: 'mobile-app-development', label: 'Mobile App Development' },
-    { value: 'digital-marketing', label: 'Digital Marketing' },
-    { value: 'video-editing', label: 'Video Editing' },
-    { value: 'graphic-design', label: 'Graphic Design' },
-    { value: 'ecommerce-development', label: 'E-Commerce Development' },
-    { value: 'seo-services', label: 'SEO Services' },
-    { value: 'social-media-management', label: 'Social Media Management' },
-    { value: 'content-creation', label: 'Content Creation' },
-    { value: 'landing-page-design', label: 'Landing Page Design' },
-    { value: 'website-maintenance', label: 'Website Maintenance' },
-    { value: 'tech-consultation', label: 'Tech Consultation' }
-  ];
-
   // --- 1. Video Ping-Pong Logic ---
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+useEffect(() => {
+  const video = videoRef.current;
+  if (!video) return;
 
-    // Ensure video starts playing
-    video.play().catch(err => console.log("Autoplay blocked or failed", err));
+  const playVideo = async () => {
+    try {
+      await video.play();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-    const handleTimeUpdate = () => {
-      const buffer = 0.1; // Small buffer to prevent getting stuck
+  playVideo();
 
-      // If we are playing forward and reach the end
-      if (video.playbackRate > 0 && video.currentTime >= video.duration - buffer) {
-        video.playbackRate = -1.0;
-      }
-      // If we are playing backward and reach the start
-      else if (video.playbackRate < 0 && video.currentTime <= buffer) {
-        video.playbackRate = 1.0;
-      }
-    };
+  const handleEnded = () => {
+    video.pause(); // stop after first play
+  };
 
-    video.addEventListener('timeupdate', handleTimeUpdate);
-    return () => video.removeEventListener('timeupdate', handleTimeUpdate);
-  }, []);
+  video.addEventListener("ended", handleEnded);
+
+  return () => {
+    video.removeEventListener("ended", handleEnded);
+  };
+}, []);
 
   // --- 2. Canvas Animation Logic ---
   useEffect(() => {
@@ -205,6 +115,24 @@ const AthenuraHero = () => {
       clearTimeout(finalTimer);
     };
   }, []);
+
+  // Interest options
+  const interestOptions = [
+    { value: 'website-development', label: 'Website Development' },
+    { value: 'software-development', label: 'Software Development' },
+    { value: 'ui-ux-design', label: 'UI/UX Design' },
+    { value: 'mobile-app-development', label: 'Mobile App Development' },
+    { value: 'digital-marketing', label: 'Digital Marketing' },
+    { value: 'video-editing', label: 'Video Editing' },
+    { value: 'graphic-design', label: 'Graphic Design' },
+    { value: 'ecommerce-development', label: 'E-Commerce Development' },
+    { value: 'seo-services', label: 'SEO Services' },
+    { value: 'social-media-management', label: 'Social Media Management' },
+    { value: 'content-creation', label: 'Content Creation' },
+    { value: 'landing-page-design', label: 'Landing Page Design' },
+    { value: 'website-maintenance', label: 'Website Maintenance' },
+    { value: 'tech-consultation', label: 'Tech Consultation' }
+  ];
 
   // Handle form input changes
   const handleInputChange = (e) => {
@@ -305,10 +233,9 @@ const AthenuraHero = () => {
 
   return (
     <div
-      ref={rippleRef}
       className="relative min-h-[92vh] w-full bg-[#030303] overflow-hidden text-white"
     >
-      {/* Overlay to ensure ripples are visible but not overwhelming */}
+      {/* Overlay to ensure visuals are visible but not overwhelming */}
       <div className="absolute inset-0 z-[1] bg-black/20 pointer-events-none" />
 
       {/* --- BACKGROUND VIDEO LAYER WITH SCROLL EFFECT --- */}
@@ -316,10 +243,7 @@ const AthenuraHero = () => {
         style={{ y: yVideo, scale: scaleVideo }}
         className="absolute inset-0 z-0"
       >
-        <div
-          ref={rippleVideoRef}
-          className="w-full h-full"
-        >
+        <div className="w-full h-full">
           <video
             ref={videoRef}
             muted
@@ -476,7 +400,7 @@ const AthenuraHero = () => {
               animate={{ scale: 1, y: 0, opacity: 1 }}
               exit={{ scale: 0.9, y: 40, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative z-50 bg-[#0A0A0A] border border-white/10 rounded-3xl overflow-hidden max-w-4xl w-full shadow-2xl flex flex-col md:flex-row"
+              className="relative z-50 bg-[#0A0A0A] mt-15 border border-white/10 rounded-3xl overflow-hidden max-w-4xl w-full shadow-2xl flex flex-col md:flex-row"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Left Side: Image/Visual (Hidden on small mobile if needed, but here responsive) */}
@@ -518,14 +442,14 @@ const AthenuraHero = () => {
 
                 {submitStatus && (
                   <div className={`mb-4 p-3 rounded-lg text-sm ${submitStatus.type === 'success'
-                      ? 'bg-green-500/20 text-green-400 border border-green-500/30'
-                      : 'bg-red-500/20 text-red-400 border border-red-500/30'
+                    ? 'bg-green-500/20 text-green-400 border border-green-500/30'
+                    : 'bg-red-500/20 text-red-400 border border-red-500/30'
                     }`}>
                     {submitStatus.message}
                   </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-2">
                   {/* Name & Email Group for Desktop */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
