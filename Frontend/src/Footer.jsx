@@ -176,9 +176,24 @@ const Footer = () => {
                                         </div>
                                     </a>
                                 ))}
+
+                                <div className="flex flex-row justify-center items-center gap-4">
+                                    <img
+                                        src="/SKI.jpg"
+                                        alt="Footer Decorative"
+                                        className="w-38 h-20 object-contain rounded-md"
+                                    />
+                                    <img
+                                        src="/STI.png"
+                                        alt="Footer Decorative"
+                                        className="w-38 h-20 object-contain rounded-md"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
+
+
 
                     {/* 5. Map Section */}
                     <div className="lg:col-span-1">
@@ -209,6 +224,8 @@ const Footer = () => {
                         <div className="text-white/80 text-sm text-center md:text-left">
                             © {currentYear} Athenura. All rights reserved.
                         </div>
+
+
                         <div className="flex flex-wrap justify-center gap-6 text-sm">
                             {legalLinks.map((legal, index) => (
                                 <Link
